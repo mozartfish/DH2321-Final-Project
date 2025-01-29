@@ -7,7 +7,7 @@ Interactive visualization of our KTH programs' relevant SDG goals.
 ## Team Members
 - Safi Benyahia
 - [Matei Cananau](https://github.com/Matdrox)
-- Pranav Rajan
+- [Pranav Rajan](https://github.com/mozartfish)
 - Antonia Sunna
 - Fanny Westin
 
