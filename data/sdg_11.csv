@@ -1,4 +1,4 @@
-geo,time_period,obs_value,obs_flag,source
+country,year,value,flag,source
 Austria,2000,20.8,,ESTAT:SDG_09_50(1.0)
 Austria,2001,20.6,,ESTAT:SDG_09_50(1.0)
 Austria,2002,20.6,,ESTAT:SDG_09_50(1.0)
