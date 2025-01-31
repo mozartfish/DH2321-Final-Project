@@ -11,5 +11,10 @@ Interactive visualization of our KTH programs' relevant SDG goals.
 - Antonia Sunna
 - Fanny Westin
 
+## Tools
+- [Light CSV Viewer](https://csv-viewer-ten.vercel.app/)
+
 ## Sources
-[Eurostat](https://ec.europa.eu/eurostat/data/database)
+- [Eurostat](https://ec.europa.eu/eurostat/data/database)
+- [Eurostat SDG Database](https://ec.europa.eu/eurostat/web/sdi/database)
+- [European Commission Policies](https://international-partnerships.ec.europa.eu/policies_en)
