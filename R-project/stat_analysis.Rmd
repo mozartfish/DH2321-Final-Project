@@ -1,0 +1,101 @@
+---
+title: "Vis analysis"
+author: "Group 8"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Setup and Libraries
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!requireNamespace("rstatix", quietly = TRUE)) install.packages("rstatix")
+
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(rstatix)
+```
+
+## Data Loading and Cleaning
+
+```{r data-loading}
+# Load the dataset
+data <- readr::read_csv("copy_data/sdg_3.csv") 
+# tested to check if variables are correct, make data into one file with column of SDG-number
+# r project currently give errors until data and variables are fixed! 
+
+# Inspect the data structure
+str(data)
+summary(data)
+```
+
+## Descriptive Analysis
+
+```{r stat 1}
+# Boxplot for Likeability by Condition
+ggplot(data, aes(x = Condition, y = Likeability, fill = Condition)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 3, color = "black") +
+  labs(title = "Likeability by Condition", x = "Condition", y = "Likeability") +
+  theme_minimal()
+
+```
+
+
+```{r stat 2}
+# Boxplot for Likeability by Condition
+ggplot(data, aes(x = Condition, y = Perceived.Intelligence, fill = Condition)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 3, color = "black") +
+  labs(title = "Perceived Intelligence by Condition", x = "Condition", y = "Perceived Intelligence") +
+  theme_minimal()
+```
+
+
+## Statistical Analysis
+
+```{r stat test 1}
+# Perform t-test
+likeability_ttest <- t.test(Likeability ~ Condition, data = data)
+print(likeability_ttest)
+
+# Calculate SD for Delay group
+sd_delay <- sd(data$Likeability[data$Condition == "Delay"])
+
+# Calculate SD for No Delay group
+sd_no_delay <- sd(data$Likeability[data$Condition == "No Delay"])
+
+# Print results
+cat("SD for Delay group:", sd_delay, "\n")
+cat("SD for No Delay group:", sd_no_delay, "\n")
+```
+
+
+```{r stat test 2}
+# Perform t-test
+intelligence_ttest <- t.test(Perceived.Intelligence ~ Condition, data = data)
+print(intelligence_ttest)
+
+# Calculate SD for Delay group
+sd_delay <- sd(data$Perceived.Intelligence[data$Condition == "Delay"])
+
+# Calculate SD for No Delay group
+sd_no_delay <- sd(data$Perceived.Intelligence[data$Condition == "No Delay"])
+
+# Print results
+cat("SD for Delay group:", sd_delay, "\n")
+cat("SD for No Delay group:", sd_no_delay, "\n")
+```
+
+## Conclusion
+### Write here 
+
+```{r session-info}
+# Session info for reproducibility
+sessionInfo()
