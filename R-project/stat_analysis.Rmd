@@ -14,88 +14,160 @@ knitr::opts_chunk$set(echo = TRUE)
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
 if (!requireNamespace("rstatix", quietly = TRUE)) install.packages("rstatix")
+if (!requireNamespace("readxl", quietly = TRUE)) install.packages("readxl")
 
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 library(readr)
 library(rstatix)
+library(readxl)
 ```
 
-## Data Loading and Cleaning
 
-```{r data-loading}
+```{r data-loading and cleaning, include = FALSE}
 # Load the dataset
-data <- readr::read_csv("copy_data/sdg_3.csv") 
-# tested to check if variables are correct, make data into one file with column of SDG-number
-# r project currently give errors until data and variables are fixed! 
+sdg3 <- readxl::read_excel("xlsx/sdg_3.xlsx") 
+sdg5 <- readxl::read_excel("xlsx/sdg_5.xlsx") 
+sdg8 <- readxl::read_excel("xlsx/sdg_8.xlsx") 
+sdg9 <- readxl::read_excel("xlsx/sdg_9.xlsx") 
+sdg11 <- readxl::read_excel("xlsx/sdg_11.xlsx") 
+sdg12 <- readxl::read_excel("xlsx/sdg_12.xlsx") 
+sdg16 <- readxl::read_excel("xlsx/sdg_16.xlsx") 
 
 # Inspect the data structure
-str(data)
-summary(data)
+str(sdg3)
+str(sdg5)
+str(sdg8)
+str(sdg9)
+str(sdg11)
+str(sdg12)
+str(sdg16)
+summary(sdg3)
+summary(sdg3)
+summary(sdg5)
+summary(sdg8)
+summary(sdg9)
+summary(sdg11)
+summary(sdg12)
+summary(sdg16)
+
+
+# Convert
+sdg3$year <- as.numeric(sdg3$year)
+sdg3$bmi_value <- as.numeric(sdg3$bmi_value)
+sdg3$bmi_value <- as.numeric(gsub("[^0-9.]", "", sdg3$bmi_value))  # Remove non-numeric characters
+
+
+
+
 ```
 
-## Descriptive Analysis
 
-```{r stat 1}
-# Boxplot for Likeability by Condition
-ggplot(data, aes(x = Condition, y = Likeability, fill = Condition)) +
-  geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", shape = 20, size = 3, color = "black") +
-  labs(title = "Likeability by Condition", x = "Condition", y = "Likeability") +
+# SDG 3 - Good Health and Well-Being
+## Ensure healthy lives and promote well-being for all at all ages
+Sustainable Development Goal (SDG) 3 aims to ensure healthy lives and promote well-being for all at all ages. It focuses on reducing maternal and child mortality, combating infectious diseases (HIV, tuberculosis, malaria), promoting universal health coverage, improving mental health, and tackling non-communicable diseases (e.g., heart disease, diabetes).
+
+
+We have decided to look specifically at BMI and how it has changed through the years.
+
+
+
+```{r sdg 3, echo=FALSE}
+
+filtered_sdg3 <- sdg3[sdg3$country %in% c("Sweden", "Norway", "Finland", "Denmark"), ]
+
+ggplot(filtered_sdg3, aes(x = year, y = bmi_value, color = bmi, group = bmi)) +
+  geom_line() + 
+  geom_point() +
+  facet_wrap(~ country) +  # Separate plots for each country
+  labs(title = "BMI Category Trends Over the Years",
+       x = "Year",
+       y = "Percentage of Population",
+       color = "BMI Category") +
   theme_minimal()
 
 ```
 
-
-```{r stat 2}
-# Boxplot for Likeability by Condition
-ggplot(data, aes(x = Condition, y = Perceived.Intelligence, fill = Condition)) +
-  geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", shape = 20, size = 3, color = "black") +
-  labs(title = "Perceived Intelligence by Condition", x = "Condition", y = "Perceived Intelligence") +
-  theme_minimal()
-```
+# SDG 5 - Gender Equality
+## Achieve gender equality and empower all women and girls
+Sustainable Development Goal (SDG) 5 aims to achieve gender equality and empower all women and girls. It focuses on eliminating discrimination, violence, and harmful practices (e.g., child marriage, female genital mutilation), ensuring equal opportunities in leadership and economic participation, and universal access to sexual and reproductive health rights.
 
 
-## Statistical Analysis
-
-```{r stat test 1}
-# Perform t-test
-likeability_ttest <- t.test(Likeability ~ Condition, data = data)
-print(likeability_ttest)
-
-# Calculate SD for Delay group
-sd_delay <- sd(data$Likeability[data$Condition == "Delay"])
-
-# Calculate SD for No Delay group
-sd_no_delay <- sd(data$Likeability[data$Condition == "No Delay"])
-
-# Print results
-cat("SD for Delay group:", sd_delay, "\n")
-cat("SD for No Delay group:", sd_no_delay, "\n")
-```
+We have decided to look at... 
 
 
-```{r stat test 2}
-# Perform t-test
-intelligence_ttest <- t.test(Perceived.Intelligence ~ Condition, data = data)
-print(intelligence_ttest)
+# SDG 8 - Decent Work and Economic Growth
+## Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all
+Sustainable Development Goal (SDG) 8 aims to promote inclusive and sustainable economic growth, full and productive employment, and decent work for all. It focuses on:
 
-# Calculate SD for Delay group
-sd_delay <- sd(data$Perceived.Intelligence[data$Condition == "Delay"])
+* Sustained GDP growth and increased productivity
+* Job creation and entrepreneurship
+* Labor rights and safe working conditions
+* Ending modern slavery, forced labor, and child labor
+* Financial inclusion and equal access to economic resources
 
-# Calculate SD for No Delay group
-sd_no_delay <- sd(data$Perceived.Intelligence[data$Condition == "No Delay"])
 
-# Print results
-cat("SD for Delay group:", sd_delay, "\n")
-cat("SD for No Delay group:", sd_no_delay, "\n")
-```
+We have decided to look at... 
 
-## Conclusion
-### Write here 
 
-```{r session-info}
+# SDG 9 - Industry, Innovation, and Infrastructure
+## Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation
+Sustainable Development Goal (SDG) 9 aims to build resilient infrastructure, promote sustainable industrialization, and foster innovation. It focuses on:
+
+* Expanding reliable and sustainable infrastructure (transport, energy, digital access).
+* Supporting inclusive and sustainable industrialization with job creation.
+* Increasing investment in R&D and innovation, especially in developing industries.
+* Promoting clean technologies and environmentally friendly production.
+
+
+We have decided to look at... 
+
+
+# SDG 11 - Sustainable Cities and Communities
+## Make cities and human settlements inclusive, safe, resilient and sustainable
+Sustainable Development Goal (SDG) 11 aims to make cities inclusive, safe, resilient, and sustainable. It focuses on:
+
+* Affordable housing and reducing slums.
+* Sustainable urban transport and mobility.
+* Reducing air pollution and environmental impact.
+* Disaster risk reduction and climate resilience.
+* Preserving cultural and natural heritage.
+
+
+We have decided to look at... 
+
+
+# SDG 12 - Responsible Consumption and Production
+## Ensure sustainable consumption and production patterns
+Sustainable Development Goal (SDG) 12 aims to ensure sustainable consumption and production patterns by:
+
+* Reducing waste and pollution (food waste, plastic, industrial emissions).
+* Promoting circular economy models (recycling, reusing, and reducing resource use).
+* Encouraging sustainable business practices and corporate responsibility.
+* Improving resource efficiency in production and supply chains.
+* Raising awareness about sustainable consumption among individuals and businesses.
+
+
+We have decided to look at... 
+
+
+
+# SDG 16 - Peace, Justice, and Strong Institutions
+## Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels
+Sustainable Development Goal (SDG) 16 aims to promote peaceful and inclusive societies, provide access to justice for all, and build effective, accountable institutions. It focuses on:
+
+* Reducing violence, corruption, and organized crime.
+* Ensuring access to justice and human rights for all individuals.
+* Strengthening democratic institutions and governance.
+* Protecting fundamental freedoms and promoting transparency.
+* Reducing illicit financial flows and bribery.
+
+
+We have decided to look at... 
+
+
+
+```{r session-info, include=FALSE}
 # Session info for reproducibility
 sessionInfo()
