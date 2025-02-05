@@ -36,32 +36,107 @@ sdg12 <- readxl::read_excel("xlsx/sdg_12.xlsx")
 sdg16 <- readxl::read_excel("xlsx/sdg_16.xlsx") 
 
 # Inspect the data structure
-str(sdg3)
-str(sdg5)
-str(sdg8)
-str(sdg9)
-str(sdg11)
-str(sdg12)
-str(sdg16)
-summary(sdg3)
-summary(sdg3)
-summary(sdg5)
-summary(sdg8)
-summary(sdg9)
-summary(sdg11)
-summary(sdg12)
-summary(sdg16)
+#str(sdg3)
+#str(sdg5)
+#str(sdg8)
+#str(sdg9)
+#str(sdg11)
+#str(sdg12)
+#str(sdg16)
+#summary(sdg3)
+#summary(sdg3)
+#summary(sdg5)
+#summary(sdg8)
+#summary(sdg9)
+#summary(sdg11)
+#summary(sdg12)
+#summary(sdg16)
 
 
 # Convert
 sdg3$year <- as.numeric(sdg3$year)
-sdg3$bmi_value <- as.numeric(sdg3$bmi_value)
-sdg3$bmi_value <- as.numeric(gsub("[^0-9.]", "", sdg3$bmi_value))  # Remove non-numeric characters
+sdg3$smoking <- as.numeric(sdg3$smoking)
+sdg3$smoking <- as.numeric(gsub("[^0-9.]", "", sdg3$smoking))  # Remove non-numeric characters
 
+sdg5$year <- as.numeric(sdg5$year)
+sdg5$value <- as.numeric(sdg5$value)
+sdg5$value <- as.numeric(gsub("[^0-9.]", "", sdg5$value))  # Remove non-numeric characters
 
+sdg8$year <- as.numeric(sdg8$year)
+sdg8$value <- as.numeric(sdg8$value)
+sdg8$value <- as.numeric(gsub("[^0-9.]", "", sdg8$value))  # Remove non-numeric characters
+
+sdg9$year <- as.numeric(sdg9$year)
+sdg9$value <- as.numeric(sdg9$value)
+sdg9$value <- as.numeric(gsub("[^0-9.]", "", sdg9$value))  # Remove non-numeric characters
+
+sdg11$year <- as.numeric(sdg11$year)
+sdg11$value <- as.numeric(sdg11$value)
+sdg11$value <- as.numeric(gsub("[^0-9.]", "", sdg11$value))  # Remove non-numeric characters
+
+sdg12$year <- as.numeric(sdg12$year)
+sdg12$value <- as.numeric(sdg12$value)
+sdg12$value <- as.numeric(gsub("[^0-9.]", "", sdg12$value))  # Remove non-numeric characters
+
+sdg16$year <- as.numeric(sdg16$year)
+sdg16$value <- as.numeric(sdg16$value)
+sdg16$value <- as.numeric(gsub("[^0-9.]", "", sdg16$value))  # Remove non-numeric characters
 
 
 ```
+
+
+# Data types 
+
+The dataset has several datatypes. All of them have year and country. 
+
+Country = Categorical
+
+Year = Ordinal
+
+### SDG 3 datatypes: 
+Sex = Categorical
+
+Smoking = Percentage? 
+
+### SDG 5 datatypes: 
+Sex = Categorical
+
+Outside Labour Caring
+Value = 
+
+### SDG 8 datatypes: 
+Sex = Categorical
+
+Not Employed, edu? 
+Value = 
+
+### SDG 9 datatypes: 
+Vehicle = Categorical 
+
+Bus, train?
+Value =
+
+### SDG 11 datatypes: 
+Traffic
+Vehicle = Categorical 
+
+Deaths
+Value =
+
+### SDG 12 datatypes: 
+Unit = Categorical
+
+Consumption
+Value = 
+
+### SDG 16 datatypes: 
+Income Group
+Incgrp = Categorical
+
+Crime
+Value = 
+
 
 
 # SDG 3 - Good Health and Well-Being
@@ -69,25 +144,118 @@ sdg3$bmi_value <- as.numeric(gsub("[^0-9.]", "", sdg3$bmi_value))  # Remove non-
 Sustainable Development Goal (SDG) 3 aims to ensure healthy lives and promote well-being for all at all ages. It focuses on reducing maternal and child mortality, combating infectious diseases (HIV, tuberculosis, malaria), promoting universal health coverage, improving mental health, and tackling non-communicable diseases (e.g., heart disease, diabetes).
 
 
-We have decided to look specifically at BMI and how it has changed through the years.
+We have decided to look specifically at Smoking and how it has changed through the years.
+
+```{r sdg3-europe, echo=FALSE}
+
+# Keep only "Total" for gender
+sdg3_total <- sdg3 %>%
+  filter(sex == "Total")
+
+# Select top 10 highest-smoking countries (from Total data)
+top_countries <- sdg3_total %>%
+  group_by(country) %>%
+  summarise(mean_smoking = mean(smoking, na.rm = TRUE)) %>%
+  arrange(desc(mean_smoking)) %>%
+  slice_head(n = 10) %>%   # Keep only top 10
+  pull(country)            # Extract country names as a vector
+
+# Now filter for only these top countries
+sdg3_top <- sdg3_total %>%
+  filter(country %in% top_countries)
+
+ggplot(sdg3_total, aes(x = year, y = smoking, color = country, group = country)) +
+  geom_line() + 
+  geom_point() +
+  labs(title = "Smoking Trends Over the Years (Total Population)",
+       x = "Year",
+       y = "Percentage of Population",
+       color = "Country") +
+  theme_minimal()
+
+ggplot(sdg3_top, aes(x = year, y = reorder(country, -smoking), fill = smoking)) +
+  geom_tile(color = "white") +
+  scale_fill_viridis_c(option = "magma", name = "Smoking %") +
+  labs(title = "Top 10 Countries by Smoking Rates (Heatmap)",
+       x = "Year",
+       y = "Country") +
+  theme_minimal()
 
 
 
-```{r sdg 3, echo=FALSE}
+```
+```{r sdg 3 statistics, europe, echo=FALSE}
 
-filtered_sdg3 <- sdg3[sdg3$country %in% c("Sweden", "Norway", "Finland", "Denmark"), ]
+# Check column names
+#colnames(sdg3)
 
-ggplot(filtered_sdg3, aes(x = year, y = bmi_value, color = bmi, group = bmi)) +
+# Check data types
+#str(sdg3)
+
+# Count observations per year
+#table(sdg3$year)
+
+# Display the first few rows
+#head(sdg3)
+
+
+# Filter for years 2006 and 2020 AND keep only "Total" category in sex
+filter_sdg3 <- sdg3 %>%
+  filter(year %in% c(2006, 2020) & sex == "Total")
+
+# Check if filtering worked correctly
+#unique(filter_sdg3$year)  # Should return 2006, 2020
+
+# Summarize the data
+filter_sdg3 %>%
+  group_by(year) %>%
+  summarise(mean_smoking = mean(smoking, na.rm = TRUE),
+            sd_smoking = sd(smoking, na.rm = TRUE),
+            count = n())
+
+# Perform independent t-test
+t_test_result <- t.test(smoking ~ year, data = filter_sdg3)
+print(t_test_result)
+
+```
+A Welch’s independent t-test was conducted to compare smoking rates between 2006 and 2020. The results indicated a statistically significant decrease in smoking rates over time, t(48.94) = 3.78, p < .001, 95% CI [2.93, 9.60]. The mean smoking rate in 2006 (M = 30.47, SD = 4.85) was significantly higher than in 2020 (M = 24.20, SD = 7.68), suggesting a notable decline in smoking prevalence over the 14-year period.
+
+
+
+# Nordics isolated
+
+```{r sdg 3 nordics, echo=FALSE}
+
+filtered_sdg3 <- sdg3[sdg3$country %in% c("Sweden", "Finland", "Denmark"), ]
+
+ggplot(filtered_sdg3, aes(x = year, y = smoking, color = sex, group = sex)) +
   geom_line() + 
   geom_point() +
   facet_wrap(~ country) +  # Separate plots for each country
-  labs(title = "BMI Category Trends Over the Years",
+  labs(title = "Smoking Trends Over the Years",
        x = "Year",
        y = "Percentage of Population",
-       color = "BMI Category") +
+       color = "Gender") +
   theme_minimal()
 
+
+ggplot(filtered_sdg3, aes(x = year, y = smoking, color = country, linetype = sex, group = interaction(country, sex))) +
+  geom_line() + 
+  geom_point() +
+  labs(title = "Smoking Trends Over the Years",
+       x = "Year",
+       y = "Percentage of Population",
+       color = "Country",
+       linetype = "Gender") +
+  theme_minimal()
+
+
 ```
+
+
+
+
+
 
 # SDG 5 - Gender Equality
 ## Achieve gender equality and empower all women and girls
