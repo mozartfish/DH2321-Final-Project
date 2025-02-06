@@ -90,52 +90,52 @@ sdg16$value <- as.numeric(gsub("[^0-9.]", "", sdg16$value))  # Remove non-numeri
 
 The dataset has several datatypes. All of them have year and country. 
 
-Country = Categorical
+* country (Categorial): Name of EU country 
+* year (Ordinal): Year in which data was recorded
 
-Year = Ordinal
 
 ### SDG 3 datatypes: 
-Sex = Categorical
 
-Smoking = Percentage? 
+* unit (Categorical): Measurement unit of people smoking
+* sex (Categorical): Gender category
+* smoking (Quantitative/Continuous): Percentage of total population that smokes
 
 ### SDG 5 datatypes: 
-Sex = Categorical
 
-Outside Labour Caring
-Value = 
+* unit (Categorical): Measurement unit of people outside that is outside the labour force due to caring responsibilities
+* sex (Categorical): Gender category
+* outside_labour_caring (Quantitative/Continuous): Percentage of total population 
 
 ### SDG 8 datatypes: 
-Sex = Categorical
 
-Not Employed, edu? 
-Value = 
+* unit (Categorical): Measurement unit of total population that is neither employed nor in education
+* sex (Categorical): Gender category
+* not_emp_edu (Quantitative/Continuous): Percentage of total population
 
 ### SDG 9 datatypes: 
-Vehicle = Categorical 
 
-Bus, train?
-Value =
+* unit (Categorical): Measurement unit - share of buses and trains
+* vehicle (Categorical): Type of vehicle
+* bus_train (Quantitative/Continuous): Percentage of of total inland passenger transport
 
 ### SDG 11 datatypes: 
-Traffic
-Vehicle = Categorical 
 
-Deaths
-Value =
+* unit (Categorical): Measurement unit of deaths in road accidents
+* traffic (Categorical): Type of road infrastructure
+* deaths (Quantitative/Discrete): (Number/rate) of deaths in road accidents (discrete if we use numbers, continuous if we use ratio)
 
 ### SDG 12 datatypes: 
-Unit = Categorical
 
-Consumption
-Value = 
+* unit (Categorical): Measurement unit (Planetary Boundary or per inhabitant)
+* consumption (Quantitative/Continuous): Level of resource consumption measured against planetary boundaries or per inhabitants (Ratio)
 
 ### SDG 16 datatypes: 
-Income Group
-Incgrp = Categorical
 
-Crime
-Value = 
+* unit (Categorical): Measurement unit (Percentage)
+* income_group (Categorical): Income category
+* rrycrime (Quantitative/Continuous): Crime rate percentage based on the income group
+
+
 
 
 
@@ -213,7 +213,7 @@ filter_sdg3 %>%
             sd_smoking = sd(smoking, na.rm = TRUE),
             count = n())
 
-# Perform independent t-test
+# Independent t-test
 t_test_result <- t.test(smoking ~ year, data = filter_sdg3)
 print(t_test_result)
 
