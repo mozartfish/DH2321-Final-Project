@@ -5,4 +5,4 @@
 - **year**: Year in which data was recorded
 - **unit**: Measurement unit (Number or rate)
 - **traffic**: Type of road infrastructure
-- **smoking**: Number/rate of deaths in road accidents
+- **deaths**: Number/rate of deaths in road accidents
