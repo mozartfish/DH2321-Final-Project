@@ -1,0 +1,484 @@
+unit,country,year,value
+Milligrams per litre,Albania,2000,2.77
+Milligrams per litre,Albania,2001,2.56
+Milligrams per litre,Albania,2002,3.37
+Milligrams per litre,Albania,2003,15.0
+Milligrams per litre,Albania,2004,5.82
+Milligrams per litre,Albania,2005,2.7
+Milligrams per litre,Albania,2006,7.76
+Milligrams per litre,Albania,2007,10.84
+Milligrams per litre,Albania,2008,14.12
+Milligrams per litre,Albania,2009,10.73
+Milligrams per litre,Albania,2010,9.74
+Milligrams per litre,Albania,2011,7.41
+Milligrams per litre,Albania,2012,9.54
+Milligrams per litre,Albania,2013,9.39
+Milligrams per litre,Albania,2014,9.25
+Milligrams per litre,Albania,2015,9.1
+Milligrams per litre,Albania,2016,8.95
+Milligrams per litre,Albania,2017,6.07
+Milligrams per litre,Albania,2018,9.3
+Milligrams per litre,Albania,2019,6.06
+Milligrams per litre,Albania,2020,7.73
+Milligrams per litre,Albania,2021,7.27
+Milligrams per litre,Albania,2022,7.69
+Milligrams per litre,Austria,2000,2.31
+Milligrams per litre,Austria,2001,1.79
+Milligrams per litre,Austria,2002,2.84
+Milligrams per litre,Austria,2003,2.2
+Milligrams per litre,Austria,2004,2.48
+Milligrams per litre,Austria,2005,1.75
+Milligrams per litre,Austria,2006,1.83
+Milligrams per litre,Austria,2007,1.7
+Milligrams per litre,Austria,2008,1.58
+Milligrams per litre,Austria,2009,1.45
+Milligrams per litre,Austria,2010,2.4
+Milligrams per litre,Austria,2011,2.33
+Milligrams per litre,Austria,2012,2.2
+Milligrams per litre,Austria,2013,2.08
+Milligrams per litre,Austria,2014,1.95
+Milligrams per litre,Austria,2015,1.88
+Milligrams per litre,Austria,2016,1.81
+Milligrams per litre,Austria,2017,1.73
+Milligrams per litre,Austria,2018,1.58
+Milligrams per litre,Austria,2019,1.43
+Milligrams per litre,Austria,2020,1.28
+Milligrams per litre,Austria,2021,1.13
+Milligrams per litre,Austria,2022,2.14
+Milligrams per litre,Belgium,2000,2.75
+Milligrams per litre,Belgium,2001,2.36
+Milligrams per litre,Belgium,2002,2.33
+Milligrams per litre,Belgium,2003,2.6
+Milligrams per litre,Belgium,2004,2.4
+Milligrams per litre,Belgium,2005,2.29
+Milligrams per litre,Belgium,2006,2.61
+Milligrams per litre,Belgium,2007,2.97
+Milligrams per litre,Belgium,2008,2.86
+Milligrams per litre,Belgium,2009,3.2
+Milligrams per litre,Belgium,2010,2.74
+Milligrams per litre,Belgium,2011,2.53
+Milligrams per litre,Belgium,2012,2.53
+Milligrams per litre,Belgium,2013,2.32
+Milligrams per litre,Belgium,2014,2.48
+Milligrams per litre,Belgium,2015,2.91
+Milligrams per litre,Belgium,2016,2.56
+Milligrams per litre,Belgium,2017,2.56
+Milligrams per litre,Belgium,2018,2.65
+Milligrams per litre,Belgium,2019,2.27
+Milligrams per litre,Belgium,2020,2.25
+Milligrams per litre,Belgium,2021,1.95
+Milligrams per litre,Belgium,2022,2.43
+Milligrams per litre,Bulgaria,2000,4.9
+Milligrams per litre,Bulgaria,2001,4.95
+Milligrams per litre,Bulgaria,2002,4.62
+Milligrams per litre,Bulgaria,2003,4.19
+Milligrams per litre,Bulgaria,2004,3.79
+Milligrams per litre,Bulgaria,2005,4.17
+Milligrams per litre,Bulgaria,2006,4.34
+Milligrams per litre,Bulgaria,2007,4.52
+Milligrams per litre,Bulgaria,2008,3.56
+Milligrams per litre,Bulgaria,2009,3.9
+Milligrams per litre,Bulgaria,2010,3.09
+Milligrams per litre,Bulgaria,2011,2.98
+Milligrams per litre,Bulgaria,2012,3.04
+Milligrams per litre,Bulgaria,2013,2.89
+Milligrams per litre,Bulgaria,2014,2.76
+Milligrams per litre,Bulgaria,2015,2.89
+Milligrams per litre,Bulgaria,2016,2.48
+Milligrams per litre,Bulgaria,2017,3.11
+Milligrams per litre,Bulgaria,2018,2.39
+Milligrams per litre,Bulgaria,2019,2.65
+Milligrams per litre,Bulgaria,2020,3.19
+Milligrams per litre,Bulgaria,2021,2.89
+Milligrams per litre,Bulgaria,2022,2.59
+Milligrams per litre,Cyprus,2000,2.13
+Milligrams per litre,Cyprus,2001,2.33
+Milligrams per litre,Cyprus,2002,2.54
+Milligrams per litre,Cyprus,2003,2.75
+Milligrams per litre,Cyprus,2004,2.06
+Milligrams per litre,Cyprus,2005,1.78
+Milligrams per litre,Cyprus,2006,2.37
+Milligrams per litre,Cyprus,2007,3.29
+Milligrams per litre,Cyprus,2008,4.42
+Milligrams per litre,Cyprus,2009,2.75
+Milligrams per litre,Cyprus,2010,2.7
+Milligrams per litre,Cyprus,2011,3.94
+Milligrams per litre,Cyprus,2012,2.97
+Milligrams per litre,Cyprus,2013,1.9
+Milligrams per litre,Cyprus,2014,4.52
+Milligrams per litre,Cyprus,2015,2.0
+Milligrams per litre,Cyprus,2016,2.38
+Milligrams per litre,Cyprus,2017,3.5
+Milligrams per litre,Cyprus,2018,2.29
+Milligrams per litre,Cyprus,2019,1.23
+Milligrams per litre,Cyprus,2020,1.2
+Milligrams per litre,Cyprus,2021,2.41
+Milligrams per litre,Cyprus,2022,1.41
+Milligrams per litre,Czechia,2000,3.7
+Milligrams per litre,Czechia,2001,3.46
+Milligrams per litre,Czechia,2002,3.72
+Milligrams per litre,Czechia,2003,4.83
+Milligrams per litre,Czechia,2004,3.98
+Milligrams per litre,Czechia,2005,3.52
+Milligrams per litre,Czechia,2006,3.04
+Milligrams per litre,Czechia,2007,3.09
+Milligrams per litre,Czechia,2008,2.86
+Milligrams per litre,Czechia,2009,2.54
+Milligrams per litre,Czechia,2010,2.53
+Milligrams per litre,Czechia,2011,2.72
+Milligrams per litre,Czechia,2012,2.75
+Milligrams per litre,Czechia,2013,2.71
+Milligrams per litre,Czechia,2014,2.71
+Milligrams per litre,Czechia,2015,2.8
+Milligrams per litre,Czechia,2016,2.67
+Milligrams per litre,Czechia,2017,2.74
+Milligrams per litre,Czechia,2018,2.74
+Milligrams per litre,Czechia,2019,2.49
+Milligrams per litre,Czechia,2020,2.58
+Milligrams per litre,Czechia,2021,2.64
+Milligrams per litre,Czechia,2022,2.64
+Milligrams per litre,Estonia,2000,1.58
+Milligrams per litre,Estonia,2001,1.64
+Milligrams per litre,Estonia,2002,1.61
+Milligrams per litre,Estonia,2003,1.61
+Milligrams per litre,Estonia,2004,1.57
+Milligrams per litre,Estonia,2005,1.58
+Milligrams per litre,Estonia,2006,1.81
+Milligrams per litre,Estonia,2007,1.63
+Milligrams per litre,Estonia,2008,1.68
+Milligrams per litre,Estonia,2009,1.7
+Milligrams per litre,Estonia,2010,1.56
+Milligrams per litre,Estonia,2011,1.74
+Milligrams per litre,Estonia,2012,1.47
+Milligrams per litre,Estonia,2013,1.63
+Milligrams per litre,Estonia,2014,1.73
+Milligrams per litre,Estonia,2015,1.73
+Milligrams per litre,Estonia,2016,1.81
+Milligrams per litre,Estonia,2017,1.75
+Milligrams per litre,Estonia,2018,1.53
+Milligrams per litre,Estonia,2019,1.56
+Milligrams per litre,Estonia,2020,1.6
+Milligrams per litre,Estonia,2021,1.64
+Milligrams per litre,Estonia,2022,1.68
+Milligrams per litre,Spain,2000,2.8
+Milligrams per litre,Spain,2001,2.21
+Milligrams per litre,Spain,2002,3.5
+Milligrams per litre,Spain,2003,2.23
+Milligrams per litre,Spain,2004,2.37
+Milligrams per litre,Spain,2005,2.24
+Milligrams per litre,Spain,2006,2.57
+Milligrams per litre,Spain,2007,2.4
+Milligrams per litre,Spain,2008,2.23
+Milligrams per litre,Spain,2009,1.86
+Milligrams per litre,Spain,2010,1.7
+Milligrams per litre,Spain,2011,1.61
+Milligrams per litre,Spain,2012,2.29
+Milligrams per litre,Spain,2013,3.3
+Milligrams per litre,Spain,2014,3.33
+Milligrams per litre,Spain,2015,4.67
+Milligrams per litre,Spain,2016,4.52
+Milligrams per litre,Spain,2017,3.94
+Milligrams per litre,Spain,2018,3.55
+Milligrams per litre,Spain,2019,3.55
+Milligrams per litre,Spain,2020,3.59
+Milligrams per litre,Spain,2021,3.73
+Milligrams per litre,Spain,2022,3.81
+Milligrams per litre,European Union (aggregate changing according to the context),2000,3.48
+Milligrams per litre,European Union (aggregate changing according to the context),2001,3.3
+Milligrams per litre,European Union (aggregate changing according to the context),2002,3.57
+Milligrams per litre,European Union (aggregate changing according to the context),2003,3.29
+Milligrams per litre,European Union (aggregate changing according to the context),2004,3.11
+Milligrams per litre,European Union (aggregate changing according to the context),2005,3.11
+Milligrams per litre,European Union (aggregate changing according to the context),2006,3.1
+Milligrams per litre,European Union (aggregate changing according to the context),2007,3.03
+Milligrams per litre,European Union (aggregate changing according to the context),2008,2.85
+Milligrams per litre,European Union (aggregate changing according to the context),2009,2.79
+Milligrams per litre,European Union (aggregate changing according to the context),2010,2.65
+Milligrams per litre,European Union (aggregate changing according to the context),2011,2.59
+Milligrams per litre,European Union (aggregate changing according to the context),2012,2.77
+Milligrams per litre,European Union (aggregate changing according to the context),2013,2.92
+Milligrams per litre,European Union (aggregate changing according to the context),2014,2.87
+Milligrams per litre,European Union (aggregate changing according to the context),2015,3.21
+Milligrams per litre,European Union (aggregate changing according to the context),2016,3.06
+Milligrams per litre,European Union (aggregate changing according to the context),2017,2.91
+Milligrams per litre,European Union (aggregate changing according to the context),2018,2.71
+Milligrams per litre,European Union (aggregate changing according to the context),2019,2.67
+Milligrams per litre,European Union (aggregate changing according to the context),2020,2.76
+Milligrams per litre,European Union (aggregate changing according to the context),2021,2.77
+Milligrams per litre,European Union (aggregate changing according to the context),2022,2.73
+Milligrams per litre,Finland,2000,2.49
+Milligrams per litre,Finland,2001,2.56
+Milligrams per litre,Finland,2002,2.96
+Milligrams per litre,Finland,2003,2.9
+Milligrams per litre,Finland,2004,2.36
+Milligrams per litre,Finland,2005,3.02
+Milligrams per litre,Finland,2006,2.22
+Milligrams per litre,Finland,2007,1.98
+Milligrams per litre,Finland,2008,2.13
+Milligrams per litre,Finland,2009,1.88
+Milligrams per litre,Finland,2010,2.07
+Milligrams per litre,Finland,2011,2.6
+Milligrams per litre,Finland,2012,2.66
+Milligrams per litre,Finland,2013,1.98
+Milligrams per litre,Finland,2014,1.52
+Milligrams per litre,Finland,2015,1.91
+Milligrams per litre,Finland,2016,2.06
+Milligrams per litre,Finland,2017,2.2
+Milligrams per litre,Finland,2018,1.72
+Milligrams per litre,Finland,2019,1.37
+Milligrams per litre,Finland,2020,1.72
+Milligrams per litre,Finland,2021,1.57
+Milligrams per litre,Finland,2022,1.57
+Milligrams per litre,Croatia,2000,2.7
+Milligrams per litre,Croatia,2001,2.7
+Milligrams per litre,Croatia,2002,2.7
+Milligrams per litre,Croatia,2003,2.7
+Milligrams per litre,Croatia,2004,2.23
+Milligrams per litre,Croatia,2005,1.98
+Milligrams per litre,Croatia,2006,1.76
+Milligrams per litre,Croatia,2007,1.32
+Milligrams per litre,Croatia,2008,1.52
+Milligrams per litre,Croatia,2009,1.41
+Milligrams per litre,Croatia,2010,1.54
+Milligrams per litre,Croatia,2011,1.51
+Milligrams per litre,Croatia,2012,1.76
+Milligrams per litre,Croatia,2013,2.05
+Milligrams per litre,Croatia,2014,1.72
+Milligrams per litre,Croatia,2015,1.54
+Milligrams per litre,Croatia,2016,1.22
+Milligrams per litre,Croatia,2017,1.35
+Milligrams per litre,Croatia,2018,1.49
+Milligrams per litre,Croatia,2019,1.26
+Milligrams per litre,Croatia,2020,1.47
+Milligrams per litre,Croatia,2021,1.69
+Milligrams per litre,Croatia,2022,1.35
+Milligrams per litre,Ireland,2000,1.61
+Milligrams per litre,Ireland,2001,1.44
+Milligrams per litre,Ireland,2002,1.24
+Milligrams per litre,Ireland,2003,1.33
+Milligrams per litre,Ireland,2004,1.41
+Milligrams per litre,Ireland,2005,1.31
+Milligrams per litre,Ireland,2006,1.33
+Milligrams per litre,Ireland,2007,1.34
+Milligrams per litre,Ireland,2008,1.08
+Milligrams per litre,Ireland,2009,1.24
+Milligrams per litre,Ireland,2010,1.35
+Milligrams per litre,Ireland,2011,1.49
+Milligrams per litre,Ireland,2012,1.47
+Milligrams per litre,Ireland,2013,1.39
+Milligrams per litre,Ireland,2014,1.14
+Milligrams per litre,Ireland,2015,1.16
+Milligrams per litre,Ireland,2016,1.03
+Milligrams per litre,Ireland,2017,1.07
+Milligrams per litre,Ireland,2018,1.09
+Milligrams per litre,Ireland,2019,1.14
+Milligrams per litre,Ireland,2020,1.26
+Milligrams per litre,Ireland,2021,1.11
+Milligrams per litre,Ireland,2022,1.16
+Milligrams per litre,Italy,2000,2.64
+Milligrams per litre,Italy,2001,2.54
+Milligrams per litre,Italy,2002,2.54
+Milligrams per litre,Italy,2003,2.64
+Milligrams per litre,Italy,2004,2.29
+Milligrams per litre,Italy,2005,2.17
+Milligrams per litre,Italy,2006,2.09
+Milligrams per litre,Italy,2007,2.03
+Milligrams per litre,Italy,2008,2.0
+Milligrams per litre,Italy,2009,1.99
+Milligrams per litre,Italy,2010,2.07
+Milligrams per litre,Italy,2011,1.9
+Milligrams per litre,Italy,2012,2.16
+Milligrams per litre,Italy,2013,2.33
+Milligrams per litre,Italy,2014,2.5
+Milligrams per litre,Italy,2015,2.67
+Milligrams per litre,Italy,2016,2.03
+Milligrams per litre,Italy,2017,1.65
+Milligrams per litre,Italy,2018,1.58
+Milligrams per litre,Italy,2019,1.61
+Milligrams per litre,Italy,2020,1.52
+Milligrams per litre,Italy,2021,1.54
+Milligrams per litre,Italy,2022,1.73
+Milligrams per litre,Lithuania,2000,2.76
+Milligrams per litre,Lithuania,2001,2.91
+Milligrams per litre,Lithuania,2002,2.67
+Milligrams per litre,Lithuania,2003,2.82
+Milligrams per litre,Lithuania,2004,2.55
+Milligrams per litre,Lithuania,2005,2.82
+Milligrams per litre,Lithuania,2006,2.9
+Milligrams per litre,Lithuania,2007,2.43
+Milligrams per litre,Lithuania,2008,2.51
+Milligrams per litre,Lithuania,2009,2.57
+Milligrams per litre,Lithuania,2010,2.6
+Milligrams per litre,Lithuania,2011,2.23
+Milligrams per litre,Lithuania,2012,2.16
+Milligrams per litre,Lithuania,2013,2.21
+Milligrams per litre,Lithuania,2014,2.23
+Milligrams per litre,Lithuania,2015,2.05
+Milligrams per litre,Lithuania,2016,2.12
+Milligrams per litre,Lithuania,2017,2.17
+Milligrams per litre,Lithuania,2018,2.4
+Milligrams per litre,Lithuania,2019,2.26
+Milligrams per litre,Lithuania,2020,2.13
+Milligrams per litre,Lithuania,2021,1.98
+Milligrams per litre,Lithuania,2022,2.0
+Milligrams per litre,Latvia,2000,1.8
+Milligrams per litre,Latvia,2001,1.74
+Milligrams per litre,Latvia,2002,1.91
+Milligrams per litre,Latvia,2003,2.04
+Milligrams per litre,Latvia,2004,1.78
+Milligrams per litre,Latvia,2005,1.52
+Milligrams per litre,Latvia,2006,1.44
+Milligrams per litre,Latvia,2007,1.47
+Milligrams per litre,Latvia,2008,1.46
+Milligrams per litre,Latvia,2009,1.44
+Milligrams per litre,Latvia,2010,1.53
+Milligrams per litre,Latvia,2011,1.47
+Milligrams per litre,Latvia,2012,1.32
+Milligrams per litre,Latvia,2013,1.22
+Milligrams per litre,Latvia,2014,1.16
+Milligrams per litre,Latvia,2015,1.18
+Milligrams per litre,Latvia,2016,1.27
+Milligrams per litre,Latvia,2017,1.38
+Milligrams per litre,Latvia,2018,1.48
+Milligrams per litre,Latvia,2019,1.39
+Milligrams per litre,Latvia,2020,2.29
+Milligrams per litre,Latvia,2021,2.19
+Milligrams per litre,Latvia,2022,1.36
+Milligrams per litre,North Macedonia,2000,3.65
+Milligrams per litre,North Macedonia,2001,7.42
+Milligrams per litre,North Macedonia,2002,6.36
+Milligrams per litre,North Macedonia,2003,5.43
+Milligrams per litre,North Macedonia,2004,5.35
+Milligrams per litre,North Macedonia,2005,5.53
+Milligrams per litre,North Macedonia,2006,5.71
+Milligrams per litre,North Macedonia,2007,5.89
+Milligrams per litre,North Macedonia,2008,7.46
+Milligrams per litre,North Macedonia,2009,5.14
+Milligrams per litre,North Macedonia,2010,2.82
+Milligrams per litre,North Macedonia,2011,3.49
+Milligrams per litre,North Macedonia,2012,3.77
+Milligrams per litre,North Macedonia,2013,3.54
+Milligrams per litre,North Macedonia,2014,3.4
+Milligrams per litre,North Macedonia,2015,2.89
+Milligrams per litre,North Macedonia,2016,2.85
+Milligrams per litre,North Macedonia,2017,3.36
+Milligrams per litre,North Macedonia,2018,3.42
+Milligrams per litre,North Macedonia,2019,3.27
+Milligrams per litre,North Macedonia,2020,3.26
+Milligrams per litre,North Macedonia,2021,3.7
+Milligrams per litre,North Macedonia,2022,3.33
+Milligrams per litre,Poland,2000,4.45
+Milligrams per litre,Poland,2001,4.35
+Milligrams per litre,Poland,2002,4.6
+Milligrams per litre,Poland,2003,4.48
+Milligrams per litre,Poland,2004,4.1
+Milligrams per litre,Poland,2005,4.3
+Milligrams per litre,Poland,2006,4.02
+Milligrams per litre,Poland,2007,3.26
+Milligrams per litre,Poland,2008,3.21
+Milligrams per litre,Poland,2009,3.35
+Milligrams per litre,Poland,2010,3.61
+Milligrams per litre,Poland,2011,3.87
+Milligrams per litre,Poland,2012,3.61
+Milligrams per litre,Poland,2013,3.36
+Milligrams per litre,Poland,2014,2.94
+Milligrams per litre,Poland,2015,2.76
+Milligrams per litre,Poland,2016,2.78
+Milligrams per litre,Poland,2017,2.83
+Milligrams per litre,Poland,2018,2.81
+Milligrams per litre,Poland,2019,2.76
+Milligrams per litre,Poland,2020,2.78
+Milligrams per litre,Poland,2021,2.8
+Milligrams per litre,Poland,2022,2.85
+Milligrams per litre,Romania,2000,5.38
+Milligrams per litre,Romania,2001,5.38
+Milligrams per litre,Romania,2002,4.84
+Milligrams per litre,Romania,2003,5.12
+Milligrams per litre,Romania,2004,5.02
+Milligrams per litre,Romania,2005,5.16
+Milligrams per litre,Romania,2006,4.86
+Milligrams per litre,Romania,2007,5.32
+Milligrams per litre,Romania,2008,5.21
+Milligrams per litre,Romania,2009,5.12
+Milligrams per litre,Romania,2010,4.82
+Milligrams per litre,Romania,2011,4.41
+Milligrams per litre,Romania,2012,4.67
+Milligrams per litre,Romania,2013,4.25
+Milligrams per litre,Romania,2014,4.13
+Milligrams per litre,Romania,2015,4.02
+Milligrams per litre,Romania,2016,4.05
+Milligrams per litre,Romania,2017,3.65
+Milligrams per litre,Romania,2018,3.55
+Milligrams per litre,Romania,2019,3.46
+Milligrams per litre,Romania,2020,3.39
+Milligrams per litre,Romania,2021,3.52
+Milligrams per litre,Romania,2022,3.09
+Milligrams per litre,Serbia,2000,2.84
+Milligrams per litre,Serbia,2001,2.65
+Milligrams per litre,Serbia,2002,2.82
+Milligrams per litre,Serbia,2003,3.0
+Milligrams per litre,Serbia,2004,2.59
+Milligrams per litre,Serbia,2005,2.58
+Milligrams per litre,Serbia,2006,2.84
+Milligrams per litre,Serbia,2007,2.67
+Milligrams per litre,Serbia,2008,2.63
+Milligrams per litre,Serbia,2009,2.32
+Milligrams per litre,Serbia,2010,2.38
+Milligrams per litre,Serbia,2011,2.33
+Milligrams per litre,Serbia,2012,2.17
+Milligrams per litre,Serbia,2013,2.0
+Milligrams per litre,Serbia,2014,2.02
+Milligrams per litre,Serbia,2015,2.08
+Milligrams per litre,Serbia,2016,2.35
+Milligrams per litre,Serbia,2017,2.32
+Milligrams per litre,Serbia,2018,2.17
+Milligrams per litre,Serbia,2019,2.17
+Milligrams per litre,Serbia,2020,2.1
+Milligrams per litre,Serbia,2021,2.17
+Milligrams per litre,Serbia,2022,2.35
+Milligrams per litre,Slovenia,2000,3.03
+Milligrams per litre,Slovenia,2001,3.87
+Milligrams per litre,Slovenia,2002,3.56
+Milligrams per litre,Slovenia,2003,4.03
+Milligrams per litre,Slovenia,2004,4.1
+Milligrams per litre,Slovenia,2005,3.3
+Milligrams per litre,Slovenia,2006,1.1
+Milligrams per litre,Slovenia,2007,1.81
+Milligrams per litre,Slovenia,2008,1.31
+Milligrams per litre,Slovenia,2009,1.04
+Milligrams per litre,Slovenia,2010,0.96
+Milligrams per litre,Slovenia,2011,0.97
+Milligrams per litre,Slovenia,2012,0.96
+Milligrams per litre,Slovenia,2013,0.86
+Milligrams per litre,Slovenia,2014,0.82
+Milligrams per litre,Slovenia,2015,0.84
+Milligrams per litre,Slovenia,2016,0.79
+Milligrams per litre,Slovenia,2017,0.81
+Milligrams per litre,Slovenia,2018,0.88
+Milligrams per litre,Slovenia,2019,0.8
+Milligrams per litre,Slovenia,2020,0.75
+Milligrams per litre,Slovenia,2021,0.78
+Milligrams per litre,Slovenia,2022,0.78
+Milligrams per litre,Slovakia,2000,3.05
+Milligrams per litre,Slovakia,2001,3.42
+Milligrams per litre,Slovakia,2002,3.91
+Milligrams per litre,Slovakia,2003,3.49
+Milligrams per litre,Slovakia,2004,2.97
+Milligrams per litre,Slovakia,2005,2.65
+Milligrams per litre,Slovakia,2006,2.29
+Milligrams per litre,Slovakia,2007,2.45
+Milligrams per litre,Slovakia,2008,2.43
+Milligrams per litre,Slovakia,2009,2.3
+Milligrams per litre,Slovakia,2010,2.61
+Milligrams per litre,Slovakia,2011,2.58
+Milligrams per litre,Slovakia,2012,2.73
+Milligrams per litre,Slovakia,2013,2.55
+Milligrams per litre,Slovakia,2014,2.66
+Milligrams per litre,Slovakia,2015,2.75
+Milligrams per litre,Slovakia,2016,2.39
+Milligrams per litre,Slovakia,2017,2.17
+Milligrams per litre,Slovakia,2018,2.13
+Milligrams per litre,Slovakia,2019,2.1
+Milligrams per litre,Slovakia,2020,2.06
+Milligrams per litre,Slovakia,2021,1.89
+Milligrams per litre,Slovakia,2022,2.22

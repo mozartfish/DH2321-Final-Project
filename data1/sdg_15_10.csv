@@ -1,0 +1,352 @@
+unit,landcover,country,year,value
+Percentage,Forest FAO,Austria,2009,41.1
+Percentage,Forest FAO,Austria,2012,41.3
+Percentage,Forest FAO,Austria,2015,42.9
+Percentage,Forest FAO,Austria,2018,42.1
+Percentage,Forest FAO,Belgium,2009,20.8
+Percentage,Forest FAO,Belgium,2012,21.6
+Percentage,Forest FAO,Belgium,2015,22.3
+Percentage,Forest FAO,Belgium,2018,23.4
+Percentage,Forest FAO,Bulgaria,2012,38.2
+Percentage,Forest FAO,Bulgaria,2015,40.8
+Percentage,Forest FAO,Bulgaria,2018,42.7
+Percentage,Forest FAO,Cyprus,2012,20.3
+Percentage,Forest FAO,Cyprus,2015,23.2
+Percentage,Forest FAO,Cyprus,2018,22.4
+Percentage,Forest FAO,Czechia,2009,36.3
+Percentage,Forest FAO,Czechia,2012,36.7
+Percentage,Forest FAO,Czechia,2015,36.9
+Percentage,Forest FAO,Czechia,2018,36.8
+Percentage,Forest FAO,Germany,2009,30.3
+Percentage,Forest FAO,Germany,2012,30.5
+Percentage,Forest FAO,Germany,2015,31.6
+Percentage,Forest FAO,Germany,2018,31.7
+Percentage,Forest FAO,Denmark,2009,12.3
+Percentage,Forest FAO,Denmark,2012,12.0
+Percentage,Forest FAO,Denmark,2015,14.0
+Percentage,Forest FAO,Denmark,2018,15.0
+Percentage,Forest FAO,Estonia,2009,51.9
+Percentage,Forest FAO,Estonia,2012,54.5
+Percentage,Forest FAO,Estonia,2015,56.3
+Percentage,Forest FAO,Estonia,2018,55.9
+Percentage,Forest FAO,Greece,2009,28.1
+Percentage,Forest FAO,Greece,2012,28.4
+Percentage,Forest FAO,Greece,2015,31.1
+Percentage,Forest FAO,Greece,2018,36.2
+Percentage,Forest FAO,Spain,2009,24.6
+Percentage,Forest FAO,Spain,2012,25.0
+Percentage,Forest FAO,Spain,2015,27.0
+Percentage,Forest FAO,Spain,2018,28.0
+Percentage,Forest FAO,European Union - 27 countries (2007-2013),2012,35.1
+Percentage,Forest FAO,European Union - 27 countries (2007-2013),2015,36.1
+Percentage,Forest FAO,European Union - 27 countries (2007-2013),2018,36.9
+Percentage,Forest FAO,European Union - 27 countries (from 2020),2015,37.8
+Percentage,Forest FAO,European Union - 27 countries (from 2020),2018,38.6
+Percentage,Forest FAO,European Union - 28 countries (2013-2020),2015,36.2
+Percentage,Forest FAO,European Union - 28 countries (2013-2020),2018,37.1
+Percentage,Forest FAO,European Union (aggregate changing according to the context),2009,34.6
+Percentage,Forest FAO,European Union (aggregate changing according to the context),2012,35.2
+Percentage,Forest FAO,European Union (aggregate changing according to the context),2015,36.2
+Percentage,Forest FAO,European Union (aggregate changing according to the context),2018,37.0
+Percentage,Forest FAO,Finland,2009,65.1
+Percentage,Forest FAO,Finland,2012,66.4
+Percentage,Forest FAO,Finland,2015,66.8
+Percentage,Forest FAO,Finland,2018,65.2
+Percentage,Forest FAO,France,2009,27.6
+Percentage,Forest FAO,France,2012,27.6
+Percentage,Forest FAO,France,2015,28.3
+Percentage,Forest FAO,France,2018,30.7
+Percentage,Forest FAO,Croatia,2015,44.8
+Percentage,Forest FAO,Croatia,2018,47.2
+Percentage,Forest FAO,Hungary,2009,20.2
+Percentage,Forest FAO,Hungary,2012,21.6
+Percentage,Forest FAO,Hungary,2015,23.6
+Percentage,Forest FAO,Hungary,2018,24.5
+Percentage,Forest FAO,Ireland,2009,9.1
+Percentage,Forest FAO,Ireland,2012,10.2
+Percentage,Forest FAO,Ireland,2015,10.5
+Percentage,Forest FAO,Ireland,2018,11.7
+Percentage,Forest FAO,Italy,2009,30.1
+Percentage,Forest FAO,Italy,2012,30.9
+Percentage,Forest FAO,Italy,2015,31.3
+Percentage,Forest FAO,Italy,2018,32.4
+Percentage,Forest FAO,Lithuania,2009,34.7
+Percentage,Forest FAO,Lithuania,2012,36.2
+Percentage,Forest FAO,Lithuania,2015,37.4
+Percentage,Forest FAO,Lithuania,2018,38.6
+Percentage,Forest FAO,Luxembourg,2009,33.2
+Percentage,Forest FAO,Luxembourg,2012,32.8
+Percentage,Forest FAO,Luxembourg,2015,33.9
+Percentage,Forest FAO,Luxembourg,2018,34.4
+Percentage,Forest FAO,Latvia,2009,49.2
+Percentage,Forest FAO,Latvia,2012,51.6
+Percentage,Forest FAO,Latvia,2015,51.7
+Percentage,Forest FAO,Latvia,2018,53.0
+Percentage,Forest FAO,Malta,2012,2.9
+Percentage,Forest FAO,Malta,2015,1.3
+Percentage,Forest FAO,Malta,2018,0.9
+Percentage,Forest FAO,Netherlands,2009,6.5
+Percentage,Forest FAO,Netherlands,2012,6.3
+Percentage,Forest FAO,Netherlands,2015,6.5
+Percentage,Forest FAO,Netherlands,2018,9.6
+Percentage,Forest FAO,Poland,2009,31.8
+Percentage,Forest FAO,Poland,2012,33.2
+Percentage,Forest FAO,Poland,2015,34.7
+Percentage,Forest FAO,Poland,2018,35.4
+Percentage,Forest FAO,Portugal,2009,27.2
+Percentage,Forest FAO,Portugal,2012,28.2
+Percentage,Forest FAO,Portugal,2015,31.8
+Percentage,Forest FAO,Portugal,2018,35.5
+Percentage,Forest FAO,Romania,2012,31.1
+Percentage,Forest FAO,Romania,2015,32.7
+Percentage,Forest FAO,Romania,2018,33.3
+Percentage,Forest FAO,Sweden,2009,60.5
+Percentage,Forest FAO,Sweden,2012,61.4
+Percentage,Forest FAO,Sweden,2015,61.7
+Percentage,Forest FAO,Sweden,2018,61.1
+Percentage,Forest FAO,Slovenia,2009,60.4
+Percentage,Forest FAO,Slovenia,2012,60.2
+Percentage,Forest FAO,Slovenia,2015,61.7
+Percentage,Forest FAO,Slovenia,2018,61.4
+Percentage,Forest FAO,Slovakia,2009,43.5
+Percentage,Forest FAO,Slovakia,2012,44.6
+Percentage,Forest FAO,Slovakia,2015,45.8
+Percentage,Forest FAO,Slovakia,2018,45.7
+Percentage,Forest FAO,United Kingdom,2009,9.9
+Percentage,Forest FAO,United Kingdom,2012,10.2
+Percentage,Forest FAO,United Kingdom,2015,9.7
+Percentage,Forest FAO,United Kingdom,2018,11.4
+Percentage,Forest and other wooded land FAO,Austria,2009,45.2
+Percentage,Forest and other wooded land FAO,Austria,2012,45.0
+Percentage,Forest and other wooded land FAO,Austria,2015,46.7
+Percentage,Forest and other wooded land FAO,Austria,2018,46.4
+Percentage,Forest and other wooded land FAO,Belgium,2009,21.7
+Percentage,Forest and other wooded land FAO,Belgium,2012,22.4
+Percentage,Forest and other wooded land FAO,Belgium,2015,23.1
+Percentage,Forest and other wooded land FAO,Belgium,2018,24.3
+Percentage,Forest and other wooded land FAO,Bulgaria,2012,42.2
+Percentage,Forest and other wooded land FAO,Bulgaria,2015,44.7
+Percentage,Forest and other wooded land FAO,Bulgaria,2018,48.0
+Percentage,Forest and other wooded land FAO,Cyprus,2012,33.3
+Percentage,Forest and other wooded land FAO,Cyprus,2015,39.7
+Percentage,Forest and other wooded land FAO,Cyprus,2018,43.2
+Percentage,Forest and other wooded land FAO,Czechia,2009,37.0
+Percentage,Forest and other wooded land FAO,Czechia,2012,37.5
+Percentage,Forest and other wooded land FAO,Czechia,2015,37.7
+Percentage,Forest and other wooded land FAO,Czechia,2018,37.9
+Percentage,Forest and other wooded land FAO,Germany,2009,30.9
+Percentage,Forest and other wooded land FAO,Germany,2012,31.1
+Percentage,Forest and other wooded land FAO,Germany,2015,32.2
+Percentage,Forest and other wooded land FAO,Germany,2018,32.4
+Percentage,Forest and other wooded land FAO,Denmark,2009,13.7
+Percentage,Forest and other wooded land FAO,Denmark,2012,13.4
+Percentage,Forest and other wooded land FAO,Denmark,2015,15.6
+Percentage,Forest and other wooded land FAO,Denmark,2018,16.4
+Percentage,Forest and other wooded land FAO,Estonia,2009,55.6
+Percentage,Forest and other wooded land FAO,Estonia,2012,57.6
+Percentage,Forest and other wooded land FAO,Estonia,2015,58.2
+Percentage,Forest and other wooded land FAO,Estonia,2018,58.3
+Percentage,Forest and other wooded land FAO,Greece,2009,38.4
+Percentage,Forest and other wooded land FAO,Greece,2012,40.4
+Percentage,Forest and other wooded land FAO,Greece,2015,44.5
+Percentage,Forest and other wooded land FAO,Greece,2018,47.5
+Percentage,Forest and other wooded land FAO,Spain,2009,33.5
+Percentage,Forest and other wooded land FAO,Spain,2012,36.6
+Percentage,Forest and other wooded land FAO,Spain,2015,39.2
+Percentage,Forest and other wooded land FAO,Spain,2018,41.2
+Percentage,Forest and other wooded land FAO,European Union - 27 countries (2007-2013),2012,40.3
+Percentage,Forest and other wooded land FAO,European Union - 27 countries (2007-2013),2015,41.6
+Percentage,Forest and other wooded land FAO,European Union - 27 countries (2007-2013),2018,42.0
+Percentage,Forest and other wooded land FAO,European Union - 27 countries (from 2020),2015,42.6
+Percentage,Forest and other wooded land FAO,European Union - 27 countries (from 2020),2018,43.5
+Percentage,Forest and other wooded land FAO,European Union - 28 countries (2013-2020),2015,41.7
+Percentage,Forest and other wooded land FAO,European Union - 28 countries (2013-2020),2018,42.3
+Percentage,Forest and other wooded land FAO,European Union (aggregate changing according to the context),2009,39.3
+Percentage,Forest and other wooded land FAO,European Union (aggregate changing according to the context),2012,40.7
+Percentage,Forest and other wooded land FAO,European Union (aggregate changing according to the context),2015,41.9
+Percentage,Forest and other wooded land FAO,European Union (aggregate changing according to the context),2018,42.3
+Percentage,Forest and other wooded land FAO,Finland,2009,68.7
+Percentage,Forest and other wooded land FAO,Finland,2012,70.5
+Percentage,Forest and other wooded land FAO,Finland,2015,71.3
+Percentage,Forest and other wooded land FAO,Finland,2018,69.9
+Percentage,Forest and other wooded land FAO,France,2009,30.1
+Percentage,Forest and other wooded land FAO,France,2012,30.6
+Percentage,Forest and other wooded land FAO,France,2015,31.0
+Percentage,Forest and other wooded land FAO,France,2018,32.8
+Percentage,Forest and other wooded land FAO,Croatia,2015,50.6
+Percentage,Forest and other wooded land FAO,Croatia,2018,58.0
+Percentage,Forest and other wooded land FAO,Hungary,2009,22.0
+Percentage,Forest and other wooded land FAO,Hungary,2012,23.4
+Percentage,Forest and other wooded land FAO,Hungary,2015,25.2
+Percentage,Forest and other wooded land FAO,Hungary,2018,26.1
+Percentage,Forest and other wooded land FAO,Ireland,2009,15.8
+Percentage,Forest and other wooded land FAO,Ireland,2012,22.0
+Percentage,Forest and other wooded land FAO,Ireland,2015,22.4
+Percentage,Forest and other wooded land FAO,Ireland,2018,19.0
+Percentage,Forest and other wooded land FAO,Italy,2009,33.6
+Percentage,Forest and other wooded land FAO,Italy,2012,35.0
+Percentage,Forest and other wooded land FAO,Italy,2015,35.6
+Percentage,Forest and other wooded land FAO,Italy,2018,37.0
+Percentage,Forest and other wooded land FAO,Lithuania,2009,36.3
+Percentage,Forest and other wooded land FAO,Lithuania,2012,37.8
+Percentage,Forest and other wooded land FAO,Lithuania,2015,38.3
+Percentage,Forest and other wooded land FAO,Lithuania,2018,39.6
+Percentage,Forest and other wooded land FAO,Luxembourg,2009,34.4
+Percentage,Forest and other wooded land FAO,Luxembourg,2012,34.0
+Percentage,Forest and other wooded land FAO,Luxembourg,2015,36.3
+Percentage,Forest and other wooded land FAO,Luxembourg,2018,35.5
+Percentage,Forest and other wooded land FAO,Latvia,2009,53.2
+Percentage,Forest and other wooded land FAO,Latvia,2012,55.0
+Percentage,Forest and other wooded land FAO,Latvia,2015,56.4
+Percentage,Forest and other wooded land FAO,Latvia,2018,56.2
+Percentage,Forest and other wooded land FAO,Malta,2012,13.1
+Percentage,Forest and other wooded land FAO,Malta,2015,11.5
+Percentage,Forest and other wooded land FAO,Malta,2018,10.4
+Percentage,Forest and other wooded land FAO,Netherlands,2009,7.4
+Percentage,Forest and other wooded land FAO,Netherlands,2012,7.4
+Percentage,Forest and other wooded land FAO,Netherlands,2015,8.0
+Percentage,Forest and other wooded land FAO,Netherlands,2018,10.9
+Percentage,Forest and other wooded land FAO,Poland,2009,33.2
+Percentage,Forest and other wooded land FAO,Poland,2012,34.6
+Percentage,Forest and other wooded land FAO,Poland,2015,36.1
+Percentage,Forest and other wooded land FAO,Poland,2018,36.4
+Percentage,Forest and other wooded land FAO,Portugal,2009,36.9
+Percentage,Forest and other wooded land FAO,Portugal,2012,41.9
+Percentage,Forest and other wooded land FAO,Portugal,2015,46.6
+Percentage,Forest and other wooded land FAO,Portugal,2018,49.9
+Percentage,Forest and other wooded land FAO,Romania,2012,32.5
+Percentage,Forest and other wooded land FAO,Romania,2015,34.1
+Percentage,Forest and other wooded land FAO,Romania,2018,35.5
+Percentage,Forest and other wooded land FAO,Sweden,2009,64.6
+Percentage,Forest and other wooded land FAO,Sweden,2012,66.5
+Percentage,Forest and other wooded land FAO,Sweden,2015,66.5
+Percentage,Forest and other wooded land FAO,Sweden,2018,67.0
+Percentage,Forest and other wooded land FAO,Slovenia,2009,62.1
+Percentage,Forest and other wooded land FAO,Slovenia,2012,62.0
+Percentage,Forest and other wooded land FAO,Slovenia,2015,63.4
+Percentage,Forest and other wooded land FAO,Slovenia,2018,62.5
+Percentage,Forest and other wooded land FAO,Slovakia,2009,45.8
+Percentage,Forest and other wooded land FAO,Slovakia,2012,47.0
+Percentage,Forest and other wooded land FAO,Slovakia,2015,48.7
+Percentage,Forest and other wooded land FAO,Slovakia,2018,48.6
+Percentage,Forest and other wooded land FAO,United Kingdom,2009,25.3
+Percentage,Forest and other wooded land FAO,United Kingdom,2012,25.6
+Percentage,Forest and other wooded land FAO,United Kingdom,2015,26.9
+Percentage,Forest and other wooded land FAO,United Kingdom,2018,20.9
+Percentage,Other wooded land FAO,Austria,2009,4.1
+Percentage,Other wooded land FAO,Austria,2012,3.7
+Percentage,Other wooded land FAO,Austria,2015,3.8
+Percentage,Other wooded land FAO,Austria,2018,4.3
+Percentage,Other wooded land FAO,Belgium,2009,0.9
+Percentage,Other wooded land FAO,Belgium,2012,0.8
+Percentage,Other wooded land FAO,Belgium,2015,0.8
+Percentage,Other wooded land FAO,Belgium,2018,0.9
+Percentage,Other wooded land FAO,Bulgaria,2012,4.0
+Percentage,Other wooded land FAO,Bulgaria,2015,3.9
+Percentage,Other wooded land FAO,Bulgaria,2018,5.3
+Percentage,Other wooded land FAO,Cyprus,2012,13.0
+Percentage,Other wooded land FAO,Cyprus,2015,16.5
+Percentage,Other wooded land FAO,Cyprus,2018,20.8
+Percentage,Other wooded land FAO,Czechia,2009,0.7
+Percentage,Other wooded land FAO,Czechia,2012,0.8
+Percentage,Other wooded land FAO,Czechia,2015,0.8
+Percentage,Other wooded land FAO,Czechia,2018,1.1
+Percentage,Other wooded land FAO,Germany,2009,0.6
+Percentage,Other wooded land FAO,Germany,2012,0.6
+Percentage,Other wooded land FAO,Germany,2015,0.6
+Percentage,Other wooded land FAO,Germany,2018,0.7
+Percentage,Other wooded land FAO,Denmark,2009,1.4
+Percentage,Other wooded land FAO,Denmark,2012,1.4
+Percentage,Other wooded land FAO,Denmark,2015,1.6
+Percentage,Other wooded land FAO,Denmark,2018,1.4
+Percentage,Other wooded land FAO,Estonia,2009,3.7
+Percentage,Other wooded land FAO,Estonia,2012,3.1
+Percentage,Other wooded land FAO,Estonia,2015,1.9
+Percentage,Other wooded land FAO,Estonia,2018,2.4
+Percentage,Other wooded land FAO,Greece,2009,10.3
+Percentage,Other wooded land FAO,Greece,2012,12.0
+Percentage,Other wooded land FAO,Greece,2015,13.4
+Percentage,Other wooded land FAO,Greece,2018,11.3
+Percentage,Other wooded land FAO,Spain,2009,8.9
+Percentage,Other wooded land FAO,Spain,2012,11.6
+Percentage,Other wooded land FAO,Spain,2015,12.2
+Percentage,Other wooded land FAO,Spain,2018,13.2
+Percentage,Other wooded land FAO,European Union - 27 countries (2007-2013),2012,5.2
+Percentage,Other wooded land FAO,European Union - 27 countries (2007-2013),2015,5.5
+Percentage,Other wooded land FAO,European Union - 27 countries (2007-2013),2018,5.1
+Percentage,Other wooded land FAO,European Union - 27 countries (from 2020),2015,4.8
+Percentage,Other wooded land FAO,European Union - 27 countries (from 2020),2018,4.9
+Percentage,Other wooded land FAO,European Union - 28 countries (2013-2020),2015,5.5
+Percentage,Other wooded land FAO,European Union - 28 countries (2013-2020),2018,5.2
+Percentage,Other wooded land FAO,European Union (aggregate changing according to the context),2009,4.7
+Percentage,Other wooded land FAO,European Union (aggregate changing according to the context),2012,5.5
+Percentage,Other wooded land FAO,European Union (aggregate changing according to the context),2015,5.7
+Percentage,Other wooded land FAO,European Union (aggregate changing according to the context),2018,5.3
+Percentage,Other wooded land FAO,Finland,2009,3.6
+Percentage,Other wooded land FAO,Finland,2012,4.1
+Percentage,Other wooded land FAO,Finland,2015,4.5
+Percentage,Other wooded land FAO,Finland,2018,4.7
+Percentage,Other wooded land FAO,France,2009,2.5
+Percentage,Other wooded land FAO,France,2012,3.0
+Percentage,Other wooded land FAO,France,2015,2.7
+Percentage,Other wooded land FAO,France,2018,2.1
+Percentage,Other wooded land FAO,Croatia,2015,5.8
+Percentage,Other wooded land FAO,Croatia,2018,10.8
+Percentage,Other wooded land FAO,Hungary,2009,1.8
+Percentage,Other wooded land FAO,Hungary,2012,1.8
+Percentage,Other wooded land FAO,Hungary,2015,1.6
+Percentage,Other wooded land FAO,Hungary,2018,1.6
+Percentage,Other wooded land FAO,Ireland,2009,6.7
+Percentage,Other wooded land FAO,Ireland,2012,11.8
+Percentage,Other wooded land FAO,Ireland,2015,11.9
+Percentage,Other wooded land FAO,Ireland,2018,7.3
+Percentage,Other wooded land FAO,Italy,2009,3.5
+Percentage,Other wooded land FAO,Italy,2012,4.1
+Percentage,Other wooded land FAO,Italy,2015,4.3
+Percentage,Other wooded land FAO,Italy,2018,4.6
+Percentage,Other wooded land FAO,Lithuania,2009,1.6
+Percentage,Other wooded land FAO,Lithuania,2012,1.6
+Percentage,Other wooded land FAO,Lithuania,2015,0.9
+Percentage,Other wooded land FAO,Lithuania,2018,1.0
+Percentage,Other wooded land FAO,Luxembourg,2009,1.2
+Percentage,Other wooded land FAO,Luxembourg,2012,1.2
+Percentage,Other wooded land FAO,Luxembourg,2015,2.4
+Percentage,Other wooded land FAO,Luxembourg,2018,1.1
+Percentage,Other wooded land FAO,Latvia,2009,4.0
+Percentage,Other wooded land FAO,Latvia,2012,3.4
+Percentage,Other wooded land FAO,Latvia,2015,4.7
+Percentage,Other wooded land FAO,Latvia,2018,3.2
+Percentage,Other wooded land FAO,Malta,2012,10.2
+Percentage,Other wooded land FAO,Malta,2015,10.2
+Percentage,Other wooded land FAO,Malta,2018,9.5
+Percentage,Other wooded land FAO,Netherlands,2009,0.9
+Percentage,Other wooded land FAO,Netherlands,2012,1.1
+Percentage,Other wooded land FAO,Netherlands,2015,1.5
+Percentage,Other wooded land FAO,Netherlands,2018,1.3
+Percentage,Other wooded land FAO,Poland,2009,1.4
+Percentage,Other wooded land FAO,Poland,2012,1.4
+Percentage,Other wooded land FAO,Poland,2015,1.4
+Percentage,Other wooded land FAO,Poland,2018,1.0
+Percentage,Other wooded land FAO,Portugal,2009,9.7
+Percentage,Other wooded land FAO,Portugal,2012,13.7
+Percentage,Other wooded land FAO,Portugal,2015,14.8
+Percentage,Other wooded land FAO,Portugal,2018,14.4
+Percentage,Other wooded land FAO,Romania,2012,1.4
+Percentage,Other wooded land FAO,Romania,2015,1.4
+Percentage,Other wooded land FAO,Romania,2018,2.2
+Percentage,Other wooded land FAO,Sweden,2009,4.1
+Percentage,Other wooded land FAO,Sweden,2012,5.1
+Percentage,Other wooded land FAO,Sweden,2015,4.8
+Percentage,Other wooded land FAO,Sweden,2018,5.9
+Percentage,Other wooded land FAO,Slovenia,2009,1.7
+Percentage,Other wooded land FAO,Slovenia,2012,1.8
+Percentage,Other wooded land FAO,Slovenia,2015,1.7
+Percentage,Other wooded land FAO,Slovenia,2018,1.1
+Percentage,Other wooded land FAO,Slovakia,2009,2.3
+Percentage,Other wooded land FAO,Slovakia,2012,2.4
+Percentage,Other wooded land FAO,Slovakia,2015,2.9
+Percentage,Other wooded land FAO,Slovakia,2018,2.9
+Percentage,Other wooded land FAO,United Kingdom,2009,15.4
+Percentage,Other wooded land FAO,United Kingdom,2012,15.4
+Percentage,Other wooded land FAO,United Kingdom,2015,17.2
+Percentage,Other wooded land FAO,United Kingdom,2018,9.5

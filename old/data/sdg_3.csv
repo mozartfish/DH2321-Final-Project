@@ -1,0 +1,544 @@
+country,year,unit3,sex,smoking
+Austria,2006,Percentage of total population,Females,24
+Austria,2009,Percentage of total population,Females,27
+Austria,2012,Percentage of total population,Females,26
+Austria,2014,Percentage of total population,Females,23
+Austria,2017,Percentage of total population,Females,23
+Austria,2020,Percentage of total population,Females,21
+Belgium,2006,Percentage of total population,Females,22
+Belgium,2009,Percentage of total population,Females,27
+Belgium,2012,Percentage of total population,Females,24
+Belgium,2014,Percentage of total population,Females,23
+Belgium,2017,Percentage of total population,Females,17
+Belgium,2020,Percentage of total population,Females,20
+Bulgaria,2006,Percentage of total population,Females,30
+Bulgaria,2009,Percentage of total population,Females,30
+Bulgaria,2012,Percentage of total population,Females,31
+Bulgaria,2014,Percentage of total population,Females,25
+Bulgaria,2017,Percentage of total population,Females,28
+Bulgaria,2020,Percentage of total population,Females,28
+Cyprus,2006,Percentage of total population,Females,16
+Cyprus,2009,Percentage of total population,Females,16
+Cyprus,2012,Percentage of total population,Females,19
+Cyprus,2014,Percentage of total population,Females,19
+Cyprus,2017,Percentage of total population,Females,17
+Cyprus,2020,Percentage of total population,Females,16
+Czechia,2006,Percentage of total population,Females,23
+Czechia,2009,Percentage of total population,Females,19
+Czechia,2012,Percentage of total population,Females,23
+Czechia,2014,Percentage of total population,Females,19
+Czechia,2017,Percentage of total population,Females,21
+Czechia,2020,Percentage of total population,Females,26
+Germany,2006,Percentage of total population,Females,25
+Germany,2009,Percentage of total population,Females,19
+Germany,2012,Percentage of total population,Females,22
+Germany,2014,Percentage of total population,Females,21
+Germany,2017,Percentage of total population,Females,23
+Germany,2020,Percentage of total population,Females,19
+Denmark,2006,Percentage of total population,Females,29
+Denmark,2009,Percentage of total population,Females,26
+Denmark,2012,Percentage of total population,Females,24
+Denmark,2014,Percentage of total population,Females,23
+Denmark,2017,Percentage of total population,Females,18
+Denmark,2020,Percentage of total population,Females,16
+Estonia,2006,Percentage of total population,Females,24
+Estonia,2009,Percentage of total population,Females,20
+Estonia,2012,Percentage of total population,Females,19
+Estonia,2014,Percentage of total population,Females,16
+Estonia,2017,Percentage of total population,Females,15
+Estonia,2020,Percentage of total population,Females,16
+Greece,2006,Percentage of total population,Females,37
+Greece,2009,Percentage of total population,Females,39
+Greece,2012,Percentage of total population,Females,34
+Greece,2014,Percentage of total population,Females,33
+Greece,2017,Percentage of total population,Females,32
+Greece,2020,Percentage of total population,Females,38
+Spain,2006,Percentage of total population,Females,28
+Spain,2009,Percentage of total population,Females,28
+Spain,2012,Percentage of total population,Females,26
+Spain,2014,Percentage of total population,Females,25
+Spain,2017,Percentage of total population,Females,25
+Spain,2020,Percentage of total population,Females,27
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2006,Percentage of total population,Females,27
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2009,Percentage of total population,Females,25
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2012,Percentage of total population,Females,24
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2014,Percentage of total population,Females,22
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2017,Percentage of total population,Females,22
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2020,Percentage of total population,Females,22
+European Union - 27 countries (from 2020),2006,Percentage of total population,Females,26
+European Union - 27 countries (from 2020),2009,Percentage of total population,Females,25
+European Union - 27 countries (from 2020),2012,Percentage of total population,Females,23
+European Union - 27 countries (from 2020),2014,Percentage of total population,Females,22
+European Union - 27 countries (from 2020),2017,Percentage of total population,Females,23
+European Union - 27 countries (from 2020),2020,Percentage of total population,Females,22
+European Union - 28 countries (2013-2020),2014,Percentage of total population,Females,22
+European Union - 28 countries (2013-2020),2017,Percentage of total population,Females,22
+Finland,2006,Percentage of total population,Females,22
+Finland,2009,Percentage of total population,Females,16
+Finland,2012,Percentage of total population,Females,22
+Finland,2014,Percentage of total population,Females,17
+Finland,2017,Percentage of total population,Females,16
+Finland,2020,Percentage of total population,Females,16
+France,2006,Percentage of total population,Females,27
+France,2009,Percentage of total population,Females,28
+France,2012,Percentage of total population,Females,25
+France,2014,Percentage of total population,Females,29
+France,2017,Percentage of total population,Females,32
+France,2020,Percentage of total population,Females,27
+Croatia,2006,Percentage of total population,Females,25
+Croatia,2009,Percentage of total population,Females,26
+Croatia,2014,Percentage of total population,Females,30
+Croatia,2017,Percentage of total population,Females,31
+Croatia,2020,Percentage of total population,Females,32
+Hungary,2006,Percentage of total population,Females,29
+Hungary,2009,Percentage of total population,Females,32
+Hungary,2012,Percentage of total population,Females,28
+Hungary,2014,Percentage of total population,Females,23
+Hungary,2017,Percentage of total population,Females,23
+Hungary,2020,Percentage of total population,Females,23
+Ireland,2006,Percentage of total population,Females,29
+Ireland,2009,Percentage of total population,Females,32
+Ireland,2012,Percentage of total population,Females,30
+Ireland,2014,Percentage of total population,Females,22
+Ireland,2017,Percentage of total population,Females,18
+Ireland,2020,Percentage of total population,Females,17
+Italy,2006,Percentage of total population,Females,24
+Italy,2009,Percentage of total population,Females,25
+Italy,2012,Percentage of total population,Females,21
+Italy,2014,Percentage of total population,Females,17
+Italy,2017,Percentage of total population,Females,17
+Italy,2020,Percentage of total population,Females,18
+Lithuania,2006,Percentage of total population,Females,20
+Lithuania,2009,Percentage of total population,Females,18
+Lithuania,2012,Percentage of total population,Females,19
+Lithuania,2014,Percentage of total population,Females,16
+Lithuania,2017,Percentage of total population,Females,19
+Lithuania,2020,Percentage of total population,Females,14
+Luxembourg,2006,Percentage of total population,Females,23
+Luxembourg,2009,Percentage of total population,Females,18
+Luxembourg,2012,Percentage of total population,Females,24
+Luxembourg,2014,Percentage of total population,Females,19
+Luxembourg,2017,Percentage of total population,Females,17
+Luxembourg,2020,Percentage of total population,Females,17
+Latvia,2006,Percentage of total population,Females,21
+Latvia,2009,Percentage of total population,Females,23
+Latvia,2012,Percentage of total population,Females,22
+Latvia,2014,Percentage of total population,Females,18
+Latvia,2017,Percentage of total population,Females,21
+Latvia,2020,Percentage of total population,Females,22
+Malta,2006,Percentage of total population,Females,22
+Malta,2009,Percentage of total population,Females,17
+Malta,2012,Percentage of total population,Females,21
+Malta,2014,Percentage of total population,Females,17
+Malta,2017,Percentage of total population,Females,19
+Malta,2020,Percentage of total population,Females,18
+Netherlands,2006,Percentage of total population,Females,27
+Netherlands,2009,Percentage of total population,Females,22
+Netherlands,2012,Percentage of total population,Females,19
+Netherlands,2014,Percentage of total population,Females,19
+Netherlands,2017,Percentage of total population,Females,17
+Netherlands,2020,Percentage of total population,Females,11
+Poland,2006,Percentage of total population,Females,30
+Poland,2009,Percentage of total population,Females,28
+Poland,2012,Percentage of total population,Females,26
+Poland,2014,Percentage of total population,Females,24
+Poland,2017,Percentage of total population,Females,26
+Poland,2020,Percentage of total population,Females,20
+Portugal,2006,Percentage of total population,Females,14
+Portugal,2009,Percentage of total population,Females,17
+Portugal,2012,Percentage of total population,Females,14
+Portugal,2014,Percentage of total population,Females,18
+Portugal,2017,Percentage of total population,Females,19
+Portugal,2020,Percentage of total population,Females,16
+Romania,2006,Percentage of total population,Females,20
+Romania,2009,Percentage of total population,Females,20
+Romania,2012,Percentage of total population,Females,22
+Romania,2014,Percentage of total population,Females,22
+Romania,2017,Percentage of total population,Females,19
+Romania,2020,Percentage of total population,Females,23
+Sweden,2006,Percentage of total population,Females,22
+Sweden,2009,Percentage of total population,Females,20
+Sweden,2012,Percentage of total population,Females,13
+Sweden,2014,Percentage of total population,Females,12
+Sweden,2017,Percentage of total population,Females,9
+Sweden,2020,Percentage of total population,Females,8
+Slovenia,2006,Percentage of total population,Females,21
+Slovenia,2009,Percentage of total population,Females,21
+Slovenia,2012,Percentage of total population,Females,25
+Slovenia,2014,Percentage of total population,Females,23
+Slovenia,2017,Percentage of total population,Females,24
+Slovenia,2020,Percentage of total population,Females,25
+Slovakia,2006,Percentage of total population,Females,19
+Slovakia,2009,Percentage of total population,Females,17
+Slovakia,2012,Percentage of total population,Females,17
+Slovakia,2014,Percentage of total population,Females,13
+Slovakia,2017,Percentage of total population,Females,19
+Slovakia,2020,Percentage of total population,Females,16
+United Kingdom,2006,Percentage of total population,Females,32
+United Kingdom,2009,Percentage of total population,Females,25
+United Kingdom,2012,Percentage of total population,Females,26
+United Kingdom,2014,Percentage of total population,Females,20
+United Kingdom,2017,Percentage of total population,Females,18
+United Kingdom,2020,Percentage of total population,Females,13
+Austria,2006,Percentage of total population,Males,38
+Austria,2009,Percentage of total population,Males,41
+Austria,2012,Percentage of total population,Males,40
+Austria,2014,Percentage of total population,Males,28
+Austria,2017,Percentage of total population,Males,34
+Austria,2020,Percentage of total population,Males,31
+Belgium,2006,Percentage of total population,Males,30
+Belgium,2009,Percentage of total population,Males,34
+Belgium,2012,Percentage of total population,Males,30
+Belgium,2014,Percentage of total population,Males,28
+Belgium,2017,Percentage of total population,Males,21
+Belgium,2020,Percentage of total population,Males,21
+Bulgaria,2006,Percentage of total population,Males,42
+Bulgaria,2009,Percentage of total population,Males,49
+Bulgaria,2012,Percentage of total population,Males,42
+Bulgaria,2014,Percentage of total population,Males,45
+Bulgaria,2017,Percentage of total population,Males,45
+Bulgaria,2020,Percentage of total population,Males,49
+Cyprus,2006,Percentage of total population,Males,48
+Cyprus,2009,Percentage of total population,Males,49
+Cyprus,2012,Percentage of total population,Males,42
+Cyprus,2014,Percentage of total population,Males,44
+Cyprus,2017,Percentage of total population,Males,39
+Cyprus,2020,Percentage of total population,Males,39
+Czechia,2006,Percentage of total population,Males,35
+Czechia,2009,Percentage of total population,Males,34
+Czechia,2012,Percentage of total population,Males,35
+Czechia,2014,Percentage of total population,Males,30
+Czechia,2017,Percentage of total population,Males,38
+Czechia,2020,Percentage of total population,Males,35
+Germany,2006,Percentage of total population,Males,36
+Germany,2009,Percentage of total population,Males,31
+Germany,2012,Percentage of total population,Males,31
+Germany,2014,Percentage of total population,Males,34
+Germany,2017,Percentage of total population,Males,28
+Germany,2020,Percentage of total population,Males,28
+Denmark,2006,Percentage of total population,Males,35
+Denmark,2009,Percentage of total population,Males,32
+Denmark,2012,Percentage of total population,Males,27
+Denmark,2014,Percentage of total population,Males,23
+Denmark,2017,Percentage of total population,Males,19
+Denmark,2020,Percentage of total population,Males,15
+Estonia,2006,Percentage of total population,Males,45
+Estonia,2009,Percentage of total population,Males,47
+Estonia,2012,Percentage of total population,Males,36
+Estonia,2014,Percentage of total population,Males,29
+Estonia,2017,Percentage of total population,Males,33
+Estonia,2020,Percentage of total population,Males,22
+Greece,2006,Percentage of total population,Males,48
+Greece,2009,Percentage of total population,Males,46
+Greece,2012,Percentage of total population,Males,46
+Greece,2014,Percentage of total population,Males,43
+Greece,2017,Percentage of total population,Males,41
+Greece,2020,Percentage of total population,Males,46
+Spain,2006,Percentage of total population,Males,40
+Spain,2009,Percentage of total population,Males,41
+Spain,2012,Percentage of total population,Males,40
+Spain,2014,Percentage of total population,Males,34
+Spain,2017,Percentage of total population,Males,31
+Spain,2020,Percentage of total population,Males,22
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2006,Percentage of total population,Males,37
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2009,Percentage of total population,Males,34
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2012,Percentage of total population,Males,32
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2014,Percentage of total population,Males,31
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2017,Percentage of total population,Males,30
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2020,Percentage of total population,Males,28
+European Union - 27 countries (from 2020),2006,Percentage of total population,Males,38
+European Union - 27 countries (from 2020),2009,Percentage of total population,Males,35
+European Union - 27 countries (from 2020),2012,Percentage of total population,Males,33
+European Union - 27 countries (from 2020),2014,Percentage of total population,Males,32
+European Union - 27 countries (from 2020),2017,Percentage of total population,Males,32
+European Union - 27 countries (from 2020),2020,Percentage of total population,Males,28
+European Union - 28 countries (2013-2020),2014,Percentage of total population,Males,31
+European Union - 28 countries (2013-2020),2017,Percentage of total population,Males,30
+Finland,2006,Percentage of total population,Males,29
+Finland,2009,Percentage of total population,Males,26
+Finland,2012,Percentage of total population,Males,28
+Finland,2014,Percentage of total population,Males,20
+Finland,2017,Percentage of total population,Males,24
+Finland,2020,Percentage of total population,Males,14
+France,2006,Percentage of total population,Males,39
+France,2009,Percentage of total population,Males,38
+France,2012,Percentage of total population,Males,31
+France,2014,Percentage of total population,Males,34
+France,2017,Percentage of total population,Males,40
+France,2020,Percentage of total population,Males,29
+Croatia,2006,Percentage of total population,Males,42
+Croatia,2009,Percentage of total population,Males,39
+Croatia,2014,Percentage of total population,Males,37
+Croatia,2017,Percentage of total population,Males,40
+Croatia,2020,Percentage of total population,Males,41
+Hungary,2006,Percentage of total population,Males,44
+Hungary,2009,Percentage of total population,Males,46
+Hungary,2012,Percentage of total population,Males,38
+Hungary,2014,Percentage of total population,Males,38
+Hungary,2017,Percentage of total population,Males,31
+Hungary,2020,Percentage of total population,Males,34
+Ireland,2006,Percentage of total population,Males,28
+Ireland,2009,Percentage of total population,Males,30
+Ireland,2012,Percentage of total population,Males,28
+Ireland,2014,Percentage of total population,Males,21
+Ireland,2017,Percentage of total population,Males,20
+Ireland,2020,Percentage of total population,Males,19
+Italy,2006,Percentage of total population,Males,39
+Italy,2009,Percentage of total population,Males,28
+Italy,2012,Percentage of total population,Males,28
+Italy,2014,Percentage of total population,Males,26
+Italy,2017,Percentage of total population,Males,33
+Italy,2020,Percentage of total population,Males,29
+Lithuania,2006,Percentage of total population,Males,50
+Lithuania,2009,Percentage of total population,Males,43
+Lithuania,2012,Percentage of total population,Males,43
+Lithuania,2014,Percentage of total population,Males,38
+Lithuania,2017,Percentage of total population,Males,41
+Lithuania,2020,Percentage of total population,Males,45
+Luxembourg,2006,Percentage of total population,Males,29
+Luxembourg,2009,Percentage of total population,Males,32
+Luxembourg,2012,Percentage of total population,Males,30
+Luxembourg,2014,Percentage of total population,Males,24
+Luxembourg,2017,Percentage of total population,Males,25
+Luxembourg,2020,Percentage of total population,Males,29
+Latvia,2006,Percentage of total population,Males,53
+Latvia,2009,Percentage of total population,Males,50
+Latvia,2012,Percentage of total population,Males,52
+Latvia,2014,Percentage of total population,Males,45
+Latvia,2017,Percentage of total population,Males,47
+Latvia,2020,Percentage of total population,Males,43
+Malta,2006,Percentage of total population,Males,29
+Malta,2009,Percentage of total population,Males,35
+Malta,2012,Percentage of total population,Males,34
+Malta,2014,Percentage of total population,Males,23
+Malta,2017,Percentage of total population,Males,30
+Malta,2020,Percentage of total population,Males,22
+Netherlands,2006,Percentage of total population,Males,31
+Netherlands,2009,Percentage of total population,Males,25
+Netherlands,2012,Percentage of total population,Males,28
+Netherlands,2014,Percentage of total population,Males,26
+Netherlands,2017,Percentage of total population,Males,22
+Netherlands,2020,Percentage of total population,Males,13
+Poland,2006,Percentage of total population,Males,40
+Poland,2009,Percentage of total population,Males,38
+Poland,2012,Percentage of total population,Males,38
+Poland,2014,Percentage of total population,Males,33
+Poland,2017,Percentage of total population,Males,33
+Poland,2020,Percentage of total population,Males,32
+Portugal,2006,Percentage of total population,Males,35
+Portugal,2009,Percentage of total population,Males,30
+Portugal,2012,Percentage of total population,Males,32
+Portugal,2014,Percentage of total population,Males,34
+Portugal,2017,Percentage of total population,Males,33
+Portugal,2020,Percentage of total population,Males,27
+Romania,2006,Percentage of total population,Males,42
+Romania,2009,Percentage of total population,Males,40
+Romania,2012,Percentage of total population,Males,39
+Romania,2014,Percentage of total population,Males,33
+Romania,2017,Percentage of total population,Males,38
+Romania,2020,Percentage of total population,Males,38
+Sweden,2006,Percentage of total population,Males,15
+Sweden,2009,Percentage of total population,Males,12
+Sweden,2012,Percentage of total population,Males,12
+Sweden,2014,Percentage of total population,Males,11
+Sweden,2017,Percentage of total population,Males,5
+Sweden,2020,Percentage of total population,Males,6
+Slovenia,2006,Percentage of total population,Males,25
+Slovenia,2009,Percentage of total population,Males,32
+Slovenia,2012,Percentage of total population,Males,30
+Slovenia,2014,Percentage of total population,Males,39
+Slovenia,2017,Percentage of total population,Males,32
+Slovenia,2020,Percentage of total population,Males,28
+Slovakia,2006,Percentage of total population,Males,32
+Slovakia,2009,Percentage of total population,Males,35
+Slovakia,2012,Percentage of total population,Males,30
+Slovakia,2014,Percentage of total population,Males,29
+Slovakia,2017,Percentage of total population,Males,34
+Slovakia,2020,Percentage of total population,Males,34
+United Kingdom,2006,Percentage of total population,Males,33
+United Kingdom,2009,Percentage of total population,Males,32
+United Kingdom,2012,Percentage of total population,Males,28
+United Kingdom,2014,Percentage of total population,Males,23
+United Kingdom,2017,Percentage of total population,Males,17
+United Kingdom,2020,Percentage of total population,Males,12
+Austria,2006,Percentage of total population,Total,31
+Austria,2009,Percentage of total population,Total,34
+Austria,2012,Percentage of total population,Total,33
+Austria,2014,Percentage of total population,Total,26
+Austria,2017,Percentage of total population,Total,28
+Austria,2020,Percentage of total population,Total,25
+Belgium,2006,Percentage of total population,Total,26
+Belgium,2009,Percentage of total population,Total,30
+Belgium,2012,Percentage of total population,Total,27
+Belgium,2014,Percentage of total population,Total,25
+Belgium,2017,Percentage of total population,Total,19
+Belgium,2020,Percentage of total population,Total,21
+Bulgaria,2006,Percentage of total population,Total,36
+Bulgaria,2009,Percentage of total population,Total,39
+Bulgaria,2012,Percentage of total population,Total,36
+Bulgaria,2014,Percentage of total population,Total,35
+Bulgaria,2017,Percentage of total population,Total,36
+Bulgaria,2020,Percentage of total population,Total,38
+Cyprus,2006,Percentage of total population,Total,31
+Cyprus,2009,Percentage of total population,Total,32
+Cyprus,2012,Percentage of total population,Total,30
+Cyprus,2014,Percentage of total population,Total,31
+Cyprus,2017,Percentage of total population,Total,28
+Cyprus,2020,Percentage of total population,Total,28
+Czechia,2006,Percentage of total population,Total,29
+Czechia,2009,Percentage of total population,Total,26
+Czechia,2012,Percentage of total population,Total,29
+Czechia,2014,Percentage of total population,Total,24
+Czechia,2017,Percentage of total population,Total,29
+Czechia,2020,Percentage of total population,Total,30
+Germany,2006,Percentage of total population,Total,30
+Germany,2009,Percentage of total population,Total,25
+Germany,2012,Percentage of total population,Total,26
+Germany,2014,Percentage of total population,Total,27
+Germany,2017,Percentage of total population,Total,25
+Germany,2020,Percentage of total population,Total,23
+Denmark,2006,Percentage of total population,Total,32
+Denmark,2009,Percentage of total population,Total,29
+Denmark,2012,Percentage of total population,Total,26
+Denmark,2014,Percentage of total population,Total,23
+Denmark,2017,Percentage of total population,Total,19
+Denmark,2020,Percentage of total population,Total,16
+Estonia,2006,Percentage of total population,Total,33
+Estonia,2009,Percentage of total population,Total,32
+Estonia,2012,Percentage of total population,Total,26
+Estonia,2014,Percentage of total population,Total,22
+Estonia,2017,Percentage of total population,Total,23
+Estonia,2020,Percentage of total population,Total,18
+Greece,2006,Percentage of total population,Total,42
+Greece,2009,Percentage of total population,Total,42
+Greece,2012,Percentage of total population,Total,40
+Greece,2014,Percentage of total population,Total,38
+Greece,2017,Percentage of total population,Total,37
+Greece,2020,Percentage of total population,Total,42
+Spain,2006,Percentage of total population,Total,34
+Spain,2009,Percentage of total population,Total,35
+Spain,2012,Percentage of total population,Total,33
+Spain,2014,Percentage of total population,Total,29
+Spain,2017,Percentage of total population,Total,27
+Spain,2020,Percentage of total population,Total,24
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2006,Percentage of total population,Total,32
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2009,Percentage of total population,Total,29
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2012,Percentage of total population,Total,28
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2014,Percentage of total population,Total,26
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2017,Percentage of total population,Total,26
+"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",2020,Percentage of total population,Total,25
+European Union - 27 countries (from 2020),2006,Percentage of total population,Total,31
+European Union - 27 countries (from 2020),2009,Percentage of total population,Total,29
+European Union - 27 countries (from 2020),2012,Percentage of total population,Total,28
+European Union - 27 countries (from 2020),2014,Percentage of total population,Total,27
+European Union - 27 countries (from 2020),2017,Percentage of total population,Total,27
+European Union - 27 countries (from 2020),2020,Percentage of total population,Total,25
+European Union - 28 countries (2013-2020),2014,Percentage of total population,Total,26
+European Union - 28 countries (2013-2020),2017,Percentage of total population,Total,26
+Finland,2006,Percentage of total population,Total,26
+Finland,2009,Percentage of total population,Total,21
+Finland,2012,Percentage of total population,Total,25
+Finland,2014,Percentage of total population,Total,19
+Finland,2017,Percentage of total population,Total,20
+Finland,2020,Percentage of total population,Total,15
+France,2006,Percentage of total population,Total,33
+France,2009,Percentage of total population,Total,33
+France,2012,Percentage of total population,Total,28
+France,2014,Percentage of total population,Total,32
+France,2017,Percentage of total population,Total,36
+France,2020,Percentage of total population,Total,28
+Croatia,2006,Percentage of total population,Total,33
+Croatia,2009,Percentage of total population,Total,33
+Croatia,2014,Percentage of total population,Total,33
+Croatia,2017,Percentage of total population,Total,35
+Croatia,2020,Percentage of total population,Total,36
+Hungary,2006,Percentage of total population,Total,36
+Hungary,2009,Percentage of total population,Total,38
+Hungary,2012,Percentage of total population,Total,32
+Hungary,2014,Percentage of total population,Total,30
+Hungary,2017,Percentage of total population,Total,27
+Hungary,2020,Percentage of total population,Total,28
+Ireland,2006,Percentage of total population,Total,29
+Ireland,2009,Percentage of total population,Total,31
+Ireland,2012,Percentage of total population,Total,29
+Ireland,2014,Percentage of total population,Total,22
+Ireland,2017,Percentage of total population,Total,19
+Ireland,2020,Percentage of total population,Total,18
+Italy,2006,Percentage of total population,Total,31
+Italy,2009,Percentage of total population,Total,26
+Italy,2012,Percentage of total population,Total,24
+Italy,2014,Percentage of total population,Total,21
+Italy,2017,Percentage of total population,Total,25
+Italy,2020,Percentage of total population,Total,23
+Lithuania,2006,Percentage of total population,Total,34
+Lithuania,2009,Percentage of total population,Total,30
+Lithuania,2012,Percentage of total population,Total,30
+Lithuania,2014,Percentage of total population,Total,26
+Lithuania,2017,Percentage of total population,Total,29
+Lithuania,2020,Percentage of total population,Total,28
+Luxembourg,2006,Percentage of total population,Total,26
+Luxembourg,2009,Percentage of total population,Total,25
+Luxembourg,2012,Percentage of total population,Total,27
+Luxembourg,2014,Percentage of total population,Total,21
+Luxembourg,2017,Percentage of total population,Total,21
+Luxembourg,2020,Percentage of total population,Total,23
+Latvia,2006,Percentage of total population,Total,36
+Latvia,2009,Percentage of total population,Total,36
+Latvia,2012,Percentage of total population,Total,36
+Latvia,2014,Percentage of total population,Total,30
+Latvia,2017,Percentage of total population,Total,32
+Latvia,2020,Percentage of total population,Total,32
+Malta,2006,Percentage of total population,Total,25
+Malta,2009,Percentage of total population,Total,26
+Malta,2012,Percentage of total population,Total,27
+Malta,2014,Percentage of total population,Total,20
+Malta,2017,Percentage of total population,Total,24
+Malta,2020,Percentage of total population,Total,20
+Netherlands,2006,Percentage of total population,Total,29
+Netherlands,2009,Percentage of total population,Total,23
+Netherlands,2012,Percentage of total population,Total,23
+Netherlands,2014,Percentage of total population,Total,23
+Netherlands,2017,Percentage of total population,Total,19
+Netherlands,2020,Percentage of total population,Total,12
+Poland,2006,Percentage of total population,Total,35
+Poland,2009,Percentage of total population,Total,33
+Poland,2012,Percentage of total population,Total,32
+Poland,2014,Percentage of total population,Total,28
+Poland,2017,Percentage of total population,Total,30
+Poland,2020,Percentage of total population,Total,26
+Portugal,2006,Percentage of total population,Total,24
+Portugal,2009,Percentage of total population,Total,23
+Portugal,2012,Percentage of total population,Total,23
+Portugal,2014,Percentage of total population,Total,26
+Portugal,2017,Percentage of total population,Total,26
+Portugal,2020,Percentage of total population,Total,21
+Romania,2006,Percentage of total population,Total,31
+Romania,2009,Percentage of total population,Total,30
+Romania,2012,Percentage of total population,Total,30
+Romania,2014,Percentage of total population,Total,27
+Romania,2017,Percentage of total population,Total,28
+Romania,2020,Percentage of total population,Total,30
+Sweden,2006,Percentage of total population,Total,18
+Sweden,2009,Percentage of total population,Total,16
+Sweden,2012,Percentage of total population,Total,13
+Sweden,2014,Percentage of total population,Total,11
+Sweden,2017,Percentage of total population,Total,7
+Sweden,2020,Percentage of total population,Total,7
+Slovenia,2006,Percentage of total population,Total,23
+Slovenia,2009,Percentage of total population,Total,26
+Slovenia,2012,Percentage of total population,Total,27
+Slovenia,2014,Percentage of total population,Total,31
+Slovenia,2017,Percentage of total population,Total,28
+Slovenia,2020,Percentage of total population,Total,27
+Slovakia,2006,Percentage of total population,Total,25
+Slovakia,2009,Percentage of total population,Total,26
+Slovakia,2012,Percentage of total population,Total,23
+Slovakia,2014,Percentage of total population,Total,21
+Slovakia,2017,Percentage of total population,Total,26
+Slovakia,2020,Percentage of total population,Total,25
+United Kingdom,2006,Percentage of total population,Total,33
+United Kingdom,2009,Percentage of total population,Total,28
+United Kingdom,2012,Percentage of total population,Total,27
+United Kingdom,2014,Percentage of total population,Total,22
+United Kingdom,2017,Percentage of total population,Total,17
+United Kingdom,2020,Percentage of total population,Total,12
