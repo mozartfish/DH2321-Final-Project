@@ -8,7 +8,7 @@ Interactive visualization of our KTH programs' relevant SDG goals.
 - Safi Benyahia
 - [Matei Cananau](https://github.com/Matdrox)
 - [Pranav Rajan](https://github.com/mozartfish)
-- [Antonia Sunna](https://github.com/ephyea)
+- [Antonia Sunna](https://github.com/entuniae)
 - Fanny Westin
 
 ## Tools
