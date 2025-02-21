@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Climate Insights</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div id="header">
+        <h1>European Climate Insights</h1>
+        <img src="image 26.jpg" width="100" alt="EU Flag">
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- First Set of Chart Boxes -->
+        <div class="chart-container">
+            <!-- Left Chart Box (Map + Timeline) -->
+            <div class="chart-box left-box">
+                <div class="map-content">
+                    <p>Map Visualization (Placeholder)</p>
+                </div>
+                <!-- Timeline Inside the Left Box -->
+                <div class="timeline">
+                    <label for="year-slider">Select Year:</label>
+                    <input type="range" id="year-slider" min="2000" max="2025" step="1" value="2023">
+                    <span id="year-display">2023</span>
+                </div>
+            </div>
+
+            <!-- Right Chart Box -->
+            <div class="chart-box right-box">
+                <p>Chart 2 (Placeholder)</p>
+            </div>
+        </div>
+
+        <!-- Second Set of Chart Boxes (Visible on Scroll) -->
+        <div class="chart-container">
+            <div class="chart-box left-box">Chart 3 (Placeholder)</div>
+            <div class="chart-box right-box">Chart 4 (Placeholder)</div>
+        </div>
+    </div>
+
+    <script>
+        // Update the displayed year when slider moves
+        document.getElementById('year-slider').addEventListener('input', function() {
+            document.getElementById('year-display').textContent = this.value;
+        });
+    </script>
+</body>
+</html>

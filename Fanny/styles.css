@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    background: radial-gradient(50% 50% at 50% 50%, #6188D5 0%, #142181 49.5%, #010737 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+/* Enable Scrolling */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 100px;
+}
+
+/* Header */
+#header {
+    padding: 40px 20px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Chart Box Container */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 85%;
+    margin: auto;
+}
+
+.chart-box {
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(180, 199, 241, 0.10);
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    position: relative;
+}
+
+/* Different sizes for left and right boxes */
+.left-box {
+    flex: 1.5; /* Larger */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Right Box */
+.right-box {
+    flex: 1; /* Smaller */
+}
+
+/* Timeline Inside Left Chart Box */
+.timeline {
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 15px;
+}
+
+/* Slider Styling */
+input[type="range"] {
+    width: 80%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Custom Slider Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 20px;
+    background: #deeef3;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Custom Track */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, rgb(149, 234, 234), #66cff5);
+    border-radius: 10px;
+}
+
+/* Adjusting Year Display */
+#year-display {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
