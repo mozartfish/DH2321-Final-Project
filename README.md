@@ -9,8 +9,7 @@ Interactive visualization of our KTH programs' relevant SDG goals.
 - [Matei Cananau](https://github.com/Matdrox)
 - [Pranav Rajan](https://github.com/mozartfish)
 - [Antonia Sunna](https://github.com/entuniae)
-- Fanny Westin
-
+- [Fanny Westin](https://github.com/FannyyyyW)
 ## Tools
 - [Light CSV Viewer](https://csv-viewer-ten.vercel.app/)
 
