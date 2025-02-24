@@ -1,4 +1,4 @@
-/* Global Styles */
+
 body {
     background: radial-gradient(50% 50% at 50% 50%, #6188D5 0%, #142181 49.5%, #010737 100%);
     color: white;
@@ -8,7 +8,6 @@ body {
     padding: 0;
     overflow-x: hidden; /* Prevents horizontal scroll */
 }
-
 /* Enable Scrolling */
 .content-wrapper {
     display: flex;
@@ -17,15 +16,12 @@ body {
     gap: 40px;
     padding-bottom: 100px;
 }
-
-/* Header */
 #header {
     padding: 40px 20px;
     margin-top: 50px;
     position: relative;
     z-index: 2;
 }
-
 /* Chart Box Container */
 .chart-container {
     display: flex;
@@ -34,38 +30,31 @@ body {
     width: 85%;
     margin: auto;
 }
-
 .chart-box {
     height: 500px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     box-shadow: 0px 4px 15px rgba(180, 199, 241, 0.10);
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     font-size: 1.2em;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    
+    align-items: center; 
     position: relative;
 }
-
-/* Different sizes for left and right boxes */
 .left-box {
-    flex: 1.5; /* Larger */
+    flex: 1.5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
-/* Right Box */
 .right-box {
-    flex: 1; /* Smaller */
+    flex: 1; 
 }
-
-/* Timeline Inside Left Chart Box */
+/* Chart Styling */
 .timeline {
     width: 90%;
     border-radius: 10px;
@@ -77,16 +66,13 @@ body {
     position: absolute;
     bottom: 15px;
 }
-
 /* Slider Styling */
 input[type="range"] {
     width: 80%;
-    -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
 }
-
 /* Custom Slider Thumb */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -96,18 +82,74 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     cursor: pointer;
 }
-
 /* Custom Track */
 input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
-    height: 8px;
-    background: linear-gradient(to right, rgb(149, 234, 234), #66cff5);
+    height: 4px;
+    background: linear-gradient(to right, rgb(172, 255, 255), #66cff5);
     border-radius: 10px;
 }
-
 /* Adjusting Year Display */
 #year-display {
     font-size: 1.4em;
     font-weight: bold;
     color: rgb(255, 255, 255);
 }
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: 40px; /* Moves it away from the left edge */
+    top: 20%; /* Positions it lower */
+    width: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 15px rgba(180, 199, 241, 0.10);
+    border-radius: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex; /* Ensures visibility */
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000; /* Ensures it appears above other content */
+  }
+  
+  /* Menu Title */
+  .sidebar h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Menu List */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  /* Menu Links */
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    padding: 8px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  .sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  /* Ensure main content moves */
+  .content-wrapper {
+    margin-left: 220px;
+    padding: 20px;
+  }
+  
+  
