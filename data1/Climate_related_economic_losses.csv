@@ -13,16 +13,13 @@ Climate_related_economic_losses,France,"Current prices, million euro",162,53,515
 Climate_related_economic_losses,Germany,"Current prices, million euro",61,450,14,247,3961,1166,68,86,169,121,7079,119,330,1687,2160,626,336,718,784,3909,410,1021,27247,2564,1502,1810,1132,6349,2845,1344,5959,880,159,15361,3182,2934,3947,5717,10145,8247,1607,38744,11014,2163
 Climate_related_economic_losses,Greece,"Current prices, million euro",0,0,0,0,0,0,0,800,0,0,3989,0,0,9,595,0,2,197,916,1,6,79,38,1462,359,0,55,1490,0,90,1,0,0,16,5,12,56,131,74,293,1131,650,21,3872
 Climate_related_economic_losses,Hungary,"Current prices, million euro",0,0,0,0,0,0,3036,0,0,0,0,0,1635,0,0,0,0,23,55,1172,136,11,53,765,0,124,62,0,0,0,649,31,34,35,28,32,11,28,8,14,11,34,2430,30
-Climate_related_economic_losses,Iceland,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0
 Climate_related_economic_losses,Ireland,"Current prices, million euro",22,0,0,0,0,0,23,0,171,0,197,6,0,68,300,0,2,30,0,167,180,0,100,0,65,0,0,1,0,294,0,306,0,114,847,247,0,295,0,51,210,0,0,260
 Climate_related_economic_losses,Italy,"Current prices, million euro",97,1175,5348,749,382,41,562,8020,31,10,1322,531,2320,973,5146,617,625,1159,74,1078,15021,468,5991,7369,76,66,0,0,722,372,777,2729,1308,696,1843,3116,2187,13180,5708,5273,2720,686,17626,15741
 Climate_related_economic_losses,Latvia,"Current prices, million euro",0,83,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,539,0,0,0,0,0,0,0,0,0,0,0,490,120,0,0,0,0,17
-Climate_related_economic_losses,Liechtenstein,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
 Climate_related_economic_losses,Lithuania,"Current prices, million euro",0,43,0,0,0,0,0,0,0,0,0,0,747,42,0,0,0,0,0,1,0,0,7,0,0,56,350,0,0,0,0,0,0,0,0,0,0,570,0,0,0,0,1,466
 Climate_related_economic_losses,Luxembourg,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,776,0,0,19,0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,0,0,0,0,57,0,0,157,20,184,0,0
 Climate_related_economic_losses,Malta,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,27,0,0,0,2
 Climate_related_economic_losses,Netherlands,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,3133,0,44,227,3,1655,0,0,956,0,0,0,468,1,61,124,0,644,55,0,0,13,0,273,0,29,1041,0,0,47,542,757,785,113
-Climate_related_economic_losses,Norway,"Current prices, million euro",12,26,12,12,0,8,0,438,59,25,248,0,732,89,51,517,43,0,0,0,76,27,0,15,7,165,39,22,8,0,0,269,44,205,54,182,150,135,81,85,24,106,59,390
 Climate_related_economic_losses,Poland,"Current prices, million euro",2910,0,824,308,0,1558,0,762,0,0,298,22,0,0,2,4,0,6696,1,20,0,1379,0,574,308,0,1,109,100,109,3588,0,6,0,0,0,0,80,890,0,51,30,1,1
 Climate_related_economic_losses,Portugal,"Current prices, million euro",0,0,2,832,0,390,0,0,0,0,0,0,0,0,0,0,120,57,0,0,0,0,0,4752,1600,1921,0,0,0,42,1558,0,0,723,0,7,276,2266,180,607,101,3,1190,42
 Climate_related_economic_losses,Romania,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,0,388,0,0,13,46,0,456,502,983,3228,824,1,1206,97,3405,139,0,629,0,1505,0,31,13,609,3682,0,41,150,0,485,32,1147,16
@@ -30,5 +27,3 @@ Climate_related_economic_losses,Slovakia,"Current prices, million euro",0,0,0,0,
 Climate_related_economic_losses,Slovenia,"Current prices, million euro",0,0,0,0,0,0,0,0,0,0,1957,22,419,405,108,85,0,99,317,26,151,100,0,221,94,81,74,371,143,0,274,0,583,0,1430,0,0,215,0,199,9,0,166,9935
 Climate_related_economic_losses,Spain,"Current prices, million euro",3718,3874,3465,14823,3890,78,0,2487,1206,2597,6529,118,258,113,412,2291,1898,8,150,5814,1159,347,194,1160,20,2772,747,448,0,1785,1232,180,369,14,0,195,409,419,2178,4942,2421,2910,11204,7132
 Climate_related_economic_losses,Sweden,"Current prices, million euro",0,0,0,0,0,10,0,0,0,0,11,0,0,0,0,0,0,5,0,205,11,0,1,0,14,2675,1,0,0,0,0,0,0,110,197,17,0,0,93,149,67,46,0,92
-Climate_related_economic_losses,Switzerland,"Current prices, million euro",0,0,44,30,80,59,497,3565,224,1,890,0,237,779,132,2,0,121,86,3642,33,0,106,443,18,4814,35,835,1,1122,15,0,0,265,105,9,0,403,156,189,139,375,19,422
-Climate_related_economic_losses,Türkiye,"Current prices, million euro",30,0,0,0,0,0,0,0,0,0,233,40,159,0,0,115,0,0,2417,0,50,40,28,0,1,16,350,0,0,1146,10,0,44,0,0,10,0,616,11,145,344,714,283,91

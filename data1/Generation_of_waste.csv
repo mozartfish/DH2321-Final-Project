@@ -1,8 +1,6 @@
 indicator,country,unit,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022
-Generation_of_waste,Albania,Kilograms per capita,,,,,,,,,,245.0
 Generation_of_waste,Austria,Kilograms per capita,6488.0,6565.0,6767.0,5596.0,5699.0,6537.0,7008.0,7428.0,7728.0,8079.0
 Generation_of_waste,Belgium,Kilograms per capita,5068.0,5627.0,4540.0,5630.0,4847.0,5171.0,5573.0,5967.0,5899.0,5363.0
-Generation_of_waste,Bosnia and Herzegovina,Kilograms per capita,,,,,1161.0,1447.0,1744.0,1930.0,,1797.0
 Generation_of_waste,Bulgaria,Kilograms per capita,26050.0,21429.0,22375.0,22635.0,22072.0,24872.0,16907.0,18470.0,16785.0,14603.0
 Generation_of_waste,Croatia,Kilograms per capita,1673.0,1258.0,968.0,735.0,846.0,879.0,1286.0,1355.0,1483.0,1838.0
 Generation_of_waste,Cyprus,Kilograms per capita,3079.0,1663.0,2343.0,2861.0,2171.0,2321.0,2897.0,2646.0,2491.0,3294.0
@@ -16,26 +14,17 @@ Generation_of_waste,France,Kilograms per capita,4743.0,4923.0,5376.0,5478.0,5264
 Generation_of_waste,Germany,Kilograms per capita,4412.0,4416.0,4540.0,4446.0,4576.0,4785.0,4858.0,4891.0,4824.0,4604.0
 Generation_of_waste,Greece,Kilograms per capita,3044.0,4657.0,6197.0,6333.0,6549.0,6404.0,6712.0,4215.0,2651.0,2858.0
 Generation_of_waste,Hungary,Kilograms per capita,2440.0,2213.0,1688.0,1674.0,1644.0,1688.0,1624.0,1879.0,1759.0,2838.0
-Generation_of_waste,Iceland,Kilograms per capita,1717.0,,2434.0,1607.0,1651.0,2490.0,3182.0,3667.0,2895.0,
 Generation_of_waste,Ireland,Kilograms per capita,6019.0,6926.0,5288.0,4344.0,2764.0,3256.0,3207.0,2874.0,3248.0,2971.0
 Generation_of_waste,Italy,Kilograms per capita,2424.0,2666.0,3047.0,2676.0,2594.0,2597.0,2702.0,2855.0,2942.0,3212.0
-Generation_of_waste,Kosovo*,Kilograms per capita,,,,,649.0,574.0,1607.0,1648.0,1448.0,
 Generation_of_waste,Latvia,Kilograms per capita,556.0,838.0,687.0,714.0,1135.0,1315.0,975.0,920.0,1501.0,1330.0
-Generation_of_waste,Liechtenstein,Kilograms per capita,,,10806.0,8666.0,12727.0,15278.0,13325.0,11448.0,13951.0,11088.0
 Generation_of_waste,Lithuania,Kilograms per capita,2076.0,1945.0,1980.0,1801.0,1901.0,2114.0,2327.0,2527.0,2396.0,2003.0
 Generation_of_waste,Luxembourg,Kilograms per capita,18153.0,17728.0,19630.0,20597.0,15816.0,12713.0,17217.0,14828.0,14618.0,15169.0
 Generation_of_waste,Malta,Kilograms per capita,7840.0,7060.0,5057.0,3245.0,3636.0,3960.0,4379.0,5336.0,6938.0,5004.0
-Generation_of_waste,Montenegro,Kilograms per capita,,,,,1634.0,1757.0,1820.0,1965.0,2007.0,2050.0
 Generation_of_waste,Netherlands,Kilograms per capita,5678.0,6067.0,6242.0,7291.0,7233.0,7848.0,8281.0,8429.0,7175.0,6921.0
-Generation_of_waste,North Macedonia,Kilograms per capita,,,666.0,1133.0,4111.0,1058.0,688.0,549.0,716.0,1038.0
-Generation_of_waste,Norway,Kilograms per capita,1623.0,2127.0,2157.0,1929.0,2136.0,2066.0,2127.0,2662.0,2610.0,2573.0
 Generation_of_waste,Poland,Kilograms per capita,3601.0,4028.0,3645.0,4171.0,4266.0,4714.0,4793.0,4621.0,4492.0,4739.0
 Generation_of_waste,Portugal,Kilograms per capita,2796.0,3322.0,1599.0,1290.0,1271.0,1381.0,1427.0,1546.0,1612.0,1878.0
 Generation_of_waste,Romania,Kilograms per capita,17215.0,16248.0,9209.0,9949.0,12432.0,8871.0,9012.0,10425.0,7344.0,8410.0
-Generation_of_waste,Serbia,Kilograms per capita,,,,4610.0,7640.0,6890.0,6937.0,7319.0,8499.0,26325.0
 Generation_of_waste,Slovakia,Kilograms per capita,1986.0,2699.0,2133.0,1741.0,1558.0,1636.0,1953.0,2277.0,2338.0,2462.0
 Generation_of_waste,Slovenia,Kilograms per capita,2890.0,3008.0,2493.0,2922.0,2210.0,2273.0,2661.0,3964.0,3576.0,5397.0
 Generation_of_waste,Spain,Kilograms per capita,3743.0,3625.0,3248.0,2953.0,2535.0,2378.0,2774.0,2945.0,2230.0,2480.0
 Generation_of_waste,Sweden,Kilograms per capita,10203.0,10459.0,9346.0,12545.0,16420.0,17226.0,14272.0,13628.0,14664.0,15627.0
-Generation_of_waste,Türkiye,Kilograms per capita,870.0,665.0,912.0,869.0,896.0,947.0,953.0,1195.0,1291.0,1284.0
-Generation_of_waste,United Kingdom,Kilograms per capita,4981.0,4785.0,4566.0,3853.0,3791.0,4071.0,4147.0,4249.0,,

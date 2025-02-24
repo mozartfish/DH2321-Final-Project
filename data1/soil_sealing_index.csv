@@ -1,8 +1,6 @@
 indicator,country,unit,2006,2009,2012,2015,2018
-Soil_sealing_index,Albania,Percentage,1.19,1.2,1.21,1.21,1.22
 Soil_sealing_index,Austria,Percentage,3.03,3.05,3.08,3.08,3.11
 Soil_sealing_index,Belgium,Percentage,9.04,9.12,9.17,9.21,9.28
-Soil_sealing_index,Bosnia and Herzegovina,Percentage,1.11,1.12,1.12,1.13,1.14
 Soil_sealing_index,Bulgaria,Percentage,1.49,1.51,1.52,1.53,1.54
 Soil_sealing_index,Croatia,Percentage,1.75,1.76,1.78,1.78,1.81
 Soil_sealing_index,Cyprus,Percentage,3.86,3.95,4.04,4.17,4.29
@@ -15,26 +13,17 @@ Soil_sealing_index,France,Percentage,3.51,3.54,3.59,3.61,3.63
 Soil_sealing_index,Germany,Percentage,5.57,5.62,5.66,5.68,5.72
 Soil_sealing_index,Greece,Percentage,1.78,1.79,1.8,1.81,1.82
 Soil_sealing_index,Hungary,Percentage,2.68,2.71,2.74,2.76,2.77
-Soil_sealing_index,Iceland,Percentage,0.13,0.13,0.14,0.14,0.14
 Soil_sealing_index,Ireland,Percentage,1.83,1.85,1.87,1.87,1.91
 Soil_sealing_index,Italy,Percentage,4.22,4.25,4.29,4.3,4.32
-Soil_sealing_index,Kosovo*,Percentage,2.15,2.19,2.2,2.29,2.33
 Soil_sealing_index,Latvia,Percentage,1.05,1.05,1.06,1.07,1.07
-Soil_sealing_index,Liechtenstein,Percentage,6.21,6.29,6.3,6.3,6.33
 Soil_sealing_index,Lithuania,Percentage,1.42,1.42,1.43,1.43,1.44
 Soil_sealing_index,Luxembourg,Percentage,5.85,5.91,6.05,6.06,6.11
 Soil_sealing_index,Malta,Percentage,17.17,17.22,17.23,17.24,17.95
-Soil_sealing_index,Montenegro,Percentage,0.66,0.66,0.66,0.66,0.67
 Soil_sealing_index,Netherlands,Percentage,9.93,10.06,10.17,10.19,10.32
-Soil_sealing_index,North Macedonia,Percentage,1.11,1.13,1.14,1.15,1.15
-Soil_sealing_index,Norway,Percentage,0.41,0.42,0.42,0.42,0.43
 Soil_sealing_index,Poland,Percentage,2.42,2.47,2.49,2.53,2.55
 Soil_sealing_index,Portugal,Percentage,3.09,3.12,3.15,3.17,3.19
 Soil_sealing_index,Romania,Percentage,1.58,1.61,1.62,1.64,1.65
-Soil_sealing_index,Serbia,Percentage,1.86,1.87,1.88,1.89,1.9
 Soil_sealing_index,Slovakia,Percentage,2.37,2.42,2.45,2.47,2.49
 Soil_sealing_index,Slovenia,Percentage,2.58,2.59,2.63,2.63,2.66
 Soil_sealing_index,Spain,Percentage,1.78,1.8,1.84,1.85,1.87
 Soil_sealing_index,Sweden,Percentage,0.72,0.73,0.73,0.74,0.74
-Soil_sealing_index,Switzerland,Percentage,4.18,4.25,4.28,4.29,4.3
-Soil_sealing_index,Türkiye,Percentage,1.0,1.02,1.04,1.07,1.09
