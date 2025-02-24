@@ -5,7 +5,7 @@ Final project for the course DH2321 Information Visualization at KTH 2025.
 Interactive visualization of our KTH programs' relevant SDG goals.
 
 ## Team Members
-- Safi Benyahia
+- [Safi Benyahia](https://github.com/Drixouu)
 - [Matei Cananau](https://github.com/Matdrox)
 - [Pranav Rajan](https://github.com/mozartfish)
 - [Antonia Sunna](https://github.com/ephyea)
