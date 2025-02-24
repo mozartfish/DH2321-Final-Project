@@ -9,9 +9,11 @@ content - this is where all the svelte and html code goes
   import CountryData from "./lib/CountryData.svelte";
   import EuData from "./lib/EUData.svelte";
   import EuMap from "./lib/EUMap.svelte";
+  import Country from "./lib/Country.svelte";
 </script>
 <main>
   This is the main content 
+  <Country />
   <EuMap />
   <CountryData />
   <EuData />
