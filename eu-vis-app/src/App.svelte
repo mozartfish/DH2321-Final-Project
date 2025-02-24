@@ -5,11 +5,21 @@ A svelte component is structured like this in format
 content - this is where all the svelte and html code goes 
 <style></style> - this is where all the styling and design goes 
 -->
-l
-<script></script>
+<script>
+  import CountryData from "./lib/CountryData.svelte";
+  import EuData from "./lib/EUData.svelte";
+  import EuMap from "./lib/EUMap.svelte";
+</script>
 <main>
+  This is the main content 
+  <EuMap />
+  <CountryData />
+  <EuData />
 </main>
-<style></style>
+
+<style>
+
+</style>
 
 
 
