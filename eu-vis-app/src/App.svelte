@@ -10,66 +10,56 @@ content - this is where all the svelte and html code goes
   import EuData from "./lib/EUData.svelte";
   import EuMap from "./lib/EUMap.svelte";
   import Country from "./lib/Country.svelte";
+  import { onMount } from "svelte";
+  import * as d3 from "d3";
+
+  const csvFiles = import.meta.glob("/src/data/*.csv", { as: "raw", eager: true });
+  let data = [];
+  let selectedFile = "";
+  let selectedData = [];
+
+  onMount(async () => {
+    const tempData = [];
+    for (const [path, csvContent] of Object.entries(csvFiles)) {
+      const parsed = d3.csvParse(csvContent);
+      const fileName = path.replace("/src/data/", "").replace(".csv", "");
+      tempData.push({ file: fileName, data: parsed });
+    }
+    data = tempData;
+    if (data.length > 0) {
+      selectedFile = data[0].file;
+    }
+    console.log(data);
+  });
+
+  function selectData() {
+    const file = data.find(item => item.file === selectedFile);
+    if (file) {
+      selectedData = file.data;
+      console.log(file.data);
+    } else {
+      selectedData = [];
+      console.log("No data found for:", selectedFile);
+    }
+  }
 </script>
+
 <main>
+  <select bind:value={selectedFile}>
+    {#each data as d}
+      <option value={d.file}>{d.file}</option>
+    {/each}
+  </select>
+  <button on:click={selectData}>Select Data</button>
+
   This is the main content 
-  <Country />
+
+  <Country/>
   <EuMap />
-  <CountryData />
+  <CountryData data={selectedData} />
   <EuData />
 </main>
 
 <style>
 
 </style>
-
-
-
-
-<!-- <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
-</script>
-
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style> -->
