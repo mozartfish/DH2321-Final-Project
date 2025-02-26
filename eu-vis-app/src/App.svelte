@@ -1,10 +1,4 @@
-<!-- This component is the main component (aka webpage where we import other)-->
-<!-- 
-A svelte component is structured like this in format 
-<script></script> - this is where all your javascript code goes 
-content - this is where all the svelte and html code goes 
-<style></style> - this is where all the styling and design goes 
--->
+<!-- App.svelte -->
 <script>
   import CountryData from './lib/CountryData.svelte';
   import EUData from './lib/EUData.svelte';
@@ -13,21 +7,15 @@ content - this is where all the svelte and html code goes
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  // please declare variables here
   // data structures to process the data
-
-  // store the parsed data into this array
   let allData = $state([]);
-  // the data file selected by the user
   let selectedFile = $state('');
-  // the country selected by the user
   let selectedCountry = $state('');
-  // data array for a particular dataset
   let selectedDataFileData = $state([]);
-  // data array for a particular country
   let selectedCountryData = $state([]);
   let isDataLoaded = $state(false);
-  // a list of country names in the european union - need this to be fact checked or parsed somehow
+  
+  // a list of country names in the european union
   let countryNames = [
     'Austria',
     'Belgium',
@@ -62,7 +50,6 @@ content - this is where all the svelte and html code goes
     as: 'raw',
     eager: true
   });
-  // console.log("csv files data: ", csvFiles);
 
   // process and load data when web page is opened
   onMount(async () => {
@@ -80,16 +67,12 @@ content - this is where all the svelte and html code goes
     }
     selectData();
     isDataLoaded = true;
-    // print the data after loading
-    // console.log('The original loaded data', data);
   });
 
   function selectData() {
     const dataFile = allData.find((item) => item.file === selectedFile);
     if (dataFile) {
       console.log('hello world I am the app data component');
-      // console.log('Selected country: ', selectedCountry);
-      // console.log('Selected Dataset: ', selectedFile);
       selectedDataFileData = dataFile.data;
       selectedCountryData = selectedDataFileData.filter(
         (item) => item.country === selectedCountry
@@ -99,6 +82,13 @@ content - this is where all the svelte and html code goes
       console.log('No data found for:', selectedDataFileData);
     }
   }
+  
+  // Updated country selection handler for callback approach
+  function handleCountrySelect(data) {
+    selectedCountry = data.country;
+    selectData(); // Update the data based on the new country selection
+  }
+  
   $effect(() => {
     console.log('allData : ', allData);
   });
@@ -107,7 +97,8 @@ content - this is where all the svelte and html code goes
 <main>
   <h3>Main App Component</h3>
 
-  <EUMap countries={countryNames} />
+  <!-- Updated to use callback instead of event -->
+  <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
 
   <br/>
 
@@ -117,7 +108,7 @@ content - this is where all the svelte and html code goes
     {/each}
   </select>
 
-  <select bind:value={selectedCountry}>
+  <select bind:value={selectedCountry} onchange={selectData}>
     {#each countryNames as c}
       <option value={c}>{c}</option>
     {/each}
@@ -131,3 +122,11 @@ content - this is where all the svelte and html code goes
   <!-- <Country/> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>
+
+
+
+
+
+
+
+
