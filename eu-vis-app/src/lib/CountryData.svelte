@@ -1,16 +1,79 @@
 <script>
+  import { onMount } from "svelte";
+  import * as d3 from "d3";
+
   const { countryData = [], country = '' } = $props();
   console.log('This is the country data component');
 
   $effect(() => {
-    console.log('countryData Update: ', $state.snapshot(countryData));
-    console.log('country update: ', country);
+    console.log('countryData updated to: ', $state.snapshot(countryData));
+    console.log('country updated to: ', country);
   });
 
+let formattedData=Object.entries(countryData).map(([year,value])=>({
+    year: Number(year),
+    value : value
+}));
+
+let width = 500, height = 300, margin = 40;
+  
+onMount(() => {
+    drawChart();
+    window.addEventListener("resize", resize);  
+
+});
+
+function resize(){
+    width = window.innerWidth * 0.8;
+    height = window.innerHeight * 0.5;
+    drawChart();
+}
+
+function drawChart(){
+
+    d3.select("svg").selectAll("*").remove();
+    const svg = d3.select("#line-chart")
+    .attr("width", width)
+    .attr("height", height);
+
+    const xScale = d3.scaleLinear()
+    .domain([0, d3.max(formattedData, d => d.x)])
+    .range([margin, width - margin]);
+
+    const yScale = d3.scaleLinear()
+    .domain([0, d3.max(formattedData, d => d.y)])
+    .range([height - margin, margin]);
+
+    const line = d3.line()
+    .x(d => xScale(d.x))
+    .y(d => yScale(d.y))
+    .curve(d3.curveMonotoneX); // Smooth curve
+
+    svg.append("path")
+    .datum(formattedData)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 2)
+    .attr("d", line);
+
+    // Add Axes
+    svg.append("g")
+    .attr("transform", `translate(0,${height - margin})`)
+    .call(d3.axisBottom(xScale));
+
+    svg.append("g")
+    .attr("transform", `translate(${margin},0)`)
+    .call(d3.axisLeft(yScale));
+}
 
 </script>
 
+<svg id="line-chart"></svg>
+
 <section>
+    {#each countryData as d} 
+    <p>{d}</p>
+    {/each}
   <!-- This is the Country Data Component
 
    {#if data.length > 0}
