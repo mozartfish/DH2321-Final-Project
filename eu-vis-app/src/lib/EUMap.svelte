@@ -4,7 +4,7 @@
   
     let width = 800;
     let height = 600;
-    export let countries = [];
+    let { countries } = $props();
     let geoData;
   
     onMount(async () => {
@@ -38,7 +38,7 @@
         .attr('stroke', '#333')
         .on('click', (event, d) => {
             svg.selectAll('path').attr('fill', '#ccc');
-            d3.select(event.target).attr('fill', 'orange');
+            d3.select(event.target).attr('fill', 'peachpuff');
             console.log(d.properties.NAME);
         });
     }
