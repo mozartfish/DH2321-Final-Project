@@ -7,8 +7,8 @@ content - this is where all the svelte and html code goes
 -->
 <script>
   import CountryData from './lib/CountryData.svelte';
-  import EuData from './lib/EUData.svelte';
-  import EuMap from './lib/EUMap.svelte';
+  import EUData from './lib/EUData.svelte';
+  import EUMap from './lib/EUMap.svelte';
   import Country from './lib/Country.svelte';
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
@@ -21,10 +21,10 @@ content - this is where all the svelte and html code goes
   // console.log("csv files data: ", csvFiles);
 
   // data structures to process the data
-  let data = [];
-  let selectedFile = '';
-  let selectedCountry = '';
-  let selectedData = [];
+  let data = $state([]);
+  let selectedFile = $state('');
+  let selectedCountry = $state('');
+  let selectedDataFileData = $state([]);
   let countryNames = [
     'Austria',
     'Belgium',
@@ -73,25 +73,31 @@ content - this is where all the svelte and html code goes
   });
 
   function selectData() {
-    const file = data.find((item) => item.file === selectedFile);
-    if (file) {
+    const dataFile = data.find((item) => item.file === selectedFile);
+    if (dataFile) {
+      console.log('hello world I am the app data component');
       console.log('Selected country: ', selectedCountry);
-      console.log('Selected Data: ', selectedFile);
-      const selectedDataFile = data.find((item) => item.file == selectedFile);
-      const selectedDataFileData = selectedDataFile["data"];
-      const selectedCountryData = selectedDataFileData.find((item) => item.country === selectedCountry);
-      console.log('selected data file: ', selectedDataFile);
-      console.log("data: ", selectedDataFileData);
-      console.log("selected country data: ", selectedCountryData);
+      console.log('Selected Dataset: ', selectedFile);
+      selectedDataFileData = dataFile.data;
+      console.log('selected data: ', selectedDataFileData);
 
-
+      // const selectedDataFile = data.find((item) => item.file == selectedFile);
+      // selectedDataFileData = selectedDataFile['data'];
+      // const EUData = selectedDataFileData.find((item) => item.country === "EU");
+      // const selectedCountryData = selectedDataFileData.find(
+      //   (item) => item.country === selectedCountry
+      // );
+      // console.log('selected data file: ', selectedDataFile);
+      // console.log('data: ', selectedDataFileData);
+      // console.log('selected country data: ', selectedCountryData);
+      // console.log("EU Data: ", EUData);
 
       // selectedData = file.data;
       // console.log('Selected Country: ', selectedCountry);
       // console.log(selectedData);
     } else {
-      selectedData = [];
-      console.log('No data found for:', selectedFile);
+      selectedDataFileData = [];
+      console.log('No data found for:', selectedDataFileData);
     }
   }
 </script>
@@ -107,7 +113,7 @@ content - this is where all the svelte and html code goes
       <option value={c}>{c}</option>
     {/each}
   </select>
-  <button on:click={selectData}>Select Data</button>
+  <button onclick={selectData}>Select Data</button>
   <!-- <select bind:value={selectedFile}>
     {#each data as d}
       <option value={d.file}>{d.file}</option>
@@ -119,7 +125,7 @@ content - this is where all the svelte and html code goes
   <!-- <Country/> -->
   <!-- <EuMap /> -->
   <!-- <CountryData data={selectedData} /> -->
-  <!-- <EuData /> -->
+  <EUData data={selectedDataFileData} country={selectedCountry} />
 </main>
 
 <style>
