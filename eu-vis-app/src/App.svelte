@@ -108,6 +108,7 @@ content - this is where all the svelte and html code goes
 
 <main>
   This is the main content
+  <EUMap countries={countryNames} />
   <select bind:value={selectedFile}>
     {#each allData as d}
       <option value={d.file}>{d.file}</option>
@@ -124,7 +125,6 @@ content - this is where all the svelte and html code goes
     <CountryData countryData={selectedCountryData} country={selectedCountry} />
   {/if}
   <!-- <Country/> -->
-  <!-- <EuMap /> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>
 

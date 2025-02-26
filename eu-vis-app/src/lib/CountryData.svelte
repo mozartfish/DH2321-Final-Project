@@ -10,7 +10,7 @@
     console.log('country updated to: ', country);
   });
 
-let formattedData = $derived(countryData.forEach);
+// let formattedData = $derived(countryData.forEach);
 
 let formattedData=Object.entries(countryData[0]).filter(([key])=> !["country","indicator","unit"].includes(key)).map(([year,value])=>({
     year: Number(year),
