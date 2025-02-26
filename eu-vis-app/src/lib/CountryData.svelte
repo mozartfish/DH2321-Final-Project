@@ -1,5 +1,8 @@
 <script>
-    export let data = [];
+    let {data} = $props();
+    console.log("you have entered the data prop;")
+    console.log("this is the data: ", data);
+    // export let data = [];
 </script>
 <section>
     This is the Country Data Component

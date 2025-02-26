@@ -6,40 +6,92 @@ content - this is where all the svelte and html code goes
 <style></style> - this is where all the styling and design goes 
 -->
 <script>
-  import CountryData from "./lib/CountryData.svelte";
-  import EuData from "./lib/EUData.svelte";
-  import EuMap from "./lib/EUMap.svelte";
-  import Country from "./lib/Country.svelte";
-  import { onMount } from "svelte";
-  import * as d3 from "d3";
+  import CountryData from './lib/CountryData.svelte';
+  import EuData from './lib/EUData.svelte';
+  import EuMap from './lib/EUMap.svelte';
+  import Country from './lib/Country.svelte';
+  import { onMount } from 'svelte';
+  import * as d3 from 'd3';
 
-  const csvFiles = import.meta.glob("/src/data/*.csv", { as: "raw", eager: true });
+  // import directly and load all the csv files when the app loads
+  const csvFiles = import.meta.glob('/src/data/*.csv', {
+    as: 'raw',
+    eager: true
+  });
+  // console.log("csv files data: ", csvFiles);
+
+  // data structures to process the data
   let data = [];
-  let selectedFile = "";
+  let selectedFile = '';
+  let selectedCountry = '';
   let selectedData = [];
+  let countryNames = [
+    'Austria',
+    'Belgium',
+    'Croatia',
+    'Cyprus',
+    'Czech Republic',
+    'Denmark',
+    'Estonia',
+    'Finland',
+    'France',
+    'Germany',
+    'Greece',
+    'Hungary',
+    'Ireland',
+    'Italy',
+    'Latvia',
+    'Lithuania',
+    'Luxembourg',
+    'Malta',
+    'Netherlands',
+    'Poland',
+    'Portugal',
+    'Romania',
+    'Slovakia',
+    'Slovenia',
+    'Spain',
+    'Sweden'
+  ];
 
+  // load the data when the map is mounted
   onMount(async () => {
     const tempData = [];
     for (const [path, csvContent] of Object.entries(csvFiles)) {
       const parsed = d3.csvParse(csvContent);
-      const fileName = path.replace("/src/data/", "").replace(".csv", "");
+      const fileName = path.replace('/src/data/', '').replace('.csv', '');
       tempData.push({ file: fileName, data: parsed });
     }
     data = tempData;
     if (data.length > 0) {
+      // set the first data file to the selected file
       selectedFile = data[0].file;
+      selectedCountry = countryNames[0];
     }
-    console.log(data);
+    // print the data after loading
+    // console.log('The original loaded data', data);
   });
 
   function selectData() {
-    const file = data.find(item => item.file === selectedFile);
+    const file = data.find((item) => item.file === selectedFile);
     if (file) {
-      selectedData = file.data;
-      console.log(file.data);
+      console.log('Selected country: ', selectedCountry);
+      console.log('Selected Data: ', selectedFile);
+      const selectedDataFile = data.find((item) => item.file == selectedFile);
+      const selectedDataFileData = selectedDataFile["data"];
+      const selectedCountryData = selectedDataFileData.find((item) => item.country === selectedCountry);
+      console.log('selected data file: ', selectedDataFile);
+      console.log("data: ", selectedDataFileData);
+      console.log("selected country data: ", selectedCountryData);
+
+
+
+      // selectedData = file.data;
+      // console.log('Selected Country: ', selectedCountry);
+      // console.log(selectedData);
     } else {
       selectedData = [];
-      console.log("No data found for:", selectedFile);
+      console.log('No data found for:', selectedFile);
     }
   }
 </script>
@@ -50,16 +102,25 @@ content - this is where all the svelte and html code goes
       <option value={d.file}>{d.file}</option>
     {/each}
   </select>
+  <select bind:value={selectedCountry}>
+    {#each countryNames as c}
+      <option value={c}>{c}</option>
+    {/each}
+  </select>
   <button on:click={selectData}>Select Data</button>
+  <!-- <select bind:value={selectedFile}>
+    {#each data as d}
+      <option value={d.file}>{d.file}</option>
+    {/each}
+  </select> -->
 
-  This is the main content 
+  This is the main content
 
-  <Country/>
-  <EuMap />
-  <CountryData data={selectedData} />
-  <EuData />
+  <!-- <Country/> -->
+  <!-- <EuMap /> -->
+  <!-- <CountryData data={selectedData} /> -->
+  <!-- <EuData /> -->
 </main>
 
 <style>
-
 </style>
