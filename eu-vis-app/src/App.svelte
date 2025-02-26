@@ -107,7 +107,10 @@ content - this is where all the svelte and html code goes
 </script>
 
 <main>
-  This is the main content
+  <h3>
+    Main App Component
+  </h3>
+
   <EUMap countries={countryNames} />
   <select bind:value={selectedFile}>
     {#each allData as d}

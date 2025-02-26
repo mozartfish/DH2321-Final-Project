@@ -27,7 +27,18 @@
   
       const svg = d3.select('#eu-map')
         .attr('width', width)
-        .attr('height', height);
+        .attr('height', height
+        );
+
+        const countryText = svg.append('text')
+            .attr('id', 'selected-country')
+            .attr('x', width - 10)
+            .attr('y', 30)
+            .attr('text-anchor', 'end')
+            .attr('font-size', '40px')
+            .text('');
+
+
   
       svg.selectAll('path')
         .data(geoData.features)
@@ -35,19 +46,17 @@
         .append('path')
         .attr('d', path)
         .attr('fill', '#ccc')
-        .attr('stroke', '#333')
+        .attr('stroke', 'white')
         .on('click', (event, d) => {
             svg.selectAll('path').attr('fill', '#ccc');
             d3.select(event.target).attr('fill', 'peachpuff');
+            countryText.text(d.properties.NAME);
             console.log(d.properties.NAME);
         });
     }
-  </script>
-  
-  <svg id="eu-map"></svg>
-  
-  <style>
-    svg {
-      border: 1px solid #aaa;
-    }
-  </style>
+</script>
+
+<h3>
+EU Map Component
+</h3>
+<svg id="eu-map"></svg>
