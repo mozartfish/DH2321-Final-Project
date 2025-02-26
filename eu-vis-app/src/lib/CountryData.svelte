@@ -1,11 +1,17 @@
 <script>
-    let {data} = $props();
-    console.log("you have entered the data prop;")
-    console.log("this is the data: ", data);
-    // export let data = [];
+  const { countryData = [], country = '' } = $props();
+  console.log('This is the country data component');
+
+  $effect(() => {
+    console.log('countryData Update: ', $state.snapshot(countryData));
+    console.log('country update: ', country);
+  });
+
+
 </script>
+
 <section>
-    This is the Country Data Component
+  <!-- This is the Country Data Component
 
    {#if data.length > 0}
         <table>
@@ -28,6 +34,7 @@
         </table>
     {:else}
         <p>No data to show</p>
-    {/if}
+    {/if} -->
 </section>
+
 <style></style>

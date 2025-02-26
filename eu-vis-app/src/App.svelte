@@ -13,18 +13,21 @@ content - this is where all the svelte and html code goes
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  // import directly and load all the csv files when the app loads
-  const csvFiles = import.meta.glob('/src/data/*.csv', {
-    as: 'raw',
-    eager: true
-  });
-  // console.log("csv files data: ", csvFiles);
-
+  // please declare variables here
   // data structures to process the data
-  let data = $state([]);
+
+  // store the parsed data into this array
+  let allData = $state([]);
+  // the data file selected by the user
   let selectedFile = $state('');
+  // the country selected by the user
   let selectedCountry = $state('');
+  // data array for a particular dataset
   let selectedDataFileData = $state([]);
+  // data array for a particular country
+  let selectedCountryData = $state([]);
+  let isDataLoaded = $state(false);
+  // a list of country names in the european union - need this to be fact checked or parsed somehow
   let countryNames = [
     'Austria',
     'Belgium',
@@ -54,47 +57,43 @@ content - this is where all the svelte and html code goes
     'Sweden'
   ];
 
-  // load the data when the map is mounted
+  // import directly and load all the csv files when the app loads
+  const csvFiles = import.meta.glob('/src/data/*.csv', {
+    as: 'raw',
+    eager: true
+  });
+  // console.log("csv files data: ", csvFiles);
+
+  // process and load data when web page is opened
   onMount(async () => {
     const tempData = [];
     for (const [path, csvContent] of Object.entries(csvFiles)) {
-      const parsed = d3.csvParse(csvContent);
+      const parsedData = d3.csvParse(csvContent);
       const fileName = path.replace('/src/data/', '').replace('.csv', '');
-      tempData.push({ file: fileName, data: parsed });
+      tempData.push({ file: fileName, data: parsedData });
     }
-    data = tempData;
-    if (data.length > 0) {
+    allData = tempData;
+    if (allData.length > 0) {
       // set the first data file to the selected file
-      selectedFile = data[0].file;
+      selectedFile = allData[0].file;
       selectedCountry = countryNames[0];
     }
+    selectData();
+    isDataLoaded = true;
     // print the data after loading
     // console.log('The original loaded data', data);
   });
 
   function selectData() {
-    const dataFile = data.find((item) => item.file === selectedFile);
+    const dataFile = allData.find((item) => item.file === selectedFile);
     if (dataFile) {
       console.log('hello world I am the app data component');
-      console.log('Selected country: ', selectedCountry);
-      console.log('Selected Dataset: ', selectedFile);
+      // console.log('Selected country: ', selectedCountry);
+      // console.log('Selected Dataset: ', selectedFile);
       selectedDataFileData = dataFile.data;
-      console.log('selected data: ', selectedDataFileData);
-
-      // const selectedDataFile = data.find((item) => item.file == selectedFile);
-      // selectedDataFileData = selectedDataFile['data'];
-      // const EUData = selectedDataFileData.find((item) => item.country === "EU");
-      // const selectedCountryData = selectedDataFileData.find(
-      //   (item) => item.country === selectedCountry
-      // );
-      // console.log('selected data file: ', selectedDataFile);
-      // console.log('data: ', selectedDataFileData);
-      // console.log('selected country data: ', selectedCountryData);
-      // console.log("EU Data: ", EUData);
-
-      // selectedData = file.data;
-      // console.log('Selected Country: ', selectedCountry);
-      // console.log(selectedData);
+      selectedCountryData = selectedDataFileData.filter(
+        (item) => item.country === selectedCountry
+      );
     } else {
       selectedDataFileData = [];
       console.log('No data found for:', selectedDataFileData);
@@ -103,29 +102,25 @@ content - this is where all the svelte and html code goes
 </script>
 
 <main>
+  This is the main content
   <select bind:value={selectedFile}>
-    {#each data as d}
+    {#each allData as d}
       <option value={d.file}>{d.file}</option>
     {/each}
   </select>
+
   <select bind:value={selectedCountry}>
     {#each countryNames as c}
       <option value={c}>{c}</option>
     {/each}
   </select>
   <button onclick={selectData}>Select Data</button>
-  <!-- <select bind:value={selectedFile}>
-    {#each data as d}
-      <option value={d.file}>{d.file}</option>
-    {/each}
-  </select> -->
-
-  This is the main content
-
+  {#if isDataLoaded}
+    <CountryData countryData={selectedCountryData} country={selectedCountry} />
+  {/if}
   <!-- <Country/> -->
   <!-- <EuMap /> -->
-  <!-- <CountryData data={selectedData} /> -->
-  <EUData data={selectedDataFileData} country={selectedCountry} />
+  <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>
 
 <style>
