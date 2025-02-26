@@ -1,23 +1,41 @@
 /*
 This file contains all the styling for the main app and web page component 
 */
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-    width: 100%;
+html,
+body {
+  width: 100%;
 }
 
+main {
+  font-family: 'Outfit', serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+section {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-
-
-
-
-
+h3 {
+  text-decoration: underline;
+  text-align: center;
+  width: 300px;
+  margin-bottom: 20px;
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

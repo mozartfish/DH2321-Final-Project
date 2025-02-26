@@ -100,18 +100,17 @@ content - this is where all the svelte and html code goes
     }
   }
   $effect(() => {
-    console.log("allData : ", allData)
+    console.log('allData : ', allData);
   });
-  
-
 </script>
 
 <main>
-  <h3>
-    Main App Component
-  </h3>
+  <h3>Main App Component</h3>
 
   <EUMap countries={countryNames} />
+
+  <br/>
+
   <select bind:value={selectedFile}>
     {#each allData as d}
       <option value={d.file}>{d.file}</option>
@@ -123,13 +122,12 @@ content - this is where all the svelte and html code goes
       <option value={c}>{c}</option>
     {/each}
   </select>
+
   <button onclick={selectData}>Select Data</button>
+
   {#if isDataLoaded}
     <CountryData countryData={selectedCountryData} country={selectedCountry} />
   {/if}
   <!-- <Country/> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>
-
-<style>
-</style>
