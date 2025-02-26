@@ -99,6 +99,11 @@ content - this is where all the svelte and html code goes
       console.log('No data found for:', selectedDataFileData);
     }
   }
+  $effect(() => {
+    console.log("allData : ", allData)
+  });
+  
+
 </script>
 
 <main>

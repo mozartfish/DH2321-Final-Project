@@ -10,10 +10,14 @@
     console.log('country updated to: ', country);
   });
 
-let formattedData=Object.entries(countryData).map(([year,value])=>({
+let formattedData = $derived(countryData.forEach);
+
+let formattedData=Object.entries(countryData[0]).filter(([key])=> !["country","indicator","unit"].includes(key)).map(([year,value])=>({
     year: Number(year),
-    value : value
+    value : value === ""? null : parseFloat(value)
 }));
+
+console.log('Formatted data : ', formattedData)
 
 let width = 500, height = 300, margin = 40;
   
@@ -37,16 +41,16 @@ function drawChart(){
     .attr("height", height);
 
     const xScale = d3.scaleLinear()
-    .domain([0, d3.max(formattedData, d => d.x)])
+    .domain(d3.extent(formattedData, d => d.year))
     .range([margin, width - margin]);
 
     const yScale = d3.scaleLinear()
-    .domain([0, d3.max(formattedData, d => d.y)])
+    .domain([0, d3.max(formattedData, d => d.value)])
     .range([height - margin, margin]);
 
     const line = d3.line()
-    .x(d => xScale(d.x))
-    .y(d => yScale(d.y))
+    .x(d => xScale(d.year))
+    .y(d => yScale(d.value))
     .curve(d3.curveMonotoneX); // Smooth curve
 
     svg.append("path")
