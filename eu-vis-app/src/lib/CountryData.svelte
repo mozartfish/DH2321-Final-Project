@@ -1,4 +1,4 @@
-<script>
+<script>  
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
@@ -37,47 +37,104 @@
   }
 
   function drawChart() {
+    if (!formattedData || formattedData.length === 0) return;
+    
     d3.select('svg').selectAll('*').remove();
     const svg = d3
-      .select('#line-chart')
-      .attr('width', width)
-      .attr('height', height);
-
+        .select('#line-chart')
+        .attr('width', width)
+        .attr('height', height);
+    
+    // Convert year numbers to JavaScript Date objects
+    const dateFormattedData = formattedData.map(d => ({
+        date: new Date(d.year, 0), // January 1st of the year
+        value: d.value
+    }));
+    
+    // Use scaleTime instead of scaleLinear for years
     const xScale = d3
-      .scaleLinear()
-      .domain(d3.extent(formattedData, (d) => d.year))
-      .range([margin, width - margin]);
-
+        .scaleTime()
+        .domain(d3.extent(dateFormattedData, d => d.date))
+        .range([margin, width - margin]);
+    
     const yScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(formattedData, (d) => d.value)])
-      .range([height - margin, margin]);
-
+        .scaleLinear()
+        .domain([0, d3.max(dateFormattedData, d => d.value) || 1])
+        .range([height - margin, margin]);
+    
     const line = d3
-      .line()
-      .x((d) => xScale(d.year))
-      .y((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX); // Smooth curve
-
+        .line()
+        .x(d => xScale(d.date))
+        .y(d => yScale(d.value))
+        .defined(d => d.value !== null)
+        .curve(d3.curveMonotoneX);
+    
     svg
-      .append('path')
-      .datum(formattedData)
-      .attr('fill', 'none')
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 2)
-      .attr('d', line);
-
-    // Add Axes
+        .append('path')
+        .datum(dateFormattedData)
+        .attr('fill', 'none')
+        .attr('stroke', 'steelblue')
+        .attr('stroke-width', 2)
+        .attr('d', line);
+    
+    // Add a more appropriate time format for the x-axis
+    const xAxis = d3.axisBottom(xScale)
+        .tickFormat(d3.timeFormat('%Y')) // Format as year only
+        .ticks(Math.min(dateFormattedData.length, 10)); // Limit number of ticks
+    
     svg
-      .append('g')
-      .attr('transform', `translate(0,${height - margin})`)
-      .call(d3.axisBottom(xScale));
-
+        .append('g')
+        .attr('transform', `translate(0,${height - margin})`)
+        .call(xAxis);
+    
     svg
-      .append('g')
-      .attr('transform', `translate(${margin},0)`)
-      .call(d3.axisLeft(yScale));
-  }
+        .append('g')
+        .attr('transform', `translate(${margin},0)`)
+        .call(d3.axisLeft(yScale));
+    }
+
+//   function drawChart() {
+//     d3.select('svg').selectAll('*').remove();
+//     const svg = d3
+//       .select('#line-chart')
+//       .attr('width', width)
+//       .attr('height', height);
+
+//     const xScale = d3
+//       .scaleLinear()
+//       .domain(d3.extent(formattedData, (d) => d.year))
+//       .range([margin, width - margin]);
+
+//     const yScale = d3
+//       .scaleLinear()
+//       .domain([0, d3.max(formattedData, (d) => d.value)])
+//       .range([height - margin, margin]);
+
+//     const line = d3
+//       .line()
+//       .x((d) => xScale(d.year))
+//       .y((d) => yScale(d.value))
+//       .curve(d3.curveMonotoneX); // Smooth curve
+
+//     svg
+//       .append('path')
+//       .datum(formattedData)
+//       .attr('fill', 'none')
+//       .attr('stroke', 'steelblue')
+//       .attr('stroke-width', 2)
+//       .attr('d', line);
+
+//     // Add Axes
+//     svg
+//       .append('g')
+//       .attr('transform', `translate(0,${height - margin})`)
+//       .call(d3.axisBottom(xScale));
+
+//     svg
+//       .append('g')
+//       .attr('transform', `translate(${margin},0)`)
+//       .call(d3.axisLeft(yScale));
+//   }
 </script>
 
 <svg id="line-chart"></svg>
