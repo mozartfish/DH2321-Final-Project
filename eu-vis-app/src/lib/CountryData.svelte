@@ -18,6 +18,7 @@
     console.log('country updated to: ', country);
     console.log('euData updated to: ', euData);
     console.log('eu has been update: ', eu);
+    selectedPolicies = [];
   });
 
   // derive a new dataset for updating the UI based on the data passed in
