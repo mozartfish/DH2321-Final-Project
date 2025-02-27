@@ -9,19 +9,24 @@
   import policiesCSV from '/src/policies.csv?raw';
 
   import * as d3 from 'd3';
+  import EuData from './lib/EUData.svelte';
 
   // data structures to process the data
   let allData = $state([]);
   let selectedFile = $state('');
   let selectedCountry = $state('');
+  let selectEU = $state('EU');
   let selectedDataFileData = $state([]);
   let selectedCountryData = $derived(
     selectedDataFileData.filter((item) => item.country === selectedCountry)
   );
+  let selectedEUData = $derived(
+    selectedDataFileData.filter((item) => item.country == selectEU)
+  );
   let isDataLoaded = $state(false);
   let policyData = $state([]);
 
-  // a list of country names in the european union
+  // EU Countries
   let countryNames = [
     'Austria',
     'Belgium',
@@ -51,13 +56,13 @@
     'Sweden'
   ];
 
-  // import directly and load all the csv files when the app loads
+  // import and load all the csv data at once
   const csvFiles = import.meta.glob('/src/data/*.csv', {
     as: 'raw',
     eager: true
   });
 
-  // process and load data when web page is opened
+  // process and load the data immediately when the web page loads in the browser
   onMount(async () => {
     const tempData = [];
     for (const [path, csvContent] of Object.entries(csvFiles)) {
@@ -90,12 +95,15 @@
     }
   }
 
-  // Updated country selection handler for callback approach
+  // callback function to call the select data based on the country the
+  // user clicks on the map
   function handleCountrySelect(data) {
     selectedCountry = data.country;
-    selectData(); // Update the data based on the new country selection
+    // trigger a refresh of the UI
+    selectData();
   }
 
+  // this effect is for making sure we printing the correct data
   $effect(() => {
     console.log('allData : ', allData);
     console.log('policyData : ', policyData);
@@ -104,9 +112,7 @@
 
 <main>
   <h3>Main App Component</h3>
-  <!-- Updated to use callback instead of event -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
-
   <br />
 
   <select bind:value={selectedFile} onchange={selectData}>
@@ -124,10 +130,15 @@
   <!-- <button onclick={selectData}>Select Data</button> -->
 
   {#if isDataLoaded}
-    <CountryData countryData={selectedCountryData} country={selectedCountry} />
-    <PolicyData policyData={policyData} country={selectedCountry} />
+    <CountryData
+      countryData={selectedCountryData}
+      country={selectedCountry}
+      euData={selectedEUData}
+      eu={selectEU}
+      {policyData}
+    />
+    <!-- <PolicyData {policyData} country={selectedCountry} /> -->
   {/if}
   <!-- <Country/> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
-
 </main>
