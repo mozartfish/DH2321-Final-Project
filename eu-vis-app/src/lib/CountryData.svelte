@@ -76,7 +76,10 @@
 
     const yScale = d3
       .scaleLinear()
-      .domain([d3.min(dateFormattedData, d => d.value)*0.9, d3.max(dateFormattedData, d => d.value) * 1.1])
+      .domain([
+        d3.min(dateFormattedData, (d) => d.value) * 0.9,
+        d3.max(dateFormattedData, (d) => d.value) * 1.1
+      ])
       .range([height - margin, margin]);
 
     const line = d3

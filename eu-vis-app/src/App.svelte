@@ -1,10 +1,13 @@
 <!-- App.svelte -->
 <script>
   import CountryData from './lib/CountryData.svelte';
+  import PolicyData from './lib/PolicyData.svelte';
   import EUData from './lib/EUData.svelte';
   import EUMap from './lib/EUMap.svelte';
   import Country from './lib/Country.svelte';
   import { onMount } from 'svelte';
+  import policiesCSV from '/src/policies.csv?raw';
+
   import * as d3 from 'd3';
 
   // data structures to process the data
@@ -16,6 +19,7 @@
     selectedDataFileData.filter((item) => item.country === selectedCountry)
   );
   let isDataLoaded = $state(false);
+  let policyData = $state([]);
 
   // a list of country names in the european union
   let countryNames = [
@@ -70,6 +74,7 @@
       selectedFile = allData[0].file;
       selectedCountry = countryNames[0];
     }
+    policyData = d3.csvParse(await policiesCSV);
     selectData();
     isDataLoaded = true;
   });
@@ -93,12 +98,12 @@
 
   $effect(() => {
     console.log('allData : ', allData);
+    console.log('policyData : ', policyData);
   });
 </script>
 
 <main>
   <h3>Main App Component</h3>
-
   <!-- Updated to use callback instead of event -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
 
@@ -120,7 +125,9 @@
 
   {#if isDataLoaded}
     <CountryData countryData={selectedCountryData} country={selectedCountry} />
+    <PolicyData policyData={policyData} country={selectedCountry} />
   {/if}
   <!-- <Country/> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
+
 </main>
