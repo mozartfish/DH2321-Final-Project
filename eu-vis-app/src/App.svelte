@@ -12,9 +12,11 @@
   let selectedFile = $state('');
   let selectedCountry = $state('');
   let selectedDataFileData = $state([]);
-  let selectedCountryData = $state([]);
+  let selectedCountryData = $derived(
+    selectedDataFileData.filter((item) => item.country === selectedCountry)
+  );
   let isDataLoaded = $state(false);
-  
+
   // a list of country names in the european union
   let countryNames = [
     'Austria',
@@ -56,7 +58,10 @@
     const tempData = [];
     for (const [path, csvContent] of Object.entries(csvFiles)) {
       const parsedData = d3.csvParse(csvContent);
-      const fileName = path.replace('/src/data/', '').replace('.csv', '');
+      const fileName = path
+        .replace('/src/data/', '')
+        .replace('.csv', '')
+        .replace(/_/g, ' ');
       tempData.push({ file: fileName, data: parsedData });
     }
     allData = tempData;
@@ -74,21 +79,18 @@
     if (dataFile) {
       console.log('hello world I am the app data component');
       selectedDataFileData = dataFile.data;
-      selectedCountryData = selectedDataFileData.filter(
-        (item) => item.country === selectedCountry
-      );
     } else {
       selectedDataFileData = [];
       console.log('No data found for:', selectedDataFileData);
     }
   }
-  
+
   // Updated country selection handler for callback approach
   function handleCountrySelect(data) {
     selectedCountry = data.country;
     selectData(); // Update the data based on the new country selection
   }
-  
+
   $effect(() => {
     console.log('allData : ', allData);
   });
@@ -100,9 +102,9 @@
   <!-- Updated to use callback instead of event -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
 
-  <br/>
+  <br />
 
-  <select bind:value={selectedFile}>
+  <select bind:value={selectedFile} onchange={selectData}>
     {#each allData as d}
       <option value={d.file}>{d.file}</option>
     {/each}
@@ -114,7 +116,7 @@
     {/each}
   </select>
 
-  <button onclick={selectData}>Select Data</button>
+  <!-- <button onclick={selectData}>Select Data</button> -->
 
   {#if isDataLoaded}
     <CountryData countryData={selectedCountryData} country={selectedCountry} />
@@ -122,11 +124,3 @@
   <!-- <Country/> -->
   <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>
-
-
-
-
-
-
-
-
