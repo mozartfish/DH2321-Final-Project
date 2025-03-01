@@ -9,6 +9,8 @@
   import policiesCSV from '/src/policies.csv?raw';
   import * as d3 from 'd3';
   import EuData from './lib/EUData.svelte';
+
+  //Design Component Imports
   import Background from './lib/BackgroundDesign.svelte';
   import Team from './lib/TeamPage.svelte';
   
@@ -114,8 +116,12 @@
 
 <main>
   <h3>Main App Component</h3>
-  <Background/>
-  <Team/>
+
+  <!-- Render Design and Team Page -->
+  <Background/> 
+  <Team/> 
+
+  <!-- Original App -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
   <br />
 
