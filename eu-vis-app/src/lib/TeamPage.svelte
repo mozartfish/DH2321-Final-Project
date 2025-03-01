@@ -108,7 +108,7 @@
 }
 
 .team-member {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(65, 184, 213, 0.1);
     border-radius: 10px;
     padding: 10px;
     text-align: center;
@@ -136,9 +136,9 @@
 
     <!-- Sidebar Menu -->
     <div class="sidebar-menu">
-        <div class="menu-icon"><img src="src/icons/global.png" alt="Home"></div>
-        <div class="menu-icon"><img src="src/icons/menu.png" alt="Info"></div>
-        <div class="menu-icon"><img src="src/icons/group.png" alt="Group"></div>
+        <div class="menu-icon"><img src="src/assets/icons/global.png" alt="Home"></div>
+        <div class="menu-icon"><img src="src/assets/icons/menu.png" alt="Info"></div>
+        <div class="menu-icon"><img src="src/assets/icons/group.png" alt="Group"></div>
     </div>
 
     <!-- Page Title and Flag Image -->
@@ -151,23 +151,23 @@
 <div class="team-container">
     <div class="team-grid">
         <div class="team-member">
-            <img src="src/profiles/antonia.png" alt="Antonia">
+            <img src="src/assets/profiles/antonia.png" alt="Antonia">
             <p>Antonia</p>
         </div>
         <div class="team-member">
-            <img src="src/profiles/fanny.png" alt="Fanny">
+            <img src="src/assets/profiles/fanny.png" alt="Fanny">
             <p>Fanny</p>
         </div>
         <div class="team-member">
-            <img src="src/profiles/pranav.png" alt="Pranav">
+            <img src="src/assets/profiles/pranav.png" alt="Pranav">
             <p>Pranav</p>
         </div>
         <div class="team-member">
-            <img src="src/profiles/matei.png" alt="Matei">
+            <img src="src/assets/profiles/matei.png" alt="Matei">
             <p>Matei</p>
         </div>
         <div class="team-member">
-            <img src="src/profiles/safi.png" alt="Safi">
+            <img src="src/assets/profiles/safi.png" alt="Safi">
             <p>Safi</p>
         </div>
     </div>

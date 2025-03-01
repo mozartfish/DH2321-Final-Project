@@ -121,7 +121,7 @@
   <Background/> 
   <Team/> 
 
-  <!-- Original App -->
+  <!-- Original App  -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
   <br />
 

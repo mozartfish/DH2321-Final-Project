@@ -189,16 +189,16 @@
 
     <!-- Sidebar Menu -->
     <div class="sidebar-menu">
-        <div class="menu-icon"><img src="src/icons/global.png" alt="Home"></div>
-        <div class="menu-icon"><img src="src/icons/menu.png" alt="Info"></div>
-        <div class="menu-icon"><img src="src/icons/group.png" alt="Group"></div>
+        <div class="menu-icon"><img src="src/assets/icons/global.png" alt="Home"></div>
+        <div class="menu-icon"><img src="src/assets/icons/menu.png" alt="Info"></div>
+        <div class="menu-icon"><img src="src/assets/icons/group.png" alt="Group"></div>
     </div>
 
     <!-- Page Title and Flag Image -->
     <div class="main-container">
         <div class="top-bar">
             <div class="title">EU Climate Insights</div>
-            <div class="flag-icon"><img src="src/icons/flag.png" alt="Flag"></div>
+            <div class="flag-icon"><img src="src/assets/icons/flag.png" alt="Flag"></div>
             
         </div>
 
