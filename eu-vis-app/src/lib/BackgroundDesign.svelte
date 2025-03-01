@@ -175,6 +175,13 @@
             cursor: pointer;
         }
 
+        .flag-icon img {
+            width: 50px;  /* Adjust as needed */
+            height: 50px;
+            object-fit: contain; /* Ensures the image maintains aspect ratio */
+            
+        }
+
     </style>
 </head>
 	
@@ -182,16 +189,17 @@
 
     <!-- Sidebar Menu -->
     <div class="sidebar-menu">
-        <div class="menu-icon"><img src="src/icons/global.png" alt="Menu"></div>
-        <div class="menu-icon"><img src="src/icons/menu.png" alt="Home"></div>
-        <div class="menu-icon"><img src="src/icons/group.png" alt="Charts"></div>
+        <div class="menu-icon"><img src="src/icons/global.png" alt="Home"></div>
+        <div class="menu-icon"><img src="src/icons/menu.png" alt="Info"></div>
+        <div class="menu-icon"><img src="src/icons/group.png" alt="Group"></div>
     </div>
 
     <!-- Page Title and Flag Image -->
     <div class="main-container">
         <div class="top-bar">
             <div class="title">EU Climate Insights</div>
-            <div class="image-box">🇪🇺</div>
+            <div class="flag-icon"><img src="src/icons/flag.png" alt="Flag"></div>
+            
         </div>
 
         <!-- Map, Bar Chart and Sunburst Chart -->
