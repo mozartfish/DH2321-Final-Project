@@ -7,10 +7,11 @@
   import Country from './lib/Country.svelte';
   import { onMount } from 'svelte';
   import policiesCSV from '/src/policies.csv?raw';
-  import Background from './lib/BackgroundDesign.svelte';
-
   import * as d3 from 'd3';
   import EuData from './lib/EUData.svelte';
+  import Background from './lib/BackgroundDesign.svelte';
+  import Team from './lib/TeamPage.svelte';
+  
 
   // data structures to process the data
   let allData = $state([]);
@@ -114,6 +115,7 @@
 <main>
   <h3>Main App Component</h3>
   <Background/>
+  <Team/>
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
   <br />
 
