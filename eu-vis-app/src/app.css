@@ -13,6 +13,7 @@ This file contains all the styling for the main app and web page component
 html,
 body {
   width: 100%;
+  background-color: #222A32;
 }
 
 main {

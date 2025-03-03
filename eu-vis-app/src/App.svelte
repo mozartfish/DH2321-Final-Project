@@ -9,11 +9,11 @@
   import policiesCSV from '/src/policies.csv?raw';
   import * as d3 from 'd3';
   import EuData from './lib/EUData.svelte';
+  import Sunburst from './lib/Sunburst.svelte';
 
   //Design Component Imports
   import Background from './lib/BackgroundDesign.svelte';
   import Team from './lib/TeamPage.svelte';
-  
 
   // data structures to process the data
   let allData = $state([]);
@@ -91,7 +91,7 @@
   function selectData() {
     const dataFile = allData.find((item) => item.file === selectedFile);
     if (dataFile) {
-      console.log('hello world I am the app data component');
+      // console.log('hello world I am the app data component');
       selectedDataFileData = dataFile.data;
     } else {
       selectedDataFileData = [];
@@ -109,8 +109,8 @@
 
   // this effect is for making sure we printing the correct data
   $effect(() => {
-    console.log('allData : ', allData);
-    console.log('policyData : ', policyData);
+    // console.log('allData : ', allData);
+    // console.log('policyData : ', policyData);
   });
 </script>
 
@@ -118,12 +118,14 @@
   <h3>Main App Component</h3>
 
   <!-- Render Design and Team Page -->
-  <Background/> 
-  <Team/> 
+  <!-- <Background/>  -->
+  <!-- <Team/>  -->
 
   <!-- Original App  -->
   <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
   <br />
+
+  <Sunburst policyData={policyData} />
 
   <select bind:value={selectedFile} onchange={selectData}>
     {#each allData as d}
