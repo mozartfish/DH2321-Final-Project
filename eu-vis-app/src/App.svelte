@@ -1,118 +1,157 @@
 <!-- App.svelte -->
 <script>
-  import CountryData from './lib/CountryData.svelte';
-  import PolicyData from './lib/PolicyData.svelte';
-  import EUData from './lib/EUData.svelte';
-  import EUMap from './lib/EUMap.svelte';
-  import Country from './lib/Country.svelte';
+  // imports
   import { onMount } from 'svelte';
+  import * as d3 from 'd3';
+
+  // components
+  import CountryData from './lib/CountryData.svelte';
+  import EUMap from './lib/EUMap.svelte';
+
+  // import PolicyData from './lib/PolicyData.svelte';
+  // import EUData from './lib/EUData.svelte';
+
+  // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
 
-  import * as d3 from 'd3';
-  import EuData from './lib/EUData.svelte';
+  // constants
+  const EU_COUNTRY = 'EU';
+  let EU_COUNTRIES = $state([]);
 
-  // data structures to process the data
+  // State variables
+  // all data - all the data for the visualization
   let allData = $state([]);
+  // policy data - all the data related to policies
+  let policyData = $state([]);
+  // selected file - the csv file that is selected by the user
   let selectedFile = $state('');
+  // selectedCountry - the country that is selected by the user
   let selectedCountry = $state('');
-  let selectEU = $state('EU');
+  // selectEU - select all the data related to the EU
+  let selectEU = $state(EU_COUNTRY);
+  // selectedDataFile Data - all the data associated with the data file selected by the user
   let selectedDataFileData = $state([]);
+  // boolean for checking whether all the data is loaded and when to start rendering the visualization
+  let isDataLoaded = $state(false);
+
+  //Derived state
+  // selected country data - filter out the data for the country that was selected by the user
   let selectedCountryData = $derived(
     selectedDataFileData.filter((item) => item.country === selectedCountry)
   );
+  // filter out the data for the EU
   let selectedEUData = $derived(
     selectedDataFileData.filter((item) => item.country == selectEU)
   );
-  let isDataLoaded = $state(false);
-  let policyData = $state([]);
 
   // EU Countries
-  let countryNames = [
-    'Austria',
-    'Belgium',
-    'Croatia',
-    'Cyprus',
-    'Czech Republic',
-    'Denmark',
-    'Estonia',
-    'Finland',
-    'France',
-    'Germany',
-    'Greece',
-    'Hungary',
-    'Ireland',
-    'Italy',
-    'Latvia',
-    'Lithuania',
-    'Luxembourg',
-    'Malta',
-    'Netherlands',
-    'Poland',
-    'Portugal',
-    'Romania',
-    'Slovakia',
-    'Slovenia',
-    'Spain',
-    'Sweden'
-  ];
+  // let countryNames = [
+  //   'Austria',
+  //   'Belgium',
+  //   'Croatia',
+  //   'Cyprus',
+  //   'Czech Republic',
+  //   'Denmark',
+  //   'Estonia',
+  //   'Finland',
+  //   'France',
+  //   'Germany',
+  //   'Greece',
+  //   'Hungary',
+  //   'Ireland',
+  //   'Italy',
+  //   'Latvia',
+  //   'Lithuania',
+  //   'Luxembourg',
+  //   'Malta',
+  //   'Netherlands',
+  //   'Poland',
+  //   'Portugal',
+  //   'Romania',
+  //   'Slovakia',
+  //   'Slovenia',
+  //   'Spain',
+  //   'Sweden'
+  // ];
 
-  // import and load all the csv data at once
+  // import and load csv data
   const csvFiles = import.meta.glob('/src/data/*.csv', {
     as: 'raw',
     eager: true
   });
 
   // process and load the data immediately when the web page loads in the browser
-  onMount(async () => {
+  // load all the data into the data array
+  async function loadAllData() {
     const tempData = [];
+    const countrySet = new Set();
     for (const [path, csvContent] of Object.entries(csvFiles)) {
       const parsedData = d3.csvParse(csvContent);
+      // get all the country names that are in the dataset
+      for (const country_data of parsedData) {
+        countrySet.add(country_data.country);
+      }
       const fileName = path
         .replace('/src/data/', '')
         .replace('.csv', '')
         .replace(/_/g, ' ');
+
       tempData.push({ file: fileName, data: parsedData });
     }
-    allData = tempData;
-    if (allData.length > 0) {
-      // set the first data file to the selected file
-      selectedFile = allData[0].file;
-      selectedCountry = countryNames[0];
-    }
-    policyData = d3.csvParse(await policiesCSV);
-    selectData();
-    isDataLoaded = true;
-  });
 
+    console.log('temp data: ', tempData);
+    console.log('countrySet: ', countrySet);
+    allData = tempData;
+    EU_COUNTRIES = [...countrySet];
+  }
+  
+  // load all the policy data
+  async function loadPolicyData() {
+    policyData = d3.csvParse(await policiesCSV);
+  }
+
+  // data loaded on load 
+  function dataOnLoad() {
+    if (allData.length > 0) {
+      selectedFile = allData[0].file;
+      selectedCountry = EU_COUNTRIES[0];
+      selectData();
+    }
+  }
+
+  // update data when file or country changes 
   function selectData() {
-    const dataFile = allData.find((item) => item.file === selectedFile);
+    let dataFile = allData.find((item) => item.file === selectedFile);
+    
     if (dataFile) {
-      console.log('hello world I am the app data component');
       selectedDataFileData = dataFile.data;
     } else {
       selectedDataFileData = [];
-      console.log('No data found for:', selectedDataFileData);
+      console.error('No data found for:', selectedFile);
     }
   }
 
-  // callback function to call the select data based on the country the
-  // user clicks on the map
+  // callback for handling country selection from map 
   function handleCountrySelect(data) {
     selectedCountry = data.country;
-    // trigger a refresh of the UI
     selectData();
   }
 
-  // this effect is for making sure we printing the correct data
+  onMount(async () => {
+    await loadAllData();
+    await loadPolicyData();
+    dataOnLoad();
+    isDataLoaded = true;
+  });
+
   $effect(() => {
-    console.log('allData : ', allData);
-    console.log('policyData : ', policyData);
+    console.log('EU COUNTRIES : ', EU_COUNTRIES);
   });
 </script>
 
 <main>
   <h3>Main App Component</h3>
-  <EUMap countries={countryNames} onCountrySelect={handleCountrySelect} />
+  <EUMap countries={EU_COUNTRIES} onCountrySelect={handleCountrySelect} />
   <br />
 
   <select bind:value={selectedFile} onchange={selectData}>
@@ -122,7 +161,7 @@
   </select>
 
   <select bind:value={selectedCountry} onchange={selectData}>
-    {#each countryNames as c}
+    {#each EU_COUNTRIES as c}
       <option value={c}>{c}</option>
     {/each}
   </select>
@@ -137,8 +176,5 @@
       eu={selectEU}
       {policyData}
     />
-    <!-- <PolicyData {policyData} country={selectedCountry} /> -->
   {/if}
-  <!-- <Country/> -->
-  <!-- <EUData data={selectedDataFileData} country={selectedCountry} /> -->
 </main>

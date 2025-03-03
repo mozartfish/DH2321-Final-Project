@@ -71,6 +71,7 @@
     };
   });
 
+
   // Reactive effect to redraw chart when data changes
   $effect(() => {
     if (formattedData.length > 0) {
@@ -115,6 +116,11 @@
       value: d.value
     }));
 
+    const allValues = [...dateFormattedData, ...dateFormattedEUData]
+      .map((d) => d.value)
+      .filter((v) => v !== null);
+
+
     // x time scale for the country line
     const xScale = d3
       .scaleTime()
@@ -126,8 +132,8 @@
     const yScale = d3
       .scaleLinear()
       .domain([
-        d3.min(dateFormattedData, (d) => d.value) * 0.9,
-        d3.max(dateFormattedData, (d) => d.value) * 1.1
+        d3.min(allValues) * 0.9,
+        d3.max(allValues) * 1.1
       ])
       .range([height - margin, margin])
       .nice();
@@ -160,7 +166,7 @@
     const euLine = d3
       .line()
       .x((d) => euXScale(d.date))
-      .y((d) => euYScale(d.value))
+      .y((d) => yScale(d.value))
       .defined((d) => d.value !== null)
       .curve(d3.curveMonotoneX);
 
