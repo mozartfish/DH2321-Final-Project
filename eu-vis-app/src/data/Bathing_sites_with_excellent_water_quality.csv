@@ -1,24 +1,24 @@
-indicator,country,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023
-Bathing_sites_with_excellent_water_quality,Belgium,40.5,52.4,47.6,69.1,76.2,90.5,95.2,97.6,97.6,95.1,92.7,85.4,65.9
-Bathing_sites_with_excellent_water_quality,Bulgaria,50.6,61.8,65.6,72.2,70.0,63.3,45.1,53.9,67.0,63.0,89.1,92.4,94.6
-Bathing_sites_with_excellent_water_quality,Croatia,97.8,96.1,95.4,96.4,96.6,96.4,95.8,95.6,98.4,98.8,99.2,98.9,99.1
-Bathing_sites_with_excellent_water_quality,Cyprus,99.1,100.0,100.0,100.0,99.1,99.1,97.4,99.1,99.1,100.0,93.3,99.2,97.6
-Bathing_sites_with_excellent_water_quality,Denmark,65.0,71.1,75.2,77.3,84.5,85.2,85.9,86.8,87.6,90.4,91.4,93.9,93.9
-Bathing_sites_with_excellent_water_quality,EU,81.3,83.0,85.4,85.9,87.0,88.0,87.4,88.1,88.4,88.4,88.0,88.9,88.8
-Bathing_sites_with_excellent_water_quality,Estonia,48.2,40.7,42.3,37.0,40.7,51.9,51.9,55.6,51.9,48.3,53.3,43.3,46.7
-Bathing_sites_with_excellent_water_quality,Finland,70.2,70.2,65.9,63.0,62.3,58.4,68.8,65.8,63.6,71.8,66.7,73.1,65.4
-Bathing_sites_with_excellent_water_quality,France,65.4,66.3,75.6,77.3,78.5,79.1,79.8,80.0,82.0,79.4,77.8,77.6,76.3
-Bathing_sites_with_excellent_water_quality,Germany,75.3,79.5,79.0,78.8,76.3,80.4,82.8,85.5,86.7,83.5,84.6,86.5,87.6
-Bathing_sites_with_excellent_water_quality,Greece,94.7,93.4,93.4,97.1,97.2,97.1,96.0,97.1,95.8,97.1,95.8,96.6,95.8
-Bathing_sites_with_excellent_water_quality,Ireland,84.1,66.1,84.9,74.8,72.7,71.8,70.7,69.9,71.7,74.1,77.0,78.4,76.3
-Bathing_sites_with_excellent_water_quality,Italy,83.0,86.3,88.5,90.0,90.4,90.8,89.9,90.0,88.2,88.7,88.1,89.8,90.6
-Bathing_sites_with_excellent_water_quality,Latvia,43.8,37.5,51.5,63.6,69.7,84.9,93.9,97.0,84.9,69.7,75.0,81.8,78.8
-Bathing_sites_with_excellent_water_quality,Lithuania,81.3,81.3,81.3,87.5,87.5,87.5,87.5,87.5,100.0,93.8,87.5,87.5,87.5
-Bathing_sites_with_excellent_water_quality,Malta,97.7,96.6,98.9,100.0,97.7,98.9,98.9,98.9,97.7,96.6,96.6,94.3,92.0
-Bathing_sites_with_excellent_water_quality,Netherlands,67.8,78.9,74.2,68.9,75.8,82.4,80.2,73.6,76.7,75.8,82.2,85.7,80.2
-Bathing_sites_with_excellent_water_quality,Poland,80.9,73.9,75.9,60.0,55.4,56.2,48.5,30.8,29.5,30.7,43.5,50.8,55.1
-Bathing_sites_with_excellent_water_quality,Portugal,88.4,91.8,92.2,87.4,89.6,89.0,90.6,94.4,95.6,93.3,92.4,90.8,91.9
-Bathing_sites_with_excellent_water_quality,Romania,87.8,8.2,34.7,22.5,30.6,69.4,51.0,57.1,77.6,71.4,85.7,91.8,69.4
-Bathing_sites_with_excellent_water_quality,Slovenia,95.2,100.0,100.0,100.0,100.0,100.0,100.0,100.0,95.2,95.2,95.2,95.2,95.2
-Bathing_sites_with_excellent_water_quality,Spain,84.7,86.8,87.2,85.6,87.1,88.9,90.5,92.2,93.2,93.5,92.1,92.8,92.2
-Bathing_sites_with_excellent_water_quality,Sweden,55.0,61.7,53.4,50.6,56.9,69.0,41.8,61.9,72.5,77.4,73.2,70.1,68.4
+indicator,country,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,sector
+Bathing_sites_with_excellent_water_quality,Belgium,40.5,52.4,47.6,69.1,76.2,90.5,95.2,97.6,97.6,95.1,92.7,85.4,65.9,Other sectors
+Bathing_sites_with_excellent_water_quality,Bulgaria,50.6,61.8,65.6,72.2,70.0,63.3,45.1,53.9,67.0,63.0,89.1,92.4,94.6,Other sectors
+Bathing_sites_with_excellent_water_quality,Croatia,97.8,96.1,95.4,96.4,96.6,96.4,95.8,95.6,98.4,98.8,99.2,98.9,99.1,Other sectors
+Bathing_sites_with_excellent_water_quality,Cyprus,99.1,100.0,100.0,100.0,99.1,99.1,97.4,99.1,99.1,100.0,93.3,99.2,97.6,Other sectors
+Bathing_sites_with_excellent_water_quality,Denmark,65.0,71.1,75.2,77.3,84.5,85.2,85.9,86.8,87.6,90.4,91.4,93.9,93.9,Other sectors
+Bathing_sites_with_excellent_water_quality,EU,81.3,83.0,85.4,85.9,87.0,88.0,87.4,88.1,88.4,88.4,88.0,88.9,88.8,Other sectors
+Bathing_sites_with_excellent_water_quality,Estonia,48.2,40.7,42.3,37.0,40.7,51.9,51.9,55.6,51.9,48.3,53.3,43.3,46.7,Other sectors
+Bathing_sites_with_excellent_water_quality,Finland,70.2,70.2,65.9,63.0,62.3,58.4,68.8,65.8,63.6,71.8,66.7,73.1,65.4,Other sectors
+Bathing_sites_with_excellent_water_quality,France,65.4,66.3,75.6,77.3,78.5,79.1,79.8,80.0,82.0,79.4,77.8,77.6,76.3,Other sectors
+Bathing_sites_with_excellent_water_quality,Germany,75.3,79.5,79.0,78.8,76.3,80.4,82.8,85.5,86.7,83.5,84.6,86.5,87.6,Other sectors
+Bathing_sites_with_excellent_water_quality,Greece,94.7,93.4,93.4,97.1,97.2,97.1,96.0,97.1,95.8,97.1,95.8,96.6,95.8,Other sectors
+Bathing_sites_with_excellent_water_quality,Ireland,84.1,66.1,84.9,74.8,72.7,71.8,70.7,69.9,71.7,74.1,77.0,78.4,76.3,Other sectors
+Bathing_sites_with_excellent_water_quality,Italy,83.0,86.3,88.5,90.0,90.4,90.8,89.9,90.0,88.2,88.7,88.1,89.8,90.6,Other sectors
+Bathing_sites_with_excellent_water_quality,Latvia,43.8,37.5,51.5,63.6,69.7,84.9,93.9,97.0,84.9,69.7,75.0,81.8,78.8,Other sectors
+Bathing_sites_with_excellent_water_quality,Lithuania,81.3,81.3,81.3,87.5,87.5,87.5,87.5,87.5,100.0,93.8,87.5,87.5,87.5,Other sectors
+Bathing_sites_with_excellent_water_quality,Malta,97.7,96.6,98.9,100.0,97.7,98.9,98.9,98.9,97.7,96.6,96.6,94.3,92.0,Other sectors
+Bathing_sites_with_excellent_water_quality,Netherlands,67.8,78.9,74.2,68.9,75.8,82.4,80.2,73.6,76.7,75.8,82.2,85.7,80.2,Other sectors
+Bathing_sites_with_excellent_water_quality,Poland,80.9,73.9,75.9,60.0,55.4,56.2,48.5,30.8,29.5,30.7,43.5,50.8,55.1,Other sectors
+Bathing_sites_with_excellent_water_quality,Portugal,88.4,91.8,92.2,87.4,89.6,89.0,90.6,94.4,95.6,93.3,92.4,90.8,91.9,Other sectors
+Bathing_sites_with_excellent_water_quality,Romania,87.8,8.2,34.7,22.5,30.6,69.4,51.0,57.1,77.6,71.4,85.7,91.8,69.4,Other sectors
+Bathing_sites_with_excellent_water_quality,Slovenia,95.2,100.0,100.0,100.0,100.0,100.0,100.0,100.0,95.2,95.2,95.2,95.2,95.2,Other sectors
+Bathing_sites_with_excellent_water_quality,Spain,84.7,86.8,87.2,85.6,87.1,88.9,90.5,92.2,93.2,93.5,92.1,92.8,92.2,Other sectors
+Bathing_sites_with_excellent_water_quality,Sweden,55.0,61.7,53.4,50.6,56.9,69.0,41.8,61.9,72.5,77.4,73.2,70.1,68.4,Other sectors
