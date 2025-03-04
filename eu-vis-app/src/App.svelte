@@ -1,4 +1,3 @@
-<!-- App.svelte -->
 <script>
   // imports
   import { onMount } from 'svelte';
@@ -7,7 +6,6 @@
   // components
   import CountryData from './lib/CountryData.svelte';
   import EUMap from './lib/EUMap.svelte';
-
   // import PolicyData from './lib/PolicyData.svelte';
   // import EUData from './lib/EUData.svelte';
 
@@ -16,6 +14,7 @@
 
   // constants
   const EU_COUNTRY = 'EU';
+  // list storing all the EU Countries and EU name
   let EU_COUNTRIES = $state([]);
 
   // State variables
@@ -26,7 +25,7 @@
   // selected file - the csv file that is selected by the user
   let selectedFile = $state('');
   // selectedCountry - the country that is selected by the user
-  let selectedCountry = $state('');
+  let selectedCountry = $state(null);
   // selectEU - select all the data related to the EU
   let selectEU = $state(EU_COUNTRY);
   // selectedDataFile Data - all the data associated with the data file selected by the user
@@ -36,13 +35,15 @@
 
   //Derived state
   // selected country data - filter out the data for the country that was selected by the user
-  let selectedCountryData = $derived(
-    selectedDataFileData.filter((item) => item.country === selectedCountry)
-  );
-  // filter out the data for the EU
-  let selectedEUData = $derived(
-    selectedDataFileData.filter((item) => item.country == selectEU)
-  );
+  // let selectedCountryData = $derived(
+  //   selectedCountry
+  //     ? selectedDataFileData.filter((item) => item.country === selectedCountry)
+  //     : []
+  // );
+  // // filter out the data for the EU
+  // let selectedEUData = $derived(
+  //   selectedDataFileData.filter((item) => item.country == selectEU)
+  // );
 
   // EU Countries
   // let countryNames = [
@@ -102,6 +103,7 @@
     console.log('temp data: ', tempData);
     console.log('countrySet: ', countrySet);
     allData = tempData;
+    // set of countries that belong to the EU + EU data name
     EU_COUNTRIES = [...countrySet];
   }
   
@@ -114,7 +116,6 @@
   function dataOnLoad() {
     if (allData.length > 0) {
       selectedFile = allData[0].file;
-      selectedCountry = EU_COUNTRIES[0];
       selectData();
     }
   }
@@ -133,10 +134,11 @@
 
   // callback for handling country selection from map 
   function handleCountrySelect(data) {
-    selectedCountry = data.country;
+    selectedCountry = data;
     selectData();
   }
 
+  // load the csv data, policy data, and initialize visualization when the app loads
   onMount(async () => {
     await loadAllData();
     await loadPolicyData();
@@ -150,6 +152,7 @@
 </script>
 
 <main>
+<<<<<<< HEAD
   <h3>Main App Component</h3>
   <EUMap countries={EU_COUNTRIES} onCountrySelect={handleCountrySelect} />
   <br />
@@ -170,11 +173,43 @@
 
   {#if isDataLoaded}
     <CountryData
+=======
+  <!-- render visualization components after all the data is loaded  -->
+  {#if isDataLoaded}
+    <h3>Main App Component</h3>
+    <EUMap
+      countries={EU_COUNTRIES}
+      allCountriesData={selectedDataFileData}
+      onCountrySelect={handleCountrySelect}
+    />
+    <br />
+    <select bind:value={selectedFile} onchange={selectData}>
+      {#each allData as d}
+        <option value={d.file}>{d.file}</option>
+      {/each}
+    </select>
+
+    <!-- <Slider /> -->
+    <!-- <CountryData
+>>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
       countryData={selectedCountryData}
       country={selectedCountry}
       euData={selectedEUData}
       eu={selectEU}
       {policyData}
+<<<<<<< HEAD
     />
   {/if}
+=======
+    /> -->
+    <EUData
+      allCountriesData={selectedDataFileData}
+      euCountries={EU_COUNTRIES}
+      selectedCountry={selectedCountry}
+      euCountry={EU_COUNTRY}
+    />
+  {/if}
+
+  <!-- <PolicyChart {policyData} /> -->
+>>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
 </main>
