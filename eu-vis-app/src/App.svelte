@@ -2,8 +2,8 @@
   // imports
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
-  // import Slider from './lib/Slider.svelte';
-  // import PolicyChart from './lib/PolicyChart.svelte';
+  import Slider from './lib/Slider.svelte';
+  import PolicyChart from './lib/PolicyChart.svelte';
 
   // components
   import CountryData from './lib/CountryData.svelte';
@@ -139,7 +139,7 @@
       {/each}
     </select>
 
-    <!-- <Slider /> -->
+    <Slider />
     <!-- <CountryData
       countryData={selectedCountryData}
       country={selectedCountry}
@@ -155,5 +155,5 @@
     />
   {/if}
 
-  <!-- <PolicyChart {policyData} /> -->
+  <PolicyChart {policyData} />
 </main>
