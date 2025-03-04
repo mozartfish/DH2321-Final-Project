@@ -3,95 +3,98 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
+  // props 
   let { countries, allCountriesData = [], onCountrySelect } = $props();
 
+  // state variables
+  let euGeoData;
   let colorScale;
+  let width = 600;
+  let height = 500;
+  let selectedCountry = $state(null);
   let labelColor = $state('');
 
-  // derive a new dataset for updating the UI based on the data passed in
+  // derived state for modifying data 
   let formattedData = $derived(
     allCountriesData.length > 0
       ? allCountriesData.map((countryData) => {
-          // import country data
-          const country = countryData.country;
-          // return new country object
-          return {
-            country
-          };
+          return { country: countryData.country };
         })
       : []
   );
 
-  // Scales
-  // country color scale - there are 28 unique countries (EU countries + EU)
-  const countryColorScale = () => {
-    const countries = formattedData.map((d) => d.country);
-    const colorRange = countries.map((d, i) =>
-      d3.interpolateRainbow(i / countries.length)
+  // color scale generator - create color palette for all countries 
+  const createCountryColorScale = () => {
+    const countryNames = formattedData.map((d) => d.country);
+    const colorRange = countryNames.map((d, i) =>
+      d3.interpolateRainbow(i / countryNames.length)
     );
-    return d3.scaleOrdinal().domain(countries).range(colorRange);
+    return d3.scaleOrdinal().domain(countryNames).range(colorRange);
   };
 
-  let width = 600;
-  let height = 500;
-  let selectedCountry = $state(null);
-  let geoData;
-
+// load and visualize all the map data when the map loads 
   onMount(async () => {
-    // Fetch Europe GeoJSON data
     const europeGeoJSON = await d3.json(
       'https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/GeoJSON/europe.geojson'
     );
-    // Include only EU countries
-    geoData = {
+
+    // eu geographic data features
+    euGeoData = {
       type: 'FeatureCollection',
       features: europeGeoJSON.features.filter((d) =>
         countries.includes(d.properties.NAME)
       )
     };
-    console.log('the geo data: ', geoData);
-    colorScale = countryColorScale();
+
+    colorScale = createCountryColorScale();
     drawMap();
   });
 
+  // draw map 
   function drawMap() {
-    const projection = d3.geoMercator().fitSize([width, height], geoData);
+    const projection = d3.geoMercator().fitSize([width, height], euGeoData);
     const path = d3.geoPath().projection(projection);
+
     const svg = d3
       .select('#eu-map')
       .attr('width', width)
       .attr('height', height);
 
+    // draw countries 
     svg
       .selectAll('path')
-      .data(geoData.features)
+      .data(euGeoData.features)
       .enter()
       .append('path')
       .attr('d', path)
       .attr('fill', 'lightblue')
       .attr('stroke', 'white')
-      .on('click', (event, d) => {
-        const countryName = d.properties.NAME;
-        // initialize country colors as blue
-        svg.selectAll('path').attr('fill', 'lightblue');
-        if (selectedCountry === countryName) {
-          // deselect country if it has already been selected
-          selectedCountry = null;
-          labelColor = '';
-        } else {
-          // select new country
-          selectedCountry = countryName;
-          const countryColor = colorScale(selectedCountry);
-          labelColor = countryColor;
-          d3.select(event.target).attr('fill', countryColor);
-        }
-        // call callback function if one is passed
-        if (onCountrySelect) {
-          onCountrySelect(selectedCountry);
-        }
+      .on('click', handleCountryClick);
+  }
 
-        console.log(selectedCountry);
-      });
+  // handle country click event
+  function handleCountryClick(event, d) {
+    const countryName = d.properties.NAME;
+    const svg = d3.select('#eu-map');
+
+    // reset all countries to a default color 
+    svg.selectAll('path').attr('fill', 'lightblue');
+
+    if (selectedCountry === countryName) {
+      // deselect country if it is selected 
+      selectedCountry = null;
+      labelColor = '';
+    } else {
+      // select new country 
+      selectedCountry = countryName;
+      labelColor = colorScale(selectedCountry);
+      d3.select(event.target).attr('fill', labelColor);
+    }
+
+    // apply callback if one is provided 
+    if (onCountrySelect) {
+      onCountrySelect(selectedCountry);
+    }
   }
 </script>
 
@@ -110,6 +113,7 @@
     position: relative;
     height: 530px;
   }
+
   h2 {
     font-size: 40px;
     white-space: nowrap;
@@ -117,6 +121,7 @@
     top: 0;
     right: 0;
   }
+
   #eu-map {
     padding-top: 50px;
     overflow: visible;
