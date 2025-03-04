@@ -127,30 +127,37 @@
 
 <main>
   <!-- render visualization components after all the data is loaded  -->
+  <h1>EU Climate Insights</h1>
   {#if isDataLoaded}
-    <h3>Main App Component</h3>
-    <EUMap
-      countries={EU_COUNTRIES}
-      allCountriesData={selectedDataFileData}
-      onCountrySelect={handleCountrySelect}
-    />
-    <br />
-    <select bind:value={selectedFile} onchange={selectData}>
-      {#each allData as d}
-        <option value={d.file}>{d.file}</option>
-      {/each}
-    </select>
+    <section id="overview">
+      <section id="presenter">
+        <EUMap
+          countries={EU_COUNTRIES}
+          allCountriesData={selectedDataFileData}
+          onCountrySelect={handleCountrySelect}
+          {selectedFile}
+          {year}
+        />
+        <section id="pol-sec">
+          <select bind:value={selectedFile} onchange={selectData}>
+            {#each allData as d}
+              <option value={d.file}>{d.file}</option>
+            {/each}
+          </select>
 
-    <h2>APP Year {year}</h2>
+          <PolicyChart {policyData} {year} />
+        </section>
 
-    <Slider bind:year />
-    <!-- <CountryData
+        <!-- <CountryData
       countryData={selectedCountryData}
       country={selectedCountry}
       euData={selectedEUData}
       eu={selectEU}
       {policyData}
     /> -->
+      </section>
+    </section>
+    <Slider bind:year />
     <EUData
       allCountriesData={selectedDataFileData}
       euCountries={EU_COUNTRIES}
@@ -158,6 +165,40 @@
       euCountry={EU_COUNTRY}
     />
   {/if}
-
-  <PolicyChart {policyData} />
 </main>
+
+<style>
+  #overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    background-color: antiquewhite;
+  }
+
+  #presenter {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  #pol-sec {
+    width: 50%;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    padding-top: 20px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: stretch;
+    background-color: white;
+  }
+</style>

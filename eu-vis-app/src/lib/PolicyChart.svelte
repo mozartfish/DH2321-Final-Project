@@ -2,8 +2,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  const { policyData = [] } = $props();
-  let year = 2024;
+  const { policyData = [], year = 2024 } = $props();
 
   let width = 500;
   let radius = width / 2;
@@ -27,11 +26,11 @@
   const sectorColors = {
     'Energy consumption': '#C197F3',
     'Energy supply': '#ff7f0e',
-    'Transport': '#2ca02c',
+    Transport: '#2ca02c',
     'Industrial processes': '#a98467',
-    'Agriculture': '#adc178',
-    'LULUCF': '#8c564b',
-    'Waste': '#FDA286',
+    Agriculture: '#adc178',
+    LULUCF: '#8c564b',
+    Waste: '#FDA286',
     'Other sectors': '#7f7f7f'
   };
 
@@ -73,7 +72,7 @@
     const pieData = pie(sectorsData);
 
     // Define inner and outer radii for a donut chart.
-    const innerRadius = radius * 0.3;
+    const innerRadius = radius * 0.5;
     const outerRadius = radius;
 
     // Define the arc generator.
@@ -85,15 +84,14 @@
       .append('g')
       .attr('transform', `translate(${width / 2}, ${width / 2})`);
 
-    // Append a centered label for the current year.
+    // Append a centered label with the total number of policies.
     container
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em')
-      .style('font-size', '52px')
-      .style('fill', 'white')
-      .text(filteredData.length);
-
+      .style('font-size', '20px')
+      .style('fill', 'black')
+      .text(`Total: ${filteredData.length}`);
     // Draw the arcs for each sector using the specific sector colors.
     container
       .selectAll('path')
@@ -102,9 +100,29 @@
       .append('path')
       .attr('d', arc)
       .style('fill', (d) => sectorColors[d.data.name])
-      .style('stroke', '#fff')
       .on('mouseover', (event, d) => {
         console.log(`${d.data.name}: ${d.data.value}`);
+        // make the sector pop out
+        d3.select(event.target)
+          .transition()
+          .duration(200)
+          .attr(
+            'd',
+            d3
+              .arc()
+              .innerRadius(innerRadius)
+              .outerRadius(outerRadius + 10)
+          );
+      })
+      .on('mouseout', (event, d) => {
+        // return the sector to its original size
+        d3.select(event.target)
+          .transition()
+          .duration(200)
+          .attr(
+            'd',
+            d3.arc().innerRadius(innerRadius).outerRadius(outerRadius)
+          );
       });
 
     // Append sector names at the centroid of each arc.
@@ -117,6 +135,7 @@
       .attr('transform', (d) => `translate(${arc.centroid(d)})`)
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em')
+      .style('pointer-events', 'none')
       .style('font-size', '12px')
       .style('fill', '#fff')
       .text((d) => d.data.name);
@@ -136,28 +155,35 @@
 </script>
 
 <section>
-  <h3>Pie Chart Policies</h3>
-  <div id="chart">
-    <svg bind:this={svg}></svg>
-  </div>
-  <div id="legend"></div>
+  <svg bind:this={svg}></svg>
+  <button>RESET??</button>
 </section>
 
 <style>
-  #chart {
-    background-color: #303F4A;
-    box-shadow: 0 5px 10px #303F4A;
-    border-radius: 100%;
-    padding: 30px;
-  }
-
-  #legend {
+  button {
     margin-top: 20px;
     width: 200px;
     height: 50px;
-    background-color: rgb(255, 0, 255);
-    border-radius: 100px;
-    box-shadow: 0 5px 10px rgba(255, 0, 255, 0.7);
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition-property: box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  button:hover {
+    box-shadow: 0px 0px 0px 0px black;
+    transform: translate(2px, 2px);
+  }
+
+  button:active {
+    transform: translate(2px, 4px);
   }
 
   path {
