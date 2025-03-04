@@ -1,103 +1,41 @@
 <script>
-  const { year = 2024 } = $props();
+  import RangeSlider from 'svelte-range-slider-pips';
 
-  let selectedYear = $state(year);
+  let { year = $bindable() } = $props();
 
-  const minYear = 2000;
-  const maxYear = 2024;
-
-  function handleOnChange(event) {
-    console.log(event.target.value);
-  }
+  let values = $state([year]);
 
   $effect(() => {
-    console.log(`Year value updated: ${selectedYear}`);
+    values = [year];
+  });
+
+  $effect(() => {
+    if (values[0] !== year) {
+      year = values[0];
+    }
   });
 </script>
 
-<div class="year-slider">
-  <h2>Year: {selectedYear}</h2>
-
-  <div class="slider-container">
-    <input
-      type="range"
-      min={minYear}
-      max={maxYear}
-      bind:value={selectedYear}
-      on:change={handleOnChange}
-      class="slider"
-    />
-
-    <div class="year-labels">
-      <span class="min-year">{minYear}</span>
-      <span class="max-year">{maxYear}</span>
-    </div>
-  </div>
+<div id="slider">
+  <h2>{year}</h2>
+  <RangeSlider
+    pips
+    first="label"
+    last="label"
+    min={1990}
+    max={2024}
+    bind:values
+  />
 </div>
 
 <style>
-  .year-slider {
-    font-family: Arial, sans-serif;
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
   h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 42px;
   }
-
-  .slider-container {
-    margin-bottom: 1rem;
-  }
-
-  .slider {
-    width: 100%;
-    height: 6px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: #d0d0d0;
-    outline: none;
-    border-radius: 999px;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #6185ff;
-    cursor: pointer;
-    box-shadow:
-      0 1px 1px 0 rgba(0, 0, 0, 0.14),
-      0 0px 2px 1px rgba(0, 0, 0, 0.2);
-  }
-
-  .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #6185ff;
-    cursor: pointer;
-    box-shadow:
-      0 1px 1px 0 rgba(0, 0, 0, 0.14),
-      0 0px 2px 1px rgba(0, 0, 0, 0.2);
-  }
-
-  .year-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    color: #666;
-  }
-
-  .current-year {
-    font-weight: bold;
-    color: #6185ff;
+  #slider {
+    width: 50%;
+    margin: 0 auto;
   }
 </style>

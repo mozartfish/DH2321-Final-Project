@@ -35,6 +35,8 @@
   // boolean for checking whether all the data is loaded and when to start rendering the visualization
   let isDataLoaded = $state(false);
 
+  let year = $state(2024);
+
   //Derived state
   // selected country data - filter out the data for the country that was selected by the user
   // let selectedCountryData = $derived(
@@ -139,7 +141,9 @@
       {/each}
     </select>
 
-    <Slider />
+    <h2>APP Year {year}</h2>
+
+    <Slider bind:year />
     <!-- <CountryData
       countryData={selectedCountryData}
       country={selectedCountry}

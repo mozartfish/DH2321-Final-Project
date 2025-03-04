@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "d3": "^7.9.0",
-    "svelte-maplibre": "^1.0.0-next.12"
+    "svelte-maplibre": "^1.0.0-next.12",
+    "svelte-range-slider-pips": "^3.2.2"
   }
 }
