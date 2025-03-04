@@ -2,12 +2,14 @@
   // imports
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
+  // import Slider from './lib/Slider.svelte';
+  // import PolicyChart from './lib/PolicyChart.svelte';
 
   // components
   import CountryData from './lib/CountryData.svelte';
   import EUMap from './lib/EUMap.svelte';
   // import PolicyData from './lib/PolicyData.svelte';
-  // import EUData from './lib/EUData.svelte';
+  import EUData from './lib/EUData.svelte';
 
   // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
@@ -45,36 +47,6 @@
   //   selectedDataFileData.filter((item) => item.country == selectEU)
   // );
 
-  // EU Countries
-  // let countryNames = [
-  //   'Austria',
-  //   'Belgium',
-  //   'Croatia',
-  //   'Cyprus',
-  //   'Czech Republic',
-  //   'Denmark',
-  //   'Estonia',
-  //   'Finland',
-  //   'France',
-  //   'Germany',
-  //   'Greece',
-  //   'Hungary',
-  //   'Ireland',
-  //   'Italy',
-  //   'Latvia',
-  //   'Lithuania',
-  //   'Luxembourg',
-  //   'Malta',
-  //   'Netherlands',
-  //   'Poland',
-  //   'Portugal',
-  //   'Romania',
-  //   'Slovakia',
-  //   'Slovenia',
-  //   'Spain',
-  //   'Sweden'
-  // ];
-
   // import and load csv data
   const csvFiles = import.meta.glob('/src/data/*.csv', {
     as: 'raw',
@@ -96,7 +68,6 @@
         .replace('/src/data/', '')
         .replace('.csv', '')
         .replace(/_/g, ' ');
-
       tempData.push({ file: fileName, data: parsedData });
     }
 
@@ -106,13 +77,13 @@
     // set of countries that belong to the EU + EU data name
     EU_COUNTRIES = [...countrySet];
   }
-  
+
   // load all the policy data
   async function loadPolicyData() {
     policyData = d3.csvParse(await policiesCSV);
   }
 
-  // data loaded on load 
+  // data loaded on load
   function dataOnLoad() {
     if (allData.length > 0) {
       selectedFile = allData[0].file;
@@ -120,10 +91,10 @@
     }
   }
 
-  // update data when file or country changes 
+  // update data when file or country changes
   function selectData() {
     let dataFile = allData.find((item) => item.file === selectedFile);
-    
+
     if (dataFile) {
       selectedDataFileData = dataFile.data;
     } else {
@@ -132,7 +103,7 @@
     }
   }
 
-  // callback for handling country selection from map 
+  // callback for handling country selection from map
   function handleCountrySelect(data) {
     selectedCountry = data;
     selectData();
@@ -146,34 +117,13 @@
     isDataLoaded = true;
   });
 
+  // for printing and debugging
   $effect(() => {
     console.log('EU COUNTRIES : ', EU_COUNTRIES);
   });
 </script>
 
 <main>
-<<<<<<< HEAD
-  <h3>Main App Component</h3>
-  <EUMap countries={EU_COUNTRIES} onCountrySelect={handleCountrySelect} />
-  <br />
-
-  <select bind:value={selectedFile} onchange={selectData}>
-    {#each allData as d}
-      <option value={d.file}>{d.file}</option>
-    {/each}
-  </select>
-
-  <select bind:value={selectedCountry} onchange={selectData}>
-    {#each EU_COUNTRIES as c}
-      <option value={c}>{c}</option>
-    {/each}
-  </select>
-
-  <!-- <button onclick={selectData}>Select Data</button> -->
-
-  {#if isDataLoaded}
-    <CountryData
-=======
   <!-- render visualization components after all the data is loaded  -->
   {#if isDataLoaded}
     <h3>Main App Component</h3>
@@ -191,25 +141,19 @@
 
     <!-- <Slider /> -->
     <!-- <CountryData
->>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
       countryData={selectedCountryData}
       country={selectedCountry}
       euData={selectedEUData}
       eu={selectEU}
       {policyData}
-<<<<<<< HEAD
-    />
-  {/if}
-=======
     /> -->
     <EUData
       allCountriesData={selectedDataFileData}
       euCountries={EU_COUNTRIES}
-      selectedCountry={selectedCountry}
+      {selectedCountry}
       euCountry={EU_COUNTRY}
     />
   {/if}
 
   <!-- <PolicyChart {policyData} /> -->
->>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
 </main>

@@ -3,17 +3,6 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  // Props declaration with callback
-<<<<<<< HEAD
-  let { 
-    countries,
-    onCountrySelect  // New callback prop instead of event dispatcher
-  } = $props();
-  
-  let width = 600;
-  let height = 500;
-  let selectedCountry = $state('');
-=======
   let { countries, allCountriesData = [], onCountrySelect } = $props();
 
   let colorScale;
@@ -46,7 +35,6 @@
   let width = 600;
   let height = 500;
   let selectedCountry = $state(null);
->>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
   let geoData;
 
   onMount(async () => {
@@ -83,26 +71,15 @@
       .attr('fill', 'lightblue')
       .attr('stroke', 'white')
       .on('click', (event, d) => {
-<<<<<<< HEAD
-        svg.selectAll('path').attr('fill', 'lightblue');
-        d3.select(event.target).attr('fill', 'peachpuff');
-        selectedCountry = d.properties.NAME;
-        
-        // Use callback instead of dispatch
-        if (onCountrySelect) {
-          onCountrySelect({ country: selectedCountry });
-        }
-        
-=======
         const countryName = d.properties.NAME;
-        // initialize country colors as blue 
+        // initialize country colors as blue
         svg.selectAll('path').attr('fill', 'lightblue');
         if (selectedCountry === countryName) {
-          // deselect country if it has already been selected 
+          // deselect country if it has already been selected
           selectedCountry = null;
           labelColor = '';
         } else {
-          // select new country 
+          // select new country
           selectedCountry = countryName;
           const countryColor = colorScale(selectedCountry);
           labelColor = countryColor;
@@ -113,7 +90,6 @@
           onCountrySelect(selectedCountry);
         }
 
->>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
         console.log(selectedCountry);
       });
   }
@@ -122,13 +98,8 @@
 <section>
   <h3>EU Map Component</h3>
   <div>
-<<<<<<< HEAD
-    <h2>
-      {selectedCountry}
-=======
     <h2 style="color: {labelColor}">
       {selectedCountry || ''}
->>>>>>> d25cbb8 (finish and finalize line chart without tooltips)
     </h2>
     <svg id="eu-map"></svg>
   </div>
