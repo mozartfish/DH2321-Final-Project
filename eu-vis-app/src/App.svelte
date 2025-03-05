@@ -162,7 +162,7 @@
             {/each}
           </select>
 
-          <BarChart {allData} {handleDataSelect} />
+          <BarChart {allData} {year} {handleDataSelect} />
           <PolicyChart {policyData} {year} />
         </section>
 

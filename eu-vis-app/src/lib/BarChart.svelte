@@ -2,13 +2,12 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  const { allData = [], handleDataSelect } = $props();
+  const { allData = [], year, handleDataSelect } = $props();
 
-  let selectedYear = $state(2020);
   let chartContainer;
 
   // Function to extract EU data for the selected year
-  function extractEUData(year) {
+  function extractEUData() {
     return allData
       .map((area) => ({
         file: area.file,
@@ -17,16 +16,15 @@
             (entry) => entry.country === 'EU' && entry[year] !== undefined
           )?.[year] || '0'
         ),
-        // Extract min and max values for this area across all countries
         valueRange: calculateAreaValueRange(area, year)
       }))
       .filter((item) => !isNaN(item.value) && item.value !== 0);
   }
 
   // Calculate value range for an area
-  function calculateAreaValueRange(area, selectedYear) {
+  function calculateAreaValueRange(area, year) {
     const values = area.data
-      .map((entry) => parseFloat(entry[selectedYear] || '0'))
+      .map((entry) => parseFloat(entry[year] || '0'))
       .filter((value) => !isNaN(value));
 
     return {
@@ -36,12 +34,14 @@
   }
 
   // Render chart function
-  function renderChart(year) {
+  function renderChart() {
+    if (!chartContainer) return;
+    
     // Clear previous chart
     d3.select(chartContainer).selectAll('*').remove();
 
-    // Prepare data
-    const data = extractEUData(selectedYear);
+    // Prepare data using the current `year`
+    const data = extractEUData();
 
     // Chart dimensions
     const margin = { top: 0, right: 60, bottom: 0, left: 200 };
@@ -85,8 +85,7 @@
     let objectSelected;
 
     // Bars with value labels
-    data.forEach((item, index) => {
-      // Bar
+    data.forEach((item) => {
       const bar = svg
         .append('rect')
         .attr('class', 'bar')
@@ -110,7 +109,7 @@
           d3.select(this).attr('fill', '#F7DC6F');
         })
         .on('mouseout', function () {
-          if (!isclicked || item.file != itemSelected.file) {
+          if (!isclicked || item.file !== itemSelected.file) {
             d3.select(this).attr('fill', 'steelblue');
           }
         });
@@ -130,30 +129,21 @@
     svg
       .append('text')
       .attr('x', width / 2)
-      .attr('y', 0 - margin.top / 2)
+      .attr('y', -10)
       .attr('text-anchor', 'middle')
       .style('font-size', '16px')
       .text(`EU Data for ${year}`);
   }
 
-  // Reactive statement to re-render chart when year changes
+  // Reactive effect to update chart when `year` changes
   $effect(() => {
-    if (chartContainer && allData) {
-      renderChart(selectedYear);
+    if (chartContainer && allData.length) {
+      renderChart();
     }
   });
-
-  // Years for dropdown
-  const years = Array.from({ length: 16 }, (_, i) => 2008 + i);
 </script>
 
 <section class="chart-container">
-  <select bind:value={selectedYear}>
-    {#each years as year}
-      <option value={year}>{year}</option>
-    {/each}
-  </select>
-
   <div bind:this={chartContainer}></div>
 </section>
 
@@ -165,16 +155,7 @@
     align-items: center;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: stretch;
+    padding: 20px;
     background-color: white;
-  }
-
-  select {
-    margin-bottom: 20px;
-    padding: 5px;
   }
 </style>
