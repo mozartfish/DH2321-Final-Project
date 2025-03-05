@@ -6,8 +6,6 @@
 
   let width = 500;
   let radius = width / 2;
-  // Remove the existing color scheme variable if not used.
-  // let colors = d3.schemeCategory10;
   let svg;
 
   // sector names
@@ -72,6 +70,7 @@
       .innerRadius(innerRadius)
       .outerRadius(outerRadius);
 
+    // Select or create container group.
     let container = d3.select(svg).select('g');
     if (container.empty()) {
       container = d3
@@ -79,16 +78,34 @@
         .append('g')
         .attr('transform', `translate(${width / 2}, ${width / 2})`);
 
-      // Create the central label once.
-      container
+      // Create the central text group.
+      const centerGroup = container
+        .append('g')
+        .attr('class', 'center-text')
+        .attr('text-anchor', 'middle');
+
+      centerGroup
         .append('text')
-        .attr('class', 'total')
-        .attr('text-anchor', 'middle')
-        .attr('dy', '0.35em')
-        .style('font-size', '20px')
-        .style('fill', 'black');
+        .attr('class', 'center-name')
+        .attr('y', -40)
+        .style('font-size', '22px')
+        .style('fill', 'black')
+        .text('Total');
+
+      centerGroup
+        .append('text')
+        .attr('class', 'center-value')
+        .attr('y', 30)
+        .style('font-size', '80px')
+        .style('fill', 'black')
+        .text(filteredData.length);
+    } else {
+      // Update the overall total if needed.
+      d3.select(svg)
+        .select('g.center-text')
+        .select('text.center-value')
+        .text(filteredData.length);
     }
-    container.select('text.total').text(`Total: ${filteredData.length}`);
 
     const paths = container
       .selectAll('path.arc')
@@ -104,26 +121,62 @@
         this._current = d;
       })
       .style('fill', (d) => sectorColors[d.data.name])
-      .on('mouseover', (event, d) => {
-        d3.select(event.target)
+      .on('mouseover', function (event, d) {
+        // Pull the arc outward.
+        const offset = -10;
+        const angle = (d.startAngle + d.endAngle) / 2;
+        const translateX = Math.sin(angle) * offset;
+        const translateY = -Math.cos(angle) * offset;
+        d3.select(this)
           .transition()
           .duration(200)
-          .attr(
-            'd',
-            d3
-              .arc()
-              .innerRadius(innerRadius)
-              .outerRadius(outerRadius + 10)
-          );
+          .attr('transform', `translate(${translateX}, ${translateY})`);
+
+        // Update the center text with hovered sector details.
+        const centerGroup = container.select('g.center-text');
+        centerGroup
+          .transition()
+          .duration(200)
+          .style('opacity', 0)
+          .on('end', function () {
+            d3.select(this)
+              .select('text.center-name')
+              .text(d.data.name)
+              .style('font-size', '22px');
+            d3.select(this)
+              .select('text.center-value')
+              .text(d.data.value)
+              .style('font-size', '80px');
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .style('opacity', 1);
+          });
       })
-      .on('mouseout', (event, d) => {
-        d3.select(event.target)
+      .on('mouseout', function (event, d) {
+        d3.select(this)
           .transition()
           .duration(200)
-          .attr(
-            'd',
-            d3.arc().innerRadius(innerRadius).outerRadius(outerRadius)
-          );
+          .attr('transform', 'translate(0,0)');
+
+        // Revert the center text to show the overall total.
+        const centerGroup = container.select('g.center-text');
+        centerGroup
+          .transition()
+          .duration(150)
+          .style('opacity', 0)
+          .on('end', function () {
+            d3.select(this)
+              .select('text.center-name')
+              .text('Total');
+            d3.select(this)
+              .select('text.center-value')
+              .text(filteredData.length);
+            d3.select(this)
+              .transition()
+              .duration(200)
+              .style('opacity', 1);
+          });
       })
       .merge(paths)
       .transition()
@@ -162,20 +215,14 @@
         (exit) => exit.remove()
       );
 
-    // Ensure that text labels are on top of the arcs.
+    // Bring labels to the front.
     container.selectAll('text.label').raise();
   }
 
-  // Use $effect to run the chart update whenever policyData changes.
   $effect(() => {
     if (policyData && policyData.length) {
       updateChart();
     }
-  });
-
-  $effect(() => {
-    console.log('POLICIES policyData: ', policyData);
-    console.log('POLICIES year: ', year);
   });
 </script>
 

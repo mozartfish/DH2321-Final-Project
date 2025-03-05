@@ -31,7 +31,8 @@
 <style>
   h2 {
     text-align: center;
-    font-size: 42px;
+    font-size: 62px;
+    color: #df40a2;
   }
   #slider {
     width: 50%;
