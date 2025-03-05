@@ -22,7 +22,7 @@
     pips
     first="label"
     last="label"
-    min={1990}
+    min={2000}
     max={2024}
     bind:values
   />

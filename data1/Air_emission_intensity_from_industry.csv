@@ -1,29 +1,29 @@
-indicator,country,unit,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023
-Air_emission_intensity_from_industry,Austria,"Grams per euro, chain linked volumes (2010)",0.05,0.05,0.05,0.05,0.04,0.04,0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.02,0.02,
-Air_emission_intensity_from_industry,Belgium,"Grams per euro, chain linked volumes (2010)",0.16,0.09,0.11,0.09,0.09,0.08,0.08,0.08,0.08,0.07,0.07,0.06,0.07,0.08,0.06,
-Air_emission_intensity_from_industry,Bulgaria,"Grams per euro, chain linked volumes (2010)",0.68,0.31,0.29,0.33,0.29,0.3,0.33,0.32,0.3,0.3,0.28,0.26,0.29,0.34,0.29,
-Air_emission_intensity_from_industry,Croatia,"Grams per euro, chain linked volumes (2010)",0.26,0.28,0.3,0.26,0.27,0.27,0.24,0.23,0.2,0.2,0.19,0.19,0.19,0.15,0.11,
-Air_emission_intensity_from_industry,Cyprus,"Grams per euro, chain linked volumes (2010)",0.55,0.49,0.46,0.4,0.13,0.17,0.21,0.19,0.17,0.18,0.17,0.17,0.19,0.22,0.24,
-Air_emission_intensity_from_industry,Czech Republic,"Grams per euro, chain linked volumes (2010)",0.12,0.11,0.1,0.08,0.07,0.07,0.07,0.05,0.05,0.04,0.04,0.03,0.03,0.03,0.03,
-Air_emission_intensity_from_industry,Denmark,"Grams per euro, chain linked volumes (2010)",0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.02,0.02,0.01,0.01,0.01,0.01,0.01,0.01,
-Air_emission_intensity_from_industry,EU,"Grams per euro, chain linked volumes (2010)",0.11,0.1,0.1,0.09,0.09,0.08,0.08,0.08,0.07,0.07,0.07,0.07,0.07,0.06,0.06,
-Air_emission_intensity_from_industry,Estonia,"Grams per euro, chain linked volumes (2010)",0.57,0.53,0.61,0.48,0.43,0.43,0.55,0.3,0.38,0.37,0.28,0.18,0.21,0.12,0.14,
-Air_emission_intensity_from_industry,Finland,"Grams per euro, chain linked volumes (2010)",0.12,0.11,0.13,0.11,0.11,0.1,0.1,0.1,0.1,0.09,0.09,0.07,0.07,0.06,0.06,
-Air_emission_intensity_from_industry,France,"Grams per euro, chain linked volumes (2010)",0.11,0.11,0.12,0.09,0.09,0.1,0.09,0.09,0.1,0.09,0.09,0.08,0.08,0.08,0.08,0.07
-Air_emission_intensity_from_industry,Germany,"Grams per euro, chain linked volumes (2010)",0.03,0.03,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,
-Air_emission_intensity_from_industry,Greece,"Grams per euro, chain linked volumes (2010)",0.25,0.22,0.22,0.23,0.22,0.22,0.24,0.25,0.23,0.22,0.2,0.19,0.19,0.16,0.17,
-Air_emission_intensity_from_industry,Hungary,"Grams per euro, chain linked volumes (2010)",0.1,0.09,0.08,0.08,0.08,0.07,0.08,0.07,0.08,0.08,0.09,0.09,0.09,0.09,0.07,
-Air_emission_intensity_from_industry,Ireland,"Grams per euro, chain linked volumes (2010)",0.06,0.06,0.05,0.05,0.04,0.05,0.05,0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.01,
-Air_emission_intensity_from_industry,Italy,"Grams per euro, chain linked volumes (2010)",0.11,0.1,0.1,0.1,0.09,0.08,0.07,0.07,0.07,0.07,0.06,0.07,0.07,0.07,0.07,
-Air_emission_intensity_from_industry,Latvia,"Grams per euro, chain linked volumes (2010)",0.45,0.57,0.48,0.37,0.4,0.44,0.54,0.51,0.46,0.44,0.44,0.42,0.42,0.39,0.45,
-Air_emission_intensity_from_industry,Lithuania,"Grams per euro, chain linked volumes (2010)",0.11,0.09,0.09,0.1,0.1,0.09,0.11,0.11,0.08,0.08,0.08,0.06,0.06,0.06,0.06,
-Air_emission_intensity_from_industry,Luxembourg,"Grams per euro, chain linked volumes (2010)",0.11,0.1,0.11,0.1,0.1,0.08,0.07,0.05,0.05,0.07,0.06,0.06,0.05,0.05,0.05,
-Air_emission_intensity_from_industry,Malta,"Grams per euro, chain linked volumes (2010)",0.02,0.02,0.01,0.01,0.01,0.02,0.02,0.02,0.02,0.01,0.01,0.01,0.01,0.01,0.01,
-Air_emission_intensity_from_industry,Netherlands,"Grams per euro, chain linked volumes (2010)",0.08,0.08,0.08,0.07,0.06,0.06,0.06,0.06,0.06,0.05,0.05,0.05,0.05,0.04,0.04,
-Air_emission_intensity_from_industry,Poland,"Grams per euro, chain linked volumes (2010)",0.32,0.27,0.25,0.26,0.24,0.24,0.22,0.2,0.18,0.18,0.17,0.15,0.15,0.16,0.13,
-Air_emission_intensity_from_industry,Portugal,"Grams per euro, chain linked volumes (2010)",1.07,1.31,0.8,1.24,1.88,1.78,1.98,1.92,2.0,1.78,1.82,1.89,2.48,2.39,2.24,
-Air_emission_intensity_from_industry,Romania,"Grams per euro, chain linked volumes (2010)",0.39,0.29,0.31,0.27,0.29,0.28,0.25,0.25,0.24,0.22,0.17,0.18,0.18,0.18,0.17,
-Air_emission_intensity_from_industry,Slovakia,"Grams per euro, chain linked volumes (2010)",0.19,0.2,0.15,0.13,0.13,0.12,0.09,0.08,0.08,0.08,0.07,0.06,0.06,0.06,0.05,
-Air_emission_intensity_from_industry,Slovenia,"Grams per euro, chain linked volumes (2010)",0.15,0.15,0.15,0.14,0.13,0.14,0.15,0.14,0.12,0.12,0.11,0.1,0.1,0.09,0.09,
-Air_emission_intensity_from_industry,Spain,"Grams per euro, chain linked volumes (2010)",0.13,0.12,0.12,0.12,0.13,0.1,0.09,0.09,0.1,0.1,0.1,0.11,0.11,0.1,0.09,
-Air_emission_intensity_from_industry,Sweden,"Grams per euro, chain linked volumes (2010)",0.1,0.11,0.1,0.09,0.09,0.08,0.08,0.06,0.06,0.06,0.06,0.06,0.05,0.04,0.04,0.04
+indicator,country,unit,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,sector
+Air_emission_intensity_from_industry,Austria,"Grams per euro, chain linked volumes (2010)",0.05,0.05,0.05,0.05,0.04,0.04,0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.02,0.02,,Industrial processes
+Air_emission_intensity_from_industry,Belgium,"Grams per euro, chain linked volumes (2010)",0.16,0.09,0.11,0.09,0.09,0.08,0.08,0.08,0.08,0.07,0.07,0.06,0.07,0.08,0.06,,Industrial processes
+Air_emission_intensity_from_industry,Bulgaria,"Grams per euro, chain linked volumes (2010)",0.68,0.31,0.29,0.33,0.29,0.3,0.33,0.32,0.3,0.3,0.28,0.26,0.29,0.34,0.29,,Industrial processes
+Air_emission_intensity_from_industry,Croatia,"Grams per euro, chain linked volumes (2010)",0.26,0.28,0.3,0.26,0.27,0.27,0.24,0.23,0.2,0.2,0.19,0.19,0.19,0.15,0.11,,Industrial processes
+Air_emission_intensity_from_industry,Cyprus,"Grams per euro, chain linked volumes (2010)",0.55,0.49,0.46,0.4,0.13,0.17,0.21,0.19,0.17,0.18,0.17,0.17,0.19,0.22,0.24,,Industrial processes
+Air_emission_intensity_from_industry,Czech Republic,"Grams per euro, chain linked volumes (2010)",0.12,0.11,0.1,0.08,0.07,0.07,0.07,0.05,0.05,0.04,0.04,0.03,0.03,0.03,0.03,,Industrial processes
+Air_emission_intensity_from_industry,Denmark,"Grams per euro, chain linked volumes (2010)",0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.02,0.02,0.01,0.01,0.01,0.01,0.01,0.01,,Industrial processes
+Air_emission_intensity_from_industry,EU,"Grams per euro, chain linked volumes (2010)",0.23407407407407405,0.2192592592592593,0.197037037037037,0.1962962962962963,0.20555555555555555,0.20185185185185184,0.21629629629629635,0.19777777777777775,0.19666666666666666,0.1848148148148148,0.17703703703703705,0.17074074074074072,0.19518518518518516,0.18666666666666668,0.17777777777777778,0.05500000000000001,Industrial processes
+Air_emission_intensity_from_industry,Estonia,"Grams per euro, chain linked volumes (2010)",0.57,0.53,0.61,0.48,0.43,0.43,0.55,0.3,0.38,0.37,0.28,0.18,0.21,0.12,0.14,,Industrial processes
+Air_emission_intensity_from_industry,Finland,"Grams per euro, chain linked volumes (2010)",0.12,0.11,0.13,0.11,0.11,0.1,0.1,0.1,0.1,0.09,0.09,0.07,0.07,0.06,0.06,,Industrial processes
+Air_emission_intensity_from_industry,France,"Grams per euro, chain linked volumes (2010)",0.11,0.11,0.12,0.09,0.09,0.1,0.09,0.09,0.1,0.09,0.09,0.08,0.08,0.08,0.08,0.07,Industrial processes
+Air_emission_intensity_from_industry,Germany,"Grams per euro, chain linked volumes (2010)",0.03,0.03,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,,Industrial processes
+Air_emission_intensity_from_industry,Greece,"Grams per euro, chain linked volumes (2010)",0.25,0.22,0.22,0.23,0.22,0.22,0.24,0.25,0.23,0.22,0.2,0.19,0.19,0.16,0.17,,Industrial processes
+Air_emission_intensity_from_industry,Hungary,"Grams per euro, chain linked volumes (2010)",0.1,0.09,0.08,0.08,0.08,0.07,0.08,0.07,0.08,0.08,0.09,0.09,0.09,0.09,0.07,,Industrial processes
+Air_emission_intensity_from_industry,Ireland,"Grams per euro, chain linked volumes (2010)",0.06,0.06,0.05,0.05,0.04,0.05,0.05,0.03,0.03,0.03,0.03,0.02,0.02,0.02,0.01,,Industrial processes
+Air_emission_intensity_from_industry,Italy,"Grams per euro, chain linked volumes (2010)",0.11,0.1,0.1,0.1,0.09,0.08,0.07,0.07,0.07,0.07,0.06,0.07,0.07,0.07,0.07,,Industrial processes
+Air_emission_intensity_from_industry,Latvia,"Grams per euro, chain linked volumes (2010)",0.45,0.57,0.48,0.37,0.4,0.44,0.54,0.51,0.46,0.44,0.44,0.42,0.42,0.39,0.45,,Industrial processes
+Air_emission_intensity_from_industry,Lithuania,"Grams per euro, chain linked volumes (2010)",0.11,0.09,0.09,0.1,0.1,0.09,0.11,0.11,0.08,0.08,0.08,0.06,0.06,0.06,0.06,,Industrial processes
+Air_emission_intensity_from_industry,Luxembourg,"Grams per euro, chain linked volumes (2010)",0.11,0.1,0.11,0.1,0.1,0.08,0.07,0.05,0.05,0.07,0.06,0.06,0.05,0.05,0.05,,Industrial processes
+Air_emission_intensity_from_industry,Malta,"Grams per euro, chain linked volumes (2010)",0.02,0.02,0.01,0.01,0.01,0.02,0.02,0.02,0.02,0.01,0.01,0.01,0.01,0.01,0.01,,Industrial processes
+Air_emission_intensity_from_industry,Netherlands,"Grams per euro, chain linked volumes (2010)",0.08,0.08,0.08,0.07,0.06,0.06,0.06,0.06,0.06,0.05,0.05,0.05,0.05,0.04,0.04,,Industrial processes
+Air_emission_intensity_from_industry,Poland,"Grams per euro, chain linked volumes (2010)",0.32,0.27,0.25,0.26,0.24,0.24,0.22,0.2,0.18,0.18,0.17,0.15,0.15,0.16,0.13,,Industrial processes
+Air_emission_intensity_from_industry,Portugal,"Grams per euro, chain linked volumes (2010)",1.07,1.31,0.8,1.24,1.88,1.78,1.98,1.92,2.0,1.78,1.82,1.89,2.48,2.39,2.24,,Industrial processes
+Air_emission_intensity_from_industry,Romania,"Grams per euro, chain linked volumes (2010)",0.39,0.29,0.31,0.27,0.29,0.28,0.25,0.25,0.24,0.22,0.17,0.18,0.18,0.18,0.17,,Industrial processes
+Air_emission_intensity_from_industry,Slovakia,"Grams per euro, chain linked volumes (2010)",0.19,0.2,0.15,0.13,0.13,0.12,0.09,0.08,0.08,0.08,0.07,0.06,0.06,0.06,0.05,,Industrial processes
+Air_emission_intensity_from_industry,Slovenia,"Grams per euro, chain linked volumes (2010)",0.15,0.15,0.15,0.14,0.13,0.14,0.15,0.14,0.12,0.12,0.11,0.1,0.1,0.09,0.09,,Industrial processes
+Air_emission_intensity_from_industry,Spain,"Grams per euro, chain linked volumes (2010)",0.13,0.12,0.12,0.12,0.13,0.1,0.09,0.09,0.1,0.1,0.1,0.11,0.11,0.1,0.09,,Industrial processes
+Air_emission_intensity_from_industry,Sweden,"Grams per euro, chain linked volumes (2010)",0.1,0.11,0.1,0.09,0.09,0.08,0.08,0.06,0.06,0.06,0.06,0.06,0.05,0.04,0.04,0.04,Industrial processes

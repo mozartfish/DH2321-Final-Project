@@ -176,7 +176,7 @@
     gap: 20px;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+    /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */
     padding: 20px;
     background-color: antiquewhite;
   }
@@ -193,7 +193,7 @@
     width: 50%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8); */
     padding-top: 20px;
     padding-bottom: 100px;
     padding-left: 50px;
