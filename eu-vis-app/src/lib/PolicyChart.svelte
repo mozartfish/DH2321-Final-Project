@@ -161,6 +161,9 @@
             .text((d) => d.data.name),
         (exit) => exit.remove()
       );
+
+    // Ensure that text labels are on top of the arcs.
+    container.selectAll('text.label').raise();
   }
 
   // Use $effect to run the chart update whenever policyData changes.
