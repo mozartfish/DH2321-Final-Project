@@ -209,4 +209,19 @@
     align-items: stretch;
     background-color: white;
   }
+
+  #pol-sec select {
+    padding: 8px 12px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #pol-sec select:focus {
+    border-color: #666;
+  }
 </style>

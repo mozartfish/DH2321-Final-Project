@@ -255,7 +255,6 @@
 
 <section>
   <h3>Heatmap for dataset: {selectedFile}</h3>
-  <h2>{year}</h2>
 
   <div class="map-container">
     <h2 style="color: {labelColor}">
