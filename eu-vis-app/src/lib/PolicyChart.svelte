@@ -147,10 +147,7 @@
               .select('text.center-value')
               .text(d.data.value)
               .style('font-size', '80px');
-            d3.select(this)
-              .transition()
-              .duration(100)
-              .style('opacity', 1);
+            d3.select(this).transition().duration(100).style('opacity', 1);
           });
       })
       .on('mouseout', function (event, d) {
@@ -166,16 +163,11 @@
           .duration(150)
           .style('opacity', 0)
           .on('end', function () {
-            d3.select(this)
-              .select('text.center-name')
-              .text('Total');
+            d3.select(this).select('text.center-name').text('Total');
             d3.select(this)
               .select('text.center-value')
               .text(filteredData.length);
-            d3.select(this)
-              .transition()
-              .duration(200)
-              .style('opacity', 1);
+            d3.select(this).transition().duration(200).style('opacity', 1);
           });
       })
       .merge(paths)
@@ -232,6 +224,19 @@
 </section>
 
 <style>
+  section {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    align-items: stretch;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   button {
     margin-top: 20px;
     width: 200px;

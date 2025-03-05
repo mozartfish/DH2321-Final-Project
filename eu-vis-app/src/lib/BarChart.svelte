@@ -44,9 +44,9 @@
     const data = extractEUData(selectedYear);
 
     // Chart dimensions
-    const margin = { top: 50, right: 100, bottom: 50, left: 200 };
-    const width = 1000 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const margin = { top: 0, right: 60, bottom: 0, left: 200 };
+    const width = 600 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     // Create SVG
     const svg = d3
@@ -147,7 +147,7 @@
   const years = Array.from({ length: 16 }, (_, i) => 2008 + i);
 </script>
 
-<div class="chart-container">
+<section class="chart-container">
   <select bind:value={selectedYear}>
     {#each years as year}
       <option value={year}>{year}</option>
@@ -155,16 +155,22 @@
   </select>
 
   <div bind:this={chartContainer}></div>
-</div>
+</section>
 
 <style>
-  .chart-container {
+  section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: stretch;
+    background-color: white;
   }
 
   select {

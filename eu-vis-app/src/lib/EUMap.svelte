@@ -294,6 +294,8 @@
   }
 
   #legend-container {
-    margin-top: 10px;
+    position: absolute;
+    top: 70px;
+    left: 0;
   }
 </style>

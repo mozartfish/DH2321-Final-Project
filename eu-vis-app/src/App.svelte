@@ -133,6 +133,14 @@
 </script>
 
 <main>
+  <nav>
+    <h2>EU Climate Insights</h2>
+    <div class="links">
+      <a>Home</a>
+      <a>About</a>
+      <a>Contact</a>
+    </div>
+  </nav>
   <!-- render visualization components after all the data is loaded  -->
   <h1>EU Climate Insights</h1>
   {#if isDataLoaded}
@@ -152,6 +160,7 @@
             {/each}
           </select>
 
+          <BarChart {allData} {handleDataSelect} />
           <PolicyChart {policyData} {year} />
         </section>
 
@@ -172,11 +181,41 @@
       euCountry={EU_COUNTRY}
     />
   {/if}
-
-  <BarChart {allData} {handleDataSelect} />
 </main>
 
 <style>
+  nav {
+    width: 100vw;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    background-color: antiquewhite;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  nav h2 {
+    margin-left: 20px;
+
+  }
+
+  .links {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  h1 {
+    margin-top: 60px;
+    text-align: center;
+  }
+
   #overview {
     display: flex;
     flex-direction: column;
@@ -185,7 +224,7 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */
-    padding: 20px;
+    padding: 10px;
     background-color: antiquewhite;
   }
 
@@ -194,20 +233,20 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
+    height: fit-content;
   }
 
   #pol-sec {
     width: 50%;
-    border-radius: 10px;
+    /* border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8); */
     padding-top: 20px;
     padding-bottom: 100px;
     padding-left: 50px;
     padding-right: 50px;
     align-items: stretch;
-    background-color: white;
+    background-color: white; */
   }
 
   #pol-sec select {
