@@ -133,28 +133,18 @@
 </script>
 
 <main>
-  <nav>
-    <h2>EU Climate Insights</h2>
-    <div class="links">
-      <a>Home</a>
-      <a>About</a>
-      <a>Contact</a>
-    </div>
-  </nav>
   <!-- render visualization components after all the data is loaded  -->
   <h1>EU Climate Insights</h1>
   {#if isDataLoaded}
     <section id="overview">
       <section id="presenter">
-        <section id="map">
-          <EUMap
-            countries={EU_COUNTRIES}
-            allCountriesData={selectedDataFileData}
-            onCountrySelect={handleCountrySelect}
-            {selectedFile}
-            {year}
-          />
-        </section>
+        <EUMap
+          countries={EU_COUNTRIES}
+          allCountriesData={selectedDataFileData}
+          onCountrySelect={handleCountrySelect}
+          {selectedFile}
+          {year}
+        />
         <section id="pol-sec">
           <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
@@ -162,7 +152,6 @@
             {/each}
           </select>
 
-          <BarChart {allData} {year} {handleDataSelect} />
           <PolicyChart {policyData} {year} />
         </section>
 
@@ -183,45 +172,11 @@
       euCountry={EU_COUNTRY}
     />
   {/if}
-<<<<<<< HEAD
-=======
 
   <BarChart {allData} {handleDataSelect} {selectedFile} {selectedCountry} />
->>>>>>> 9c1bd43 (Linking bar chart to other components)
 </main>
 
 <style>
-  nav {
-    width: 100vw;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    background-color: antiquewhite;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    font-size: 1.2rem;
-  }
-
-  nav h2 {
-    margin-left: 20px;
-  }
-
-  .links {
-    margin-right: 20px;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-
-  h1 {
-    margin-top: 60px;
-    text-align: center;
-  }
-
   #overview {
     display: flex;
     flex-direction: column;
@@ -230,7 +185,7 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */
-    padding: 10px;
+    padding: 20px;
     background-color: antiquewhite;
   }
 
@@ -239,35 +194,34 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    gap: 20px;
-  }
-
-  #map {
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: white;
+    gap: 40px;
   }
 
   #pol-sec {
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8); */
+    padding-top: 20px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: stretch;
+    background-color: white;
   }
 
   #pol-sec select {
-    padding: 10px 12px;
+    padding: 8px 12px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     background-color: white;
     font-size: 1rem;
     color: #333;
     outline: none;
-    width: 100%;
+    transition: border-color 0.2s;
+  }
+
+  #pol-sec select:focus {
+    border-color: #666;
   }
 </style>

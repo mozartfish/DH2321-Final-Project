@@ -2,17 +2,14 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-<<<<<<< HEAD
-  const { allData = [], year, handleDataSelect } = $props();
-=======
   const {
     allData = [],
     handleDataSelect,
     selectedFile,
     selectedCountry
   } = $props();
->>>>>>> 9c1bd43 (Linking bar chart to other components)
 
+  let selectedYear = $state(2020);
   let chartContainer;
 
   let isclicked;
@@ -26,7 +23,7 @@
   });
 
   // Function to extract EU data for the selected year
-  function extractEUData() {
+  function extractEUData(year) {
     return allData
       .map((area) => ({
         file: area.file,
@@ -36,15 +33,16 @@
               entry.country === selectedCountryBar && entry[year] !== undefined
           )?.[year] || '0'
         ),
+        // Extract min and max values for this area across all countries
         valueRange: calculateAreaValueRange(area, year)
       }))
       .filter((item) => !isNaN(item.value) && item.value !== 0);
   }
 
   // Calculate value range for an area
-  function calculateAreaValueRange(area, year) {
+  function calculateAreaValueRange(area, selectedYear) {
     const values = area.data
-      .map((entry) => parseFloat(entry[year] || '0'))
+      .map((entry) => parseFloat(entry[selectedYear] || '0'))
       .filter((value) => !isNaN(value));
 
     return {
@@ -54,19 +52,17 @@
   }
 
   // Render chart function
-  function renderChart() {
-    if (!chartContainer) return;
-    
+  function renderChart(year) {
     // Clear previous chart
     d3.select(chartContainer).selectAll('*').remove();
 
-    // Prepare data using the current `year`
-    const data = extractEUData();
+    // Prepare data
+    const data = extractEUData(selectedYear);
 
     // Chart dimensions
-    const margin = { top: 0, right: 60, bottom: 0, left: 200 };
-    const width = 600 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const margin = { top: 50, right: 100, bottom: 50, left: 200 };
+    const width = 1000 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     // Create SVG
     const svg = d3
@@ -104,14 +100,9 @@
     const stickHeight = y.bandwidth() * 0.4; // Reduced stick height
     const stickVerticalOffset = (y.bandwidth() - stickHeight) / 2; // Centering offset
 
-<<<<<<< HEAD
-    // Bars with value labels
-    data.forEach((item) => {
-=======
     // Bars with value labels - now with centered sticks
     data.forEach((item, index) => {
       // Stick-like bar with rounded ends
->>>>>>> 9c1bd43 (Linking bar chart to other components)
       const bar = svg
         .append('rect')
         .attr('class', 'bar')
@@ -138,11 +129,7 @@
           d3.select(this).attr('fill', '#F7DC6F');
         })
         .on('mouseout', function () {
-<<<<<<< HEAD
-          if (!isclicked || item.file !== itemSelected.file) {
-=======
           if (!isclicked || item.file != selectedFileBar) {
->>>>>>> 9c1bd43 (Linking bar chart to other components)
             d3.select(this).attr('fill', 'steelblue');
           }
         });
@@ -168,38 +155,45 @@
     svg
       .append('text')
       .attr('x', width / 2)
-      .attr('y', -10)
+      .attr('y', 0 - margin.top / 2)
       .attr('text-anchor', 'middle')
       .style('font-size', '16px')
       .text(`EU Data for ${year}`);
   }
 
-  // Reactive effect to update chart when `year` changes
+  // Reactive statement to re-render chart when year changes
   $effect(() => {
-<<<<<<< HEAD
-    if (chartContainer && allData.length) {
-      renderChart();
-=======
     if (chartContainer && allData && selectedCountryBar != null) {
       renderChart(selectedYear);
->>>>>>> 9c1bd43 (Linking bar chart to other components)
     }
   });
+
+  // Years for dropdown
+  const years = Array.from({ length: 16 }, (_, i) => 2008 + i);
 </script>
 
-<section class="chart-container">
+<div class="chart-container">
+  <select bind:value={selectedYear}>
+    {#each years as year}
+      <option value={year}>{year}</option>
+    {/each}
+  </select>
+
   <div bind:this={chartContainer}></div>
-</section>
+</div>
 
 <style>
-  section {
-    width: 100%;
+  .chart-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    background-color: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  select {
+    margin-bottom: 20px;
+    padding: 5px;
   }
 </style>
