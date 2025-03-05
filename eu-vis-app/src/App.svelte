@@ -10,6 +10,7 @@
   import EUMap from './lib/EUMap.svelte';
   // import PolicyData from './lib/PolicyData.svelte';
   import EUData from './lib/EUData.svelte';
+  import BarChart from './lib/BarChart.svelte';
 
   // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
@@ -111,6 +112,12 @@
     selectData();
   }
 
+  function handleDataSelect(file) {
+    selectedFile = file;
+    console.log('selectedFile :', selectedFile);
+    selectData();
+  }
+
   // load the csv data, policy data, and initialize visualization when the app loads
   onMount(async () => {
     await loadAllData();
@@ -165,6 +172,8 @@
       euCountry={EU_COUNTRY}
     />
   {/if}
+
+  <BarChart {allData} {handleDataSelect} />
 </main>
 
 <style>
