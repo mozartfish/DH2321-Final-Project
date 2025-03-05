@@ -44,7 +44,7 @@
     const data = extractEUData(selectedYear);
 
     // Chart dimensions
-    const margin = { top: 50, right: 20, bottom: 150, left: 60 };
+    const margin = { top: 50, right: 100, bottom: 50, left: 200 };
     const width = 1000 - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
 
@@ -57,67 +57,73 @@
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // X Scale
-    const x = d3
+    // Y Scale (for file names)
+    const y = d3
       .scaleBand()
       .domain(data.map((d) => d.file))
-      .range([0, width])
+      .range([0, height])
       .padding(0.1);
 
-    // Create individual Y scales for each area
-    const yScales = data.map((item) =>
-      d3
-        .scaleLinear()
-        .domain([item.valueRange.min, item.valueRange.max])
-        .range([height, 0])
-    );
+    // X Scale (for values) using log scale to handle large value ranges
+    const x = d3
+      .scaleLog()
+      .domain([
+        Math.max(0.1, Math.min(...data.map((d) => d.value))),
+        Math.max(...data.map((d) => d.value))
+      ])
+      .range([0, width]);
 
-    // X Axis
+    // Y Axis (file names)
     svg
       .append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x))
+      .call(d3.axisLeft(y))
       .selectAll('text')
-      .style('text-anchor', 'end')
-      .attr('dx', '-.8em')
-      .attr('dy', '.15em')
-      .attr('transform', 'rotate(-65)');
+      .style('text-anchor', 'end');
 
     let isclicked;
+    let itemSelected;
+    let objectSelected;
 
-    // Bars with individual scaling
+    // Bars with value labels
     data.forEach((item, index) => {
-      svg
+      // Bar
+      const bar = svg
         .append('rect')
         .attr('class', 'bar')
-        .attr('x', x(item.file) || 0)
-        .attr('width', x.bandwidth())
-        .attr('y', yScales[index](item.value))
-        .attr('height', height - yScales[index](item.value))
+        .attr('y', y(item.file) || 0)
+        .attr('height', y.bandwidth())
+        .attr('x', 0)
+        .attr('width', x(item.value))
         .attr('fill', 'steelblue')
         .style('cursor', 'pointer')
-        .on('click', () => {
+        .on('click', function () {
+          if (isclicked) {
+            d3.select(objectSelected).attr('fill', 'steelblue');
+          }
           isclicked = true;
+          itemSelected = item;
+          objectSelected = this;
           handleDataSelect(item.file);
-          console.log('debug2', item.file);
-          d3.select(this).attr('fill', 'green');
+          d3.select(this).attr('fill', '#F7DC6F');
         })
         .on('mouseover', function () {
-          if (!isclicked) {
-            d3.select(this).attr('fill', 'orange');
-          }
+          d3.select(this).attr('fill', '#F7DC6F');
         })
         .on('mouseout', function () {
-          if (!isclicked) {
+          if (!isclicked || item.file != itemSelected.file) {
             d3.select(this).attr('fill', 'steelblue');
           }
         });
 
-      // Individual Y axis for each area
+      // Value label
       svg
-        .append('g')
-        .attr('transform', `translate(${x(item.file) || 0}, 0)`)
-        .call(d3.axisLeft(yScales[index]).ticks(5));
+        .append('text')
+        .attr('x', x(item.value) + 5)
+        .attr('y', (y(item.file) || 0) + y.bandwidth() / 2)
+        .attr('dy', '0.35em')
+        .text(item.value.toFixed(2))
+        .style('font-size', '12px')
+        .style('fill', 'black');
     });
 
     // Title
