@@ -41,68 +41,71 @@
 
   // Function to build/update the full-circle pie chart.
   function updateChart() {
-    // Clear any previous chart content.
-    d3.select(svg).selectAll('*').remove();
-
-    // Filter policyData for the selected year.
+    // Filter data for the selected year.
     const filteredData = policyData.filter((d) => +d.year === year);
 
     // Compute counts per sector.
     const sectorCounts = new Map();
     filteredData.forEach((d) => {
-      const sectors = d.sector.split(';').map((s) => s.trim());
-      sectors.forEach((s) => {
+      const sectorsList = d.sector.split(';').map((s) => s.trim());
+      sectorsList.forEach((s) => {
         const count = sectorCounts.get(s) || 0;
         sectorCounts.set(s, count + 1);
       });
     });
 
-    // Create an array with each sector's name and policy count.
     const sectorsData = Array.from(sectorCounts, ([name, value]) => ({
       name,
       value
     }));
 
-    // Create a pie layout for a full circle.
+    // Create a pie layout.
     const pie = d3
       .pie()
       .value((d) => d.value)
-      .sort(null);
-
+      .sort((a, b) => sectors.indexOf(a.name) - sectors.indexOf(b.name));
     const pieData = pie(sectorsData);
 
-    // Define inner and outer radii for a donut chart.
     const innerRadius = radius * 0.5;
     const outerRadius = radius;
+    const arcGenerator = d3
+      .arc()
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius);
 
-    // Define the arc generator.
-    const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+    let container = d3.select(svg).select('g');
+    if (container.empty()) {
+      container = d3
+        .select(svg)
+        .append('g')
+        .attr('transform', `translate(${width / 2}, ${width / 2})`);
 
-    // Create a container group and center the chart.
-    const container = d3
-      .select(svg)
-      .append('g')
-      .attr('transform', `translate(${width / 2}, ${width / 2})`);
+      // Create the central label once.
+      container
+        .append('text')
+        .attr('class', 'total')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '0.35em')
+        .style('font-size', '20px')
+        .style('fill', 'black');
+    }
+    container.select('text.total').text(`Total: ${filteredData.length}`);
 
-    // Append a centered label with the total number of policies.
-    container
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('dy', '0.35em')
-      .style('font-size', '20px')
-      .style('fill', 'black')
-      .text(`Total: ${filteredData.length}`);
-    // Draw the arcs for each sector using the specific sector colors.
-    container
-      .selectAll('path')
-      .data(pieData)
+    const paths = container
+      .selectAll('path.arc')
+      .data(pieData, (d) => d.data.name);
+
+    paths.exit().remove();
+
+    paths
       .enter()
       .append('path')
-      .attr('d', arc)
+      .attr('class', 'arc')
+      .each(function (d) {
+        this._current = d;
+      })
       .style('fill', (d) => sectorColors[d.data.name])
       .on('mouseover', (event, d) => {
-        console.log(`${d.data.name}: ${d.data.value}`);
-        // make the sector pop out
         d3.select(event.target)
           .transition()
           .duration(200)
@@ -115,7 +118,6 @@
           );
       })
       .on('mouseout', (event, d) => {
-        // return the sector to its original size
         d3.select(event.target)
           .transition()
           .duration(200)
@@ -123,16 +125,22 @@
             'd',
             d3.arc().innerRadius(innerRadius).outerRadius(outerRadius)
           );
+      })
+      .merge(paths)
+      .transition()
+      .duration(200)
+      .attrTween('d', function (d) {
+        const interpolate = d3.interpolate(this._current, d);
+        this._current = interpolate(0);
+        return (t) => arcGenerator(interpolate(t));
       });
 
-    // Append sector names at the centroid of each arc.
     container
       .selectAll('text.label')
-      .data(pieData)
-      .enter()
-      .append('text')
+      .data(pieData, (d) => d.data.name)
+      .join('text')
       .attr('class', 'label')
-      .attr('transform', (d) => `translate(${arc.centroid(d)})`)
+      .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em')
       .style('pointer-events', 'none')
