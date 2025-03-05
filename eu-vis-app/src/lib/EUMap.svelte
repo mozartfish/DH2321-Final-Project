@@ -268,7 +268,8 @@
 <style>
   .map-container {
     position: relative;
-    height: 530px;
+    height: 600px;
+    width: 600px;
   }
 
   h2 {

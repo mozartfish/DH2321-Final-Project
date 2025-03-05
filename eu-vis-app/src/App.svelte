@@ -183,6 +183,11 @@
       euCountry={EU_COUNTRY}
     />
   {/if}
+<<<<<<< HEAD
+=======
+
+  <BarChart {allData} {handleDataSelect} {selectedFile} {selectedCountry} />
+>>>>>>> 9c1bd43 (Linking bar chart to other components)
 </main>
 
 <style>

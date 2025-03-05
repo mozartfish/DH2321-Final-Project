@@ -2,9 +2,28 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
+<<<<<<< HEAD
   const { allData = [], year, handleDataSelect } = $props();
+=======
+  const {
+    allData = [],
+    handleDataSelect,
+    selectedFile,
+    selectedCountry
+  } = $props();
+>>>>>>> 9c1bd43 (Linking bar chart to other components)
 
   let chartContainer;
+
+  let isclicked;
+  let selectedCountryBar = $state();
+  let selectedFileBar = $state();
+  let objectSelected = $state();
+
+  $effect(() => {
+    selectedCountryBar = selectedCountry != null ? selectedCountry : 'EU';
+    selectedFileBar = selectedFile;
+  });
 
   // Function to extract EU data for the selected year
   function extractEUData() {
@@ -13,7 +32,8 @@
         file: area.file,
         value: parseFloat(
           area.data.find(
-            (entry) => entry.country === 'EU' && entry[year] !== undefined
+            (entry) =>
+              entry.country === selectedCountryBar && entry[year] !== undefined
           )?.[year] || '0'
         ),
         valueRange: calculateAreaValueRange(area, year)
@@ -80,19 +100,28 @@
       .selectAll('text')
       .style('text-anchor', 'end');
 
-    let isclicked;
-    let itemSelected;
-    let objectSelected;
+    // Calculate stick height and vertical positioning
+    const stickHeight = y.bandwidth() * 0.4; // Reduced stick height
+    const stickVerticalOffset = (y.bandwidth() - stickHeight) / 2; // Centering offset
 
+<<<<<<< HEAD
     // Bars with value labels
     data.forEach((item) => {
+=======
+    // Bars with value labels - now with centered sticks
+    data.forEach((item, index) => {
+      // Stick-like bar with rounded ends
+>>>>>>> 9c1bd43 (Linking bar chart to other components)
       const bar = svg
         .append('rect')
         .attr('class', 'bar')
-        .attr('y', y(item.file) || 0)
-        .attr('height', y.bandwidth())
+        .attr('data-file', item.file)
+        .attr('y', (y(item.file) || 0) + stickVerticalOffset) // Centered vertically
+        .attr('height', stickHeight) // Consistent stick height
         .attr('x', 0)
         .attr('width', x(item.value))
+        .attr('rx', stickHeight / 2) // Rounded corners proportional to height
+        .attr('ry', stickHeight / 2)
         .attr('fill', 'steelblue')
         .style('cursor', 'pointer')
         .on('click', function () {
@@ -100,7 +129,7 @@
             d3.select(objectSelected).attr('fill', 'steelblue');
           }
           isclicked = true;
-          itemSelected = item;
+          selectedFileBar = item.file;
           objectSelected = this;
           handleDataSelect(item.file);
           d3.select(this).attr('fill', '#F7DC6F');
@@ -109,12 +138,16 @@
           d3.select(this).attr('fill', '#F7DC6F');
         })
         .on('mouseout', function () {
+<<<<<<< HEAD
           if (!isclicked || item.file !== itemSelected.file) {
+=======
+          if (!isclicked || item.file != selectedFileBar) {
+>>>>>>> 9c1bd43 (Linking bar chart to other components)
             d3.select(this).attr('fill', 'steelblue');
           }
         });
 
-      // Value label
+      // Value label - adjust vertical positioning
       svg
         .append('text')
         .attr('x', x(item.value) + 5)
@@ -124,6 +157,12 @@
         .style('font-size', '12px')
         .style('fill', 'black');
     });
+
+    d3.selectAll('rect')
+      .filter(function () {
+        return d3.select(this).attr('data-file') === selectedFileBar;
+      })
+      .attr('fill', '#F7DC6F');
 
     // Title
     svg
@@ -137,8 +176,13 @@
 
   // Reactive effect to update chart when `year` changes
   $effect(() => {
+<<<<<<< HEAD
     if (chartContainer && allData.length) {
       renderChart();
+=======
+    if (chartContainer && allData && selectedCountryBar != null) {
+      renderChart(selectedYear);
+>>>>>>> 9c1bd43 (Linking bar chart to other components)
     }
   });
 </script>
