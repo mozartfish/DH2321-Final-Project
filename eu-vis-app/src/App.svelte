@@ -146,13 +146,15 @@
   {#if isDataLoaded}
     <section id="overview">
       <section id="presenter">
-        <EUMap
-          countries={EU_COUNTRIES}
-          allCountriesData={selectedDataFileData}
-          onCountrySelect={handleCountrySelect}
-          {selectedFile}
-          {year}
-        />
+        <section id="map">
+          <EUMap
+            countries={EU_COUNTRIES}
+            allCountriesData={selectedDataFileData}
+            onCountrySelect={handleCountrySelect}
+            {selectedFile}
+            {year}
+          />
+        </section>
         <section id="pol-sec">
           <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
@@ -201,7 +203,6 @@
 
   nav h2 {
     margin-left: 20px;
-
   }
 
   .links {
@@ -234,33 +235,34 @@
     align-items: stretch;
     justify-content: center;
     gap: 20px;
-    height: fit-content;
+  }
+
+  #map {
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white;
   }
 
   #pol-sec {
     width: 50%;
-    /* border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    padding-top: 20px;
-    padding-bottom: 100px;
-    padding-left: 50px;
-    padding-right: 50px;
-    align-items: stretch;
-    background-color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 
   #pol-sec select {
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     background-color: white;
     font-size: 1rem;
     color: #333;
     outline: none;
-    transition: border-color 0.2s;
-  }
-
-  #pol-sec select:focus {
-    border-color: #666;
+    width: 100%;
   }
 </style>

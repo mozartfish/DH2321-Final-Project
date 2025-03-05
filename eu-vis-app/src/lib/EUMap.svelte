@@ -266,15 +266,6 @@
 </section>
 
 <style>
-  section {
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8); */
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: white;
-  }
   .map-container {
     position: relative;
     height: 530px;
