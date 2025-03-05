@@ -156,8 +156,8 @@
       {policyData}
     /> -->
       </section>
+      <Slider bind:year />
     </section>
-    <Slider bind:year />
     <EUData
       allCountriesData={selectedDataFileData}
       euCountries={EU_COUNTRIES}
@@ -173,7 +173,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */

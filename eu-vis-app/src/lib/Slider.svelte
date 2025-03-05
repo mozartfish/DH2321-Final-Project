@@ -30,7 +30,6 @@
 
 <style>
   h2 {
-    margin-top: 20px;
     text-align: center;
     font-size: 42px;
   }

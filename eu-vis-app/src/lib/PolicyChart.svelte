@@ -22,16 +22,15 @@
     'Other sectors'
   ];
 
-  // Map each sector to a specific color.
   const sectorColors = {
-    'Energy consumption': '#C197F3',
-    'Energy supply': '#ff7f0e',
-    Transport: '#2ca02c',
-    'Industrial processes': '#a98467',
-    Agriculture: '#adc178',
-    LULUCF: '#8c564b',
-    Waste: '#FDA286',
-    'Other sectors': '#7f7f7f'
+    'Energy consumption': '#2C3E50',
+    'Energy supply': '#E74C3C',
+    Transport: '#2980B9',
+    'Industrial processes': '#F39C12',
+    Agriculture: '#27AE60',
+    LULUCF: '#145A32',
+    Waste: '#9B59B6',
+    'Other sectors': '#7F8C8D'
   };
 
   // Initialize the SVG element.
@@ -138,15 +137,30 @@
     container
       .selectAll('text.label')
       .data(pieData, (d) => d.data.name)
-      .join('text')
-      .attr('class', 'label')
-      .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
-      .attr('text-anchor', 'middle')
-      .attr('dy', '0.35em')
-      .style('pointer-events', 'none')
-      .style('font-size', '12px')
-      .style('fill', '#fff')
-      .text((d) => d.data.name);
+      .join(
+        (enter) =>
+          enter
+            .append('text')
+            .attr('class', 'label')
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .style('pointer-events', 'none')
+            .style('font-size', '12px')
+            .style('fill', '#fff')
+            .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
+            .text((d) => d.data.name),
+        (update) =>
+          update
+            .transition()
+            .duration(200)
+            .attrTween('transform', function (d) {
+              const previous = d3.select(this).attr('transform');
+              const current = `translate(${arcGenerator.centroid(d)})`;
+              return d3.interpolateTransformSvg(previous, current);
+            })
+            .text((d) => d.data.name),
+        (exit) => exit.remove()
+      );
   }
 
   // Use $effect to run the chart update whenever policyData changes.
