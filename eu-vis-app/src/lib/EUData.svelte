@@ -31,7 +31,7 @@
               year: Number(year),
               value: value === '' ? null : parseFloat(value)
             }))
-
+            .filter((d) => d.year <= 2022);
 
           return { country, indicator, units, yearDataObject };
         })
