@@ -6,12 +6,11 @@
     allData = [],
     handleDataSelect,
     selectedFile,
-    selectedCountry
+    selectedCountry,
+    year
   } = $props();
 
-  let selectedYear = $state(2020);
   let chartContainer;
-
   let isclicked;
   let selectedCountryBar = $state();
   let selectedFileBar = $state();
@@ -22,8 +21,8 @@
     selectedFileBar = selectedFile;
   });
 
-  // Function to extract EU data for the selected year
-  function extractEUData(year) {
+  // Function to extract EU data for the given year
+  function extractEUData() {
     return allData
       .map((area) => ({
         file: area.file,
@@ -33,16 +32,15 @@
               entry.country === selectedCountryBar && entry[year] !== undefined
           )?.[year] || '0'
         ),
-        // Extract min and max values for this area across all countries
-        valueRange: calculateAreaValueRange(area, year)
+        valueRange: calculateAreaValueRange(area)
       }))
       .filter((item) => !isNaN(item.value) && item.value !== 0);
   }
 
   // Calculate value range for an area
-  function calculateAreaValueRange(area, selectedYear) {
+  function calculateAreaValueRange(area) {
     const values = area.data
-      .map((entry) => parseFloat(entry[selectedYear] || '0'))
+      .map((entry) => parseFloat(entry[year] || '0'))
       .filter((value) => !isNaN(value));
 
     return {
@@ -52,12 +50,12 @@
   }
 
   // Render chart function
-  function renderChart(year) {
+  function renderChart() {
     // Clear previous chart
     d3.select(chartContainer).selectAll('*').remove();
 
     // Prepare data
-    const data = extractEUData(selectedYear);
+    const data = extractEUData();
 
     // Chart dimensions
     const margin = { top: 50, right: 100, bottom: 50, left: 200 };
@@ -97,21 +95,20 @@
       .style('text-anchor', 'end');
 
     // Calculate stick height and vertical positioning
-    const stickHeight = y.bandwidth() * 0.4; // Reduced stick height
-    const stickVerticalOffset = (y.bandwidth() - stickHeight) / 2; // Centering offset
+    const stickHeight = y.bandwidth() * 0.4;
+    const stickVerticalOffset = (y.bandwidth() - stickHeight) / 2;
 
-    // Bars with value labels - now with centered sticks
-    data.forEach((item, index) => {
-      // Stick-like bar with rounded ends
+    // Bars with value labels
+    data.forEach((item) => {
       const bar = svg
         .append('rect')
         .attr('class', 'bar')
         .attr('data-file', item.file)
-        .attr('y', (y(item.file) || 0) + stickVerticalOffset) // Centered vertically
-        .attr('height', stickHeight) // Consistent stick height
+        .attr('y', (y(item.file) || 0) + stickVerticalOffset)
+        .attr('height', stickHeight)
         .attr('x', 0)
         .attr('width', x(item.value))
-        .attr('rx', stickHeight / 2) // Rounded corners proportional to height
+        .attr('rx', stickHeight / 2)
         .attr('ry', stickHeight / 2)
         .attr('fill', 'steelblue')
         .style('cursor', 'pointer')
@@ -134,7 +131,7 @@
           }
         });
 
-      // Value label - adjust vertical positioning
+      // Value label
       svg
         .append('text')
         .attr('x', x(item.value) + 5)
@@ -164,36 +161,24 @@
   // Reactive statement to re-render chart when year changes
   $effect(() => {
     if (chartContainer && allData && selectedCountryBar != null) {
-      renderChart(selectedYear);
+      renderChart();
     }
   });
-
-  // Years for dropdown
-  const years = Array.from({ length: 16 }, (_, i) => 2008 + i);
 </script>
 
-<div class="chart-container">
-  <select bind:value={selectedYear}>
-    {#each years as year}
-      <option value={year}>{year}</option>
-    {/each}
-  </select>
-
+<section>
   <div bind:this={chartContainer}></div>
-</div>
+</section>
 
 <style>
-  .chart-container {
+  section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  select {
-    margin-bottom: 20px;
-    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    background-color: white;
   }
 </style>
