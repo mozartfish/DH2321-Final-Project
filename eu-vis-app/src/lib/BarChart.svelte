@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
   const {
@@ -17,52 +16,41 @@
   let objectSelected = $state();
 
   $effect(() => {
-    selectedCountryBar = selectedCountry != null ? selectedCountry : 'EU';
+    selectedCountryBar = selectedCountry || 'EU';
     selectedFileBar = selectedFile;
   });
 
-  // Function to extract EU data for the given year
+  // Compute mean values for each file
   function extractEUData() {
+    const col = year + '_z';
     return allData
-      .map((area) => ({
-        file: area.file,
-        value: parseFloat(
-          area.data.find(
+      .map((area) => {
+        const values = area.data
+          .filter(
             (entry) =>
-              entry.country === selectedCountryBar && entry[year] !== undefined
-          )?.[year] || '0'
-        ),
-        valueRange: calculateAreaValueRange(area)
-      }))
-      .filter((item) => !isNaN(item.value) && item.value !== 0);
+              entry.country === selectedCountryBar && entry[col] !== undefined
+          )
+          .map((entry) => parseFloat(entry[col]))
+          .filter((num) => !isNaN(num)); // Remove NaN values
+
+        if (values.length === 0) return null; // Skip if no valid numbers
+
+        return {
+          file: area.file,
+          mean: d3.mean(values)
+        };
+      })
+      .filter((item) => item !== null);
   }
 
-  // Calculate value range for an area
-  function calculateAreaValueRange(area) {
-    const values = area.data
-      .map((entry) => parseFloat(entry[year] || '0'))
-      .filter((value) => !isNaN(value));
-
-    return {
-      min: Math.min(...values),
-      max: Math.max(...values)
-    };
-  }
-
-  // Render chart function
   function renderChart() {
-    // Clear previous chart
     d3.select(chartContainer).selectAll('*').remove();
-
-    // Prepare data
     const data = extractEUData();
 
-    // Chart dimensions
-    const margin = { top: 50, right: 100, bottom: 50, left: 200 };
-    const width = 1000 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const margin = { top: 50, right: 10, bottom: 50, left: 80 };
+    const width = 450 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
-    // Create SVG
     const svg = d3
       .select(chartContainer)
       .append('svg')
@@ -71,82 +59,116 @@
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // Y Scale (for file names)
+    // Y scale for file names
     const y = d3
       .scaleBand()
       .domain(data.map((d) => d.file))
       .range([0, height])
       .padding(0.1);
 
-    // X Scale (for values) using log scale to handle large value ranges
-    const x = d3
-      .scaleLog()
-      .domain([
-        Math.max(0.1, Math.min(...data.map((d) => d.value))),
-        Math.max(...data.map((d) => d.value))
-      ])
-      .range([0, width]);
+    // X scale fixed to [-1, 1]
+    const x = d3.scaleLinear().domain([-1, 1]).range([0, width]);
 
-    // Y Axis (file names)
+    // X-axis
+    svg
+      .append('g')
+      .attr('transform', `translate(0,${height})`)
+      .call(d3.axisBottom(x));
+
+    // Y-axis
     svg
       .append('g')
       .call(d3.axisLeft(y))
       .selectAll('text')
       .style('text-anchor', 'end');
 
-    // Calculate stick height and vertical positioning
-    const stickHeight = y.bandwidth() * 0.4;
-    const stickVerticalOffset = (y.bandwidth() - stickHeight) / 2;
+    // Vertical line at x=0
+    svg
+      .append('line')
+      .attr('x1', x(0))
+      .attr('x2', x(0))
+      .attr('y1', 0)
+      .attr('y2', height)
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1);
 
-    // Bars with value labels
     data.forEach((item) => {
-      const bar = svg
+      const yPos = y(item.file) || 0;
+      const rowHeight = y.bandwidth();
+      const barHeight = rowHeight * 1;
+      const barY = yPos + (rowHeight - barHeight) / 2;
+      const barX = x(Math.min(0, item.mean));
+      const barWidth = Math.abs(x(item.mean) - x(0));
+
+      // Create a group for the row
+      const rowGroup = svg.append('g').attr('class', 'row-group');
+
+      // Add an invisible rectangle spanning the entire row as the clickable area
+      rowGroup
         .append('rect')
-        .attr('class', 'bar')
-        .attr('data-file', item.file)
-        .attr('y', (y(item.file) || 0) + stickVerticalOffset)
-        .attr('height', stickHeight)
+        .attr('class', 'clickable-row')
         .attr('x', 0)
-        .attr('width', x(item.value))
-        .attr('rx', stickHeight / 2)
-        .attr('ry', stickHeight / 2)
-        .attr('fill', 'steelblue')
+        .attr('y', yPos)
+        .attr('width', width)
+        .attr('height', rowHeight)
+        .attr('fill', 'transparent')
         .style('cursor', 'pointer')
         .on('click', function () {
           if (isclicked) {
-            d3.select(objectSelected).attr('fill', 'steelblue');
+            d3.select(objectSelected).attr('fill', '#26AE60');
           }
           isclicked = true;
           selectedFileBar = item.file;
-          objectSelected = this;
+          // Save a reference to the bar rectangle (inside this row)
+          objectSelected = rowGroup.select('.bar').node();
           handleDataSelect(item.file);
-          d3.select(this).attr('fill', '#F7DC6F');
+          rowGroup.select('.bar').attr('fill', '#F49C12');
         })
         .on('mouseover', function () {
-          d3.select(this).attr('fill', '#F7DC6F');
+          rowGroup.select('.bar').attr('fill', '#F49C12');
         })
         .on('mouseout', function () {
-          if (!isclicked || item.file != selectedFileBar) {
-            d3.select(this).attr('fill', 'steelblue');
+          if (!isclicked || item.file !== selectedFileBar) {
+            rowGroup.select('.bar').attr('fill', '#26AE60');
           }
         });
 
-      // Value label
-      svg
+      // Draw the actual bar
+      rowGroup
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('x', barX)
+        .attr('y', barY)
+        .attr('width', barWidth)
+        .attr('height', barHeight)
+        .attr('fill', '#26AE60')
+        .style('pointer-events', 'none')
+        .attr('data-file', item.file);
+
+      // Add the value label for the mean
+      const labelOffset = item.mean >= 0 ? 5 : -5;
+      const anchor = item.mean >= 0 ? 'start' : 'end';
+      const labelX = x(item.mean) + labelOffset;
+      const labelY = barY + barHeight / 2;
+      rowGroup
         .append('text')
-        .attr('x', x(item.value) + 5)
-        .attr('y', (y(item.file) || 0) + y.bandwidth() / 2)
+        .attr('x', labelX)
+        .attr('y', labelY)
         .attr('dy', '0.35em')
-        .text(item.value.toFixed(2))
-        .style('font-size', '12px')
-        .style('fill', 'black');
+        .text(item.mean.toFixed(2))
+        .style('font-size', '10px')
+        .style('fill', 'black')
+        .style('pointer-events', 'none')
+        .attr('text-anchor', anchor);
     });
 
-    d3.selectAll('rect')
+    // Highlight any already-selected file
+    svg
+      .selectAll('rect[data-file]')
       .filter(function () {
         return d3.select(this).attr('data-file') === selectedFileBar;
       })
-      .attr('fill', '#F7DC6F');
+      .attr('fill', '#F49C12');
 
     // Title
     svg
@@ -155,10 +177,9 @@
       .attr('y', 0 - margin.top / 2)
       .attr('text-anchor', 'middle')
       .style('font-size', '16px')
-      .text(`EU Data for ${year}`);
+      .text(`${selectedCountryBar} ${year}`);
   }
 
-  // Reactive statement to re-render chart when year changes
   $effect(() => {
     if (chartContainer && allData && selectedCountryBar != null) {
       renderChart();

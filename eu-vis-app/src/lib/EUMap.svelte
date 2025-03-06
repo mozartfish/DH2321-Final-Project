@@ -64,7 +64,7 @@
       .scaleSequential()
       .domain([dataMin, dataMax])
       .interpolator(d3.interpolateGreys);
-      //.interpolator(d3.interpolateBlues);
+    //.interpolator(d3.interpolateBlues);
   }
 
   function createCountryColorScale() {
@@ -269,7 +269,6 @@
 <style>
   .map-container {
     position: relative;
-    height: 530px;
   }
 
   h2 {
@@ -281,7 +280,6 @@
   }
 
   #eu-map {
-    padding-top: 50px;
     overflow: visible;
   }
 

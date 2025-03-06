@@ -2,9 +2,9 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  const { policyData = [], year = 2024 } = $props();
+  const { policyData = [], year } = $props();
 
-  let width = 500;
+  let width = 400;
   let radius = width / 2;
   let svg;
 

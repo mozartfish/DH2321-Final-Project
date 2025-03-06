@@ -2,52 +2,48 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  // props
+  // Props
   const {
-    // data for all the countries
+    // all country data
     allCountriesData = [],
-    // eu countries name list
+    // eu country names
     euCountries = [],
-    // country name of the country selected by user
+    // selected country from map
     selectedCountry = null,
-    // eu country name
-    euCountry = 'EU'
+    // eu country name constant
+    euCountry = 'EU',
+    // year passed from parent component
+    year
   } = $props();
 
-  // derive a new dataset for updating the UI based on the data passed in
+  // process data for visualization
   let formattedData = $derived(
     allCountriesData.length > 0
       ? allCountriesData.map((countryData) => {
-          // import country data
           const country = countryData.country;
           const indicator = countryData.indicator;
           const units = countryData.unit;
 
-          // map year and data into an object
+          // process data to map year to data for visualization
           const yearDataObject = Object.entries(countryData)
             .filter(([key]) => !['country', 'indicator', 'units'].includes(key))
             .map(([year, value]) => ({
               year: Number(year),
               value: value === '' ? null : parseFloat(value)
-            }));
+            }))
 
-          // return new country object
-          return {
-            country,
-            indicator,
-            units,
-            yearDataObject
-          };
+
+          return { country, indicator, units, yearDataObject };
         })
       : []
   );
 
-  // set up chart variables
+  // chart dimensions
   let width = $state(800);
   let height = $state(500);
   const margin = 60;
 
-  // country color scale - there are 28 unique countries (EU countries + EU)
+  // color scales
   const countryColorScale = () => {
     const countries = formattedData.map((d) => d.country);
     const colorRange = countries.map((d, i) =>
@@ -56,127 +52,82 @@
     return d3.scaleOrdinal().domain(countries).range(colorRange);
   };
 
-  // load the visualization when the application loads
+  // initialize, load and draw visualization upon app load
   onMount(() => {
     drawChart();
     window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
+    return () => window.removeEventListener('resize', resize);
   });
 
-  // resize chart when data changes
+  // react to change in data and year -> redraw chart
   $effect(() => {
-    if (formattedData.length > 0) {
+    if (formattedData.length > 0 && year) {
       drawChart();
     }
   });
 
-  // redraw chart when selected country changes
-  $effect(() => {
-    if (formattedData.length > 0) {
-      drawChart();
-    }
-  });
-
+  // window resize
   function resize() {
     width = window.innerWidth * 0.8;
     height = window.innerHeight * 0.5;
     drawChart();
   }
 
+  // draw line chart
   function drawChart() {
     if (!formattedData || formattedData.length === 0) return;
 
-    // remove previous chart
     d3.select('#line-chart').selectAll('*').remove();
-
-    // set up a width for the chart
     const chartWidth = width - margin * 2;
-
     const svg = d3
       .select('#line-chart')
       .attr('width', width)
       .attr('height', height);
+    // data element groups for drawing
+    const lineGroup = svg.append('g').attr('class', 'lines');
+    const circleGroup = svg.append('g').attr('class', 'year-indicators');
 
-    // filter elected country data and eu data
+    // filter out eu  and selected country data
     let selectedCountryEUData = formattedData;
     if (selectedCountry) {
       selectedCountryEUData = formattedData.filter(
         (d) => d.country === selectedCountry || d.country === euCountry
       );
     }
-
-    // process data for eu and selected country
+    // process data for visualization
     const selectedCountryEUValues = [];
     selectedCountryEUData.forEach((country) => {
-      country.yearDataObject.forEach((year) => {
-        if (year.value !== null) {
+      country.yearDataObject.forEach((yearData) => {
+        if (yearData.value !== null) {
           selectedCountryEUValues.push({
             country: country.country,
-            date: new Date(year.year, 0),
-            value: year.value
+            date: new Date(yearData.year, 0),
+            value: yearData.value
           });
         }
       });
     });
-
-    // remove all null values for visualizing the data with a line chart
     const allValues = selectedCountryEUValues
       .map((d) => d.value)
       .filter((v) => v !== null);
-
-    // units of measurement for the data
+    const allDates = selectedCountryEUValues.map((d) => d.date);
     const dataUnits =
       selectedCountryEUData.length > 0 ? selectedCountryEUData[0].units : '';
 
-    // get all the dates for x scale
-    const allDates = selectedCountryEUValues.map((d) => d.date);
-
-    // Scales
-    // x scales
+    // scales
     const xScale = d3
       .scaleTime()
       .domain(d3.extent(allDates))
       .range([margin, chartWidth])
       .nice();
 
-    // y scales
     const yScale = d3
       .scaleLinear()
       .domain([d3.min(allValues) * 0.9, d3.max(allValues) * 1.1])
       .range([height - margin, margin])
       .nice();
 
-    // color scale for mapping countries to color
     const colorScale = countryColorScale();
-
-    if (selectedCountry) {
-      // Create legend
-      const legend = svg
-        .append('g')
-        .attr('class', 'legend')
-        .attr('transform', `translate(${chartWidth - 120}, ${margin})`);
-
-      selectedCountryEUData.forEach((country, i) => {
-        const legendGroup = legend
-          .append('g')
-          .attr('transform', `translate(0, ${i * 20})`);
-
-        legendGroup
-          .append('rect')
-          .attr('width', 12)
-          .attr('height', 12)
-          .attr('fill', colorScale(country.country));
-
-        legendGroup
-          .append('text')
-          .attr('x', 16)
-          .attr('y', 10)
-          .text(country.country)
-          .style('font-size', '12px');
-      });
-    }
 
     // line generator
     const line = d3
@@ -184,9 +135,6 @@
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX);
-
-    // group for drawing and transforming lines
-    const lineGroup = svg.append('g');
 
     // draw country lines
     selectedCountryEUData.forEach((country) => {
@@ -197,7 +145,7 @@
         }))
         .filter((d) => d.value !== null);
 
-      // draw lines
+      // draw line
       lineGroup
         .append('path')
         .datum(dateValues)
@@ -207,8 +155,48 @@
         .attr('d', line);
     });
 
+    // if a country is selected
+    if (selectedCountry) {
+      const legend = svg
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', `translate(${chartWidth - 120}, ${margin})`);
+
+      selectedCountryEUData.forEach((country, i) => {
+        // policy indicator
+        const yearDataObject = country.yearDataObject.find(
+          (d) => d.year === year
+        );
+        if (yearDataObject && yearDataObject.value !== null) {
+          circleGroup
+            .append('circle')
+            .attr('cx', xScale(new Date(year, 0)))
+            .attr('cy', yScale(yearDataObject.value))
+            .attr('r', 6)
+            .attr('fill', colorScale(country.country))
+            .attr('stroke', 'black')
+            .attr('stroke-width', 2);
+        }
+
+        // legend
+        const legendGroup = legend
+          .append('g')
+          .attr('transform', `translate(0, ${i * 20})`);
+        legendGroup
+          .append('rect')
+          .attr('width', 12)
+          .attr('height', 12)
+          .attr('fill', colorScale(country.country));
+        legendGroup
+          .append('text')
+          .attr('x', 16)
+          .attr('y', 10)
+          .text(country.country)
+          .style('font-size', '12px');
+      });
+    }
+
     // draw axes
-    // x axis
     const xAxis = d3
       .axisBottom(xScale)
       .tickFormat(d3.timeFormat('%Y'))
@@ -217,8 +205,6 @@
       .append('g')
       .attr('transform', `translate(0,${height - margin})`)
       .call(xAxis);
-
-    // x-axis label
     svg
       .append('text')
       .attr('text-anchor', 'middle')
@@ -227,11 +213,8 @@
       .style('font-size', '12px')
       .text('Year');
 
-    // y axis
     const yAxis = d3.axisLeft(yScale).ticks(10);
     svg.append('g').attr('transform', `translate(${margin},0)`).call(yAxis);
-
-    // y-axis label
     svg
       .append('text')
       .attr('text-anchor', 'middle')
@@ -241,14 +224,6 @@
       .style('font-size', '12px')
       .text(dataUnits);
   }
-
-  // for debugging
-  $effect(() => {
-    console.log('allcountries data updated to: ', allCountriesData);
-    console.log('EU Countries updated to: ', euCountries);
-    console.log('formatted EU DATA: ', formattedData);
-    console.log('Selected country: ', selectedCountry);
-  });
 </script>
 
 <h1>EU COUNTRIES DATA COMPONENT</h1>

@@ -23,7 +23,7 @@
     first="label"
     last="label"
     min={2000}
-    max={2023}
+    max={2022}
     bind:values
   />
 </div>
