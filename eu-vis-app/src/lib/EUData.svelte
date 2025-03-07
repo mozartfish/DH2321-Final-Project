@@ -50,8 +50,6 @@
 
   onMount(() => {
     drawChart();
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
   });
 
   $effect(() => {

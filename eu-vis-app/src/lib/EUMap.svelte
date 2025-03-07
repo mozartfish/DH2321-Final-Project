@@ -288,7 +288,7 @@
     <svg id="eu-map"></svg>
     <div id="legend-container"></div>
   </div>
-  <button on:click={resetSelection}>RESET</button>
+  <button onclick={resetSelection}>RESET</button>
 </section>
 
 <style>

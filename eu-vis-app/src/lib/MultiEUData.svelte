@@ -63,10 +63,6 @@
   // load the visualization when the application loads
   onMount(() => {
     drawChart();
-    window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
   });
 
   // resize chart when data changes

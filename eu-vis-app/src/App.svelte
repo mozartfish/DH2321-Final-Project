@@ -164,7 +164,7 @@
   <!-- render visualization components after all the data is loaded  -->
   <h1>EU Climate Insights</h1>
 
-  <div id="toggle">
+  <!-- <div id="toggle">
     <button
       onclick={() => (isClimateView = true)}
       class={isClimateView ? 'climate-active' : ''}>Climate</button
@@ -173,7 +173,7 @@
       onclick={() => (isClimateView = false)}
       class={!isClimateView ? 'policies-active' : ''}>Policies</button
     >
-  </div>
+  </div> -->
 
   {#if isDataLoaded}
     <section id="overview">

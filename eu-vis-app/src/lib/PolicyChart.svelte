@@ -87,18 +87,26 @@
       centerGroup
         .append('text')
         .attr('class', 'center-name')
-        .attr('y', -24)
-        .style('font-size', '14px')
+        .attr('y', -27)
+        .style('font-size', '18px')
         .style('fill', 'black')
         .text('Total');
 
       centerGroup
         .append('text')
         .attr('class', 'center-value')
-        .attr('y', 24)
+        .attr('y', 19)
         .style('font-size', '50px')
         .style('fill', 'black')
         .text(filteredData.length);
+
+      centerGroup
+        .append('text')
+        .attr('class', 'center-text')
+        .attr('y', 42)
+        .style('font-size', '18px')
+        .style('fill', 'black')
+        .text('policies');
     } else {
       // Update the overall total if needed.
       d3.select(svg)
