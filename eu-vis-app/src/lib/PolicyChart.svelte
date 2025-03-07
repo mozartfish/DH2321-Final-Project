@@ -4,7 +4,7 @@
 
   const { policyData = [], year } = $props();
 
-  let width = 400;
+  let width = 300;
   let radius = width / 2;
   let svg;
 
@@ -87,16 +87,16 @@
       centerGroup
         .append('text')
         .attr('class', 'center-name')
-        .attr('y', -40)
-        .style('font-size', '22px')
+        .attr('y', -24)
+        .style('font-size', '14px')
         .style('fill', 'black')
         .text('Total');
 
       centerGroup
         .append('text')
         .attr('class', 'center-value')
-        .attr('y', 30)
-        .style('font-size', '80px')
+        .attr('y', 24)
+        .style('font-size', '50px')
         .style('fill', 'black')
         .text(filteredData.length);
     } else {
@@ -142,11 +142,11 @@
             d3.select(this)
               .select('text.center-name')
               .text(d.data.name)
-              .style('font-size', '22px');
+              .style('font-size', '14px');
             d3.select(this)
               .select('text.center-value')
               .text(d.data.value)
-              .style('font-size', '80px');
+              .style('font-size', '50px');
             d3.select(this).transition().duration(100).style('opacity', 1);
           });
       })
@@ -220,7 +220,7 @@
 
 <section>
   <svg bind:this={svg}></svg>
-  <button>RESET??</button>
+  <!-- <button>RESET??</button> -->
 </section>
 
 <style>

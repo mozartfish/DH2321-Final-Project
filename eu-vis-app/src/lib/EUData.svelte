@@ -2,6 +2,8 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
+  let extraWidth = $state(0);
+
   // Props
   const {
     allCountriesData = [],
@@ -72,10 +74,12 @@
 
     const svg = d3
       .select('#line-chart')
-      .attr('width', width)
+      .attr('width', width + extraWidth)
       .attr('height', height);
+
     const lineGroup = svg.append('g').attr('class', 'lines');
-    const circleGroup = svg.append('g').attr('class', 'year-indicators');
+    // Removed circleGroup since we'll use a vertical indicator line
+    // const circleGroup = svg.append('g').attr('class', 'year-indicators');
 
     let selectedCountryEUData = formattedData;
     if (selectedCountry) {
@@ -101,7 +105,6 @@
     const allValues = selectedCountryEUValues
       .map((d) => d.value)
       .filter((v) => v !== null);
-
     const allDates = selectedCountryEUValues.map((d) => d.date);
     const dataUnits =
       selectedCountryEUData.length > 0 ? selectedCountryEUData[0].units : '';
@@ -128,6 +131,7 @@
       .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX);
 
+    // Draw line for each selected country
     selectedCountryEUData.forEach((country) => {
       const dateValues = country.yearDataObject
         .map((d) => ({
@@ -143,20 +147,36 @@
         .attr('fill', 'none')
         .attr('stroke', colorScale(country.country))
         .attr('stroke-width', 2.5)
+        .attr('stroke-dasharray', country.country === euCountry ? '5' : 'none')
         .attr('d', line);
     });
 
-    if (selectedCountry) {
-      // create legend
-      const legend = svg
-        .append('g')
-        .attr('class', 'legend')
-        .attr('transform', `translate(${chartWidth - 120}, ${margin})`);
+    // create legend positioned to the right outside the chart area
+    let legendX;
+    const numCountries = selectedCountryEUData.length;
+    if (numCountries > 10) {
+      legendX = width - margin - 40;
+      extraWidth = 140;
+    } else {
+      legendX = width - margin - 50;
+      extraWidth = 0;
+    }
+    const legend = svg
+      .append('g')
+      .attr('class', 'legend')
+      .attr('transform', `translate(${legendX}, ${margin})`);
 
+    if (numCountries > 10) {
+      // split into two columns (balanced)
+      const half = Math.ceil(numCountries / 2);
       selectedCountryEUData.forEach((country, i) => {
+        const col = i < half ? 0 : 1;
+        const row = i < half ? i : i - half;
+        const xOffset = col * 140;
+        const yOffset = row * 20;
         const legendGroup = legend
           .append('g')
-          .attr('transform', `translate(0, ${i * 20})`);
+          .attr('transform', `translate(${xOffset}, ${yOffset})`);
 
         legendGroup
           .append('rect')
@@ -170,23 +190,42 @@
           .attr('y', 10)
           .text(country.country)
           .style('font-size', '12px');
+      });
+    } else {
+      // one column layout
+      selectedCountryEUData.forEach((country, i) => {
+        const xOffset = 0;
+        const yOffset = i * 20;
+        const legendGroup = legend
+          .append('g')
+          .attr('transform', `translate(${xOffset}, ${yOffset})`);
 
-        const yearDataPoint = country.yearDataObject.find(
-          (d) => d.year === year
-        );
+        legendGroup
+          .append('rect')
+          .attr('width', 12)
+          .attr('height', 12)
+          .attr('fill', colorScale(country.country));
 
-        if (yearDataPoint && yearDataPoint.value !== null) {
-          circleGroup
-            .append('circle')
-            .attr('cx', xScale(new Date(year, 0)))
-            .attr('cy', yScale(yearDataPoint.value))
-            .attr('r', 6)
-            .attr('fill', colorScale(country.country))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 2);
-        }
+        legendGroup
+          .append('text')
+          .attr('x', 16)
+          .attr('y', 10)
+          .text(country.country)
+          .style('font-size', '12px');
       });
     }
+
+    // Instead of drawing dots at the selected year's value, draw a vertical line
+    svg
+      .append('line')
+      .attr('x1', xScale(new Date(year, 0)))
+      .attr('x2', xScale(new Date(year, 0)))
+      .attr('y1', margin)
+      .attr('y2', height - margin)
+      .attr('stroke', 'black')
+      .attr('stroke-opacity', 0.3)
+      .attr('stroke-width', 2)
+      .attr('stroke-dasharray', '10');
 
     // Draw axes
     const xAxis = d3
@@ -208,7 +247,6 @@
       .text('Year');
 
     const yAxis = d3.axisLeft(yScale).ticks(10);
-
     svg.append('g').attr('transform', `translate(${margin},0)`).call(yAxis);
 
     svg
@@ -222,5 +260,4 @@
   }
 </script>
 
-<h1>EU COUNTRIES DATA COMPONENT</h1>
 <svg id="line-chart"></svg>

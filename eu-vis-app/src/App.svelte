@@ -259,7 +259,7 @@
         euCountry={EU_COUNTRY}
       />
     {/if}
-    <!-- <PolicyData {policyData} {selectedCountry} {year} /> -->
+    <!-- <PolicyData {policyData} {year} /> -->
   {/if}
 </main>
 
@@ -268,7 +268,7 @@
     width: 500px;
     position: fixed;
     z-index: 100;
-    top: 10px;
+    top: 6px;
     background-color: antiquewhite;
     border-radius: 10px;
     border: 2px solid rgba(0, 0, 0, 0.8);
@@ -338,7 +338,7 @@
   }
 
   h1 {
-    margin-top: 60px;
+    margin-top: 40px;
     text-align: center;
   }
 
