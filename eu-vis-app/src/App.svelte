@@ -251,6 +251,7 @@
         euCountry={EU_COUNTRY}
         {year}
       />
+      <PolicyData {policyData} selectedCountry={selectedCountries[1]} {year} />
     {:else}
       <MultiEUData
         allCountriesData={selectedDataFileData}
