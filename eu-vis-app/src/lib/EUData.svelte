@@ -4,11 +4,11 @@
 
   let extraWidth = $state(0);
 
-  // Props
+  // Props – now selectedCountries is expected to be an array.
   const {
     allCountriesData = [],
     euCountries = [],
-    selectedCountry = null,
+    selectedCountries = ['EU'],
     euCountry = 'EU',
     year
   } = $props();
@@ -22,8 +22,8 @@
 
           const yearDataObject = Object.entries(countryData)
             .filter(([key]) => !['country', 'indicator', 'units'].includes(key))
-            .map(([year, value]) => ({
-              year: Number(year),
+            .map(([yr, value]) => ({
+              year: Number(yr),
               value: value === '' ? null : parseFloat(value)
             }))
             .filter((d) => d.year <= 2022);
@@ -33,12 +33,12 @@
       : []
   );
 
-  // chart dimensions
+  // Chart dimensions
   let width = $state(800);
   let height = $state(500);
   const margin = 60;
 
-  // color scales
+  // Color scale
   const countryColorScale = () => {
     const countries = formattedData.map((d) => d.country);
     const colorRange = countries.map((d, i) =>
@@ -59,14 +59,14 @@
     }
   });
 
-  // window resize
+  // Handle window resize
   function resize() {
     width = window.innerWidth * 0.8;
     height = window.innerHeight * 0.5;
     drawChart();
   }
 
-  // draw line chart
+  // Draw line chart
   function drawChart() {
     if (!formattedData || formattedData.length === 0) return;
     d3.select('#line-chart').selectAll('*').remove();
@@ -78,13 +78,19 @@
       .attr('height', height);
 
     const lineGroup = svg.append('g').attr('class', 'lines');
-    // Removed circleGroup since we'll use a vertical indicator line
-    // const circleGroup = svg.append('g').attr('class', 'year-indicators');
 
-    let selectedCountryEUData = formattedData;
-    if (selectedCountry) {
+    // If selectedCountries is empty or equals [euCountry], show all data.
+    // Otherwise, filter to only show the selected countries plus the EU.
+    let selectedCountryEUData;
+    if (
+      !selectedCountries ||
+      selectedCountries.length === 0 ||
+      (selectedCountries.length === 1 && selectedCountries[0] === euCountry)
+    ) {
+      selectedCountryEUData = formattedData;
+    } else {
       selectedCountryEUData = formattedData.filter(
-        (d) => d.country === selectedCountry || d.country === euCountry
+        (d) => selectedCountries.includes(d.country) || d.country === euCountry
       );
     }
 
@@ -109,7 +115,7 @@
     const dataUnits =
       selectedCountryEUData.length > 0 ? selectedCountryEUData[0].units : '';
 
-    // scales
+    // Scales
     const xScale = d3
       .scaleTime()
       .domain(d3.extent(allDates))
@@ -124,14 +130,14 @@
 
     const colorScale = countryColorScale();
 
-    // line generator
+    // Line generator
     const line = d3
       .line()
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX);
 
-    // Draw line for each selected country
+    // Draw a line for each country in selectedCountryEUData.
     selectedCountryEUData.forEach((country) => {
       const dateValues = country.yearDataObject
         .map((d) => ({
@@ -151,7 +157,7 @@
         .attr('d', line);
     });
 
-    // create legend positioned to the right outside the chart area
+    // Create legend positioned to the right outside the chart area.
     let legendX;
     const numCountries = selectedCountryEUData.length;
     if (numCountries > 10) {
@@ -167,7 +173,7 @@
       .attr('transform', `translate(${legendX}, ${margin})`);
 
     if (numCountries > 10) {
-      // split into two columns (balanced)
+      // Split into two columns.
       const half = Math.ceil(numCountries / 2);
       selectedCountryEUData.forEach((country, i) => {
         const col = i < half ? 0 : 1;
@@ -192,7 +198,7 @@
           .style('font-size', '12px');
       });
     } else {
-      // one column layout
+      // One column layout.
       selectedCountryEUData.forEach((country, i) => {
         const xOffset = 0;
         const yOffset = i * 20;
@@ -215,7 +221,7 @@
       });
     }
 
-    // Instead of drawing dots at the selected year's value, draw a vertical line
+    // Draw a vertical line at the selected year.
     svg
       .append('line')
       .attr('x1', xScale(new Date(year, 0)))
@@ -227,7 +233,7 @@
       .attr('stroke-width', 2)
       .attr('stroke-dasharray', '10');
 
-    // Draw axes
+    // Draw axes.
     const xAxis = d3
       .axisBottom(xScale)
       .tickFormat(d3.timeFormat('%Y'))

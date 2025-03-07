@@ -28,7 +28,7 @@
   // selected file - the csv file that is selected by the user
   let selectedFile = $state('');
   // selectedCountries - the countries that are selected by the user
-  let selectedCountries = $state([]);
+  let selectedCountries = $state(['EU']);
   // selectEU - select all the data related to the EU
   let selectEU = $state(EU_COUNTRY);
   // selectedDataFile Data - all the data associated with the data file selected by the user
@@ -95,7 +95,7 @@
   function dataOnLoad() {
     if (allData.length > 0) {
       selectedFile = allData[0].file;
-      selectedCountries = [EU_COUNTRIES[0]];
+      selectedCountries = ['EU'];
       selectData();
     }
   }
@@ -150,6 +150,7 @@
   // for printing and debugging
   $effect(() => {
     console.log('EU COUNTRIES : ', EU_COUNTRIES);
+    console.log('"OFEUEWPOIEFOJOIWEFJ', selectedCountries)
   });
 </script>
 
@@ -180,7 +181,7 @@
     <section id="overview">
       <section id="presenter">
         <section id="map">
-          <EUMap
+          <!-- <EUMap
             countries={EU_COUNTRIES}
             allCountriesData={selectedDataFileData}
             onCountrySelect={handleCountrySelect}
@@ -188,9 +189,16 @@
             {year}
             {comparisonMode}
             {resetChecked}
+          /> -->
+          <EUMap
+            countries={EU_COUNTRIES}
+            allCountriesData={selectedDataFileData}
+            onCountrySelect={handleCountrySelect}
+            {selectedFile}
+            {year}
           />
           <!-- Button -->
-          <button
+          <!-- <button
             onclick={toggleComparisonMode}
             style="
               padding: 8px 16px;
@@ -207,13 +215,12 @@
               ? 'Switch to Single Country View'
               : 'Switch to Comparison View'}
           </button>
-          <!-- New checkbox for resetting countries -->
+          
           {#if comparisonMode}
-            <!-- Reset button -->
             <button onclick={resetCountries} class="reset-button">
               Deselect all
             </button>
-          {/if}
+          {/if} -->
         </section>
         <section id="pol-sec">
           <select bind:value={selectedFile} onchange={selectData}>
@@ -244,10 +251,18 @@
       <Slider bind:year />
     </section>
     {#if !comparisonMode}
-      <EUData
+      <!-- <EUData
         allCountriesData={selectedDataFileData}
         euCountries={EU_COUNTRIES}
         selectedCountry={selectedCountries[1]}
+        euCountry={EU_COUNTRY}
+        {year}
+      /> -->
+
+      <EUData
+        allCountriesData={selectedDataFileData}
+        euCountries={EU_COUNTRIES}
+        {selectedCountries}
         euCountry={EU_COUNTRY}
         {year}
       />

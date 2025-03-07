@@ -33,6 +33,7 @@
     text-align: center;
     font-size: 62px;
     color: #df40a2;
+    margin-bottom: -12px;
   }
   #slider {
     width: 50%;

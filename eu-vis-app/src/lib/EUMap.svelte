@@ -7,23 +7,37 @@
     allCountriesData = [],
     onCountrySelect,
     selectedFile,
-    year,
-    comparisonMode,
-    resetChecked
+    year
   } = $props();
 
   let euGeoData;
   let width = 400;
-  let height = 500;
+  let height = 550;
   let selectedCountries = $state(['EU']);
-  let selectedCountry = $derived(selectedCountries[selectedCountries.length - 1]);
-  let labelColor = $state('');
+  let lastSelectedCountry = $state('EU');
+  let labelColor = $state('black');
   let selectedYear = $state('');
 
+  // Global variables to hold projection and path for use in label placement.
+  let projection;
+  let path;
+
+  // Update lastSelectedCountry and its color whenever the selection changes.
   $effect(() => {
-    if (comparisonMode !== undefined || resetChecked !== undefined) {
-      selectedCountries = ['EU'];
-      console.log('debug 12 :', resetChecked);
+    if (selectedCountries && selectedCountries.length > 0) {
+      lastSelectedCountry = selectedCountries[selectedCountries.length - 1];
+    } else {
+      lastSelectedCountry = 'EU';
+    }
+    if (lastSelectedCountry !== 'EU') {
+      const countryColorScale = createCountryColorScale();
+      if (countryColorScale) {
+        labelColor = countryColorScale(lastSelectedCountry);
+      } else {
+        labelColor = 'black';
+      }
+    } else {
+      labelColor = 'black';
     }
   });
 
@@ -93,8 +107,33 @@
       }
       return '#F04A00';
     });
+
+    // Remove any previous labels.
+    svg.selectAll('.country-label').remove();
+
+    // Add a text label on each selected country.
+    selectedCountries.forEach((countryName) => {
+      const feature = euGeoData.features.find(
+        (f) => f.properties.NAME === countryName
+      );
+      if (feature) {
+        const centroid = path.centroid(feature);
+        svg
+          .append('text')
+          .attr('class', 'country-label')
+          .attr('x', centroid[0])
+          .attr('y', centroid[1])
+          .attr('text-anchor', 'middle')
+          .attr('dy', '.35em')
+          .text(countryName)
+          .style('font-size', '14px')
+          .style('fill', 'black')
+          .style('pointer-events', 'none');
+      }
+    });
+
     createLegend(heatmapColorScale);
-    console.log('debug 14', selectedCountries);
+    console.log('Selected countries:', selectedCountries);
   }
 
   function createLegend(colorScale) {
@@ -161,26 +200,12 @@
   });
 
   function drawMap() {
-    const projection = d3.geoMercator().fitSize([width, height], euGeoData);
-    const path = d3.geoPath().projection(projection);
+    projection = d3.geoMercator().fitSize([width, height], euGeoData);
+    path = d3.geoPath().projection(projection);
     const svg = d3
       .select('#eu-map')
       .attr('width', width)
       .attr('height', height);
-
-    // Add a transparent rectangle that resets the selection when clicked
-    svg
-      .append('rect')
-      .attr('width', width)
-      .attr('height', height)
-      .attr('fill', 'transparent')
-      .lower()
-      .on('click', () => {
-        selectedCountries = ['EU'];
-        labelColor = ''; // Reset the label color
-        updateMapColors();
-        if (onCountrySelect) onCountrySelect(selectedCountries);
-      });
 
     svg
       .selectAll('path')
@@ -200,24 +225,17 @@
   function handleCountryClick(event, d) {
     event.stopPropagation();
     const countryName = d.properties.NAME;
-    if (comparisonMode) {
-      if (selectedCountries.includes(countryName)) {
-        selectedCountries = selectedCountries.filter((c) => c !== countryName);
-      } else {
-        selectedCountries = [...selectedCountries, countryName];
-      }
+    if (selectedCountries.includes(countryName)) {
+      selectedCountries = selectedCountries.filter((c) => c !== countryName);
     } else {
-      if (selectedCountries[1] === countryName) {
-        selectedCountries = ['EU'];
-        labelColor = ''; // Reset the text color on deselection
-      } else {
-        selectedCountries = ['EU', countryName];
-        const countryColorScale = createCountryColorScale();
-        if (countryColorScale) {
-          labelColor = countryColorScale(countryName);
-        }
-      }
+      selectedCountries = [...selectedCountries, countryName];
     }
+    updateMapColors();
+    if (onCountrySelect) onCountrySelect(selectedCountries);
+  }
+
+  function resetSelection() {
+    selectedCountries = ['EU'];
     updateMapColors();
     if (onCountrySelect) onCountrySelect(selectedCountries);
   }
@@ -237,12 +255,11 @@
 <section>
   <h3>Heatmap for dataset: {selectedFile}</h3>
   <div class="map-container">
-    <h2 style="color: {labelColor}">
-      {selectedCountry || 'EU'}
-    </h2>
+    <h2 style="color: {labelColor}">{lastSelectedCountry}</h2>
     <svg id="eu-map"></svg>
     <div id="legend-container"></div>
   </div>
+  <button on:click={resetSelection}>RESET</button>
 </section>
 
 <style>
@@ -263,5 +280,31 @@
     position: absolute;
     top: 70px;
     left: 0;
+  }
+
+  button {
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition-property: box-shadow, transform, background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  button:hover {
+    box-shadow: 0px 0px 0px 0px black;
+    transform: translate(2px, 2px);
+  }
+
+  button:active {
+    transform: translate(2px, 4px);
   }
 </style>
