@@ -8,16 +8,28 @@
     allCountriesData = [],
     onCountrySelect,
     selectedFile,
-    year
+    year,
+    comparisonMode,
+    resetChecked
   } = $props();
 
   // State variables
   let euGeoData;
   let width = 400;
   let height = 500;
-  let selectedCountry = $state(null);
+  let selectedCountries = $state(['EU']);
+  let selectedCountry = $derived(
+    selectedCountries[selectedCountries.length - 1]
+  );
   let labelColor = $state('');
   let selectedYear = $state('');
+
+  $effect(() => {
+    if (comparisonMode !== undefined || resetChecked !== undefined) {
+      selectedCountries = ['EU'];
+      console.log('debug 12 :', resetChecked);
+    }
+  });
 
   // update selected year when the year slider changes
   $effect(() => {
@@ -93,7 +105,7 @@
     const svg = d3.select('#eu-map');
     svg.selectAll('path').attr('fill', (d) => {
       const countryName = d.properties.NAME;
-      if (selectedCountry === countryName) {
+      if (selectedCountries.includes(countryName)) {
         return countryColorScale(countryName);
       }
       const countryData = allCountriesData.find(
@@ -107,6 +119,8 @@
     });
 
     createLegend(heatmapColorScale);
+
+    console.log('debug 14', selectedCountries);
   }
 
   // heatmap legend
@@ -215,18 +229,29 @@
   function handleCountryClick(event, d) {
     const countryName = d.properties.NAME;
 
-    if (selectedCountry === countryName) {
-      // deselect country if it is selected
-      selectedCountry = null;
-      labelColor = '';
+    if (comparisonMode) {
+      // Toggle selection logic
+      if (selectedCountries.includes(countryName)) {
+        // If already selected, remove it (deselect)
+        selectedCountries = selectedCountries.filter((c) => c !== countryName);
+      } else {
+        // If not selected, add it to selection
+        selectedCountries = [...selectedCountries, countryName];
+      }
     } else {
-      // select new country
-      selectedCountry = countryName;
+      if (selectedCountries[1] === countryName) {
+        // deselect country if it is selected
+        selectedCountries[0] = 'EU';
+        labelColor = '';
+      } else {
+        // select new country
+        selectedCountries[1] = countryName;
 
-      // apply color scale to selected country
-      const countryColorScale = createCountryColorScale();
-      if (countryColorScale) {
-        labelColor = countryColorScale(countryName);
+        // apply color scale to selected country
+        const countryColorScale = createCountryColorScale();
+        if (countryColorScale) {
+          labelColor = countryColorScale(countryName);
+        }
       }
     }
 
@@ -235,7 +260,7 @@
 
     // if callback provided, call the callback function
     if (onCountrySelect) {
-      onCountrySelect(selectedCountry);
+      onCountrySelect(selectedCountries);
     }
   }
 

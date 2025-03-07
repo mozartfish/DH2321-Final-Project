@@ -10,7 +10,7 @@
   import PolicyData from './lib/PolicyData.svelte';
   import EUData from './lib/EUData.svelte';
   import BarChart from './lib/BarChart.svelte';
-
+  import MultiEUData from './lib/MultiEUData.svelte';
 
   // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
@@ -27,14 +27,17 @@
   let policyData = $state([]);
   // selected file - the csv file that is selected by the user
   let selectedFile = $state('');
-  // selectedCountry - the country that is selected by the user
-  let selectedCountry = $state(null);
+  // selectedCountries - the countries that are selected by the user
+  let selectedCountries = $state([]);
   // selectEU - select all the data related to the EU
   let selectEU = $state(EU_COUNTRY);
   // selectedDataFile Data - all the data associated with the data file selected by the user
   let selectedDataFileData = $state([]);
   // boolean for checking whether all the data is loaded and when to start rendering the visualization
   let isDataLoaded = $state(false);
+  // toggle for comparison mode
+  let comparisonMode = $state(false);
+  let resetChecked = $state(false);
 
   let year = $state(2022);
 
@@ -92,6 +95,7 @@
   function dataOnLoad() {
     if (allData.length > 0) {
       selectedFile = allData[0].file;
+      selectedCountries = [EU_COUNTRIES[0]];
       selectData();
     }
   }
@@ -113,7 +117,7 @@
 
   // callback for handling country selection from map
   function handleCountrySelect(data) {
-    selectedCountry = data;
+    selectedCountries = data;
     selectData();
   }
 
@@ -121,6 +125,18 @@
     selectedFile = file;
     console.log('selectedFile :', selectedFile);
     selectData();
+  }
+
+  // Toggle between single and comparison modes
+  function toggleComparisonMode() {
+    comparisonMode = !comparisonMode;
+    selectedCountries = ['EU'];
+  }
+
+  // Deselect all the countries in the comparison mode
+  function resetCountries() {
+    selectedCountries = ['EU'];
+    resetChecked = !resetChecked;
   }
 
   // load the csv data, policy data, and initialize visualization when the app loads
@@ -170,7 +186,34 @@
             onCountrySelect={handleCountrySelect}
             {selectedFile}
             {year}
+            {comparisonMode}
+            {resetChecked}
           />
+          <!-- Button -->
+          <button
+            onclick={toggleComparisonMode}
+            style="
+              padding: 8px 16px;
+              border-radius: 9999px;
+              transition: all 0.3s ease;
+              border: none;
+              cursor: pointer;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              background-color: ${comparisonMode ? '#3B82F6' : '#E5E7EB'};
+              color: ${comparisonMode ? 'white' : 'black'};
+            "
+          >
+            {comparisonMode
+              ? 'Switch to Single Country View'
+              : 'Switch to Comparison View'}
+          </button>
+          <!-- New checkbox for resetting countries -->
+          {#if comparisonMode}
+            <!-- Reset button -->
+            <button onclick={resetCountries} class="reset-button">
+              Deselect all
+            </button>
+          {/if}
         </section>
         <section id="pol-sec">
           <select bind:value={selectedFile} onchange={selectData}>
@@ -183,7 +226,8 @@
             {allData}
             {handleDataSelect}
             {selectedFile}
-            {selectedCountry}
+            selectedCountry={selectedCountries[selectedCountries.length - 1] ||
+              'EU'}
             {year}
           />
           <PolicyChart {policyData} {year} />
@@ -199,13 +243,22 @@
       </section>
       <Slider bind:year />
     </section>
-    <EUData
-      allCountriesData={selectedDataFileData}
-      euCountries={EU_COUNTRIES}
-      {selectedCountry}
-      euCountry={EU_COUNTRY}
-      {year}
-    />
+    {#if !comparisonMode}
+      <EUData
+        allCountriesData={selectedDataFileData}
+        euCountries={EU_COUNTRIES}
+        selectedCountry={selectedCountries[1]}
+        euCountry={EU_COUNTRY}
+        {year}
+      />
+    {:else}
+      <MultiEUData
+        allCountriesData={selectedDataFileData}
+        euCountries={EU_COUNTRIES}
+        {selectedCountries}
+        euCountry={EU_COUNTRY}
+      />
+    {/if}
     <!-- <PolicyData {policyData} {selectedCountry} {year} /> -->
   {/if}
 </main>
