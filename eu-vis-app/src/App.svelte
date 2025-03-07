@@ -148,7 +148,7 @@
 
   // for printing and debugging
   $effect(() => {
-    console.log("APP DATA MIN", dataMin);
+    console.log('APP DATA MIN', dataMin);
   });
 </script>
 
@@ -179,15 +179,6 @@
     <section id="overview">
       <section id="presenter">
         <section id="map">
-          <!-- <EUMap
-            countries={EU_COUNTRIES}
-            allCountriesData={selectedDataFileData}
-            onCountrySelect={handleCountrySelect}
-            {selectedFile}
-            {year}
-            {comparisonMode}
-            {resetChecked}
-          /> -->
           <EUMap
             countries={EU_COUNTRIES}
             allCountriesData={selectedDataFileData}
@@ -195,76 +186,40 @@
             {selectedFile}
             {year}
           />
-          <!-- Button -->
-          <!-- <button
-            onclick={toggleComparisonMode}
-            style="
-              padding: 8px 16px;
-              border-radius: 9999px;
-              transition: all 0.3s ease;
-              border: none;
-              cursor: pointer;
-              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-              background-color: ${comparisonMode ? '#3B82F6' : '#E5E7EB'};
-              color: ${comparisonMode ? 'white' : 'black'};
-            "
-          >
-            {comparisonMode
-              ? 'Switch to Single Country View'
-              : 'Switch to Comparison View'}
-          </button>
-          
-          {#if comparisonMode}
-            <button onclick={resetCountries} class="reset-button">
-              Deselect all
-            </button>
-          {/if} -->
         </section>
-        <section id="pol-sec">
-          <select bind:value={selectedFile} onchange={selectData}>
+
+        <section id="graphs">
+          <!-- <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
               <option value={d.file}>{d.file}</option>
             {/each}
-          </select>
+          </select> -->
+          <section id="pol-sec">
+            <BarChart
+              {allData}
+              {handleDataSelect}
+              {selectedFile}
+              selectedCountry={selectedCountries[
+                selectedCountries.length - 1
+              ] || 'EU'}
+              {year}
+            />
+            <PolicyChart {policyData} {year} />
+          </section>
 
-          <BarChart
-            {allData}
-            {handleDataSelect}
-            {selectedFile}
-            selectedCountry={selectedCountries[selectedCountries.length - 1] ||
-              'EU'}
+          <EUData
+            allCountriesData={selectedDataFileData}
+            euCountries={EU_COUNTRIES}
+            {selectedCountries}
+            euCountry={EU_COUNTRY}
             {year}
+            bind:dataMin
           />
-          <PolicyChart {policyData} {year} />
         </section>
-
-        <!-- <CountryData
-      countryData={selectedCountryData}
-      country={selectedCountry}
-      euData={selectedEUData}
-      eu={selectEU}
-      {policyData}
-    /> -->
       </section>
       <Slider bind:year {dataMin} />
     </section>
     {#if !comparisonMode}
-      <!-- <EUData
-        allCountriesData={selectedDataFileData}
-        euCountries={EU_COUNTRIES}
-        selectedCountry={selectedCountries[1]}
-        euCountry={EU_COUNTRY}
-        {year}
-      /> -->
-
-      <EUData
-        allCountriesData={selectedDataFileData}
-        euCountries={EU_COUNTRIES}
-        {selectedCountries}
-        euCountry={EU_COUNTRY}
-        {year}
-        bind:dataMin
-      />
       <PolicyData {policyData} {selectedCountries} {year} />
     {:else}
       <MultiEUData
@@ -374,7 +329,7 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
   }
 
   #map {
@@ -386,16 +341,24 @@
     background-color: white;
   }
 
-  #pol-sec {
-    width: 50%;
+  #graphs {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
   }
 
-  #pol-sec select {
+  #pol-sec {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #graphs select {
     padding: 12px 12px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     border-radius: 10px;

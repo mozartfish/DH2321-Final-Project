@@ -36,8 +36,8 @@
 
   // Chart dimensions
   let width = $state(800);
-  let height = $state(500);
-  const margin = 60;
+  let height = $state(250);
+  const margin = 50;
 
   // Color scale
   const countryColorScale = () => {
@@ -170,10 +170,10 @@
     let legendX;
     const numCountries = selectedCountryEUData.length;
     if (numCountries > 10) {
-      legendX = width - margin - 40;
+      legendX = width - margin - 16;
       extraWidth = 140;
     } else {
-      legendX = width - margin - 50;
+      legendX = width - margin - 18;
       extraWidth = 0;
     }
     const legend = svg
@@ -275,4 +275,21 @@
   }
 </script>
 
-<svg id="line-chart"></svg>
+<section>
+  <svg id="line-chart"></svg>
+</section>
+
+<style>
+  section {
+    width: 1000px;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    align-items: stretch;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
