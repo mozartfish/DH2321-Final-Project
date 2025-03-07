@@ -5,12 +5,13 @@
   let extraWidth = $state(0);
 
   // Props – now selectedCountries is expected to be an array.
-  const {
+  let {
     allCountriesData = [],
     euCountries = [],
     selectedCountries = ['EU'],
     euCountry = 'EU',
-    year
+    year,
+    dataMin = $bindable()
   } = $props();
 
   let formattedData = $derived(
@@ -56,6 +57,14 @@
   $effect(() => {
     if (formattedData.length > 0) {
       drawChart();
+      const minYear = d3.min(formattedData, (d) =>
+        d3.min(
+          d.yearDataObject.filter((y) => y.value !== null),
+          (y) => y.year
+        )
+      );
+      dataMin = minYear;
+      console.log('dataMin', dataMin);
     }
   });
 
@@ -120,7 +129,7 @@
       .scaleTime()
       .domain(d3.extent(allDates))
       .range([margin, chartWidth])
-      .nice();
+      .nice(d3.timeYear.every(1));
 
     const yScale = d3
       .scaleLinear()

@@ -1,12 +1,13 @@
 <script>
   import RangeSlider from 'svelte-range-slider-pips';
 
-  let { year = $bindable() } = $props();
+  let { year = $bindable(), dataMin } = $props();
 
   let values = $state([year]);
 
   $effect(() => {
     values = [year];
+    console.log("SLIDER DATA MIN", dataMin);
   });
 
   $effect(() => {
@@ -18,14 +19,22 @@
 
 <div id="slider">
   <h2>{year}</h2>
-  <RangeSlider
+  <!-- <RangeSlider
     pips
     first="label"
     last="label"
     min={2000}
     max={2022}
     bind:values
-  />
+  /> -->
+  <RangeSlider
+  pips
+  first="label"
+  last="label"
+  min={dataMin}
+  max={2022}
+  bind:values
+/>
 </div>
 
 <style>

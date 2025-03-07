@@ -217,9 +217,38 @@
       .attr('stroke', 'black')
       .attr('stroke-width', 0.4)
       .style('cursor', 'pointer')
-      .on('click', handleCountryClick);
+      .on('click', handleCountryClick)
+      .on('mouseover', handleCountryHover)
+      .on('mouseout', handleCountryHoverOut);
 
     updateMapColors();
+  }
+
+  function handleCountryHover(event, d) {
+    const svg = d3.select('#eu-map');
+    // Remove any existing hover labels
+    svg.selectAll('.hover-label').remove();
+    const feature = d;
+    const countryName = feature.properties.NAME;
+    if (feature) {
+      const centroid = path.centroid(feature);
+      svg
+        .append('text')
+        .attr('class', 'hover-label')
+        .attr('x', centroid[0])
+        .attr('y', centroid[1])
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .text(countryName)
+        .style('font-size', '14px')
+        .style('fill', 'black')
+        .style('pointer-events', 'none');
+    }
+  }
+
+  function handleCountryHoverOut(event, d) {
+    const svg = d3.select('#eu-map');
+    svg.selectAll('.hover-label').remove();
   }
 
   function handleCountryClick(event, d) {
@@ -253,7 +282,7 @@
 </script>
 
 <section>
-  <h3>Heatmap for dataset: {selectedFile}</h3>
+  <!-- <h3>Heatmap for dataset: {selectedFile}</h3> -->
   <div class="map-container">
     <h2 style="color: {labelColor}">{lastSelectedCountry}</h2>
     <svg id="eu-map"></svg>

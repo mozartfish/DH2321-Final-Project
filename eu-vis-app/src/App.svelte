@@ -40,6 +40,7 @@
   let resetChecked = $state(false);
 
   let year = $state(2022);
+  let dataMin = $state(2000);
 
   let isClimateView = $state(true);
 
@@ -72,15 +73,14 @@
       for (const country_data of parsedData) {
         countrySet.add(country_data.country);
       }
-      const fileName = path
-        .replace('/src/data/', '')
-        .replace('.csv', '')
-        .replace(/_/g, ' ');
-      tempData.push({ file: fileName, data: parsedData });
+
+      const title = parsedData[0]?.title;
+
+      // file name is the "title" column in the csv file
+      console.log('parsedData:', parsedData);
+      tempData.push({ file: title, data: parsedData });
     }
 
-    console.log('temp data: ', tempData);
-    console.log('countrySet: ', countrySet);
     allData = tempData;
     // set of countries that belong to the EU + EU data name
     EU_COUNTRIES = [...countrySet];
@@ -123,7 +123,6 @@
 
   function handleDataSelect(file) {
     selectedFile = file;
-    console.log('selectedFile :', selectedFile);
     selectData();
   }
 
@@ -149,8 +148,7 @@
 
   // for printing and debugging
   $effect(() => {
-    console.log('EU COUNTRIES : ', EU_COUNTRIES);
-    console.log('"OFEUEWPOIEFOJOIWEFJ', selectedCountries)
+    console.log("APP DATA MIN", dataMin);
   });
 </script>
 
@@ -248,7 +246,7 @@
       {policyData}
     /> -->
       </section>
-      <Slider bind:year />
+      <Slider bind:year {dataMin} />
     </section>
     {#if !comparisonMode}
       <!-- <EUData
@@ -265,8 +263,9 @@
         {selectedCountries}
         euCountry={EU_COUNTRY}
         {year}
+        bind:dataMin
       />
-      <PolicyData {policyData} selectedCountry={selectedCountries[1]} {year} />
+      <PolicyData {policyData} {selectedCountries} {year} />
     {:else}
       <MultiEUData
         allCountriesData={selectedDataFileData}

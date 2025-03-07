@@ -47,9 +47,9 @@
     d3.select(chartContainer).selectAll('*').remove();
     const data = extractEUData();
 
-    const margin = { top: 24, right: 24, bottom: 20, left: 80 };
+    const margin = { top: 24, right: 24, bottom: 20, left: 120 };
     const width = 450 - margin.left - margin.right;
-    const height = 240 - margin.top - margin.bottom;
+    const height = 260 - margin.top - margin.bottom;
 
     const svg = d3
       .select(chartContainer)
@@ -67,7 +67,7 @@
       .padding(0.1);
 
     // X scale fixed to [-1, 1]
-    const x = d3.scaleLinear().domain([-1, 1]).range([0, width]);
+    const x = d3.scaleLinear().domain([-1, 1]).range([10, width]);
 
     // X-axis
     svg
@@ -80,7 +80,8 @@
       .append('g')
       .call(d3.axisLeft(y))
       .selectAll('text')
-      .style('text-anchor', 'end');
+      .style('text-anchor', 'end')
+      .attr('dx', '-0.5em')
 
     // Vertical line at x=0
     svg
