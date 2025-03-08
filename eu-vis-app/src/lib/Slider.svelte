@@ -7,7 +7,7 @@
 
   $effect(() => {
     values = [year];
-    console.log("SLIDER DATA MIN", dataMin);
+    console.log('SLIDER DATA MIN', dataMin);
   });
 
   $effect(() => {
@@ -27,26 +27,34 @@
     max={2022}
     bind:values
   /> -->
-  <RangeSlider
-  pips
-  first="label"
-  last="label"
-  min={dataMin}
-  max={2022}
-  bind:values
-/>
+  <div class="container">
+    <RangeSlider
+      pips
+      first="label"
+      last="label"
+      min={dataMin}
+      max={2022}
+      bind:values
+    />
+  </div>
 </div>
 
 <style>
   h2 {
     text-align: center;
-    font-size: 62px;
+    font-size: 35px;
     color: #df40a2;
     margin-bottom: -12px;
   }
   #slider {
     width: 50%;
-    margin: 0 auto;
+    margin: 10px;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    background-color: white;
+  }
+  .container {
+    scale: 0.9;
   }
 
   :root {

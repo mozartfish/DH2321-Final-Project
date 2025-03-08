@@ -47,7 +47,7 @@
     d3.select(chartContainer).selectAll('*').remove();
     const data = extractEUData();
 
-    const margin = { top: 24, right: 24, bottom: 20, left: 120 };
+    const margin = { top: 40, right: 24, bottom: 35, left: 120 };
     const width = 450 - margin.left - margin.right;
     const height = 260 - margin.top - margin.bottom;
 
@@ -75,13 +75,27 @@
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(x));
 
-    // Y-axis
     svg
-      .append('g')
-      .call(d3.axisLeft(y))
-      .selectAll('text')
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('x', width / 2)
+      .attr('y', height + margin.bottom - 1)
+      .style('font-size', '14px')
+      .style('font-weight', 'bold')
+      .text('Score');
+
+    // Y-axis with class for each tick text
+    const yAxis = svg.append('g').call(d3.axisLeft(y));
+
+    // Add a unique class to each y-axis label based on the file name
+    yAxis
+      .selectAll('.tick text')
+      .attr(
+        'class',
+        (d) => `file-label-${d.replace(/\s+/g, '-').replace(/[^\w-]/g, '')}`
+      )
       .style('text-anchor', 'end')
-      .attr('dx', '-0.5em')
+      .attr('dx', '-0.5em');
 
     // Vertical line at x=0
     svg
@@ -100,6 +114,9 @@
       const barY = yPos + (rowHeight - barHeight) / 2;
       const barX = x(Math.min(0, item.mean));
       const barWidth = Math.abs(x(item.mean) - x(0));
+
+      // Create a unique CSS-safe class name from the file name
+      const fileClass = item.file.replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
       // Create a group for the row
       const rowGroup = svg.append('g').attr('class', 'row-group');
@@ -127,10 +144,19 @@
         })
         .on('mouseover', function () {
           rowGroup.select('.bar').attr('fill', '#F49C12');
+          // Make the corresponding y-axis label bold
+          d3.select(`.file-label-${fileClass}`).style('font-weight', 'bold');
         })
         .on('mouseout', function () {
           if (!isclicked || item.file !== selectedFileBar) {
             rowGroup.select('.bar').attr('fill', '#26AE60');
+          }
+          // Reset the y-axis label to normal weight unless it's the selected file
+          if (item.file !== selectedFileBar) {
+            d3.select(`.file-label-${fileClass}`).style(
+              'font-weight',
+              'normal'
+            );
           }
         });
 
@@ -171,14 +197,26 @@
       })
       .attr('fill', '#F49C12');
 
+    // Make the already-selected file's label bold
+    if (selectedFileBar) {
+      const selectedFileClass = selectedFileBar
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]/g, '');
+      d3.select(`.file-label-${selectedFileClass}`).style(
+        'font-weight',
+        'bold'
+      );
+    }
+
     // Title
     svg
       .append('text')
-      .attr('x', width / 2)
+      .attr('x', width / 2 - 30)
       .attr('y', 0 - margin.top / 2)
       .attr('text-anchor', 'middle')
-      .style('font-size', '16px')
-      .text(`${selectedCountryBar} ${year}`);
+      .style('font-size', '24px')
+      .style('font-weight', 'bold')
+      .text(selectedCountryBar + ' scores for year ' + year);
   }
 
   $effect(() => {
@@ -200,7 +238,7 @@
     align-items: center;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    padding: 60px;
     background-color: white;
   }
 </style>

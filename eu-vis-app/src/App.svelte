@@ -162,7 +162,6 @@
     </div>
   </nav>
   <!-- render visualization components after all the data is loaded  -->
-  <h1>EU Climate Insights</h1>
 
   <!-- <div id="toggle">
     <button
@@ -214,12 +213,13 @@
             euCountry={EU_COUNTRY}
             {year}
             bind:dataMin
+            {selectedFile}
           />
         </section>
       </section>
       <Slider bind:year {dataMin} />
     </section>
-    {#if !comparisonMode}
+    <!-- {#if !comparisonMode}
       <EUData
         allCountriesData={selectedDataFileData}
         euCountries={EU_COUNTRIES}
@@ -228,7 +228,6 @@
         {year}
         bind:dataMin
       />
-      <PolicyData {policyData} {selectedCountries} {year} />
     {:else}
       <MultiEUData
         allCountriesData={selectedDataFileData}
@@ -236,7 +235,8 @@
         {selectedCountries}
         euCountry={EU_COUNTRY}
       />
-    {/if}
+    {/if} -->
+    <PolicyData {policyData} {selectedCountries} {year} />
   {/if}
 </main>
 
@@ -314,11 +314,6 @@
     gap: 20px;
   }
 
-  h1 {
-    margin-top: 40px;
-    text-align: center;
-  }
-
   #overview {
     display: flex;
     flex-direction: column;
@@ -329,6 +324,7 @@
     /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */
     padding: 10px;
     background-color: antiquewhite;
+    height: 882px;
   }
 
   #presenter {

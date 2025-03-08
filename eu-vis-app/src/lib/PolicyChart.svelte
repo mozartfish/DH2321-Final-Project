@@ -87,7 +87,7 @@
       centerGroup
         .append('text')
         .attr('class', 'center-name')
-        .attr('y', -27)
+        .attr('y', -40)
         .style('font-size', '18px')
         .style('fill', 'black')
         .text('Total');
@@ -95,7 +95,7 @@
       centerGroup
         .append('text')
         .attr('class', 'center-value')
-        .attr('y', 19)
+        .attr('y', 8)
         .style('font-size', '50px')
         .style('fill', 'black')
         .text(filteredData.length);
@@ -103,16 +103,29 @@
       centerGroup
         .append('text')
         .attr('class', 'center-text')
-        .attr('y', 42)
+        .attr('y', 33)
         .style('font-size', '18px')
         .style('fill', 'black')
         .text('policies');
+
+      centerGroup
+        .append('text')
+        .attr('class', 'center-year')
+        .attr('y', 55)
+        .style('font-size', '18px')
+        .style('fill', 'black')
+        .text('in ' + year);
     } else {
       // Update the overall total if needed.
       d3.select(svg)
         .select('g.center-text')
         .select('text.center-value')
         .text(filteredData.length);
+
+      d3.select(svg)
+        .select('g.center-text')
+        .select('text.center-year')
+        .text('in ' + year);
     }
 
     const paths = container

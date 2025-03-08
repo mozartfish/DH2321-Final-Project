@@ -3,6 +3,8 @@
   import * as d3 from 'd3';
 
   let extraWidth = $state(0);
+  let extraHeight = $state(0);
+  let currentLegendPage = $state(0); // Track current legend page
 
   // Props – now selectedCountries is expected to be an array.
   let {
@@ -11,7 +13,8 @@
     selectedCountries = ['EU'],
     euCountry = 'EU',
     year,
-    dataMin = $bindable()
+    dataMin = $bindable(),
+    selectedFile = ''
   } = $props();
 
   let formattedData = $derived(
@@ -37,7 +40,11 @@
   // Chart dimensions
   let width = $state(800);
   let height = $state(250);
-  const margin = 50;
+  const margin = 65;
+
+  // Legend pagination variables
+  let totalLegendPages = $state(1);
+  let itemsPerPage = $state(7);
 
   // Color scale
   const countryColorScale = () => {
@@ -66,11 +73,19 @@
     }
   });
 
-  // Handle window resize
-  function resize() {
-    width = window.innerWidth * 0.8;
-    height = window.innerHeight * 0.5;
-    drawChart();
+  // Navigation functions for legend pagination
+  function nextLegendPage() {
+    if (currentLegendPage < totalLegendPages - 1) {
+      currentLegendPage++;
+      drawChart();
+    }
+  }
+
+  function prevLegendPage() {
+    if (currentLegendPage > 0) {
+      currentLegendPage--;
+      drawChart();
+    }
   }
 
   // Draw line chart
@@ -78,13 +93,6 @@
     if (!formattedData || formattedData.length === 0) return;
     d3.select('#line-chart').selectAll('*').remove();
     const chartWidth = width - margin * 2;
-
-    const svg = d3
-      .select('#line-chart')
-      .attr('width', width + extraWidth)
-      .attr('height', height);
-
-    const lineGroup = svg.append('g').attr('class', 'lines');
 
     // If selectedCountries is empty or equals [euCountry], show all data.
     // Otherwise, filter to only show the selected countries plus the EU.
@@ -100,6 +108,66 @@
         (d) => selectedCountries.includes(d.country) || d.country === euCountry
       );
     }
+
+    // Calculate pagination for legend
+    const numCountries = selectedCountryEUData.length;
+    if (numCountries <= 7) {
+      itemsPerPage = 7;
+      totalLegendPages = 1;
+      currentLegendPage = 0;
+    } else {
+      itemsPerPage = 7; // Show 7 items per page
+      totalLegendPages = Math.ceil(numCountries / itemsPerPage);
+
+      // Ensure current page is valid
+      if (currentLegendPage >= totalLegendPages) {
+        currentLegendPage = totalLegendPages - 1;
+      }
+    }
+
+    // Ensure current page is valid
+    if (currentLegendPage >= totalLegendPages) {
+      currentLegendPage = totalLegendPages - 1;
+    }
+
+    // Set dimensions
+    extraWidth = 0;
+    width = 900;
+    extraHeight = Math.max(
+      0,
+      Math.min(itemsPerPage, numCountries) * 20 - (height - margin * 2)
+    );
+
+    // Update SVG dimensions
+    const svg = d3
+      .select('#line-chart')
+      .attr('width', width)
+      .attr('height', height + extraHeight);
+
+    const lineGroup = svg.append('g').attr('class', 'lines');
+
+    // Create tooltip group for country name display on hover
+    const tooltip = svg
+      .append('g')
+      .attr('class', 'tooltip')
+      .style('display', 'none');
+
+    tooltip
+      .append('rect')
+      .attr('width', 120)
+      .attr('height', 24)
+      .attr('fill', 'white')
+      .attr('stroke', '#ccc')
+      .attr('rx', 4)
+      .attr('ry', 4)
+      .attr('opacity', 0.9);
+
+    tooltip
+      .append('text')
+      .attr('x', 60)
+      .attr('y', 16)
+      .attr('text-anchor', 'middle')
+      .style('font-size', '12px');
 
     const selectedCountryEUValues = [];
     selectedCountryEUData.forEach((country) => {
@@ -144,6 +212,19 @@
       .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX);
 
+    // Add transparent overlay for better hover detection
+    lineGroup
+      .append('rect')
+      .attr('x', margin)
+      .attr('y', margin)
+      .attr('width', chartWidth - margin)
+      .attr('height', height - margin * 2)
+      .attr('fill', 'none')
+      .attr('pointer-events', 'all')
+      .on('mousemove', function (event) {
+        tooltip.style('display', 'none');
+      });
+
     // Draw a line for each country in selectedCountryEUData.
     selectedCountryEUData.forEach((country) => {
       const dateValues = country.yearDataObject
@@ -154,6 +235,51 @@
         }))
         .filter((d) => d.value !== null);
 
+      // Invisible thicker path for easier hovering
+      lineGroup
+        .append('path')
+        .datum(dateValues)
+        .attr('fill', 'none')
+        .attr('stroke', 'transparent')
+        .attr('stroke-width', 10)
+        .attr('d', line)
+        .attr('pointer-events', 'all')
+        .on('mouseover', function (event) {
+          // Highlight this line - make it thicker (changed from 4 to 6)
+          d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
+            'stroke-width',
+            6
+          );
+
+          // Show tooltip with country name
+          tooltip.style('display', null);
+          tooltip.select('text').text(country.country);
+          const [mouseX, mouseY] = d3.pointer(event);
+          tooltip.attr(
+            'transform',
+            `translate(${mouseX - 60}, ${mouseY - 30})`
+          );
+        })
+        .on('mouseout', function () {
+          // Reset line thickness
+          d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
+            'stroke-width',
+            2.5
+          );
+
+          // Hide tooltip
+          tooltip.style('display', 'none');
+        })
+        .on('mousemove', function (event) {
+          // Update tooltip position
+          const [mouseX, mouseY] = d3.pointer(event);
+          tooltip.attr(
+            'transform',
+            `translate(${mouseX - 60}, ${mouseY - 30})`
+          );
+        });
+
+      // Visible line
       lineGroup
         .append('path')
         .datum(dateValues)
@@ -161,72 +287,106 @@
         .attr('stroke', colorScale(country.country))
         .attr('stroke-width', 2.5)
         .attr('stroke-dasharray', country.country === euCountry ? '5' : 'none')
-        .attr('d', line);
+        .attr('d', line)
+        .attr('class', `line-${country.country.replace(/\s+/g, '-')}`);
     });
 
-    // Create legend positioned to the right outside the chart area.
-    let legendX;
-    const numCountries = selectedCountryEUData.length;
-    if (numCountries > 10) {
-      legendX = width - margin - 16;
-      extraWidth = 140;
-    } else {
-      legendX = width - margin - 18;
-      extraWidth = 0;
+    // Create legend
+    const legendX = width - margin - 18;
+    const legend = svg.append('g').attr('class', 'legend');
+
+    // Add pagination controls
+    if (totalLegendPages > 1) {
+      const paginationGroup = svg
+        .append('g')
+        .attr('class', 'pagination')
+        .attr('transform', `translate(${legendX}, ${margin - 25})`);
+
+      // Left arrow
+      paginationGroup
+        .append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .text('❮')
+        .attr('class', 'pagination-arrow')
+        .style('font-size', '16px')
+        .style('cursor', currentLegendPage > 0 ? 'pointer' : 'default')
+        .style('opacity', currentLegendPage > 0 ? 1 : 0.5)
+        .style('user-select', 'none')
+        .on('click', prevLegendPage);
+
+      // Page indicator
+      paginationGroup
+        .append('text')
+        .attr('x', 30)
+        .attr('y', 0)
+        .text(`${currentLegendPage + 1}/${totalLegendPages}`)
+        .style('font-size', '12px')
+        .style('user-select', 'none');
+
+      // Right arrow
+      paginationGroup
+        .append('text')
+        .attr('x', 60)
+        .attr('y', 0)
+        .text('❯')
+        .attr('class', 'pagination-arrow')
+        .style('font-size', '16px')
+        .style(
+          'cursor',
+          currentLegendPage < totalLegendPages - 1 ? 'pointer' : 'default'
+        )
+        .style('opacity', currentLegendPage < totalLegendPages - 1 ? 1 : 0.5)
+        .style('user-select', 'none')
+        .on('click', nextLegendPage);
     }
-    const legend = svg
-      .append('g')
-      .attr('class', 'legend')
-      .attr('transform', `translate(${legendX}, ${margin})`);
 
-    if (numCountries > 10) {
-      // Split into two columns.
-      const half = Math.ceil(numCountries / 2);
-      selectedCountryEUData.forEach((country, i) => {
-        const col = i < half ? 0 : 1;
-        const row = i < half ? i : i - half;
-        const xOffset = col * 140;
-        const yOffset = row * 20;
-        const legendGroup = legend
-          .append('g')
-          .attr('transform', `translate(${xOffset}, ${yOffset})`);
+    legend.attr('transform', `translate(${legendX}, ${margin})`);
 
-        legendGroup
-          .append('rect')
-          .attr('width', 12)
-          .attr('height', 12)
-          .attr('fill', colorScale(country.country));
+    const startIdx = currentLegendPage * itemsPerPage;
+    const endIdx = Math.min(startIdx + itemsPerPage, numCountries);
 
-        legendGroup
-          .append('text')
-          .attr('x', 16)
-          .attr('y', 10)
-          .text(country.country)
-          .style('font-size', '12px');
-      });
-    } else {
-      // One column layout.
-      selectedCountryEUData.forEach((country, i) => {
-        const xOffset = 0;
-        const yOffset = i * 20;
-        const legendGroup = legend
-          .append('g')
-          .attr('transform', `translate(${xOffset}, ${yOffset})`);
+    // Show only countries for the current page
+    selectedCountryEUData.slice(startIdx, endIdx).forEach((country, i) => {
+      const yOffset = i * 20;
+      const countryClass = `legend-${country.country.replace(/\s+/g, '-')}`;
 
-        legendGroup
-          .append('rect')
-          .attr('width', 12)
-          .attr('height', 12)
-          .attr('fill', colorScale(country.country));
+      const legendGroup = legend
+        .append('g')
+        .attr('transform', `translate(0, ${yOffset})`)
+        .attr('class', countryClass)
+        .style('cursor', 'pointer')
+        .on('mouseover', function () {
+          // Highlight the corresponding line - make it thicker (changed from 4 to 6)
+          d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
+            'stroke-width',
+            6
+          );
 
-        legendGroup
-          .append('text')
-          .attr('x', 16)
-          .attr('y', 10)
-          .text(country.country)
-          .style('font-size', '12px');
-      });
-    }
+          // Don't show tooltip when hovering over legend items
+          tooltip.style('display', 'none');
+        })
+        .on('mouseout', function () {
+          // Reset line thickness
+          d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
+            'stroke-width',
+            2.5
+          );
+        });
+
+      legendGroup
+        .append('rect')
+        .attr('width', 12)
+        .attr('height', 12)
+        .attr('fill', colorScale(country.country));
+
+      legendGroup
+        .append('text')
+        .attr('x', 16)
+        .attr('y', 10)
+        .text(country.country)
+        .style('font-size', '12px');
+    });
 
     // Draw a vertical line at the selected year.
     svg
@@ -255,8 +415,9 @@
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('x', chartWidth / 2)
-      .attr('y', height)
-      .style('font-size', '12px')
+      .attr('y', height - 25)
+      .style('font-size', '14px')
+      .style('font-weight', 'bold')
       .text('Year');
 
     const yAxis = d3.axisLeft(yScale).ticks(10);
@@ -268,8 +429,18 @@
       .attr('transform', 'rotate(-90)')
       .attr('y', margin / 2 - 15)
       .attr('x', -(height / 2))
-      .style('font-size', '12px')
+      .style('font-size', '14px')
+      .style('font-weight', 'bold')
       .text(dataUnits);
+
+    svg
+      .append('text')
+      .attr('x', width / 2)
+      .attr('y', 30) // Position at the top
+      .attr('text-anchor', 'middle')
+      .style('font-size', '18px')
+      .style('font-weight', 'bold')
+      .text('Evolution of ' + selectedFile);
   }
 </script>
 
@@ -282,7 +453,7 @@
     width: 1000px;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 40px;
+    padding: 30px;
     align-items: stretch;
     background-color: white;
     display: flex;
