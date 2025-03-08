@@ -220,6 +220,14 @@
       <Slider bind:year {dataMin} />
     </section>
     {#if !comparisonMode}
+      <EUData
+        allCountriesData={selectedDataFileData}
+        euCountries={EU_COUNTRIES}
+        {selectedCountries}
+        euCountry={EU_COUNTRY}
+        {year}
+        bind:dataMin
+      />
       <PolicyData {policyData} {selectedCountries} {year} />
     {:else}
       <MultiEUData
@@ -229,7 +237,6 @@
         euCountry={EU_COUNTRY}
       />
     {/if}
-    <!-- <PolicyData {policyData} {year} /> -->
   {/if}
 </main>
 
