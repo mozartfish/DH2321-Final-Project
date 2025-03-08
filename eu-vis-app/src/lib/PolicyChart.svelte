@@ -116,7 +116,7 @@
         .style('fill', 'black')
         .text('in ' + year);
     } else {
-      // Update the overall total if needed.
+      // Update the overall total (an dthe year) if needed.
       d3.select(svg)
         .select('g.center-text')
         .select('text.center-value')

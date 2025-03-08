@@ -121,7 +121,6 @@
       // Create a group for the row
       const rowGroup = svg.append('g').attr('class', 'row-group');
 
-      // Add an invisible rectangle spanning the entire row as the clickable area
       rowGroup
         .append('rect')
         .attr('class', 'clickable-row')
@@ -137,7 +136,7 @@
           }
           isclicked = true;
           selectedFileBar = item.file;
-          // Save a reference to the bar rectangle (inside this row)
+          // Save a reference to the bar rectangle
           objectSelected = rowGroup.select('.bar').node();
           handleDataSelect(item.file);
           rowGroup.select('.bar').attr('fill', '#F49C12');
@@ -197,7 +196,7 @@
       })
       .attr('fill', '#F49C12');
 
-    // Make the already-selected file's label bold
+    // Make the selected file label bold
     if (selectedFileBar) {
       const selectedFileClass = selectedFileBar
         .replace(/\s+/g, '-')

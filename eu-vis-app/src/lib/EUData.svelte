@@ -125,11 +125,6 @@
       }
     }
 
-    // Ensure current page is valid
-    if (currentLegendPage >= totalLegendPages) {
-      currentLegendPage = totalLegendPages - 1;
-    }
-
     // Set dimensions
     extraWidth = 0;
     width = 900;
@@ -146,7 +141,7 @@
 
     const lineGroup = svg.append('g').attr('class', 'lines');
 
-    // Create tooltip group for country name display on hover
+    // Create tooltip
     const tooltip = svg
       .append('g')
       .attr('class', 'tooltip')
@@ -357,7 +352,7 @@
         .attr('class', countryClass)
         .style('cursor', 'pointer')
         .on('mouseover', function () {
-          // Highlight the corresponding line - make it thicker (changed from 4 to 6)
+          // Highlight the corresponding line
           d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
             'stroke-width',
             6
