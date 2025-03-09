@@ -2,7 +2,6 @@
   import * as d3 from 'd3';
   import CountryData from './CountryData.svelte';
 
-  // Updated props – now using selectedCountries and euCountries.
   const {
     policyData = [],
     selectedCountries = [],
@@ -10,8 +9,6 @@
     year
   } = $props();
 
-  // Build a list of countries that appear in the data.
-  // If euCountries is provided, use it (excluding 'EU'); otherwise, derive from policyData.
   const countryList =
     euCountries && euCountries.length > 0
       ? euCountries.filter((c) => c !== 'EU')
@@ -19,7 +16,6 @@
           (c) => c !== 'EU'
         );
 
-  // Create a color scale using d3.interpolatePlasma (to match the other components)
   function countryColorScale() {
     const colorRange = countryList.map((d, i) =>
       d3.interpolatePlasma(i / countryList.length)
@@ -27,6 +23,16 @@
     return d3.scaleOrdinal().domain(countryList).range(colorRange);
   }
   let colorScale = countryColorScale();
+
+  // Function to determine text color based on background brightness
+  function getContrastYIQ(hexcolor) {
+    hexcolor = hexcolor.replace("#", "");
+    const r = parseInt(hexcolor.substr(0, 2), 16);
+    const g = parseInt(hexcolor.substr(2, 2), 16);
+    const b = parseInt(hexcolor.substr(4, 2), 16);
+    const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    return yiq >= 110 ? 'black' : 'white';
+  }
 </script>
 
 <section>
@@ -37,7 +43,7 @@
         {#each selectedCountries.filter((c) => c !== 'EU') as country}
           <ul>
             {#each policyData.filter((policy) => policy.country === country && parseInt(policy.year) === year) as policy}
-              <li style="background-color: {colorScale(country)}">
+              <li style="background-color: {colorScale(country)}; color: {getContrastYIQ(colorScale(country))}">
                 <p class="country">{policy.country}</p>
                 <p>{policy.policy}</p>
                 <p class="sector">
@@ -52,7 +58,7 @@
       <div class="policy-container">
         <ul>
           {#each policyData.filter((policy) => parseInt(policy.year) === year && policy.country !== 'EU') as policy}
-            <li style="background-color: {colorScale(policy.country)}">
+            <li style="background-color: {colorScale(policy.country)}; color: {getContrastYIQ(colorScale(policy.country))}">
               <p class="country">{policy.country}</p>
               <p>{policy.policy}</p>
               <p>
@@ -75,10 +81,6 @@
 
   h2 {
     margin-bottom: 6px;
-  }
-
-  p {
-    color: black;
   }
 
   .policy-container {
