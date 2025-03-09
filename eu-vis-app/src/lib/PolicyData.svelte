@@ -19,10 +19,10 @@
           (c) => c !== 'EU'
         );
 
-  // Create a color scale using d3.interpolateRainbow (to match the other components)
+  // Create a color scale using d3.interpolatePlasma (to match the other components)
   function countryColorScale() {
     const colorRange = countryList.map((d, i) =>
-      d3.interpolateRainbow(i / countryList.length)
+      d3.interpolatePlasma(i / countryList.length)
     );
     return d3.scaleOrdinal().domain(countryList).range(colorRange);
   }
