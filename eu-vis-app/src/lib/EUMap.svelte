@@ -72,7 +72,7 @@
     return d3
       .scaleSequential()
       .domain([dataMin, dataMax])
-      .interpolator(d3.interpolateGreys);
+      .interpolator(d3.interpolatePurples);
   }
 
   function createCountryColorScale() {
@@ -105,7 +105,7 @@
         const value = parseFloat(countryData[selectedYear]);
         return !isNaN(value) ? heatmapColorScale(value) : '#ccc';
       }
-      return '#F04A00';
+      return '#DFDFDF';
     });
 
     // Remove any previous labels.
@@ -295,6 +295,7 @@
   .map-container {
     position: relative;
   }
+
   h2 {
     font-size: 40px;
     white-space: nowrap;
@@ -314,7 +315,7 @@
   button {
     width: 200px;
     height: 50px;
-    margin-top: 30px;
+    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
     border: 2px solid black;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;

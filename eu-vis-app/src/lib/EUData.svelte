@@ -50,7 +50,7 @@
   const countryColorScale = () => {
     const countries = formattedData.map((d) => d.country);
     const colorRange = countries.map((d, i) =>
-      d3.interpolateRainbow(i / countries.length)
+      d3.interpolatePlasma(i / countries.length)
     );
     return d3.scaleOrdinal().domain(countries).range(colorRange);
   };
@@ -127,10 +127,10 @@
 
     // Set dimensions
     extraWidth = 0;
-    width = 900;
+    width = 700;
     extraHeight = Math.max(
       0,
-      Math.min(itemsPerPage, numCountries) * 20 - (height - margin * 2)
+      Math.min(itemsPerPage, numCountries) * 20 - (height - 20 * 2)
     );
 
     // Update SVG dimensions
@@ -391,9 +391,7 @@
       .attr('y1', margin)
       .attr('y2', height - margin)
       .attr('stroke', 'black')
-      .attr('stroke-opacity', 0.3)
-      .attr('stroke-width', 2)
-      .attr('stroke-dasharray', '10');
+      .attr('stroke-opacity', 0.3);
 
     // Draw axes.
     const xAxis = d3
@@ -422,9 +420,9 @@
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('transform', 'rotate(-90)')
-      .attr('y', margin / 2 - 15)
+      .attr('y', margin / 2)
       .attr('x', -(height / 2))
-      .style('font-size', '14px')
+      .style('font-size', '12px')
       .style('font-weight', 'bold')
       .text(dataUnits);
 
@@ -433,7 +431,7 @@
       .attr('x', width / 2)
       .attr('y', 30) // Position at the top
       .attr('text-anchor', 'middle')
-      .style('font-size', '18px')
+      .style('font-size', '24px')
       .style('font-weight', 'bold')
       .text('Evolution of ' + selectedFile);
   }
@@ -445,10 +443,10 @@
 
 <style>
   section {
-    width: 1000px;
+    width: 100%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 30px;
+    padding-top: 4px;
     align-items: stretch;
     background-color: white;
     display: flex;

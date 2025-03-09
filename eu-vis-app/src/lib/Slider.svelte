@@ -43,7 +43,7 @@
   h2 {
     text-align: center;
     font-size: 35px;
-    color: #df40a2;
+    color: #5E01A7;
     margin-bottom: -12px;
   }
   #slider {
@@ -58,10 +58,10 @@
   }
 
   :root {
-    --range-slider: #df40a2; /* slider main background color */
-    --range-handle-inactive: #9cc5f8; /* inactive handle color */
-    --range-handle: #838de7; /* non-focussed handle color */
-    --range-handle-focus: #4a40d4; /* focussed handle color */
+    --range-slider: #5E01A7; /* slider main background color */
+    --range-handle-inactive: #fa963e; /* inactive handle color */
+    --range-handle: #fa963e; /* non-focussed handle color */
+    --range-handle-focus: #fa963e; /* focussed handle color */
     --range-handle-border: var(--range-handle); /* handle border color */
     --range-range-inactive: var(
       --range-handle-inactive

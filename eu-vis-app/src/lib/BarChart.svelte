@@ -47,9 +47,9 @@
     d3.select(chartContainer).selectAll('*').remove();
     const data = extractEUData();
 
-    const margin = { top: 40, right: 24, bottom: 35, left: 120 };
+    const margin = { top: 4, right: 30, bottom: 34, left: 160 };
     const width = 450 - margin.left - margin.right;
-    const height = 260 - margin.top - margin.bottom;
+    const height = 340 - margin.top - margin.bottom;
 
     const svg = d3
       .select(chartContainer)
@@ -82,7 +82,7 @@
       .attr('y', height + margin.bottom - 1)
       .style('font-size', '14px')
       .style('font-weight', 'bold')
-      .text('Score');
+      .text('Difference from mean');
 
     // Y-axis with class for each tick text
     const yAxis = svg.append('g').call(d3.axisLeft(y));
@@ -132,23 +132,23 @@
         .style('cursor', 'pointer')
         .on('click', function () {
           if (isclicked) {
-            d3.select(objectSelected).attr('fill', '#26AE60');
+            d3.select(objectSelected).attr('fill', '#6C55A4');
           }
           isclicked = true;
           selectedFileBar = item.file;
           // Save a reference to the bar rectangle
           objectSelected = rowGroup.select('.bar').node();
           handleDataSelect(item.file);
-          rowGroup.select('.bar').attr('fill', '#F49C12');
+          rowGroup.select('.bar').attr('fill', '#FAA039');
         })
         .on('mouseover', function () {
-          rowGroup.select('.bar').attr('fill', '#F49C12');
+          rowGroup.select('.bar').attr('fill', '#FAA039');
           // Make the corresponding y-axis label bold
           d3.select(`.file-label-${fileClass}`).style('font-weight', 'bold');
         })
         .on('mouseout', function () {
           if (!isclicked || item.file !== selectedFileBar) {
-            rowGroup.select('.bar').attr('fill', '#26AE60');
+            rowGroup.select('.bar').attr('fill', '#3C059B');
           }
           // Reset the y-axis label to normal weight unless it's the selected file
           if (item.file !== selectedFileBar) {
@@ -167,7 +167,7 @@
         .attr('y', barY)
         .attr('width', barWidth)
         .attr('height', barHeight)
-        .attr('fill', '#26AE60')
+        .attr('fill', '#3C059B')
         .style('pointer-events', 'none')
         .attr('data-file', item.file);
 
@@ -208,6 +208,7 @@
     }
 
     // Title
+    /*
     svg
       .append('text')
       .attr('x', width / 2 - 30)
@@ -216,6 +217,7 @@
       .style('font-size', '24px')
       .style('font-weight', 'bold')
       .text(selectedCountryBar + ' scores for year ' + year);
+  */
   }
 
   $effect(() => {
@@ -226,18 +228,20 @@
 </script>
 
 <section>
+  <h2>{selectedCountryBar} in year {year}</h2>
   <div bind:this={chartContainer}></div>
 </section>
 
 <style>
   section {
     width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 60px;
     background-color: white;
   }
 </style>

@@ -3,7 +3,6 @@ This file contains all the styling for the main app and web page component
 */
 @import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,7 +16,6 @@ body {
 
 main {
   font-family: 'Outfit', serif;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

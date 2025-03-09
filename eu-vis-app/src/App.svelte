@@ -246,7 +246,7 @@
     position: fixed;
     z-index: 100;
     top: 6px;
-    background-color: antiquewhite;
+    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
     border-radius: 10px;
     border: 2px solid rgba(0, 0, 0, 0.8);
     display: flex;
@@ -315,16 +315,16 @@
   }
 
   #overview {
+    margin-top: -12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    /* box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8); */
     padding: 10px;
-    background-color: antiquewhite;
-    height: 882px;
+    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
+    scale: 0.9;
   }
 
   #presenter {

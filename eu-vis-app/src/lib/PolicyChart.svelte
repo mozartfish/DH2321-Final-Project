@@ -21,14 +21,14 @@
   ];
 
   const sectorColors = {
-    'Energy consumption': '#2C3E50',
-    'Energy supply': '#E74C3C',
-    Transport: '#2980B9',
-    'Industrial processes': '#F39C12',
-    Agriculture: '#27AE60',
-    LULUCF: '#145A32',
-    Waste: '#9B59B6',
-    'Other sectors': '#7F8C8D'
+    'Energy consumption': '#240490',
+    'Energy supply': '#5E01A7',
+    Transport: '#98159F',
+    'Industrial processes': '#DE5F64',
+    Agriculture: '#EE7D51',
+    LULUCF: '#FA963E',
+    Waste: '#FDB42E',
+    'Other sectors': '#F4E926'
   };
 
   // Initialize the SVG element.
@@ -70,6 +70,25 @@
       .innerRadius(innerRadius)
       .outerRadius(outerRadius);
 
+    // Add title to the SVG
+    /*
+    let titleText = d3.select(svg).select('text.chart-title');
+    if (titleText.empty()) {
+      titleText = d3
+        .select(svg)
+        .append('text')
+        .attr('class', 'chart-title')
+        .attr('x', width / 2 + 7)
+        .attr('y', 35)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '24px')
+        .style('font-weight', 'bold')
+        .text('Policies implemented in ' + year);
+    } else {
+      titleText.text('Policies implemented in ' + year);
+    }
+    */
+
     // Select or create container group.
     let container = d3.select(svg).select('g');
     if (container.empty()) {
@@ -84,37 +103,41 @@
         .attr('class', 'center-text')
         .attr('text-anchor', 'middle');
 
+      // Total label
       centerGroup
         .append('text')
         .attr('class', 'center-name')
-        .attr('y', -40)
+        .attr('y', -22)
         .style('font-size', '18px')
         .style('fill', 'black')
         .text('Total');
 
+      // Number of policies
       centerGroup
         .append('text')
         .attr('class', 'center-value')
-        .attr('y', 8)
+        .attr('y', 25)
         .style('font-size', '50px')
         .style('fill', 'black')
         .text(filteredData.length);
 
-      centerGroup
-        .append('text')
-        .attr('class', 'center-text')
-        .attr('y', 33)
-        .style('font-size', '18px')
-        .style('fill', 'black')
-        .text('policies');
+      // // Policies label
+      // centerGroup
+      //   .append('text')
+      //   .attr('class', 'center-text')
+      //   .attr('y', 33)
+      //   .style('font-size', '18px')
+      //   .style('fill', 'black')
+      //   .text('policies');
 
-      centerGroup
-        .append('text')
-        .attr('class', 'center-year')
-        .attr('y', 55)
-        .style('font-size', '18px')
-        .style('fill', 'black')
-        .text('in ' + year);
+      // // Year label
+      // centerGroup
+      //   .append('text')
+      //   .attr('class', 'center-year')
+      //   .attr('y', 55)
+      //   .style('font-size', '18px')
+      //   .style('fill', 'black')
+      //   .text('in ' + year);
     } else {
       // Update the overall total (an dthe year) if needed.
       d3.select(svg)
@@ -122,10 +145,10 @@
         .select('text.center-value')
         .text(filteredData.length);
 
-      d3.select(svg)
-        .select('g.center-text')
-        .select('text.center-year')
-        .text('in ' + year);
+      // d3.select(svg)
+      //   .select('g.center-text')
+      //   .select('text.center-year')
+      //   .text('in ' + year);
     }
 
     const paths = container
@@ -213,6 +236,8 @@
             .style('pointer-events', 'none')
             .style('font-size', '12px')
             .style('fill', '#fff')
+            .style('stroke', 'black')
+            .style('stroke-width', 0.1)
             .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
             .text((d) => d.data.name),
         (update) =>
@@ -240,8 +265,8 @@
 </script>
 
 <section>
+  <h2>Policies in {year}</h2>
   <svg bind:this={svg}></svg>
-  <!-- <button>RESET??</button> -->
 </section>
 
 <style>
@@ -249,39 +274,21 @@
     width: 100%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     align-items: stretch;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    text-align: center;
   }
 
-  button {
-    margin-top: 20px;
-    width: 200px;
-    height: 50px;
-    border: 2px solid black;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    cursor: pointer;
-    transition-property: box-shadow, transform;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-
-  button:hover {
-    box-shadow: 0px 0px 0px 0px black;
-    transform: translate(2px, 2px);
-  }
-
-  button:active {
-    transform: translate(2px, 4px);
+  svg {
+    width: 100%; /* Make SVG take full width of container */
+    height: 100%;
+    max-width: 100%; /* Ensure it doesn't overflow */
+    padding: 20px;
   }
 
   path {
