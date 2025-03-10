@@ -234,10 +234,8 @@
             .attr('text-anchor', 'middle')
             .attr('dy', '0.35em')
             .style('pointer-events', 'none')
-            .style('font-size', '12px')
-            .style('fill', '#fff')
-            .style('stroke', 'black')
-            .style('stroke-width', 0.1)
+            .style('font-size', '14px')
+            .style('fill', (d) => d.data.name === 'Energy consumption' ? '#8B6BF5' : d3.color(sectorColors[d.data.name]).brighter())
             .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
             .text((d) => d.data.name),
         (update) =>
@@ -285,10 +283,10 @@
   }
 
   svg {
-    width: 100%; /* Make SVG take full width of container */
+    width: 100%;
     height: 100%;
-    max-width: 100%; /* Ensure it doesn't overflow */
     padding: 20px;
+    overflow: visible;
   }
 
   path {

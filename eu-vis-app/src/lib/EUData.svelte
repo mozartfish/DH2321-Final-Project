@@ -420,7 +420,7 @@
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('transform', 'rotate(-90)')
-      .attr('y', margin / 2)
+      .attr('y', margin / 2 - 20)
       .attr('x', -(height / 2))
       .style('font-size', '12px')
       .style('font-weight', 'bold')
