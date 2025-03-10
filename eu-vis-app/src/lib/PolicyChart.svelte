@@ -21,14 +21,14 @@
   ];
 
   const sectorColors = {
-    'Energy consumption': '#240490',
-    'Energy supply': '#5E01A7',
-    Transport: '#98159F',
-    'Industrial processes': '#DE5F64',
-    Agriculture: '#EE7D51',
-    LULUCF: '#FA963E',
-    Waste: '#FDB42E',
-    'Other sectors': '#F4E926'
+    'Energy consumption': '#FEFFE0',
+    'Energy supply': '#FEE292',
+    Transport: '#FFC559',
+    'Industrial processes': '#FCAA39',
+    Agriculture: '#F5841E',
+    LULUCF: '#EE7B19',
+    Waste: '#E1650F',
+    'Other sectors': '#CF5309'
   };
 
   // Initialize the SVG element.
@@ -235,7 +235,7 @@
             .attr('dy', '0.35em')
             .style('pointer-events', 'none')
             .style('font-size', '14px')
-            .style('fill', (d) => d.data.name === 'Energy consumption' ? '#8B6BF5' : d3.color(sectorColors[d.data.name]).brighter())
+            .style('fill', (d) => d3.color(sectorColors[d.data.name]).darker())
             .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
             .text((d) => d.data.name),
         (update) =>
@@ -280,6 +280,10 @@
     flex-direction: column;
     position: relative;
     text-align: center;
+  }
+
+  h2 {
+    color: #094C93;
   }
 
   svg {

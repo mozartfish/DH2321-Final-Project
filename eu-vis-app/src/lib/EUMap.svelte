@@ -37,7 +37,7 @@
         labelColor = 'black';
       }
     } else {
-      labelColor = 'black';
+      labelColor = '#094C93';
     }
   });
 
@@ -72,7 +72,7 @@
     return d3
       .scaleSequential()
       .domain([dataMin, dataMax])
-      .interpolator(d3.interpolatePurples);
+      .interpolator(d3.interpolateBlues);
   }
 
   function createCountryColorScale() {
@@ -81,7 +81,7 @@
       .filter((country) => country !== undefined);
     if (countryNames.length === 0) return null;
     const colorRange = countryNames.map((d, i) =>
-      d3.interpolatePlasma(i / countryNames.length)
+      d3.interpolateBlues(i / countryNames.length)
     );
     return d3.scaleOrdinal().domain(countryNames).range(colorRange);
   }
@@ -315,7 +315,7 @@
   button {
     width: 200px;
     height: 50px;
-    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
+    background: #C4DDEE;
     border: 2px solid black;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;

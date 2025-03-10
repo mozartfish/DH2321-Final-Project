@@ -19,16 +19,9 @@
 
 <div id="slider">
   <h2>{year}</h2>
-  <!-- <RangeSlider
-    pips
-    first="label"
-    last="label"
-    min={2000}
-    max={2022}
-    bind:values
-  /> -->
   <div class="container">
     <RangeSlider
+      id="rangeSlider"
       pips
       first="label"
       last="label"
@@ -43,7 +36,7 @@
   h2 {
     text-align: center;
     font-size: 35px;
-    color: #5E01A7;
+    color: #094c93;
     margin-bottom: -12px;
   }
   #slider {
@@ -58,10 +51,10 @@
   }
 
   :root {
-    --range-slider: #5E01A7; /* slider main background color */
-    --range-handle-inactive: #fa963e; /* inactive handle color */
-    --range-handle: #fa963e; /* non-focussed handle color */
-    --range-handle-focus: #fa963e; /* focussed handle color */
+    --range-slider: #094c93; /* slider main background color */
+    --range-handle-inactive: #ffc459; /* inactive handle color */
+    --range-handle: #ffc459; /* non-focussed handle color */
+    --range-handle-focus: #ffc459; /* focussed handle color */
     --range-handle-border: var(--range-handle); /* handle border color */
     --range-range-inactive: var(
       --range-handle-inactive
@@ -77,5 +70,27 @@
       --range-handle-focus
     ); /* floating label background color */
     --range-float-text: white; /* text color on floating label */
+  }
+
+  /* Custom style to turn the slider handle into a star */
+  .rangeSlider > .rangeHandle > .rangeNub {
+    width: 1000px;
+    /* width: 30px;
+    height: 30px;
+    background-c olor: var(--range-handle);
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    border: 2px solid var(--range-handle-border);
+    */
   }
 </style>

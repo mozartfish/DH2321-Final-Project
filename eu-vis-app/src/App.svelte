@@ -246,7 +246,7 @@
     position: fixed;
     z-index: 100;
     top: 6px;
-    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
+    background: #C4DDEE;
     border-radius: 10px;
     border: 2px solid rgba(0, 0, 0, 0.8);
     display: flex;
@@ -323,7 +323,7 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     padding: 10px;
-    background: linear-gradient(20deg, #fff2c4, #e6d9ff);
+    background: #ddf1ff;
     scale: 0.9;
   }
 

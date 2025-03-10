@@ -50,7 +50,7 @@
   const countryColorScale = () => {
     const countries = formattedData.map((d) => d.country);
     const colorRange = countries.map((d, i) =>
-      d3.interpolatePlasma(i / countries.length)
+      d3.interpolateYlGnBu(i / countries.length)
     );
     return d3.scaleOrdinal().domain(countries).range(colorRange);
   };
@@ -425,19 +425,11 @@
       .style('font-size', '12px')
       .style('font-weight', 'bold')
       .text(dataUnits);
-
-    svg
-      .append('text')
-      .attr('x', width / 2)
-      .attr('y', 30) // Position at the top
-      .attr('text-anchor', 'middle')
-      .style('font-size', '24px')
-      .style('font-weight', 'bold')
-      .text('Evolution of ' + selectedFile);
   }
 </script>
 
 <section>
+  <h2>{selectedFile}</h2>
   <svg id="line-chart"></svg>
 </section>
 
@@ -453,5 +445,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  h2 {
+    color: #094C93;
   }
 </style>

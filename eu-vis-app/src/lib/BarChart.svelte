@@ -15,6 +15,9 @@
   let selectedFileBar = $state();
   let objectSelected = $state();
 
+  const colorMain = '#094C93';
+  const colorSecondary = '#002357';
+
   $effect(() => {
     selectedCountryBar = selectedCountry || 'EU';
     selectedFileBar = selectedFile;
@@ -139,16 +142,16 @@
           // Save a reference to the bar rectangle
           objectSelected = rowGroup.select('.bar').node();
           handleDataSelect(item.file);
-          rowGroup.select('.bar').attr('fill', '#FAA039');
+          rowGroup.select('.bar').attr('fill', colorSecondary);
         })
         .on('mouseover', function () {
-          rowGroup.select('.bar').attr('fill', '#FAA039');
+          rowGroup.select('.bar').attr('fill', colorSecondary);
           // Make the corresponding y-axis label bold
           d3.select(`.file-label-${fileClass}`).style('font-weight', 'bold');
         })
         .on('mouseout', function () {
           if (!isclicked || item.file !== selectedFileBar) {
-            rowGroup.select('.bar').attr('fill', '#3C059B');
+            rowGroup.select('.bar').attr('fill', colorMain);
           }
           // Reset the y-axis label to normal weight unless it's the selected file
           if (item.file !== selectedFileBar) {
@@ -167,7 +170,7 @@
         .attr('y', barY)
         .attr('width', barWidth)
         .attr('height', barHeight)
-        .attr('fill', '#3C059B')
+        .attr('fill', colorMain)
         .style('pointer-events', 'none')
         .attr('data-file', item.file);
 
@@ -194,7 +197,7 @@
       .filter(function () {
         return d3.select(this).attr('data-file') === selectedFileBar;
       })
-      .attr('fill', '#F49C12');
+      .attr('fill', colorSecondary);
 
     // Make the selected file label bold
     if (selectedFileBar) {
@@ -243,5 +246,9 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;
+  }
+
+  h2 {
+    color: #094C93;
   }
 </style>
