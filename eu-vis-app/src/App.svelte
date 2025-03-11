@@ -176,70 +176,59 @@
 
   {#if isDataLoaded}
     <section id="dashboard">
-      <div id="dashboard-map">
-        <EUMap
-          countries={EU_COUNTRIES}
-          allCountriesData={selectedDataFileData}
-          onCountrySelect={handleCountrySelect}
-          {selectedFile}
-          {year}
-        />
-      </div>
+      <div id="dashboard-grid">
+        <div id="dashboard-map">
+          <EUMap
+            countries={EU_COUNTRIES}
+            allCountriesData={selectedDataFileData}
+            onCountrySelect={handleCountrySelect}
+            {selectedFile}
+            {year}
+          />
+        </div>
 
-      <!-- <select bind:value={selectedFile} onchange={selectData}>
+        <div id="dashboard-slider">
+          <Slider bind:year {dataMin} />
+        </div>
+
+        <!-- <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
               <option value={d.file}>{d.file}</option>
             {/each}
           </select> -->
-      <div id="dashboard-bars">
-        <BarChart
-          {allData}
-          {handleDataSelect}
-          {selectedFile}
-          selectedCountry={selectedCountries[selectedCountries.length - 1] ||
-            'EU'}
-          {year}
-        />
-      </div>
+        <div id="dashboard-bars">
+          <BarChart
+            {allData}
+            {handleDataSelect}
+            {selectedFile}
+            selectedCountry={selectedCountries[selectedCountries.length - 1] ||
+              'EU'}
+            {year}
+          />
+        </div>
 
-      <div id="dashboad-pie">
-        <PolicyChart {policyData} {year} />
-      </div>
+        <div id="dashboard-line">
+          <EUData
+            allCountriesData={selectedDataFileData}
+            euCountries={EU_COUNTRIES}
+            {selectedCountries}
+            euCountry={EU_COUNTRY}
+            {year}
+            bind:dataMin
+            {selectedFile}
+          />
+        </div>
 
-      <div id="dashboard-line">
-        <EUData
-          allCountriesData={selectedDataFileData}
-          euCountries={EU_COUNTRIES}
-          {selectedCountries}
-          euCountry={EU_COUNTRY}
-          {year}
-          bind:dataMin
-          {selectedFile}
-        />
-      </div>
+        <div id="dashboard-pie">
+          <PolicyChart {policyData} {year} />
+        </div>
 
-      <div id="dashboard-slider">
-        <Slider bind:year {dataMin} />
+        <div id="dashboard-policies">
+          <PolicyData {policyData} {selectedCountries} {year} />
+        </div>
       </div>
     </section>
-    <!-- {#if !comparisonMode}
-      <EUData
-        allCountriesData={selectedDataFileData}
-        euCountries={EU_COUNTRIES}
-        {selectedCountries}
-        euCountry={EU_COUNTRY}
-        {year}
-        bind:dataMin
-      />
-    {:else}
-      <MultiEUData
-        allCountriesData={selectedDataFileData}
-        euCountries={EU_COUNTRIES}
-        {selectedCountries}
-        euCountry={EU_COUNTRY}
-      />
-    {/if} -->
-    <PolicyData {policyData} {selectedCountries} {year} />
+    <!-- <PolicyData {policyData} {selectedCountries} {year} /> -->
   {/if}
 </main>
 
@@ -258,6 +247,7 @@
     align-items: center;
     padding: 4px;
     font-size: 0.9rem;
+    display: none;
   }
 
   nav h2 {
@@ -318,37 +308,55 @@
   }
 
   #dashboard {
-    margin-top: 20px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #dashboard-grid {
+    padding: 2px;
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    width: 95%;
+    height: 95%;
+    grid-template-columns: 32% 40% 28%;
+    grid-template-rows: 1fr 25% 14%;
     grid-template-areas:
       'map bars pie'
-      'map bars pie'
-      'slider lines lines';
-    gap: 10px;
+      'map lines pols'
+      'slider lines pols';
     align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
   }
 
   #dashboard-map {
     grid-area: map;
   }
 
+  #dashboard-slider {
+    grid-area: slider;
+  }
+
   #dashboard-bars {
     grid-area: bars;
   }
-
-  #dashboad-pie {
-    grid-area: pie;
-  }
-
+  
   #dashboard-line {
     grid-area: lines;
   }
 
-  #dashboard-slider {
-    grid-area: slider;
+  #dashboard-pie {
+    grid-area: pie;
   }
+
+  #dashboard-policies {
+    grid-area: pols;
+  }
+
 
 
   /* #presenter {

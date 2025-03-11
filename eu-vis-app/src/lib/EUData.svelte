@@ -40,7 +40,7 @@
   // Chart dimensions
   let width = $state(800);
   let height = $state(250);
-  const margin = 65;
+  const margin = 60;
 
   // Legend pagination variables
   let totalLegendPages = $state(1);
@@ -127,7 +127,7 @@
 
     // Set dimensions
     extraWidth = 0;
-    width = 700;
+    width = 530;
     extraHeight = Math.max(
       0,
       Math.min(itemsPerPage, numCountries) * 20 - (height - 20 * 2)
@@ -240,13 +240,11 @@
         .attr('d', line)
         .attr('pointer-events', 'all')
         .on('mouseover', function (event) {
-          // Highlight this line - make it thicker (changed from 4 to 6)
           d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
             'stroke-width',
             6
           );
 
-          // Show tooltip with country name
           tooltip.style('display', null);
           tooltip.select('text').text(country.country);
           const [mouseX, mouseY] = d3.pointer(event);
@@ -256,7 +254,6 @@
           );
         })
         .on('mouseout', function () {
-          // Reset line thickness
           d3.selectAll(`.line-${country.country.replace(/\s+/g, '-')}`).attr(
             'stroke-width',
             2.5
@@ -266,7 +263,6 @@
           tooltip.style('display', 'none');
         })
         .on('mousemove', function (event) {
-          // Update tooltip position
           const [mouseX, mouseY] = d3.pointer(event);
           tooltip.attr(
             'transform',
@@ -274,7 +270,6 @@
           );
         });
 
-      // Visible line
       lineGroup
         .append('path')
         .datum(dateValues)
@@ -286,8 +281,7 @@
         .attr('class', `line-${country.country.replace(/\s+/g, '-')}`);
     });
 
-    // Create legend
-    const legendX = width - margin - 18;
+    const legendX = width - margin - 45;
     const legend = svg.append('g').attr('class', 'legend');
 
     // Add pagination controls
@@ -439,16 +433,18 @@
     height: 100%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding-top: 4px;
     align-items: stretch;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   h2 {
     color: #094C93;
+    position: absolute;
+    top: 10px;
   }
 </style>

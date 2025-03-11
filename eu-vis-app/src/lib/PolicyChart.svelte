@@ -4,7 +4,7 @@
 
   const { policyData = [], year } = $props();
 
-  let width = 300;
+  let width = 330;
   let radius = width / 2;
   let svg;
 
@@ -20,15 +20,26 @@
     'Other sectors'
   ];
 
+  // const sectorColors = {
+  //   'Energy consumption': '#FEFFE0',
+  //   'Energy supply': '#FEE292',
+  //   Transport: '#FFC559',
+  //   'Industrial processes': '#FCAA39',
+  //   Agriculture: '#F5841E',
+  //   LULUCF: '#EE7B19',
+  //   Waste: '#E1650F',
+  //   'Other sectors': '#CF5309'
+  // };
+
   const sectorColors = {
-    'Energy consumption': '#FEFFE0',
-    'Energy supply': '#FEE292',
-    Transport: '#FFC559',
+    Agriculture: '#FEFFE0',
+    'Energy consumption': '#FEE292',
+    'Energy supply': '#FFC559',
     'Industrial processes': '#FCAA39',
-    Agriculture: '#F5841E',
-    LULUCF: '#EE7B19',
-    Waste: '#E1650F',
-    'Other sectors': '#CF5309'
+    LULUCF: '#F5841E',
+    'Other sectors': '#EE7B19',
+    Transport: '#E1650F',
+    Waste: '#CF5309',
   };
 
   // Initialize the SVG element.
@@ -60,7 +71,7 @@
     const pie = d3
       .pie()
       .value((d) => d.value)
-      .sort((a, b) => sectors.indexOf(a.name) - sectors.indexOf(b.name));
+      .sort((a, b) => a.name.localeCompare(b.name));
     const pieData = pie(sectorsData);
 
     const innerRadius = radius * 0.5;
@@ -107,8 +118,8 @@
       centerGroup
         .append('text')
         .attr('class', 'center-name')
-        .attr('y', -22)
-        .style('font-size', '18px')
+        .attr('y', -20)
+        .style('font-size', '16px')
         .style('fill', 'black')
         .text('Total');
 
@@ -116,39 +127,15 @@
       centerGroup
         .append('text')
         .attr('class', 'center-value')
-        .attr('y', 25)
-        .style('font-size', '50px')
+        .attr('y', 32)
+        .style('font-size', '62px')
         .style('fill', 'black')
         .text(filteredData.length);
-
-      // // Policies label
-      // centerGroup
-      //   .append('text')
-      //   .attr('class', 'center-text')
-      //   .attr('y', 33)
-      //   .style('font-size', '18px')
-      //   .style('fill', 'black')
-      //   .text('policies');
-
-      // // Year label
-      // centerGroup
-      //   .append('text')
-      //   .attr('class', 'center-year')
-      //   .attr('y', 55)
-      //   .style('font-size', '18px')
-      //   .style('fill', 'black')
-      //   .text('in ' + year);
     } else {
-      // Update the overall total (an dthe year) if needed.
       d3.select(svg)
         .select('g.center-text')
         .select('text.center-value')
         .text(filteredData.length);
-
-      // d3.select(svg)
-      //   .select('g.center-text')
-      //   .select('text.center-year')
-      //   .text('in ' + year);
     }
 
     const paths = container
@@ -167,7 +154,7 @@
       .style('fill', (d) => sectorColors[d.data.name])
       .on('mouseover', function (event, d) {
         // Pull the arc outward.
-        const offset = -10;
+        const offset = -5;
         const angle = (d.startAngle + d.endAngle) / 2;
         const translateX = Math.sin(angle) * offset;
         const translateY = -Math.cos(angle) * offset;
@@ -186,11 +173,11 @@
             d3.select(this)
               .select('text.center-name')
               .text(d.data.name)
-              .style('font-size', '14px');
+              .style('font-size', '16px');
             d3.select(this)
               .select('text.center-value')
               .text(d.data.value)
-              .style('font-size', '50px');
+              .style('font-size', '62px');
             d3.select(this).transition().duration(100).style('opacity', 1);
           });
       })
@@ -234,7 +221,7 @@
             .attr('text-anchor', 'middle')
             .attr('dy', '0.35em')
             .style('pointer-events', 'none')
-            .style('font-size', '14px')
+            .style('font-size', '16px')
             .style('fill', (d) => d3.color(sectorColors[d.data.name]).darker())
             .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
             .text((d) => d.data.name),
@@ -273,24 +260,22 @@
     height: 100%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
-    padding-top: 4px;
-    padding-bottom: 4px;
-    align-items: stretch;
     background-color: white;
+    padding-top: 20px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
     text-align: center;
   }
 
   h2 {
-    color: #094C93;
+    color: #094c93;
+    position: absolute;
+    top: 10px;
   }
 
   svg {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
     overflow: visible;
   }
 

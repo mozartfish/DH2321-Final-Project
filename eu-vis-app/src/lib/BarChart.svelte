@@ -50,9 +50,9 @@
     d3.select(chartContainer).selectAll('*').remove();
     const data = extractEUData();
 
-    const margin = { top: 4, right: 30, bottom: 34, left: 160 };
+    const margin = { top: 0, right: 30, bottom: 34, left: 180 };
     const width = 450 - margin.left - margin.right;
-    const height = 340 - margin.top - margin.bottom;
+    const height = 350 - margin.top - margin.bottom;
 
     const svg = d3
       .select(chartContainer)
@@ -98,6 +98,7 @@
         (d) => `file-label-${d.replace(/\s+/g, '-').replace(/[^\w-]/g, '')}`
       )
       .style('text-anchor', 'end')
+      .style('font-size', '14px')
       .attr('dx', '-0.5em');
 
     // Vertical line at x=0
@@ -150,11 +151,8 @@
           d3.select(`.file-label-${fileClass}`).style('font-weight', 'bold');
         })
         .on('mouseout', function () {
-          if (!isclicked || item.file !== selectedFileBar) {
-            rowGroup.select('.bar').attr('fill', colorMain);
-          }
-          // Reset the y-axis label to normal weight unless it's the selected file
           if (item.file !== selectedFileBar) {
+            rowGroup.select('.bar').attr('fill', colorMain);
             d3.select(`.file-label-${fileClass}`).style(
               'font-weight',
               'normal'
@@ -231,7 +229,7 @@
 </script>
 
 <section>
-  <h2>{selectedCountryBar} in year {year}</h2>
+  <h2>{selectedCountryBar} in {year}</h2>
   <div bind:this={chartContainer}></div>
 </section>
 
@@ -239,17 +237,20 @@
   section {
     width: 100%;
     height: 100%;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 50px;
+    padding-bottom: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;
+    position: relative;
   }
 
   h2 {
-    color: #094C93;
+    color: #094c93;
+    position: absolute;
+    top: 10px;
   }
 </style>

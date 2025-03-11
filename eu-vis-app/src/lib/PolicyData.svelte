@@ -26,7 +26,7 @@
 
   // Function to determine text color based on background brightness
   function getContrastYIQ(hexcolor) {
-    hexcolor = hexcolor.replace("#", "");
+    hexcolor = hexcolor.replace('#', '');
     const r = parseInt(hexcolor.substr(0, 2), 16);
     const g = parseInt(hexcolor.substr(2, 2), 16);
     const b = parseInt(hexcolor.substr(4, 2), 16);
@@ -43,7 +43,11 @@
         {#each selectedCountries.filter((c) => c !== 'EU') as country}
           <ul>
             {#each policyData.filter((policy) => policy.country === country && parseInt(policy.year) === year) as policy}
-              <li style="background-color: {colorScale(country)}; color: {getContrastYIQ(colorScale(country))}">
+              <li
+                style="background-color: {colorScale(
+                  country
+                )}; color: {getContrastYIQ(colorScale(country))}"
+              >
                 <p class="country">{policy.country}</p>
                 <p>{policy.policy}</p>
                 <p class="sector">
@@ -58,7 +62,11 @@
       <div class="policy-container">
         <ul>
           {#each policyData.filter((policy) => parseInt(policy.year) === year && policy.country !== 'EU') as policy}
-            <li style="background-color: {colorScale(policy.country)}; color: {getContrastYIQ(colorScale(policy.country))}">
+            <li
+              style="background-color: {colorScale(
+                policy.country
+              )}; color: {getContrastYIQ(colorScale(policy.country))}"
+            >
               <p class="country">{policy.country}</p>
               <p>{policy.policy}</p>
               <p>
@@ -76,31 +84,41 @@
 
 <style>
   section {
-    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
   }
 
   h2 {
-    margin-bottom: 6px;
+    color: #094c93;
+    margin-top: 10px;
   }
 
   .policy-container {
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    width: 60vw;
-    margin-top: 10px;
-    background-color: antiquewhite;
+    padding: 10px;
   }
 
   ul {
     list-style-type: none;
-    padding-left: 0;
+    padding: 0;
   }
 
   li {
-    margin-bottom: 10px;
-    padding: 10px 14px;
-    border-radius: 5px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .country {
