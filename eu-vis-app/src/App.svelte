@@ -175,49 +175,52 @@
   </div> -->
 
   {#if isDataLoaded}
-    <section id="overview">
-      <section id="presenter">
-        <section id="map">
-          <EUMap
-            countries={EU_COUNTRIES}
-            allCountriesData={selectedDataFileData}
-            onCountrySelect={handleCountrySelect}
-            {selectedFile}
-            {year}
-          />
-        </section>
+    <section id="dashboard">
+      <div id="dashboard-map">
+        <EUMap
+          countries={EU_COUNTRIES}
+          allCountriesData={selectedDataFileData}
+          onCountrySelect={handleCountrySelect}
+          {selectedFile}
+          {year}
+        />
+      </div>
 
-        <section id="graphs">
-          <!-- <select bind:value={selectedFile} onchange={selectData}>
+      <!-- <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
               <option value={d.file}>{d.file}</option>
             {/each}
           </select> -->
-          <section id="pol-sec">
-            <BarChart
-              {allData}
-              {handleDataSelect}
-              {selectedFile}
-              selectedCountry={selectedCountries[
-                selectedCountries.length - 1
-              ] || 'EU'}
-              {year}
-            />
-            <PolicyChart {policyData} {year} />
-          </section>
+      <div id="dashboard-bars">
+        <BarChart
+          {allData}
+          {handleDataSelect}
+          {selectedFile}
+          selectedCountry={selectedCountries[selectedCountries.length - 1] ||
+            'EU'}
+          {year}
+        />
+      </div>
 
-          <EUData
-            allCountriesData={selectedDataFileData}
-            euCountries={EU_COUNTRIES}
-            {selectedCountries}
-            euCountry={EU_COUNTRY}
-            {year}
-            bind:dataMin
-            {selectedFile}
-          />
-        </section>
-      </section>
-      <Slider bind:year {dataMin} />
+      <div id="dashboad-pie">
+        <PolicyChart {policyData} {year} />
+      </div>
+
+      <div id="dashboard-line">
+        <EUData
+          allCountriesData={selectedDataFileData}
+          euCountries={EU_COUNTRIES}
+          {selectedCountries}
+          euCountry={EU_COUNTRY}
+          {year}
+          bind:dataMin
+          {selectedFile}
+        />
+      </div>
+
+      <div id="dashboard-slider">
+        <Slider bind:year {dataMin} />
+      </div>
     </section>
     <!-- {#if !comparisonMode}
       <EUData
@@ -246,7 +249,7 @@
     position: fixed;
     z-index: 100;
     top: 6px;
-    background: #C4DDEE;
+    background: #c4ddee;
     border-radius: 10px;
     border: 2px solid rgba(0, 0, 0, 0.8);
     display: flex;
@@ -314,51 +317,73 @@
     gap: 20px;
   }
 
-  #overview {
-    margin-top: -12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    background: #ddf1ff;
-    scale: 0.9;
+  #dashboard {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      'map bars pie'
+      'map bars pie'
+      'slider lines lines';
+    gap: 10px;
+    align-items: stretch;
   }
 
-  #presenter {
+  #dashboard-map {
+    grid-area: map;
+  }
+
+  #dashboard-bars {
+    grid-area: bars;
+  }
+
+  #dashboad-pie {
+    grid-area: pie;
+  }
+
+  #dashboard-line {
+    grid-area: lines;
+  }
+
+  #dashboard-slider {
+    grid-area: slider;
+  }
+
+
+  /* #presenter {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
     gap: 10px;
-  }
+  } */
 
   #map {
+    /* width: 40%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     padding-top: 20px;
     padding-left: 50px;
     padding-right: 50px;
-    background-color: white;
+    background-color: white; */
   }
 
   #graphs {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 10px; */
   }
 
   #pol-sec {
-    width: 100%;
+    /* width: 100%;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    gap: 10px;
+    gap: 10px; */
   }
 
   #graphs select {

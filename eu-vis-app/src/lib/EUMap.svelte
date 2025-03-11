@@ -292,6 +292,18 @@
 </section>
 
 <style>
+  section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    background-color: white;
+  }
+
   .map-container {
     position: relative;
   }
@@ -303,9 +315,7 @@
     top: 20px;
     left: 0;
   }
-  #eu-map {
-    overflow: visible;
-  }
+
   #legend-container {
     position: absolute;
     top: 70px;
@@ -315,7 +325,7 @@
   button {
     width: 200px;
     height: 50px;
-    background: #C4DDEE;
+    background: #c4ddee;
     border: 2px solid black;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;

@@ -37,11 +37,12 @@
     text-align: center;
     font-size: 35px;
     color: #094c93;
-    margin-bottom: -12px;
+    margin-bottom: -10px;
   }
   #slider {
-    width: 50%;
-    margin: 10px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;

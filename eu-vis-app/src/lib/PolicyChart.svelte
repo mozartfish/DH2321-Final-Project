@@ -270,6 +270,7 @@
 <style>
   section {
     width: 100%;
+    height: 100%;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     padding-top: 4px;
