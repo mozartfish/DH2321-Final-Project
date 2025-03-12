@@ -39,7 +39,7 @@
 
   // Chart dimensions
   let width = $state(800);
-  let height = $state(250);
+  let height = $state(350);
   const margin = 60;
 
   // Legend pagination variables

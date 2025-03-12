@@ -51,8 +51,8 @@
     const data = extractEUData();
 
     const margin = { top: 0, right: 30, bottom: 34, left: 180 };
-    const width = 450 - margin.left - margin.right;
-    const height = 350 - margin.top - margin.bottom;
+    const width = 550 - margin.left - margin.right;
+    const height = 450 - margin.top - margin.bottom;
 
     const svg = d3
       .select(chartContainer)
