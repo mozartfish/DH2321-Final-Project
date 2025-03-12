@@ -261,7 +261,7 @@
       background-color: #c4ddee;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Outfit, sans-serif;
     }
   
     .container {
