@@ -37,7 +37,7 @@
 </script>
 
 <section>
-  <h2>{year} Policies</h2>
+  <h2>{sector ? sector : 'All'} policies in {year}</h2>
   {#if policyData.length > 0}
     {#if selectedCountries && selectedCountries.filter((c) => c !== 'EU').length > 0}
       <div class="policy-container">
