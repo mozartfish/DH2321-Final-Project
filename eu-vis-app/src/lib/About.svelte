@@ -288,6 +288,6 @@
     }
   
     p, ul {
-      color: #555;
+      color: #333;
     }
   </style>
