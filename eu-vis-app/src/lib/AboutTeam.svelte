@@ -100,33 +100,43 @@
 <body>
 <div class="main-container">
   <div class="title">Meet the Team</div>
+
   <div class="team-container">
     <div class="team-grid-1">
       <div class="team-member">
         <img src="src/assets/profiles/antonia.png" alt="Antonia">
         <h3>Antonia</h3>
+        <hr>
         <p>Data Processing, Front End, UI/UX, Research</p>
       </div>
+
       <div class="team-member">
         <img src="src/assets/profiles/fanny.png" alt="Fanny">
         <h3>Fanny</h3>
+        <hr>
         <p>Front End, UI/UX, Testing and Evaluation</p>
       </div>
+
       <div class="team-member">
         <img src="src/assets/profiles/pranav.png" alt="Pranav">
         <h3>Pranav</h3>
+        <hr>
         <p>Back End</p>
       </div>
     </div>
+
     <div class="team-grid-2">
       <div class="team-member">
         <img src="src/assets/profiles/matei.png" alt="Matei">
         <h3>Matei</h3>
+        <hr>
         <p>Data Processing, Front End, Back End, Research</p>
       </div>
+
       <div class="team-member">
         <img src="src/assets/profiles/safi.png" alt="Safi">
         <h3>Safi</h3>
+        <hr>
         <p>Back End</p>
       </div>
     </div>
