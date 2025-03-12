@@ -282,9 +282,10 @@
 </script>
 
 <section>
+  <h2>Heatmap for {selectedFile}</h2>
   <!-- <h3>Heatmap for dataset: {selectedFile}</h3> -->
-  <div class="map-container">
-    <h2 style="color: {labelColor}">{lastSelectedCountry}</h2>
+  <div id="map-container">
+    <h3 style="color: {labelColor}">{lastSelectedCountry}</h3>
     <svg id="eu-map"></svg>
     <div id="legend-container"></div>
   </div>
@@ -302,18 +303,25 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;
-  }
-
-  .map-container {
     position: relative;
   }
 
   h2 {
+    color: #094c93;
+    position: absolute;
+    top: 10px;
+  }
+
+  #map-container {
+    position: relative;
+  }
+
+  h3 {
     font-size: 40px;
     white-space: nowrap;
     position: absolute;
     top: 20px;
-    left: 0;
+    left: 10px;
   }
 
   #legend-container {

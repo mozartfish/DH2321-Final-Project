@@ -2,34 +2,11 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  const { policyData = [], year } = $props();
+  let { policyData = [], year, sector = $bindable() } = $props();
 
   let width = 330;
   let radius = width / 2;
   let svg;
-
-  // sector names
-  let sectors = [
-    'Energy consumption',
-    'Energy supply',
-    'Transport',
-    'Industrial processes',
-    'Agriculture',
-    'LULUCF',
-    'Waste',
-    'Other sectors'
-  ];
-
-  // const sectorColors = {
-  //   'Energy consumption': '#FEFFE0',
-  //   'Energy supply': '#FEE292',
-  //   Transport: '#FFC559',
-  //   'Industrial processes': '#FCAA39',
-  //   Agriculture: '#F5841E',
-  //   LULUCF: '#EE7B19',
-  //   Waste: '#E1650F',
-  //   'Other sectors': '#CF5309'
-  // };
 
   const sectorColors = {
     Agriculture: '#FEFFE0',
@@ -39,15 +16,13 @@
     LULUCF: '#F5841E',
     'Other sectors': '#EE7B19',
     Transport: '#E1650F',
-    Waste: '#CF5309',
+    Waste: '#CF5309'
   };
 
-  // Initialize the SVG element.
   onMount(() => {
     d3.select(svg).attr('width', width).attr('height', width);
   });
 
-  // Function to build/update the full-circle pie chart.
   function updateChart() {
     // Filter data for the selected year.
     const filteredData = policyData.filter((d) => +d.year === year);
@@ -67,7 +42,7 @@
       value
     }));
 
-    // Create a pie layout.
+    // Create pie layout.
     const pie = d3
       .pie()
       .value((d) => d.value)
@@ -76,31 +51,9 @@
 
     const innerRadius = radius * 0.5;
     const outerRadius = radius;
-    const arcGenerator = d3
-      .arc()
-      .innerRadius(innerRadius)
-      .outerRadius(outerRadius);
+    const arcGenerator = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
 
-    // Add title to the SVG
-    /*
-    let titleText = d3.select(svg).select('text.chart-title');
-    if (titleText.empty()) {
-      titleText = d3
-        .select(svg)
-        .append('text')
-        .attr('class', 'chart-title')
-        .attr('x', width / 2 + 7)
-        .attr('y', 35)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '24px')
-        .style('font-weight', 'bold')
-        .text('Policies implemented in ' + year);
-    } else {
-      titleText.text('Policies implemented in ' + year);
-    }
-    */
-
-    // Select or create container group.
+    // Create or select container group.
     let container = d3.select(svg).select('g');
     if (container.empty()) {
       container = d3
@@ -108,34 +61,53 @@
         .append('g')
         .attr('transform', `translate(${width / 2}, ${width / 2})`);
 
-      // Create the central text group.
       const centerGroup = container
         .append('g')
         .attr('class', 'center-text')
         .attr('text-anchor', 'middle');
 
-      // Total label
-      centerGroup
-        .append('text')
-        .attr('class', 'center-name')
-        .attr('y', -20)
-        .style('font-size', '16px')
-        .style('fill', 'black')
-        .text('Total');
-
-      // Number of policies
-      centerGroup
-        .append('text')
-        .attr('class', 'center-value')
-        .attr('y', 32)
-        .style('font-size', '62px')
-        .style('fill', 'black')
-        .text(filteredData.length);
+      if (sector) {
+        const selectedData = pieData.find((p) => p.data.name === sector);
+        centerGroup
+          .append('text')
+          .attr('class', 'center-name')
+          .attr('y', -20)
+          .style('font-size', '16px')
+          .style('fill', 'black')
+          .text(sector);
+        centerGroup
+          .append('text')
+          .attr('class', 'center-value')
+          .attr('y', 32)
+          .style('font-size', '62px')
+          .style('fill', 'black')
+          .text(selectedData ? selectedData.data.value : 0);
+      } else {
+        centerGroup
+          .append('text')
+          .attr('class', 'center-name')
+          .attr('y', -20)
+          .style('font-size', '16px')
+          .style('fill', 'black')
+          .text('Total');
+        centerGroup
+          .append('text')
+          .attr('class', 'center-value')
+          .attr('y', 32)
+          .style('font-size', '62px')
+          .style('fill', 'black')
+          .text(filteredData.length);
+      }
     } else {
-      d3.select(svg)
-        .select('g.center-text')
-        .select('text.center-value')
-        .text(filteredData.length);
+      const centerGroup = d3.select(svg).select('g.center-text');
+      if (sector) {
+        const selectedData = pieData.find((p) => p.data.name === sector);
+        centerGroup.select('text.center-name').text(sector);
+        centerGroup.select('text.center-value').text(selectedData ? selectedData.data.value : 0);
+      } else {
+        centerGroup.select('text.center-name').text('Total');
+        centerGroup.select('text.center-value').text(filteredData.length);
+      }
     }
 
     const paths = container
@@ -153,7 +125,6 @@
       })
       .style('fill', (d) => sectorColors[d.data.name])
       .on('mouseover', function (event, d) {
-        // Pull the arc outward.
         const offset = -5;
         const angle = (d.startAngle + d.endAngle) / 2;
         const translateX = Math.sin(angle) * offset;
@@ -163,7 +134,6 @@
           .duration(200)
           .attr('transform', `translate(${translateX}, ${translateY})`);
 
-        // Update the center text with hovered sector details.
         const centerGroup = container.select('g.center-text');
         centerGroup
           .transition()
@@ -187,19 +157,29 @@
           .duration(200)
           .attr('transform', 'translate(0,0)');
 
-        // Revert the center text to show the overall total.
+        if (sector == d.data.name) {
+          return;
+        }
         const centerGroup = container.select('g.center-text');
         centerGroup
           .transition()
           .duration(150)
           .style('opacity', 0)
           .on('end', function () {
-            d3.select(this).select('text.center-name').text('Total');
-            d3.select(this)
-              .select('text.center-value')
-              .text(filteredData.length);
+            if (sector) {
+              const selectedData = pieData.find((p) => p.data.name === sector);
+              d3.select(this).select('text.center-name').text(sector);
+              d3.select(this).select('text.center-value').text(selectedData ? selectedData.data.value : 0);
+            } else {
+              d3.select(this).select('text.center-name').text('Total');
+              d3.select(this).select('text.center-value').text(filteredData.length);
+            }
             d3.select(this).transition().duration(200).style('opacity', 1);
           });
+      })
+      .on('click', function (event, d) {
+        sector = d.data.name;
+        console.log('Sector selected:', sector);
       })
       .merge(paths)
       .transition()
@@ -238,8 +218,11 @@
         (exit) => exit.remove()
       );
 
-    // Bring labels to the front.
     container.selectAll('text.label').raise();
+  }
+
+  function resetSelection() {
+    sector = null;
   }
 
   $effect(() => {
@@ -252,6 +235,7 @@
 <section>
   <h2>Policies in {year}</h2>
   <svg bind:this={svg}></svg>
+  <button onclick={resetSelection}>RESET</button>
 </section>
 
 <style>
@@ -279,7 +263,30 @@
     overflow: visible;
   }
 
-  path {
+  button {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    background: #feebb8;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     cursor: pointer;
+    transition-property: box-shadow, transform, background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  button:hover {
+    box-shadow: 0px 0px 0px 0px black;
+    transform: translate(2px, 2px);
+  }
+
+  button:active {
+    transform: translate(2px, 4px);
   }
 </style>

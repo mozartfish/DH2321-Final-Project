@@ -40,6 +40,7 @@
   let resetChecked = $state(false);
 
   let year = $state(2022);
+  let sector = $state('');
   let dataMin = $state(2000);
 
   let isClimateView = $state(true);
@@ -148,7 +149,7 @@
 
   // for printing and debugging
   $effect(() => {
-    console.log('APP DATA MIN', dataMin);
+    console.log("APPP SECTOR", sector);
   });
 </script>
 
@@ -220,16 +221,15 @@
         </div>
 
         <div id="dashboard-pie">
-          <PolicyChart {policyData} {year} />
+          <PolicyChart {policyData} {year} bind:sector />
         </div>
-
+        
         <div id="dashboard-policies">
-          <PolicyData {policyData} {selectedCountries} {year} />
+          <PolicyData {policyData} {selectedCountries} {year} {sector} />
         </div>
       </div>
     </section>
-    <!-- <PolicyData {policyData} {selectedCountries} {year} /> -->
-  {/if}
+    {/if}
 </main>
 
 <style>
@@ -344,7 +344,7 @@
   #dashboard-bars {
     grid-area: bars;
   }
-  
+
   #dashboard-line {
     grid-area: lines;
   }
@@ -356,8 +356,6 @@
   #dashboard-policies {
     grid-area: pols;
   }
-
-
 
   /* #presenter {
     display: flex;

@@ -1,13 +1,24 @@
 <script>
   import * as d3 from 'd3';
-  import CountryData from './CountryData.svelte';
 
   const {
     policyData = [],
     selectedCountries = [],
     euCountries = [],
-    year
+    year,
+    sector
   } = $props();
+
+  const sectorColors = {
+    Agriculture: '#FEFFE0',
+    'Energy consumption': '#FEE292',
+    'Energy supply': '#FFC559',
+    'Industrial processes': '#FCAA39',
+    LULUCF: '#F5841E',
+    'Other sectors': '#EE7B19',
+    Transport: '#E1650F',
+    Waste: '#CF5309'
+  };
 
   const countryList =
     euCountries && euCountries.length > 0
@@ -23,16 +34,6 @@
     return d3.scaleOrdinal().domain(countryList).range(colorRange);
   }
   let colorScale = countryColorScale();
-
-  // Function to determine text color based on background brightness
-  function getContrastYIQ(hexcolor) {
-    hexcolor = hexcolor.replace('#', '');
-    const r = parseInt(hexcolor.substr(0, 2), 16);
-    const g = parseInt(hexcolor.substr(2, 2), 16);
-    const b = parseInt(hexcolor.substr(4, 2), 16);
-    const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-    return yiq >= 110 ? 'black' : 'white';
-  }
 </script>
 
 <section>
@@ -41,42 +42,53 @@
     {#if selectedCountries && selectedCountries.filter((c) => c !== 'EU').length > 0}
       <div class="policy-container">
         {#each selectedCountries.filter((c) => c !== 'EU') as country}
-          <ul>
-            {#each policyData.filter((policy) => policy.country === country && parseInt(policy.year) === year) as policy}
-              <li
-                style="background-color: {colorScale(
-                  country
-                )}; color: {getContrastYIQ(colorScale(country))}"
-              >
-                <p class="country">{policy.country}</p>
-                <p>{policy.policy}</p>
-                <p class="sector">
-                  {policy.sector.replace(/;/g, ', ')}
-                </p>
-              </li>
-            {/each}
-          </ul>
+          <div class="country-group">
+            <h3 class="country-title">{country}</h3>
+            <ul>
+              {#each policyData.filter((policy) => 
+                policy.country === country &&
+                parseInt(policy.year) === year &&
+                (!sector || policy.sector.split(';').map(s => s.trim()).includes(sector))
+              ) as policy}
+                <li style="background-color: {sectorColors[policy.sector.split(';')[0].trim()]};">
+                  <p>{policy.policy}</p>
+                  <p class="sector">{policy.sector.replace(/;/g, ', ')}</p>
+                </li>
+              {/each}
+            </ul>
+          </div>
         {/each}
       </div>
     {:else}
       <div class="policy-container">
-        <ul>
-          {#each policyData.filter((policy) => parseInt(policy.year) === year && policy.country !== 'EU') as policy}
-            <li
-              style="background-color: {colorScale(
-                policy.country
-              )}; color: {getContrastYIQ(colorScale(policy.country))}"
-            >
-              <p class="country">{policy.country}</p>
-              <p>{policy.policy}</p>
-              <p>
-                <i>
-                  {policy.sector.replace(/;/g, ', ')}
-                </i>
-              </p>
-            </li>
-          {/each}
-        </ul>
+        {#each Array.from(
+          new Set(
+            policyData
+              .filter((policy) => 
+                parseInt(policy.year) === year &&
+                policy.country !== 'EU' &&
+                (!sector || policy.sector.split(';').map(s => s.trim()).includes(sector))
+              )
+              .map((policy) => policy.country)
+          )
+        ) as country}
+          <div class="country-group">
+            <h3 class="country-title">{country}</h3>
+            <ul>
+              {#each policyData.filter((policy) => 
+                parseInt(policy.year) === year &&
+                policy.country === country &&
+                policy.country !== 'EU' &&
+                (!sector || policy.sector.split(';').map(s => s.trim()).includes(sector))
+              ) as policy}
+                <li style="background-color: {sectorColors[policy.sector.split(';')[0].trim()]};">
+                  <p>{policy.policy}</p>
+                  <p class="sector">{policy.sector.replace(/;/g, ', ')}</p>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/each}
       </div>
     {/if}
   {/if}
@@ -88,13 +100,13 @@
     height: 100%;
     overflow-y: scroll;
     border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    border: 3px solid rgba(0, 0, 0, 0.8);
   }
 
   h2 {
@@ -104,6 +116,18 @@
 
   .policy-container {
     padding: 10px;
+    width: 100%;
+  }
+
+  .country-group {
+    margin-bottom: 12px;
+  }
+
+  .country-title {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #094c93;
   }
 
   ul {
@@ -114,16 +138,8 @@
   li {
     margin-bottom: 6px;
     border-radius: 6px;
-    border: 2px solid rgba(0, 0, 0, 0.8);
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .country {
-    font-size: 1.5em;
-    font-weight: bold;
+    padding: 12px 10px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
   }
 
   .sector {
