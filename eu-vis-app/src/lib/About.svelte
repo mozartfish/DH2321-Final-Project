@@ -258,7 +258,7 @@
   
   <style>
     body {
-      background-color: #c4ddee; /* Light blue background */
+      background-color: #c4ddee;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
@@ -278,8 +278,8 @@
       background: white;
       padding: 20px;
       border-radius: 10px;
-      border: 2px solid black; /* Black border around boxes */
-      box-shadow: 4px 4px 0px black; /* Bold black shadow for depth */
+      border: 2px solid black; 
+      box-shadow: 4px 4px 0px black; 
       width: 100%;
     }
   
