@@ -81,7 +81,7 @@
       .filter((country) => country !== undefined);
     if (countryNames.length === 0) return null;
     const colorRange = countryNames.map((d, i) =>
-      d3.interpolateBlues(i / countryNames.length)
+      d3.interpolateRdPu(i / countryNames.length)
     );
     return d3.scaleOrdinal().domain(countryNames).range(colorRange);
   }

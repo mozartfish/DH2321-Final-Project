@@ -50,7 +50,7 @@
   const countryColorScale = () => {
     const countries = formattedData.map((d) => d.country);
     const colorRange = countries.map((d, i) =>
-      d3.interpolateYlGnBu(i / countries.length)
+      d3.interpolateRdPu(i / countries.length)
     );
     return d3.scaleOrdinal().domain(countries).range(colorRange);
   };
