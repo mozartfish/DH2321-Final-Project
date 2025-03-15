@@ -11,8 +11,8 @@
   } = $props();
 
   let euGeoData;
-  let width = 400;
-  let height = 550;
+  let width = 300;
+  let height = 410;
   let selectedCountries = $state(['EU']);
   let lastSelectedCountry = $state('EU');
   let labelColor = $state('black');
@@ -165,21 +165,21 @@
     }
     legend
       .append('rect')
-      .attr('x', 10)
+      .attr('x', 0)
       .attr('y', 10)
       .attr('width', legendWidth)
       .attr('height', legendHeight)
       .style('fill', 'url(#legend-gradient)');
     legend
       .append('text')
-      .attr('x', 10)
+      .attr('x', 0)
       .attr('y', legendHeight + 25)
       .style('text-anchor', 'start')
       .style('font-size', '12px')
       .text(domain[0].toFixed(1));
     legend
       .append('text')
-      .attr('x', 10 + legendWidth)
+      .attr('x', 0 + legendWidth)
       .attr('y', legendHeight + 25)
       .style('text-anchor', 'end')
       .style('font-size', '12px')
@@ -314,6 +314,7 @@
 
   #map-container {
     position: relative;
+    padding-bottom: 15px;
   }
 
   h3 {
@@ -321,7 +322,7 @@
     white-space: nowrap;
     position: absolute;
     top: 20px;
-    left: 10px;
+    left: 0px;
   }
 
   #legend-container {
@@ -354,5 +355,9 @@
 
   button:active {
     transform: translate(2px, 4px);
+  }
+
+  #eu-map {
+    padding-top: 10px;
   }
 </style>

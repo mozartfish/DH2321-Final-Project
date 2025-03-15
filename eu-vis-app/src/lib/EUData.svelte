@@ -38,8 +38,8 @@
   );
 
   // Chart dimensions
-  let width = $state(800);
-  let height = $state(350);
+  let width = $state(615);
+  let height = $state(270);
   const margin = 60;
 
   // Legend pagination variables
@@ -440,10 +440,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-left: 40px;
   }
 
   h2 {
-    color: #094C93;
+    color: #094c93;
     position: absolute;
     top: 10px;
   }

@@ -250,7 +250,9 @@
     {:else if page == 1}
       <About />
     {:else if page == 2}
-      <AboutTeam />
+      <div id="about-team">
+        <AboutTeam />
+      </div>
     {/if}
   {/if}
 </main>
@@ -358,6 +360,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 50px;
   }
 
   #dashboard-grid {
@@ -446,5 +449,9 @@
     color: #333;
     outline: none;
     width: 100%;
+  }
+
+  #about-team {
+    scale: 0.85;
   }
 </style>

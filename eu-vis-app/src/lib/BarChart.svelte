@@ -51,8 +51,8 @@
     const data = extractEUData();
 
     const margin = { top: 0, right: 30, bottom: 34, left: 180 };
-    const width = 550 - margin.left - margin.right;
-    const height = 450 - margin.top - margin.bottom;
+    const width = 450 - margin.left - margin.right;
+    const height = 300 - margin.top - margin.bottom;
 
     const svg = d3
       .select(chartContainer)
@@ -237,8 +237,8 @@
   section {
     width: 100%;
     height: 100%;
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 55px;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;

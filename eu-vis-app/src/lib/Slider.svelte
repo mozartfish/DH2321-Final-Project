@@ -35,7 +35,7 @@
 <style>
   h2 {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: #094c93;
     margin-bottom: -10px;
   }
@@ -48,7 +48,7 @@
     background-color: white;
   }
   .container {
-    scale: 0.9;
+    scale: 0.65;
   }
 
   :root {

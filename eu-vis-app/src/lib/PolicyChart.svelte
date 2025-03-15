@@ -4,7 +4,7 @@
 
   let { policyData = [], year, sector = $bindable() } = $props();
 
-  let width = 330;
+  let width = 240;
   let radius = width / 2;
   let svg;
 
@@ -51,7 +51,10 @@
 
     const innerRadius = radius * 0.5;
     const outerRadius = radius;
-    const arcGenerator = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+    const arcGenerator = d3
+      .arc()
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius);
 
     // Create or select container group.
     let container = d3.select(svg).select('g');
@@ -103,7 +106,9 @@
       if (sector) {
         const selectedData = pieData.find((p) => p.data.name === sector);
         centerGroup.select('text.center-name').text(sector);
-        centerGroup.select('text.center-value').text(selectedData ? selectedData.data.value : 0);
+        centerGroup
+          .select('text.center-value')
+          .text(selectedData ? selectedData.data.value : 0);
       } else {
         centerGroup.select('text.center-name').text('Total');
         centerGroup.select('text.center-value').text(filteredData.length);
@@ -169,10 +174,14 @@
             if (sector) {
               const selectedData = pieData.find((p) => p.data.name === sector);
               d3.select(this).select('text.center-name').text(sector);
-              d3.select(this).select('text.center-value').text(selectedData ? selectedData.data.value : 0);
+              d3.select(this)
+                .select('text.center-value')
+                .text(selectedData ? selectedData.data.value : 0);
             } else {
               d3.select(this).select('text.center-name').text('Total');
-              d3.select(this).select('text.center-value').text(filteredData.length);
+              d3.select(this)
+                .select('text.center-value')
+                .text(filteredData.length);
             }
             d3.select(this).transition().duration(200).style('opacity', 1);
           });
@@ -201,7 +210,7 @@
             .attr('text-anchor', 'middle')
             .attr('dy', '0.35em')
             .style('pointer-events', 'none')
-            .style('font-size', '16px')
+            .style('font-size', '12px')
             .style('fill', (d) => d3.color(sectorColors[d.data.name]).darker())
             .attr('transform', (d) => `translate(${arcGenerator.centroid(d)})`)
             .text((d) => d.data.name),
@@ -245,7 +254,7 @@
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.8);
     background-color: white;
-    padding-top: 20px;
+    padding-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,9 +273,9 @@
   }
 
   button {
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
+    width: 150px;
+    height: 45px;
+    margin-top: 10px;
     background: #feebb8;
     border: 2px solid black;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
