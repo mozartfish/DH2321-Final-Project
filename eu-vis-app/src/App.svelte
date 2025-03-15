@@ -14,6 +14,7 @@
 
   // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
+  import About from './lib/About.svelte';
 
   // constants
   const EU_COUNTRY = 'EU';
@@ -38,6 +39,8 @@
   // toggle for comparison mode
   let comparisonMode = $state(false);
   let resetChecked = $state(false);
+  //page 0 : Home ; page 1 : about page; page 2: contact page
+  let page = $state(0);
 
   let year = $state(2022);
   let sector = $state('');
@@ -133,6 +136,18 @@
     selectedCountries = ['EU'];
   }
 
+  function toggleToHome() {
+    page = 0;
+  }
+
+  function toggletoAbout() {
+    page = 1;
+  }
+
+  function toggleToContact() {
+    page = 2;
+  }
+
   // Deselect all the countries in the comparison mode
   function resetCountries() {
     selectedCountries = ['EU'];
@@ -149,7 +164,7 @@
 
   // for printing and debugging
   $effect(() => {
-    console.log("APPP SECTOR", sector);
+    console.log('APPP SECTOR', sector);
   });
 </script>
 
@@ -157,9 +172,9 @@
   <nav>
     <h2>EU Climate Insights</h2>
     <div class="links">
-      <a>Home</a>
-      <a>About</a>
-      <a>Contact</a>
+      <button class="nav-button" onclick={toggleToHome}>Home</button>
+      <button class="nav-button" onclick={toggletoAbout}>About</button>
+      <button class="nav-button" onclick={toggleToContact}>Contact</button>
     </div>
   </nav>
   <!-- render visualization components after all the data is loaded  -->
@@ -176,60 +191,65 @@
   </div> -->
 
   {#if isDataLoaded}
-    <section id="dashboard">
-      <div id="dashboard-grid">
-        <div id="dashboard-map">
-          <EUMap
-            countries={EU_COUNTRIES}
-            allCountriesData={selectedDataFileData}
-            onCountrySelect={handleCountrySelect}
-            {selectedFile}
-            {year}
-          />
-        </div>
+    {#if page == 0}
+      <section id="dashboard">
+        <div id="dashboard-grid">
+          <div id="dashboard-map">
+            <EUMap
+              countries={EU_COUNTRIES}
+              allCountriesData={selectedDataFileData}
+              onCountrySelect={handleCountrySelect}
+              {selectedFile}
+              {year}
+            />
+          </div>
 
-        <div id="dashboard-slider">
-          <Slider bind:year {dataMin} />
-        </div>
+          <div id="dashboard-slider">
+            <Slider bind:year {dataMin} />
+          </div>
 
-        <!-- <select bind:value={selectedFile} onchange={selectData}>
+          <!-- <select bind:value={selectedFile} onchange={selectData}>
             {#each allData as d}
               <option value={d.file}>{d.file}</option>
             {/each}
           </select> -->
-        <div id="dashboard-bars">
-          <BarChart
-            {allData}
-            {handleDataSelect}
-            {selectedFile}
-            selectedCountry={selectedCountries[selectedCountries.length - 1] ||
-              'EU'}
-            {year}
-          />
-        </div>
+          <div id="dashboard-bars">
+            <BarChart
+              {allData}
+              {handleDataSelect}
+              {selectedFile}
+              selectedCountry={selectedCountries[
+                selectedCountries.length - 1
+              ] || 'EU'}
+              {year}
+            />
+          </div>
 
-        <div id="dashboard-line">
-          <EUData
-            allCountriesData={selectedDataFileData}
-            euCountries={EU_COUNTRIES}
-            {selectedCountries}
-            euCountry={EU_COUNTRY}
-            {year}
-            bind:dataMin
-            {selectedFile}
-          />
-        </div>
+          <div id="dashboard-line">
+            <EUData
+              allCountriesData={selectedDataFileData}
+              euCountries={EU_COUNTRIES}
+              {selectedCountries}
+              euCountry={EU_COUNTRY}
+              {year}
+              bind:dataMin
+              {selectedFile}
+            />
+          </div>
 
-        <div id="dashboard-pie">
-          <PolicyChart {policyData} {year} bind:sector />
+          <div id="dashboard-pie">
+            <PolicyChart {policyData} {year} bind:sector />
+          </div>
+
+          <div id="dashboard-policies">
+            <PolicyData {policyData} {selectedCountries} {year} {sector} />
+          </div>
         </div>
-        
-        <div id="dashboard-policies">
-          <PolicyData {policyData} {selectedCountries} {year} {sector} />
-        </div>
-      </div>
-    </section>
+      </section>
+    {:else if page == 1}
+      <About />
     {/if}
+  {/if}
 </main>
 
 <style>
@@ -247,11 +267,32 @@
     align-items: center;
     padding: 4px;
     font-size: 0.9rem;
-    display: none;
   }
 
   nav h2 {
     margin-left: 20px;
+  }
+
+  .links {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .nav-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #336699;
+    background-color: #4477aa;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-block;
+  }
+
+  .nav-button:hover {
+    background-color: #5588bb;
   }
 
   #toggle {
@@ -263,7 +304,7 @@
     margin: 20px;
   }
 
-  button {
+  /* button {
     width: 200px;
     height: 50px;
     border: 2px solid black;
@@ -298,10 +339,11 @@
     background-color: #f49c12;
     box-shadow: 0px 0px 0px 0px black;
     transform: translate(2px, 2px);
-  }
+  } */
 
   .links {
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     display: flex;
     flex-direction: row;
     gap: 20px;
