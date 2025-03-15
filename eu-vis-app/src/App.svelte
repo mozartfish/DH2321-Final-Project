@@ -15,6 +15,7 @@
   // import policies data as a raw csv file
   import policiesCSV from '/src/policies.csv?raw';
   import About from './lib/About.svelte';
+  import AboutTeam from './lib/AboutTeam.svelte';
 
   // constants
   const EU_COUNTRY = 'EU';
@@ -248,6 +249,8 @@
       </section>
     {:else if page == 1}
       <About />
+    {:else if page == 2}
+      <AboutTeam />
     {/if}
   {/if}
 </main>

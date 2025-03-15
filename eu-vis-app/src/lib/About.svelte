@@ -15,6 +15,8 @@
   function setActiveSection(id) {
     currentSection = id;
   }
+
+  const videoId = 'ml8zxmAuw7M?si=6A86WE2aiMU258cv';
 </script>
 
 <main>
@@ -82,7 +84,6 @@
     <!-- Walkthrough section -->
     <div class="content-box" class:active={currentSection === 1}>
       <h2>Walkthrough</h2>
-      <p>--Insert Video here--</p>
       <ul>
         <li><b>The Big Picture</b></li>
         <ul>
@@ -102,6 +103,22 @@
             sectors by year.
           </li>
           <li>A text box that lists enacted policies.</li>
+
+          <div class="video-container">
+            <div class="video-wrapper">
+              <h3 class="video-title">Demo video</h3>
+              <iframe
+                width="700"
+                height="400"
+                src="https://www.youtube.com/embed/{videoId}"
+                title="Demo video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
         </ul>
         <li>
           <b>Climate Challenges: What Challenges do Specific Countries Face?</b>
@@ -742,8 +759,35 @@
     margin-bottom: 0;
   }
 
+  .video-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+
+  .video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 560px;
+  }
+
+  .video-title {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #336699;
+  }
+
   /* Add responsive adjustments */
   @media (max-width: 768px) {
+    .video-container iframe {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
     .tab-navigation {
       flex-direction: row;
       overflow-x: auto;
