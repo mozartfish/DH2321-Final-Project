@@ -113,6 +113,9 @@
             A time slider to see changes and policy implementations over time.
           </li>
           <li>
+            A bar chart that shows how countries perform on climate issues in relationship to other EU countries. The observed values have been statistically transformed into z-scores. The mean of how EU is doing on a climate issue is indicated by the mid line. A negative score indicates that the observed values are below the average of all EU countries, whereas a positive score signifies that they exceed the EU average.
+          </li>
+          <li>
             A line chart that shows how countries compare to other countries and
             the total of EU on climate data.
           </li>
