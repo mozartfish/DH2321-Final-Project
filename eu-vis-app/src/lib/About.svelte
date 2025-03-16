@@ -93,7 +93,7 @@
           <a href="https://ec.europa.eu/eurostat/web/metadata/overview">https://ec.europa.eu/eurostat/web/metadata/overview</a>
       </p>
   
-      <p>United Nations. (). Sustainable development goals. United Nations Department of Economic and Social Affairs. Retrieved 21 february, 2025, from 
+      <p>United Nations. (2025). Sustainable development goals. United Nations Department of Economic and Social Affairs. Retrieved 21 february, 2025, from 
           <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>
       </p>
 
