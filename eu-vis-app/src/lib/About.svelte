@@ -79,6 +79,24 @@
         from over—but with data, visualization, and informed action, we can
         hopefully inspire and potentially help make change.
       </p>
+
+      <hr>
+
+      <h3>References</h3>
+      <p>European Commission. (2020). The European Green Deal. Retrieved 21 February, 2025, from 
+          <a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en">https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en</a>
+      </p>
+      <p>Eurostat. (2022). Eurostat. Retrieved 21 february, 2025 from 
+          <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a>
+      </p>
+      <p>Eurostat. (2021). Eurostat metadata. Retrieved 21 february, 2025, from 
+          <a href="https://ec.europa.eu/eurostat/web/metadata/overview">https://ec.europa.eu/eurostat/web/metadata/overview</a>
+      </p>
+  
+      <p>United Nations. (). Sustainable development goals. United Nations Department of Economic and Social Affairs. Retrieved 21 february, 2025, from 
+          <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>
+      </p>
+
     </div>
 
     <!-- Walkthrough section -->
@@ -209,14 +227,21 @@
         <li>Target: Find extremes & Trends</li>
       </ul>
 
-      <h3>Data Source</h3>
-      <a href="https://ec.europa.eu/eurostat/web/sdi/database"
-        >Eurostat SDG Database</a
-      >
+      <hr>
+
+      <h3> Original Data Source</h3>
+      <li><a href="https://ec.europa.eu/eurostat/web/sdi/database"
+        >Eurostat SDG Database</a> </li>
+      <li><a href="https://international-partnerships.ec.europa.eu/policies_en"
+        >European Commission Policies</a> </li>
+
+      <h3> Processed data: </h3>
+       <li> <a href="https://github.com/mozartfish/DH2321-Final-Project/tree/eu-climate-policy-vis/data1"
+        >Eurostat SDG Database</a> </li>
+       <li><a href="https://github.com/mozartfish/DH2321-Final-Project/blob/eu-climate-policy-vis/policies.csv"
+        >European Commission Policies</a> </li> 
       <p class="link"></p>
-      <a href="https://international-partnerships.ec.europa.eu/policies_en"
-        >European Commission Policies</a
-      >
+      
     </div>
 
     <!-- Data description section -->
