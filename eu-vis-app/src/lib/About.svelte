@@ -5,7 +5,8 @@
     { id: 1, title: 'Walkthrough' },
     { id: 2, title: 'Technology' },
     { id: 3, title: 'Data' },
-    { id: 4, title: 'Data Description' }
+    { id: 4, title: 'Data Description' },
+    { id: 5, title: 'References' }
   ];
 
   // Track the current active section
@@ -80,23 +81,35 @@
         hopefully inspire and potentially help make change.
       </p>
 
-      <hr>
+      <hr />
 
       <h3>References</h3>
-      <p>European Commission. (2020). The European Green Deal. Retrieved 21 February, 2025, from 
-          <a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en">https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en</a>
+      <p>
+        European Commission. (2020). The European Green Deal. Retrieved 21
+        February, 2025, from
+        <a
+          href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en"
+          >https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en</a
+        >
       </p>
-      <p>Eurostat. (2022). Eurostat. Retrieved 21 february, 2025 from 
-          <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a>
+      <p>
+        Eurostat. (2022). Eurostat. Retrieved 21 february, 2025 from
+        <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a
+        >
       </p>
-      <p>Eurostat. (2021). Eurostat metadata. Retrieved 21 february, 2025, from 
-          <a href="https://ec.europa.eu/eurostat/web/metadata/overview">https://ec.europa.eu/eurostat/web/metadata/overview</a>
-      </p>
-  
-      <p>United Nations. (2025). Sustainable development goals. United Nations Department of Economic and Social Affairs. Retrieved 21 february, 2025, from 
-          <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>
+      <p>
+        Eurostat. (2021). Eurostat metadata. Retrieved 21 february, 2025, from
+        <a href="https://ec.europa.eu/eurostat/web/metadata/overview"
+          >https://ec.europa.eu/eurostat/web/metadata/overview</a
+        >
       </p>
 
+      <p>
+        United Nations. (2025). Sustainable development goals. United Nations
+        Department of Economic and Social Affairs. Retrieved 21 february, 2025,
+        from
+        <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>
+      </p>
     </div>
 
     <!-- Walkthrough section -->
@@ -113,7 +126,13 @@
             A time slider to see changes and policy implementations over time.
           </li>
           <li>
-            A bar chart that shows how countries perform on climate issues in relationship to other EU countries. The observed values have been statistically transformed into z-scores. The mean of how EU is doing on a climate issue is indicated by the mid line. A negative score indicates that the observed values are below the average of all EU countries, whereas a positive score signifies that they exceed the EU average.
+            A bar chart that shows how countries perform on climate issues in
+            relationship to other EU countries. The observed values have been
+            statistically transformed into z-scores. The mean of how EU is doing
+            on a climate issue is indicated by the mid line. A negative score
+            indicates that the observed values are below the average of all EU
+            countries, whereas a positive score signifies that they exceed the
+            EU average.
           </li>
           <li>
             A line chart that shows how countries compare to other countries and
@@ -230,21 +249,34 @@
         <li>Target: Find extremes & Trends</li>
       </ul>
 
-      <hr>
+      <hr />
 
-      <h3> Original Data Source</h3>
-      <li><a href="https://ec.europa.eu/eurostat/web/sdi/database"
-        >Eurostat SDG Database</a> </li>
-      <li><a href="https://international-partnerships.ec.europa.eu/policies_en"
-        >European Commission Policies</a> </li>
+      <h3>Original Data Source</h3>
+      <li>
+        <a href="https://ec.europa.eu/eurostat/web/sdi/database"
+          >Eurostat SDG Database</a
+        >
+      </li>
+      <li>
+        <a href="https://international-partnerships.ec.europa.eu/policies_en"
+          >European Commission Policies</a
+        >
+      </li>
 
-      <h3> Processed data: </h3>
-       <li> <a href="https://github.com/mozartfish/DH2321-Final-Project/tree/eu-climate-policy-vis/data1"
-        >Eurostat SDG Database</a> </li>
-       <li><a href="https://github.com/mozartfish/DH2321-Final-Project/blob/eu-climate-policy-vis/policies.csv"
-        >European Commission Policies</a> </li> 
+      <h3>Processed data:</h3>
+      <li>
+        <a
+          href="https://github.com/mozartfish/DH2321-Final-Project/tree/eu-climate-policy-vis/data1"
+          >Eurostat SDG Database</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/mozartfish/DH2321-Final-Project/blob/eu-climate-policy-vis/policies.csv"
+          >European Commission Policies</a
+        >
+      </li>
       <p class="link"></p>
-      
     </div>
 
     <!-- Data description section -->
@@ -676,6 +708,76 @@
         <a
           href="https://ec.europa.eu/eurostat/databrowser/view/sdg_15_41/default/table"
           >Source</a
+        >
+      </p>
+    </div>
+
+    <!-- Data section -->
+    <div class="content-box" class:active={currentSection === 5}>
+      <h2>References</h2>
+      <p>
+        Eurostat. (2022). Eurostat. Retrieved 21 february, 2025 from
+        <a href="https://ec.europa.eu/eurostat">https://ec.europa.eu/eurostat</a
+        >
+      </p>
+      <p>
+        Eurostat. (2021). Eurostat metadata. Retrieved 21 february, 2025, from
+        <a href="https://ec.europa.eu/eurostat/web/metadata/overview"
+          >https://ec.europa.eu/eurostat/web/metadata/overview</a
+        >
+      </p>
+
+      <p>
+        United Nations. (2025). Sustainable development goals. United Nations
+        Department of Economic and Social Affairs. Retrieved 21 february, 2025,
+        from
+        <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>
+      </p>
+
+      <p>
+        European Commission. (2020). The European Green Deal. Retrieved 21
+        February, 2025, from
+        <a
+          href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en"
+          >https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en</a
+        >
+      </p>
+
+      <p>
+        Bostock, Mike. (2023). Color Legend. Retrieved 01 March, 2025, from
+        <a href="https://observablehq.com/@d3/color-legend"
+          >https://observablehq.com/@d3/color-legend</a
+        >
+      </p>
+      <p>
+        Heer, Jeffrey. (n.d.). A Tour through the Visualization Zoo - ACM Queue.
+        Retrieved 10 February, 2025, from
+        <a href="https://queue.acm.org/detail.cfm?id=1805128"
+          >https://queue.acm.org/detail.cfm?id=1805128</a
+        >
+      </p>
+      <p>
+        Munzner, Tamara. (2014). Visualization Analysis & Design. Boca Raton,
+        Crc Press, Taylor & Francis Group (chapter 2, 3, 11 and 12).
+      </p>
+      <p>
+        Rothschild, Connor. (n.d.). Making Visualizations Literally W/ Svelte &
+        D3. Retrieved 10 February, 2025, from
+        <a href="https://connorrothschild.github.io/v4/post/svelte-and-d3"
+          >https://connorrothschild.github.io/v4/post/svelte-and-d3</a
+        >
+      </p>
+      <p>
+        Rothschild, Connor. (n.d.). How to Learn D3 in 2023. Retrieved 10
+        February, 2025 from
+        <a href="https://connorrothschild.github.io/v4/viz"
+          >https://connorrothschild.github.io/v4/viz</a
+        >
+      </p>
+      <p>
+        Svelte. (2024). Welcome to Svelte • Svelte Tutorial. Retrieved from
+        <a href="https://svelte.dev/tutorial/svelte/welcome-to-svelte"
+          >https://svelte.dev/tutorial/svelte/welcome-to-svelte</a
         >
       </p>
     </div>
